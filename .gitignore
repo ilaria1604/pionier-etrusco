@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+# build output (rigenerabile con: node tools/build.mjs <indirizzo>)
+dist/
+# node
+node_modules/

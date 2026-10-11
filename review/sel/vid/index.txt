@@ -1,0 +1,9 @@
+V1 ./Bagni/Video docce.MOV 05.97
+V2 ./Glamping/Glamping+bungalow grande bello.MOV 09.24
+V3 ./Glamping/Video esterno glamping.MOV 05.74
+V4 ./Glamping/Video piante glamping.MOV 06.77
+V5 ./Piazzole/IMG_2486.MOV 11.71
+V6 ./Piazzole/Video piazzole.mov 06.51
+V7 ./Sport/Ebike video.mov 06.50
+V8 ./Sport/Ebike vulci.mov 07.04
+V9 ./Sport/kitesurf.mov 03.59

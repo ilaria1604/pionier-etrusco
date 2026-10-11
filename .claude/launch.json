@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pionier-etrusco",
+      "runtimeExecutable": "/Users/ilariaeleuteri/.local/node/bin/node",
+      "runtimeArgs": ["/Users/ilariaeleuteri/Desktop/Claude1camping/.claude/serve.js", "8321", "/Users/ilariaeleuteri/Desktop/Claude1camping/pionier-etrusco"],
+      "port": 8321
+    }
+  ]
+}

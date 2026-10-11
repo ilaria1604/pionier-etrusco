@@ -1,0 +1,123 @@
+/* Camping map */
+.cmap-sec{padding:clamp(80px,9vw,120px) 0;background:var(--panel);scroll-margin-top:var(--nav-h)}
+.cmap-intro{max-width:52ch;color:var(--text-secondary);margin:0}
+.cmap-tools{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin:30px 0 14px}
+.cmap-view{display:inline-flex;background:var(--canvas);border-radius:999px;padding:4px}
+.cmap-view button{border:0;background:none;padding:9px 18px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;color:var(--text-primary);transition:background .3s var(--ease-out),color .3s var(--ease-out)}
+.cmap-view button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.cmap-hint{display:none;align-items:center;gap:8px;font-family:var(--f-mono);font-size:13px;color:var(--text-secondary);margin:0}
+.cmap-hint svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cmap-frame{position:relative;border-radius:22px;overflow:hidden;background:#FBF8F3;box-shadow:0 1px 0 rgba(51,39,31,.05),0 24px 60px -36px rgba(51,39,31,.4)}
+.cmap-scroll{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.cmap{display:block;width:100%;height:auto;aspect-ratio:1960/788;user-select:none;-webkit-user-select:none}
+.cmap-frame[data-view="all"] .zone-camp{cursor:zoom-in}
+
+.cmap .street{fill:#FBF8F3}
+.cmap .edge{fill:none;stroke:#DDD2C5;stroke-width:1.2}
+.cmap .land{fill:#DDE4CD}
+.cmap .land-pines{fill:url(#cm-pines-s)}
+.cmap .pine{fill:#D2DBBE}
+.cmap .pine.d{fill:#86A375}
+.cmap .road{fill:#FBF8F3}
+.cmap .lawn{fill:#CBD9B6;stroke:#A6D9D7;stroke-width:4;stroke-linejoin:round}
+.cmap .macchia{fill:#93AE82}
+.cmap .macchia-pines{fill:url(#cm-pines)}
+.cmap .lake{fill:#A6D9D7;stroke:#4FB9B6;stroke-width:2}
+.cmap .wave{fill:none;stroke:#4FB9B6;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;display:inline;width:auto;height:auto}
+.cmap .strip{fill:#FBF8F3;stroke:#A6D9D7;stroke-width:3;stroke-linejoin:round}
+.cmap .lane{fill:none;stroke:#DDD2C5;stroke-width:1.2;stroke-dasharray:7 6}
+.cmap .path{fill:#EEF1E4}
+.cmap .field{fill:#E4EBD6;stroke:#FBF8F3;stroke-width:2.5}
+.cmap .field-l{fill:none;stroke:#FBF8F3;stroke-width:1.6}
+.cmap .pool-deck{fill:#FBF8F3}
+.cmap .pool{fill:#A6D9D7;stroke:#4FB9B6;stroke-width:1.5}
+.cmap .bld{fill:#fff;stroke:#DDD2C5;stroke-width:1}
+.cmap .bld-o{fill:none;stroke:#DDD2C5;stroke-width:1}
+.cmap .ground{fill:#FFFDF9}
+.cmap .walk{fill:none;stroke:#E8DFD4;stroke-width:1.2}
+.cmap .halo{fill:#DCEFEE;stroke:#DCEFEE;stroke-width:7;stroke-linejoin:round}
+.cmap .fence{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linejoin:round}
+
+.cmap .cell{transition:opacity .4s var(--ease-out)}
+.cmap .cell rect,.cmap .cell polygon{stroke:#FFFDF9;stroke-width:1.1}
+.cmap .t-P rect,.cmap .t-P polygon{fill:#E6C9A8}
+.cmap .t-T rect,.cmap .t-T polygon{fill:#C4855C}
+.cmap .t-G rect,.cmap .t-G polygon{fill:#7A4E3D}
+.cmap .t-GL rect,.cmap .t-GL polygon{fill:#F7E8D7;stroke:#DDBF9C}
+.cmap .t-H rect,.cmap .t-H polygon{fill:#587486}
+.cmap .t-B rect,.cmap .t-B polygon{fill:#8D9A93}
+.cmap .t-B .deck{fill:#C9D1CC}
+.cmap .t-B .slats{fill:none;stroke:#FFFDF9;stroke-width:1.1}
+.cmap .t-L rect,.cmap .t-L polygon{fill:#74C0BD}
+.cmap .cell text{font-family:var(--f-mono);font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#5A4536;pointer-events:none;opacity:0;transition:opacity .5s var(--ease-out)}
+.cmap .t-T text,.cmap .t-G text,.cmap .t-B text,.cmap .t-H text{fill:#FBF4EC}
+.cmap-frame[data-view="camp"] .cell text{opacity:1}
+/* when something is selected, every other place is switched off: flat light grey, no number */
+.cmap .cell rect,.cmap .cell polygon{transition:fill .35s var(--ease-out),stroke .35s var(--ease-out)}
+.cmap.dim-type .cell:not(.on) rect,.cmap.dim-type .cell:not(.on) polygon{fill:#E9E4DC;stroke:#F6F2EC}
+.cmap.dim-type .cell:not(.on) .slats{stroke:#F6F2EC}
+.cmap.dim-type .cell:not(.on) text{opacity:0}
+.cmap .halo{transition:opacity .35s var(--ease-out)}
+.cmap.dim-type .halo{opacity:0}
+
+.cmap .labels text{pointer-events:none}
+.cmap .zl{font-family:var(--f-mono);font-weight:700;font-size:22px;letter-spacing:.16em;text-transform:uppercase;fill:#F6F2EA}
+.cmap .zl.s{font-size:16px;letter-spacing:.1em;fill:#5E4C40}
+.cmap .zl.s.w{fill:#1E6563}
+.cmap .title{font-family:var(--f-display);font-size:40px;fill:#3F5A3A;text-anchor:middle}
+
+.cmap .mk{cursor:pointer}
+.cmap .mk .dot{fill:#fff;stroke:var(--accent);stroke-width:1.3;transition:fill .25s var(--ease-out)}
+.cmap .mk use{color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:color .25s var(--ease-out)}
+.cmap .mk .ring{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:0;transform-box:fill-box;transform-origin:center}
+.cmap .mk:hover .dot,.cmap .mk.on .dot{fill:var(--accent)}
+.cmap .mk:hover use,.cmap .mk.on use{color:#fff}
+.cmap .mk{transition:opacity .4s var(--ease-out)}
+.cmap.dim-serv .mk:not(.on){opacity:.2}
+.cmap .mk.on .ring{animation:cmpulse 1.9s var(--ease-soft) infinite}
+@keyframes cmpulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+
+.cmap-tip{position:absolute;left:0;top:0;z-index:2;pointer-events:none;background:var(--night);color:var(--on-night);font-size:14px;font-weight:500;line-height:1.3;padding:7px 11px;border-radius:9px;white-space:nowrap;opacity:0;transform:translate(-50%,calc(-100% - 12px));transition:opacity .2s}
+.cmap-tip.show{opacity:1}
+
+.cmap-legend{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px clamp(24px,4vw,56px);margin-top:30px}
+.cmap-legend h3{font-family:var(--f-mono);font-weight:400;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.cmap-legend ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.cmap-legend ul.cols{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cmap-legend button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:10px;font-size:15px;line-height:1.3;cursor:pointer;color:var(--text-primary);transition:background .25s var(--ease-out)}
+.cmap-legend button:hover{background:rgba(251,248,243,.7)}
+.cmap-legend button[aria-pressed="true"]{background:#DCEFEE}
+.cmap-legend .sw{width:18px;height:14px;border-radius:3px;flex:none}
+.cmap-legend .sw.t-P{background:#E6C9A8}
+.cmap-legend .sw.t-T{background:#C4855C}
+.cmap-legend .sw.t-G{background:#7A4E3D}
+.cmap-legend .sw.t-GL{background:#F7E8D7;box-shadow:inset 0 0 0 1px #DDBF9C}
+.cmap-legend .sw.t-H{background:#587486}
+.cmap-legend .sw.t-B{background:#8D9A93}
+.cmap-legend .sw.t-L{background:#74C0BD}
+.cmap-legend svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+@media (max-width:860px){.cmap-legend{grid-template-columns:1fr}.cmap-legend ul.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.cmap{width:1000px;max-width:none}.cmap-hint{display:inline-flex}.cmap-frame{border-radius:16px}}
+@media (max-width:420px){.cmap-legend button{font-size:14px;padding:7px 8px;gap:9px}}
+@media (prefers-reduced-motion:reduce){.cmap .mk.on .ring{animation:none;opacity:.8;transform:scale(1.4)}}
+
+/* entrance: an always-visible label on the road side, and a gap in the fence */
+.cmap .gate{fill:none;stroke:#FFFDF9;stroke-width:5}
+.cmap .mk.entry .dot{fill:var(--accent);stroke:#fff;stroke-width:1.5}
+.cmap .mk.entry use{color:#fff}
+.cmap .mk.entry .elbl{fill:var(--accent)}
+.cmap .mk.entry .etx{font:600 11px var(--f-body);fill:#fff;text-anchor:middle;pointer-events:none}
+.cmap .mk.entry:hover .dot,.cmap .mk.entry.on .dot{fill:var(--accent-hover)}
+/* from the map straight to the prices */
+.cmap-prices{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:8px 16px 8px 20px;border-radius:999px;border:1.5px solid var(--accent);background:#fff;color:var(--accent);font:600 15px var(--f-body);text-decoration:none}
+.cmap-prices svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
+.cmap-prices:hover{background:var(--accent);color:#fff}
+.cmap-prices:hover svg{transform:translateX(3px)}
+.cmap-tools{justify-content:flex-start}
+.cmap-hint{margin-left:auto}
+
+/* pitches behave like the service icons: tap to light up that kind, the tapped one is outlined */
+.cmap .cell{cursor:pointer}
+.cmap .cell.cur rect,.cmap .cell.cur polygon{stroke:var(--night);stroke-width:2.6}
+.cmap .cell.cur text{opacity:1}

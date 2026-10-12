@@ -588,3 +588,14 @@ Result at 390x844:
 | Bungalow | 13,079px | 7,003px |
 
 Backups: `review/index.backup-rev58.html` and `review/site.backup-rev58.css`.
+
+### Rev 60: phone refinements and beaches without photos
+- **Phones.**
+  - The sticky anchor chips are removed (markup, CSS and the scrollspy now never run).
+  - "Tutte le sistemazioni" is hidden in the detail-page tab bar; only the four tabs remain.
+  - The hero "Scopri il camping" pill is hidden and the static copy sits lower.
+- **Services on phones.** They no longer swipe, because uneven card heights left short cards mostly empty next to the long Sport card. They now form one list:
+  - Sport is a full-width photo card;
+  - the others are compact rows, with the icon on the left and the title and text on the right, each as tall as its own content;
+  - the photo stack is scaled to 68% in the corner.
+- **Beaches, all screens.** All photos are removed (the Montalto gallery button and the three Google Maps placeholders). The cards are text only, and every card's link reads "Apri su Google Maps".

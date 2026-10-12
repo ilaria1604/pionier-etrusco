@@ -365,7 +365,7 @@ ${P.types ? choose + inside : photos + inside}
     <div data-reveal><p class="label rv" style="--i:0">Quanto costa</p><h2 class="h2 rv" id="prezzi-t" style="--i:1">${P.pricesH}.</h2><p class="lede rv" style="--i:2">Tariffe 2026, con tasse e IVA al 10% incluse.</p></div>
     <div class="calc-wrap" id="calcola">
       <h3 class="calc-title">Calcola il tuo prezzo</h3>
-      <p class="calc-sub">${P.calc === 'piaz' ? 'Scegli le date e quanti siete: il totale compare subito.' : 'Scegli la settimana di arrivo: il totale compare subito.'}</p>
+      <p class="calc-sub">${P.calc === 'piaz' ? 'Scegli le date e quanti siete: il totale compare subito.' : 'Scegli il giorno di arrivo e quello di partenza: il totale compare subito.'}</p>
       <div class="calc" data-types="${P.calc}"></div>
     </div>
     <h3 class="listino-h">Il listino completo</h3>

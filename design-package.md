@@ -617,3 +617,17 @@ On phones, every horizontal row gets two round dark arrows (`.swipe-btn`, 44px, 
 - **Placement.** Arrows sit on the middle of the first card's photo (`--arrow-y`), at the screen edges.
 - **Behaviour.** Each tap scrolls one card. The left arrow hides at the start and the right one at the end. Arrows only show when the row actually overflows.
 - **Reels.** The reels header arrows are hidden on phones in favour of the side arrows. Desktop is unchanged.
+
+### Rev 63: summer rule, simpler and reachable
+- **Problem.** The owner reported the June to August booking still "did not work". Reproduced with real taps on a phone: when the dates were wrong, "Vedi il prezzo" was disabled and the explanation sat below the calendar, often off screen, so the step looked stuck.
+- **Calendar.** Stays free, with no red range, no error box and no fix button.
+  - Changeover days in June to August (Saturdays for bungalows, Sundays for glamping and home) carry a green dot (#2F9D55).
+  - Legend: "Bollino verde: i sabati / le domeniche di giugno, luglio e agosto, gli unici giorni di arrivo e partenza in estate".
+  - After a valid arrival, the valid departures keep their teal ring.
+- **"Vedi il prezzo".** Enabled as soon as both dates are chosen.
+- **"Il tuo prezzo" with a wrong summer selection.** It shows a red box, with no price:
+  - title: "In questo periodo la prenotazione è settimanale";
+  - text: "Da giugno ad agosto si arriva e si riparte di sabato/domenica, per 7, 14 o 21 notti. Seleziona correttamente le date: … bollino verde";
+  - then the specific reason (arrival day, departure day or number of nights).
+  - On phones the empty "€ ..." placeholder is hidden there.
+- **Detail-page subtitle:** "Scegli il giorno di arrivo e quello di partenza: il totale compare subito."

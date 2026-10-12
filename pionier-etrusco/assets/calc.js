@@ -108,7 +108,6 @@ boxes.forEach(box => {
           <div class="cal-grid" role="grid"></div>
         </div>
         <p class="cal-legend" hidden><span class="dot" aria-hidden="true"></span><span class="txt"></span></p>
-        <div class="cal-err" role="alert" hidden></div>
         <p class="cal-sum" aria-live="polite"></p>
         <div class="calc-stepnav"><button type="button" class="c-back" data-to="1">Indietro</button><button type="button" class="btn c-next" data-to="3">Vedi il prezzo</button></div>
       </div>
@@ -143,20 +142,9 @@ boxes.forEach(box => {
     if (n % 7) return `Hai scelto ${plural(n, 'notte', 'notti')}: da giugno ad agosto il soggiorno è di 7, 14 o 21 notti.`;
     return null;
   };
-  // the nearest stay that works: arrival on the changeover day, whole weeks
-  const fixDates = () => {
-    const [lo, hi] = bounds(), wd = DAYNUM[T().band];
-    let a = from - ((new Date(from).getUTCDay() - wd + 7) % 7) * DAY;
-    if (a < lo) a += 7 * DAY;
-    let w = Math.max(1, Math.round((to - from) / DAY / 7));
-    while (a + w * 7 * DAY > hi && w > 1) w--;
-    return [a, a + w * 7 * DAY];
-  };
-
   const drawCal = () => {
     const first = Date.UTC(YEAR, view, 1), days = new Date(Date.UTC(YEAR, view + 1, 0)).getUTCDate();
     const lead = (new Date(first).getUTCDay() + 6) % 7;
-    const bad = !!problem();
     // in summer the changeover days get a dot; once an arrival is chosen, the right departures get a dashed ring
     const sugFrom = weekly() && from !== null && to === null && changeDay(from) && touchesSummer(from, from + 7 * DAY);
     $('.cal-m').textContent = MONTHS[view] + ' ' + YEAR;
@@ -169,7 +157,7 @@ boxes.forEach(box => {
       const inR = from !== null && t >= from && t <= (to ?? from);
       const wk = weekly() && changeDay(t) && t >= SUMMER_FROM && t < SUMMER_TO;
       const sug = sugFrom && t > from && (t - from) % (7 * DAY) === 0;
-      const cls = ['cal-d', inR ? 'in' : '', inR && bad ? 'bad' : '', t === from ? 'start' : '', t === to ? 'end' : '', wk ? 'wk' : '', sug ? 'sug' : ''].filter(Boolean).join(' ');
+      const cls = ['cal-d', inR ? 'in' : '', t === from ? 'start' : '', t === to ? 'end' : '', wk ? 'wk' : '', sug ? 'sug' : ''].filter(Boolean).join(' ');
       html += `<button type="button" class="${cls}" data-t="${t}"${ok ? '' : ' disabled'} aria-pressed="${inR}" aria-label="${longDay(t)}${wk ? ', giorno di arrivo' : ''}">${d}</button>`;
     }
     grid.innerHTML = html;
@@ -178,7 +166,7 @@ boxes.forEach(box => {
   const help = () => {
     if (!type) return 'Prima scegli la sistemazione.';
     const step = from !== null && to === null ? 'Ora tocca il giorno di partenza.' : 'Tocca il giorno di arrivo, poi quello di partenza.';
-    if (weekly()) return `${step} Da giugno ad agosto si prenota solo a settimane intere, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]}.`;
+    if (weekly()) return `${step} Da giugno ad agosto si prenota a settimane, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]} (bollino verde).`;
     return step;
   };
 
@@ -206,7 +194,13 @@ boxes.forEach(box => {
       return;
     }
     if (problem()) {
-      res.innerHTML = `<p class="calc-total empty"><b>€ ...</b></p><p class="calc-bad">Le date scelte non vanno bene: da giugno ad agosto si prenota solo a settimane intere, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]}. Correggile nel calendario.</p>`;
+      const d = DAYNAME[T().band];
+      res.innerHTML = `<p class="calc-total empty"><b>€ ...</b></p>
+      <div class="calc-bad" role="alert">
+        <p class="calc-bad-t">In questo periodo la prenotazione è settimanale</p>
+        <p>Da giugno ad agosto si arriva e si riparte di ${d}, per 7, 14 o 21 notti. Seleziona correttamente le date: ${d === 'sabato' ? 'i sabati' : 'le domeniche'} sono segnat${d === 'sabato' ? 'i' : 'e'} con il bollino verde.</p>
+        <p class="calc-bad-why">${problem()}</p>
+      </div>`;
       return;
     }
     let total = 0, lines = [], notes = [];
@@ -281,17 +275,10 @@ boxes.forEach(box => {
     $('.cal-sum').innerHTML = summary();
     const lg = $('.cal-legend');
     lg.hidden = !weekly();
-    if (weekly()) $('.txt', lg).textContent = `I ${DAYNAME[T().band] === 'sabato' ? 'sabati' : 'giorni di domenica'} da giugno ad agosto: gli unici giorni di arrivo e partenza in estate.`;
-    const err = $('.cal-err'), why = problem();
-    err.hidden = !why;
-    if (why) {
-      const [a, b] = fixDates();
-      err.innerHTML = `<p class="cal-err-t">Da giugno ad agosto si prenota solo a settimane intere</p><p>${why}</p>
-        <button type="button" class="cal-fix" data-a="${a}" data-b="${b}">Usa invece: ${span(a, b)} (${plural((b - a) / DAY / 7, 'settimana', 'settimane')})</button>`;
-    }
+    if (weekly()) $('.txt', lg).textContent = `Bollino verde: ${T().band === 'sat' ? 'i sabati' : 'le domeniche'} di giugno, luglio e agosto, gli unici giorni di arrivo e partenza in estate.`;
     result();
     $('.c-next[data-to="2"]').disabled = !(type && adults > 0);
-    $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null) || !!problem();
+    $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null);
   };
 
   const setType = k => {
@@ -322,7 +309,6 @@ boxes.forEach(box => {
     if (b.matches('.c-next, .c-back')) { setStep(+b.dataset.to); return; }
     if (b.matches('.cal-prev')) view--; else if (b.matches('.cal-next')) view++;
     else if (b.matches('.cal-reset')) { from = null; to = null; }
-    else if (b.matches('.cal-fix')) { from = +b.dataset.a; to = +b.dataset.b; view = new Date(from).getUTCMonth(); }
     else if (b.matches('.c-a-m')) adults = Math.max(0, adults - 1); else if (b.matches('.c-a-p')) adults++;
     else if (b.matches('.c-k-m')) kids = Math.max(0, kids - 1); else if (b.matches('.c-k-p')) kids++;
     else return;

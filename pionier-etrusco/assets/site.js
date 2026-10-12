@@ -513,6 +513,44 @@ $$('.more-btn').forEach(b => {
   });
 });
 
+/* ---------- phones: side arrows on every row of cards that scrolls sideways ---------- */
+// The arrows sit on the middle of the photos; the left one hides at the start, the right one at the end.
+$$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels').forEach(track => {
+  const wrap = document.createElement('div');
+  wrap.className = 'swipe';
+  // reveal classes move to the wrapper so the arrows fade in together with the cards
+  ['rv', 'rv2'].forEach(c => { if (track.classList.contains(c)) { track.classList.remove(c); wrap.classList.add(c); } });
+  if (track.style.getPropertyValue('--i')) { wrap.style.setProperty('--i', track.style.getPropertyValue('--i')); }
+  track.before(wrap); wrap.append(track);
+  const mk = (dir, label, d) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'swipe-btn ' + dir; b.setAttribute('aria-label', label);
+    b.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
+    wrap.append(b); return b;
+  };
+  const prev = mk('prev', 'Scheda precedente', 'M15 6l-6 6 6 6'), next = mk('next', 'Scheda successiva', 'M9 6l6 6-6 6');
+  const step = () => { const c = track.firstElementChild; return c ? c.getBoundingClientRect().width + 12 : track.clientWidth * .8; };
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduced ? 'auto' : 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduced ? 'auto' : 'smooth' }));
+  const place = () => {
+    const c = track.firstElementChild;
+    const media = c && c.querySelector('img, video, .ph');
+    const y = media && media.offsetHeight > 40 ? media.getBoundingClientRect().top - track.getBoundingClientRect().top + media.offsetHeight / 2 : track.offsetHeight / 2;
+    wrap.style.setProperty('--arrow-y', Math.round(y) + 'px');
+  };
+  const update = () => {
+    const max = track.scrollWidth - track.clientWidth;
+    wrap.classList.toggle('scrollable', max > 8);
+    prev.classList.toggle('off', track.scrollLeft < 8);
+    next.classList.toggle('off', track.scrollLeft > max - 8);
+  };
+  track.addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
+  addEventListener('resize', () => { place(); update(); });
+  addEventListener('load', () => { place(); update(); });
+  track.querySelectorAll('img').forEach(i => i.addEventListener('load', place, { once: true }));
+  place(); update();
+});
+
 /* ---------- keyboard for photo areas that act as buttons ---------- */
 document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-photos][role="button"]')) { e.preventDefault(); e.target.click(); }

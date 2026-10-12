@@ -974,7 +974,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 }
 
 /* ================= phones (rev 59): same page, laid out the mobile way ================= */
-.quick,.more-btn,.calc-stepnav,.home-bar,.calc-prog{display:none}
+.quick,.more-btn,.calc-stepnav,.home-bar,.calc-prog,.swipe-btn{display:none}
 @media (min-width:721px){details[data-open-wide]>summary{display:none}details[data-open-wide] .listino-in{padding-top:0}}
 @media (max-width:720px){
   /* shortcut chips: stick under the header, follow the section being read */
@@ -1019,6 +1019,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .extras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gut));padding:2px var(--gut) 6px}
   .extras::-webkit-scrollbar{display:none}
   .extras li{flex:none}
+
+  /* side arrows: say "this row scrolls" */
+  .swipe{position:relative;min-width:0}
+  .swipe-btn{position:absolute;top:calc(var(--arrow-y,50%) + 4px);z-index:3;width:44px;height:44px;margin-top:-22px;border-radius:50%;border:0;background:rgba(23,33,29,.88);box-shadow:0 6px 18px -6px rgba(0,0,0,.5);display:none;place-items:center;cursor:pointer;transition:opacity .3s var(--ease-out)}
+  .swipe.scrollable .swipe-btn{display:grid}
+  .swipe-btn svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .swipe-btn.prev{left:calc(-1*var(--gut) + 6px)}
+  .swipe-btn.next{right:calc(-1*var(--gut) + 6px)}
+  .swipe-btn.off{opacity:0;pointer-events:none}
+  .reels-sec .swipe-btn.prev{left:6px}.reels-sec .swipe-btn.next{right:6px}
+  .reels-nav{display:none}
 
   /* the history: first paragraph, the rest on request */
   .logo-draw{width:min(52%,210px)}

@@ -610,3 +610,10 @@ Backups: `review/index.backup-rev58.html` and `review/site.backup-rev58.css`.
   - Whole weeks are priced week by week from the band of each week's first night. That includes 7-night stays starting midweek outside summer.
   - Stays that are not whole weeks, which are only possible outside summer, show "Su richiesta – soggiorno breve" with a "Chiedi il prezzo e la disponibilità" button. The listino has no nightly prices, so the calculator does not invent one.
 - **Open question for the owner:** the listino allows short stays until 14 June, while the summer rule above starts on 1 June.
+
+### Rev 62: side arrows on phone carousels
+On phones, every horizontal row gets two round dark arrows (`.swipe-btn`, 44px, night background, white chevron): accommodation cards (home and "Altre sistemazioni"), beaches, family archive, the bungalow "Quale scegliere" cards, excursions and reels. They are told apart from the cream "→" link badge on the cards.
+- **Markup.** `site.js` wraps each track in `.swipe` (`min-width:0` so it fits inside grids). Reveal classes (`rv` / `rv2`) move to the wrapper so the arrows fade in with the cards.
+- **Placement.** Arrows sit on the middle of the first card's photo (`--arrow-y`), at the screen edges.
+- **Behaviour.** Each tap scrolls one card. The left arrow hides at the start and the right one at the end. Arrows only show when the row actually overflows.
+- **Reels.** The reels header arrows are hidden on phones in favour of the side arrows. Desktop is unchanged.

@@ -599,3 +599,14 @@ Backups: `review/index.backup-rev58.html` and `review/site.backup-rev58.css`.
   - the others are compact rows, with the icon on the left and the title and text on the right, each as tall as its own content;
   - the photo stack is scaled to 68% in the corner.
 - **Beaches, all screens.** All photos are removed (the Montalto gallery button and the three Google Maps placeholders). The cards are text only, and every card's link reads "Apri su Google Maps".
+
+### Rev 61: free date selection, whole weeks required in summer (bungalow, glamping, home)
+- **Bug fixed.** With the old weekly logic, tapping the departure day after the arrival (the natural gesture) was read as "remove the last week", and the whole selection vanished.
+- **New selection.** Bungalow, glamping and home now use the same free selection as pitches: tap the arrival, then the departure. Tapping a chosen day again removes it. Bounds: 4 Apr to 26 Sep for bungalows, 5 Apr to 27 Sep for glamping and home.
+- **Summer rule.** A stay that touches 1 June to 31 August must arrive and leave on the changeover day (Saturday for bungalows, Sunday for glamping and home) and last 7, 14 or 21+ nights.
+  - **Guides:** changeover days in Jun to Aug have a terracotta dot, with a legend under the calendar. Once a valid arrival is chosen, the valid departures (arrival + 7k) get a dashed teal ring.
+  - **Errors:** the range turns red and a red box explains exactly what is wrong (arrival day, departure day or number of nights). The box offers one button, "Usa invece: …", which snaps to the nearest valid stay (back to the previous changeover day, rounded whole weeks). The price column shows a red message, and on phones "Vedi il prezzo" is disabled.
+- **Pricing.**
+  - Whole weeks are priced week by week from the band of each week's first night. That includes 7-night stays starting midweek outside summer.
+  - Stays that are not whole weeks, which are only possible outside summer, show "Su richiesta – soggiorno breve" with a "Chiedi il prezzo e la disponibilità" button. The listino has no nightly prices, so the calculator does not invent one.
+- **Open question for the owner:** the listino allows short stays until 14 June, while the summer rule above starts on 1 June.

@@ -121,3 +121,23 @@
 .cmap .cell{cursor:pointer}
 .cmap .cell.cur rect,.cmap .cell.cur polygon{stroke:var(--night);stroke-width:2.6}
 .cmap .cell.cur text{opacity:1}
+
+/* phones: the map is a preview in the page; a tap opens it full screen with legend and zoom */
+.cmap-fsbar,.cmap-open{display:none}
+@media (max-width:720px){
+  .cmap-sec:not(.fs) .cmap-tools,.cmap-sec:not(.fs) .cmap-legend{display:none}
+  .cmap-sec:not(.fs) .cmap{width:100%}
+  .cmap-sec:not(.fs) .cmap-scroll{overflow:hidden}
+  .cmap-sec:not(.fs) .cmap-frame{cursor:zoom-in;margin-top:22px}
+  .cmap-open{display:inline-flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:600 16px var(--f-body);box-shadow:0 10px 24px -10px rgba(0,60,58,.7)}
+  .cmap-open svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .cmap-sec.fs{position:fixed;inset:0;z-index:70;overflow-y:auto;overscroll-behavior:contain;padding:0 0 40px;background:var(--panel)}
+  .cmap-sec.fs .cmap-head,.cmap-sec.fs .cmap-open{display:none}
+  .cmap-sec.fs .cmap-fsbar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:4;margin:0 calc(-1*var(--gut));padding:10px var(--gut);background:rgba(233,224,213,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(106,87,75,.16)}
+  .cmap-fsbar b{font-family:var(--f-display);font-weight:700;font-size:20px}
+  .cmap-close{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--text-primary);background:#fff;color:var(--text-primary);font:600 15px var(--f-body)}
+  .cmap-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  .cmap-sec.fs .cmap{width:1100px;max-width:none}
+  .cmap-sec.fs .cmap-tools{margin-top:14px}
+  html.fs-lock,html.fs-lock body{overflow:hidden}
+}

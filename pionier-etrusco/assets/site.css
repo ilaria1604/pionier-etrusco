@@ -953,3 +953,78 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .motes{display:none}
   .page-hero>img{transform:none}
 }
+
+/* ================= phones (rev 59): same page, laid out the mobile way ================= */
+.quick,.more-btn,.calc-stepnav,.home-bar,.calc-prog{display:none}
+@media (min-width:721px){details[data-open-wide]>summary{display:none}details[data-open-wide] .listino-in{padding-top:0}}
+@media (max-width:720px){
+  /* shortcut chips: stick under the header, follow the section being read */
+  .quick{display:block;position:sticky;top:var(--nav-h);z-index:45;background:rgba(243,238,231,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(106,87,75,.14)}
+  .quick ul{display:flex;gap:8px;list-style:none;margin:0;padding:9px var(--gut);overflow-x:auto;scrollbar-width:none}
+  .quick ul::-webkit-scrollbar{display:none}
+  .quick a{display:block;padding:8px 14px;border-radius:999px;background:#FBF8F3;border:1px solid rgba(106,87,75,.2);color:var(--text-primary);font-weight:600;font-size:14.5px;text-decoration:none;white-space:nowrap}
+  .quick a.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  main section[id]{scroll-margin-top:calc(var(--nav-h) + 56px)}
+  .divider{padding:28px 0 0}
+
+  /* bottom bar on the home page: call or book, always under the thumb */
+  .home-bar{display:flex}
+  .actbar .btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  body:has(.home-bar) .foot{padding-bottom:110px}
+
+  /* things of the same kind slide sideways: you see one card and a bit of the next */
+  .units,.bento,.spiagge ul,.album.archive,.choose:not(.single),.places{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin-inline:calc(-1*var(--gut));padding:4px var(--gut) 14px;scrollbar-width:none;max-width:none}
+  .units::-webkit-scrollbar,.bento::-webkit-scrollbar,.spiagge ul::-webkit-scrollbar,.album.archive::-webkit-scrollbar,.choose::-webkit-scrollbar,.places::-webkit-scrollbar{display:none}
+  .units>*,.bento>*,.spiagge ul>*,.album.archive>*,.choose>*,.places>*{flex:0 0 80%;scroll-snap-align:start;min-width:0}
+  .unit .ph{aspect-ratio:4/3}
+  .bento{margin-top:28px}
+  .bento .item.photo.sport{flex-basis:88%;min-height:520px}
+  .bento .item:not(.photo){display:flex;flex-direction:column}
+  .album.archive figure,.album.archive figure:nth-child(n){transform:none!important}
+  .album.archive{row-gap:0;margin-top:14px}
+  .places li{padding:16px 16px 18px;border:1px solid rgba(106,87,75,.22);border-radius:16px;background:#FBF8F3}
+  .places li:hover,.places li.on{padding-left:16px}
+  .places h3{flex-direction:column;align-items:flex-start;gap:4px}
+  .extras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gut));padding:2px var(--gut) 6px}
+  .extras::-webkit-scrollbar{display:none}
+  .extras li{flex:none}
+
+  /* the history: first paragraph, the rest on request */
+  .logo-draw{width:min(52%,210px)}
+  .more-text{display:none}
+  .more-text.open{display:block}
+  .more-btn{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--accent);font:600 16px var(--f-body);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+  /* tighter rhythm between sections */
+  main>section:not(.hero):not(.page-hero):not(.fs){padding-top:52px!important;padding-bottom:52px!important}
+  .cmap-sec:not(.fs) .cmap-intro{display:none}
+
+  /* calculator: one step at a time, with a small progress bar */
+  .calc-prog{display:flex;gap:6px;list-style:none;margin:0;padding:14px 16px 0;counter-reset:st}
+  .calc-prog li{flex:1;padding-top:8px;border-top:4px solid rgba(106,87,75,.18);font-size:12.5px;font-weight:600;color:var(--text-secondary)}
+  .calc-card[data-step="1"] .calc-prog li:nth-child(-n+1),.calc-card[data-step="2"] .calc-prog li:nth-child(-n+2),.calc-card[data-step="3"] .calc-prog li:nth-child(-n+3){border-color:var(--accent);color:var(--accent)}
+  .calc-card{display:flex;flex-direction:column}
+  .calc-q .n{display:none}
+  .calc-card[data-step="1"]>.calc-col:not(:nth-of-type(1)),.calc-card[data-step="2"]>.calc-col:not(:nth-of-type(2)),.calc-card[data-step="3"]>.calc-col:not(:nth-of-type(3)){display:none}
+  .calc-col+.calc-col{border-top:0}
+  .calc-stepnav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 14px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(106,87,75,.16)}
+  .calc-out .calc-stepnav{border-color:rgba(0,128,126,.2);justify-content:flex-start}
+  .calc-stepno{font-family:var(--f-mono);font-size:13px;color:var(--text-secondary)}
+  .calc-stepnav .btn{flex:1 1 auto;min-height:50px}
+  .calc-stepnav .btn:disabled{opacity:.4;cursor:default;transform:none}
+  .c-back{min-height:44px;padding:0;border:0;background:none;color:var(--accent);font:600 15.5px var(--f-body);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+  .calc-out .calc-todo,.calc-out .calc-wait-t{display:none}
+
+  /* detail pages: the full price list folds, equipment in two columns */
+  .listino-h{display:none}
+  .d-list{margin-top:6px}
+  .gear{grid-template-columns:1fr 1fr;gap:8px}
+  .gear li{padding:10px 10px;font-size:14px;gap:8px}
+  .gear svg{width:22px;height:22px}
+
+  /* footer: lighter */
+  .foot{padding:48px 0 36px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px 20px}
+  .foot .logo{width:84px;grid-column:1/-1}
+  .foot address{grid-column:1/-1;line-height:1.75}
+}

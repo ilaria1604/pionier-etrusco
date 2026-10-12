@@ -568,3 +568,23 @@ The "Togli la selezione" button is replaced by a permanent "Vedi le tariffe" lin
 
 ### Rev 58: menu label
 The nav item "Il camping" is renamed "Chi siamo" in the desktop nav and the mobile menu on all five pages. It still links to #camping.
+
+### Rev 59: phone version, option A ("same page, laid out the mobile way")
+Desktop is unchanged (checked). On screens up to 720px:
+- **Shortcut chips.** A sticky row under the header: Sistemazioni, Prezzi, Mappa, Servizi, Spiagge, Escursioni, Domande, Contatti. A scrollspy highlights the current section and the row scrolls to keep it in view. Section `scroll-margin` accounts for the chips.
+- **Bottom bar on the home page** (`.home-bar`): "Chiama" (tel) and "Prenota" (#richiesta). It shows after the hero and hides over the request form, the footer and the calculator (`data-hide`). The detail-page bar also hides over #calcola.
+- **Sideways swipe.** Accommodation cards (home and "Altre sistemazioni"), service cards, beaches, archive album, the bungalow "Quale scegliere" cards and the excursion places are scroll-snap rows. Each card is 80% wide, so the next one peeks in. The services list is one swipeable line of chips.
+- **Story.** Only the first paragraph shows, then "Leggi tutta la storia". The logo is smaller.
+- **Map.** A full-width preview plus an "Apri la mappa" button; any tap opens it full screen. Full screen has a sticky "Chiudi" bar, the zoom view at 1100px in a horizontal scroller, and the legend underneath. It locks page scroll and closes on Esc. "Vedi sulla mappa" links also open it full screen.
+- **Calculator.** One step at a time with a progress bar (Chi e quanti, Date, Prezzo). Buttons: "Avanti" (enabled once a type and at least one adult are chosen), "Indietro", "Vedi il prezzo" (enabled once dates are set), "Cambia le date" and "Cambia sistemazione o persone". The step circles are hidden.
+- **Detail pages.** The full price list folds into "Vedi il listino completo" (`details[data-open-wide]`, forced open and summary hidden on desktop). The equipment list uses two columns.
+- **Spacing.** Section padding is 52px top and bottom on phones. The footer is lighter (two columns, small logo).
+
+Result at 390x844:
+
+| Page | Before | After |
+|---|---|---|
+| Home | 19,099px (~23 screens) | 12,117px (~14 screens) |
+| Bungalow | 13,079px | 7,003px |
+
+Backups: `review/index.backup-rev58.html` and `review/site.backup-rev58.css`.

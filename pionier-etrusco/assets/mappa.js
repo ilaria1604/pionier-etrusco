@@ -112,7 +112,8 @@
     paint();
     const hit = marks.filter(m => servSet().has(m.dataset.serv));
     go(hit.length && hit.every(m => +m.dataset.x > 960) ? 'camp' : 'all');
-    sec.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    if (matchMedia('(max-width:720px)').matches) { sec.classList.add('fs'); document.documentElement.classList.add('fs-lock'); }
+    else sec.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
     setTimeout(() => reveal(hit), reduced ? 0 : 700);
   });
 
@@ -148,6 +149,36 @@
     if (el && !el.contains(e.relatedTarget)) hideTip();
   });
   scroller.addEventListener('scroll', hideTip, { passive: true });
+
+  // Phones: the map sits in the page as a preview; a tap opens it full screen, with the legend and the zoom
+  const PHONE = matchMedia('(max-width:720px)');
+  const openFs = () => {
+    if (sec.classList.contains('fs')) return;
+    sec.classList.add('fs');
+    document.documentElement.classList.add('fs-lock');
+    go('camp');
+    sec.scrollTop = 0;
+    sec.querySelector('.cmap-close').focus({ preventScroll: true });
+  };
+  const closeFs = () => {
+    if (!sec.classList.contains('fs')) return;
+    sec.classList.remove('fs');
+    document.documentElement.classList.remove('fs-lock');
+    hideTip();
+    sec.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  // in the preview, any tap opens the full map (nothing gets selected by accident)
+  frame.addEventListener('click', e => {
+    if (!PHONE.matches || sec.classList.contains('fs')) return;
+    e.preventDefault(); e.stopPropagation();
+    openFs();
+  }, true);
+  sec.querySelector('.cmap-open').addEventListener('click', openFs);
+  sec.querySelector('.cmap-close').addEventListener('click', closeFs);
+  addEventListener('keydown', e => { if (e.key === 'Escape') closeFs(); });
+  PHONE.addEventListener('change', e => { if (!e.matches) closeFs(); });
+  // "Vedi le tariffe" from inside the full map: close it first
+  sec.querySelector('.cmap-prices').addEventListener('click', () => closeFs());
 
   // Arriving from the Piazzole page: open straight on the zoom
   if (new URLSearchParams(location.search).get('vista') === 'piazzole') {

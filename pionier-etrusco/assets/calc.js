@@ -75,7 +75,8 @@ boxes.forEach(box => {
 
   // one card, three columns of the same height: what and how many / when / price
   box.innerHTML = `
-    <div class="calc-card">
+    <div class="calc-card" data-step="1">
+      <ol class="calc-prog" aria-hidden="true"><li>Chi e quanti</li><li>Date</li><li>Prezzo</li></ol>
       <div class="calc-col">
         <div role="group" aria-labelledby="${id}-q1">
           ${head(1, 'Dove vuoi dormire?')}
@@ -92,6 +93,7 @@ boxes.forEach(box => {
           <p class="calc-cap" aria-live="polite"></p>
           <label class="chk c-car-f" hidden><input type="checkbox" class="c-car"><span>Ho una seconda auto</span></label>
         </div>
+        <div class="calc-stepnav"><button type="button" class="btn c-next" data-to="2">Avanti</button></div>
       </div>
       <div class="calc-col" role="group" aria-labelledby="${id}-q3">
         ${head(3, 'Quando arrivi?')}
@@ -101,10 +103,12 @@ boxes.forEach(box => {
           <div class="cal-grid" role="grid"></div>
         </div>
         <p class="cal-sum" aria-live="polite"></p>
+        <div class="calc-stepnav"><button type="button" class="c-back" data-to="1">Indietro</button><button type="button" class="btn c-next" data-to="3">Vedi il prezzo</button></div>
       </div>
       <div class="calc-col calc-out" role="group" aria-labelledby="${id}-q4">
         ${head(4, 'Il tuo prezzo')}
         <div class="calc-res" aria-live="polite"></div>
+        <div class="calc-stepnav"><button type="button" class="c-back" data-to="2">Cambia le date</button><button type="button" class="c-back" data-to="1">Cambia sistemazione o persone</button></div>
       </div>
     </div>`;
 
@@ -209,6 +213,15 @@ boxes.forEach(box => {
     return `Dal <b>${longDay(from)}</b> al <b>${longDay(to)}</b> (${weekly() ? plural(n / 7, 'settimana', 'settimane') : plural(n, 'notte', 'notti')}).<br><small>Per togliere un giorno toccalo di nuovo, oppure <button type="button" class="cal-reset">cancella le date</button>.</small>`;
   };
 
+  // phones: one step at a time (the computer shows the three columns together)
+  const card = $('.calc-card');
+  const setStep = n => {
+    card.dataset.step = n;
+    if (matchMedia('(max-width:720px)').matches) {
+      const top = card.getBoundingClientRect().top;
+      if (top < 110 || top > innerHeight * .5) card.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  };
   const render = () => {
     people();
     $('.cal-help').textContent = help();
@@ -216,6 +229,8 @@ boxes.forEach(box => {
     drawCal();
     $('.cal-sum').innerHTML = summary();
     result();
+    $('.c-next[data-to="2"]').disabled = !(type && adults > 0);
+    $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null);
   };
 
   const setType = k => {
@@ -261,6 +276,7 @@ boxes.forEach(box => {
   box.addEventListener('click', e => {
     const b = e.target.closest('button');
     if (!b) return;
+    if (b.matches('.c-next, .c-back')) { setStep(+b.dataset.to); return; }
     if (b.matches('.cal-prev')) view--; else if (b.matches('.cal-next')) view++;
     else if (b.matches('.cal-reset')) { from = null; to = null; }
     else if (b.matches('.c-a-m')) adults = Math.max(0, adults - 1); else if (b.matches('.c-a-p')) adults++;

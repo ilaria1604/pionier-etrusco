@@ -272,6 +272,7 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
       <h2 class="h2 rv" id="mappa-t" style="--i:1">Ogni <em>piazzola</em>, ogni servizio.</h2>
       <p class="cmap-intro rv" style="--i:2">Tocca un tipo di piazzola o un servizio per trovarlo sulla mappa. Per tornare alla mappa completa, toccalo di nuovo o tocca un punto qualsiasi fuori.</p>
     </div>
+    <div class="cmap-fsbar"><b>La mappa del camping</b><button type="button" class="cmap-close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Chiudi</button></div>
     <div class="cmap-tools">
       <div class="cmap-view" role="group" aria-label="Vista della mappa">
         <button type="button" data-view="all" aria-pressed="true">Tutto il camping</button>
@@ -283,6 +284,7 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
     <div class="cmap-frame" data-view="all">
       <div class="cmap-scroll">${svg}</div>
       <div class="cmap-tip" role="status" aria-live="polite"></div>
+      <button type="button" class="cmap-open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Apri la mappa</button>
     </div>
     <div class="cmap-legend">
       <div><h3>Sistemazioni</h3><ul>${typeLegend}</ul></div>

@@ -369,8 +369,13 @@ ${P.types ? choose + inside : photos + inside}
       <div class="calc" data-types="${P.calc}"></div>
     </div>
     <h3 class="listino-h">Il listino completo</h3>
+    <details class="listino d-list" data-open-wide>
+      <summary><span class="t">Vedi il listino completo<small>Tutte le tariffe 2026, stagione per stagione</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="listino-in">
     ${P.prices}
     <p style="margin-top:20px"><a class="tlink" href="assets/tariffe-2026.pdf" download>Scarica il listino 2026 in PDF</a></p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -403,7 +408,7 @@ ${P.extra || ''}
 
 ${FOOT}
 
-<div class="actbar" role="navigation" aria-label="Azioni rapide">
+<div class="actbar" role="navigation" aria-label="Azioni rapide" data-hide=".page-hero, .cta-band, .foot, #calcola">
   <a class="btn line" href="#prezzi">Prezzi</a>
   <a class="btn" href="${ask(P.pick)}">Richiedi disponibilità</a>
 </div>

@@ -472,6 +472,47 @@ document.addEventListener('click', e => {
   if ('onscrollend' in window) addEventListener('scrollend', fix, { once: true }); else setTimeout(fix, 1200);
 });
 
+/* ---------- phones: shortcut chips under the header follow the section being read ---------- */
+const quick = $('.quick');
+if (quick) {
+  const links = $$('a', quick), secs = links.map(l => document.getElementById(l.getAttribute('href').slice(1))).filter(Boolean);
+  const seen = new Map();
+  const mark = () => {
+    let best = null, bestTop = -Infinity;
+    seen.forEach((top, el) => { if (top > bestTop) { best = el; bestTop = top; } });
+    links.forEach(l => {
+      const on = best && l.getAttribute('href') === '#' + best.id;
+      l.classList.toggle('on', !!on);
+      if (on) l.setAttribute('aria-current', 'location'); else l.removeAttribute('aria-current');
+      if (on && quick.offsetParent) { const ul = $('ul', quick); ul.scrollTo({ left: l.offsetLeft - 16, behavior: reduced ? 'auto' : 'smooth' }); }
+    });
+  };
+  // a section counts as "current" once its top has passed under the bars
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) seen.set(e.target, e.target.offsetTop); else seen.delete(e.target); });
+    mark();
+  }, { rootMargin: '-120px 0px -55% 0px' });
+  secs.forEach(s => io.observe(s));
+}
+
+/* ---------- price lists that stay open on wide screens and fold on phones ---------- */
+$$('details[data-open-wide]').forEach(d => {
+  const mq = matchMedia('(min-width:721px)');
+  const sync = () => { if (mq.matches) d.open = true; };
+  sync(); mq.addEventListener('change', sync);
+});
+
+/* ---------- phones: "Leggi tutta la storia" ---------- */
+$$('.more-btn').forEach(b => {
+  const box = document.getElementById(b.getAttribute('aria-controls'));
+  b.addEventListener('click', () => {
+    const open = b.getAttribute('aria-expanded') !== 'true';
+    b.setAttribute('aria-expanded', String(open));
+    box.classList.toggle('open', open);
+    b.textContent = open ? 'Mostra meno' : 'Leggi tutta la storia';
+  });
+});
+
 /* ---------- keyboard for photo areas that act as buttons ---------- */
 document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-photos][role="button"]')) { e.preventDefault(); e.target.click(); }
@@ -495,7 +536,7 @@ $$('.tc-media').forEach(m => {
 /* ---------- action bar on the detail pages: shows once the header CTAs are out of view ---------- */
 const actbar = $('.actbar');
 if (actbar) {
-  const hideOn = $$('.page-hero, .cta-band, .foot');
+  const hideOn = $$(actbar.dataset.hide || '.page-hero, .cta-band, .foot');
   const seen = new Set();
   const io = new IntersectionObserver(es => {
     es.forEach(e => e.isIntersecting ? seen.add(e.target) : seen.delete(e.target));

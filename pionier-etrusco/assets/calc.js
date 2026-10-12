@@ -194,12 +194,13 @@ boxes.forEach(box => {
       return;
     }
     if (problem()) {
-      const d = DAYNAME[T().band];
+      const d = DAYNAME[T().band], dd = d === 'sabato' ? 'un sabato' : 'una domenica';
       res.innerHTML = `<p class="calc-total empty"><b>€ ...</b></p>
       <div class="calc-bad" role="alert">
-        <p class="calc-bad-t">In questo periodo la prenotazione è settimanale</p>
-        <p>Da giugno ad agosto si arriva e si riparte di ${d}, per 7, 14 o 21 notti. Seleziona correttamente le date: ${d === 'sabato' ? 'i sabati' : 'le domeniche'} sono segnat${d === 'sabato' ? 'i' : 'e'} con il bollino verde.</p>
-        <p class="calc-bad-why">${problem()}</p>
+        <p class="calc-bad-t">Rivedi le date</p>
+        <p>Hai selezionato <b>da ${longDay(from)} a ${longDay(to)}</b>.</p>
+        <p>Da giugno ad agosto si prenota solo <b>da ${d} a ${d}</b>: scegli ${dd} per l'arrivo e ${dd} per la partenza, una, due o tre settimane dopo.</p>
+        <p class="calc-bad-why">${d === 'sabato' ? 'I sabati' : 'Le domeniche'} ${d === 'sabato' ? 'sono segnati' : 'sono segnate'} nel calendario con il bollino verde.</p>
       </div>`;
       return;
     }

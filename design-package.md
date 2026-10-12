@@ -631,3 +631,11 @@ On phones, every horizontal row gets two round dark arrows (`.swipe-btn`, 44px, 
   - then the specific reason (arrival day, departure day or number of nights).
   - On phones the empty "€ ..." placeholder is hidden there.
 - **Detail-page subtitle:** "Scegli il giorno di arrivo e quello di partenza: il totale compare subito."
+
+### Rev 64: clearer summer message
+The "Il tuo prezzo" box for a wrong summer selection now reads, in order:
+- "Rivedi le date";
+- "Hai selezionato da <arrivo> a <partenza>" (bold);
+- "Da giugno ad agosto si prenota solo da sabato a sabato: scegli un sabato per l'arrivo e un sabato per la partenza, una, due o tre settimane dopo";
+- "I sabati sono segnati nel calendario con il bollino verde".
+Glamping and home read domenica / domeniche. The separate technical reason line is removed.

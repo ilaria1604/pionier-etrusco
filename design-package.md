@@ -639,3 +639,16 @@ The "Il tuo prezzo" box for a wrong summer selection now reads, in order:
 - "Da giugno ad agosto si prenota solo da sabato a sabato: scegli un sabato per l'arrivo e un sabato per la partenza, una, due o tre settimane dopo";
 - "I sabati sono segnati nel calendario con il bollino verde".
 Glamping and home read domenica / domeniche. The separate technical reason line is removed.
+
+### Rev 65: owner text changes (desktop and phone)
+- **Monolocale.** The lettino da campeggio is "su prenotazione" in the calculator note and on the type card.
+- **Bungalow description.** It now reads "È composto da: camera matrimoniale, cucina attrezzata, bagno con doccia e aria condizionata… I trilocali hanno anche una seconda camera: con letto a castello nel Trilocale 28 mq, con letti singoli nel Superior 48 mq."
+  - The equipment list splits into "Letto a castello (Trilocale 28 mq)" and "Letti singoli (Superior 48 mq)".
+  - The Superior card's second bedroom becomes "una camera con letti singoli". The Superior photo labelled "camera con letto a castello" is still in its gallery; the owner has been asked whether to remove it.
+- **Superior 48 mq prices.** The rows read "4 posti" (was 4 o 5) and "5 o 6 posti" (was 6) in the home price list, the page price list, the calculator option labels and the card. Calculator caps: 4 and 6.
+- **Services list.** A "Camper stop" chip next to "Parcheggio ombreggiato" opens the map on the camper stop.
+- **Tarquinia.** "Le tombe etrusche affrescate, in cui potete trovare l'originale del nostro logo, e il famoso museo etrusco."
+- **Offers.** "25 aprile" is added after Pasqua.
+- **Opening dates.** "Aperto dal 15 aprile al 26 settembre 2027" in all footers; the price list lede reads "La stagione va dal 15 aprile al 26 settembre 2027".
+- **Short stays.** "Su richiesta, periodi brevi dal 15 aprile al 13 giugno e da settembre" in Da sapere, the price-list note and the FAQ.
+- **Waiting on the owner:** the 2027 band dates (and any price change). Until then the price list tables, the calculator (YEAR 2026) and the PDF still carry the 2026 periods.

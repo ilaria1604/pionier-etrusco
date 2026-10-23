@@ -21,10 +21,10 @@ const PITCH = { pitch: [9, 11, 14, 20], adult: [10, 11, 14, 16], kid: [0, 4, 6, 
 
 const TYPES = {
   piaz: { cap: 8, name: 'Piazzola', sub: 'camper, roulotte o tenda', kind: 'night', pick: 'Piazzola camper' },
-  mono: { cap: 2, capNote: 'più un lettino da campeggio', name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
+  mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
   tri: { cap: 4, name: 'Bungalow Trilocale', sub: '28 mq, 3 o 4 posti', kind: 'week', band: 'sat', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
-  sup5: { cap: 5, name: 'Bungalow Superior', sub: '48 mq, 4 o 5 posti', kind: 'week', band: 'sat', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
-  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 6 posti', kind: 'week', band: 'sat', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
+  sup5: { cap: 4, name: 'Bungalow Superior', sub: '48 mq, 4 posti', kind: 'week', band: 'sat', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
+  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 5 o 6 posti', kind: 'week', band: 'sat', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
   glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 mq, 4 posti', kind: 'week', band: 'sun', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
   home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 mq, 4 posti', kind: 'week', band: 'sun', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
 };
@@ -46,7 +46,7 @@ const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
 const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
-const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Monolocale, 20 mq, 2 posti', tri: 'Trilocale, 28 mq, 3 o 4 posti', sup5: 'Superior, 48 mq, 4 o 5 posti', sup6: 'Superior, 48 mq, 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Home, 34 mq, 4 posti' })[k];
+const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Monolocale, 20 mq, 2 posti', tri: 'Trilocale, 28 mq, 3 o 4 posti', sup5: 'Superior, 48 mq, 4 posti', sup6: 'Superior, 48 mq, 5 o 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Home, 34 mq, 4 posti' })[k];
 const WD = ['L', 'M', 'M', 'G', 'V', 'S', 'D'];
 const WDLONG = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
 const longDay = t => fmtDay.format(t);

@@ -682,3 +682,6 @@ Periods (weekly bands are [start, next start)):
 **Superior.** The bunk-bed photo (`sup-castello.jpg`) is removed from the Superior photos, which are now 9.
 
 **PDF vs site.** The PDF still says "Trilocale 48 mq 4/5 posti / 6 posti" and short stays "dal 04/04 al 14/06". The site keeps the owner's requested wording ("4 posti", "5 o 6 posti", "dal 15 aprile al 13 giugno"); flagged.
+
+### Rev 67: "Vai al mare" under the title
+The walk button `#hold` moves from the walk controls to the section header, right under "Il mare è a 3 minuti. Provalo." (`.mare-cta`, reveal index 2). The clock stays with the path. The walk behaves as before (one tap, 3:00, "Rifai la passeggiata"); checked on desktop and phone.

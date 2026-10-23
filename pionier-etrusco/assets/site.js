@@ -401,13 +401,42 @@ if (mare && hold) {
   pinWalk = () => { if (!arrived) { if (walkRaf !== null) { cancelAnimationFrame(walkRaf); walkRaf = null; } hp = 1; renderWalk(); arrive(); } };
 }
 
-/* ---------- map and places ---------- */
-const pts = $$('.map .pt');
-$$('.places li').forEach(li => {
-  const on = v => { pts.forEach(p => p.classList.toggle('on', v && p.dataset.place === li.dataset.place)); li.classList.toggle('on', v); };
-  li.addEventListener('mouseenter', () => on(true)); li.addEventListener('mouseleave', () => on(false));
-  li.addEventListener('focus', () => on(true)); li.addEventListener('blur', () => on(false));
+/* ---------- map and places: hover previews, a click picks the place on both sides ---------- */
+const pts = $$('.map .pt'), placeLis = $$('.places li');
+let pinnedPlace = null;
+const paintPlaces = hover => {
+  const cur = hover || pinnedPlace;
+  pts.forEach(p => p.classList.toggle('on', p.dataset.place === cur));
+  placeLis.forEach(li => { li.classList.toggle('on', li.dataset.place === cur); li.classList.toggle('sel', li.dataset.place === pinnedPlace); });
+};
+// bring the chosen card into view: sideways in the phone carousel, and on screen if the list is out of sight
+const showPlace = place => {
+  const li = placeLis.find(l => l.dataset.place === place);
+  if (!li) return;
+  const track = li.parentElement;
+  if (track.scrollWidth > track.clientWidth + 8) track.scrollTo({ left: li.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft || 0), behavior: reduced ? 'auto' : 'smooth' });
+  const r = li.getBoundingClientRect();
+  if (r.top < 80 || r.bottom > innerHeight - 90) li.scrollIntoView({ block: 'center', inline: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+};
+const pickPlace = place => { pinnedPlace = pinnedPlace === place ? null : place; paintPlaces(); if (pinnedPlace) showPlace(pinnedPlace); };
+pts.forEach(p => {
+  // a bigger invisible target, so the small circles are easy to hit with a finger
+  const dot = $('circle', p);
+  if (dot) { const hit = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); hit.setAttribute('class', 'hit'); hit.setAttribute('cx', dot.getAttribute('cx')); hit.setAttribute('cy', dot.getAttribute('cy')); hit.setAttribute('r', 24); p.prepend(hit); }
+  const name = ($('text', p) || {}).textContent || p.dataset.place;
+  p.setAttribute('tabindex', '0'); p.setAttribute('role', 'button'); p.setAttribute('aria-label', name + ': vedi nella lista');
+  p.addEventListener('click', e => { e.stopPropagation(); pickPlace(p.dataset.place); });
+  p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickPlace(p.dataset.place); } });
+  p.addEventListener('mouseenter', () => paintPlaces(p.dataset.place)); p.addEventListener('mouseleave', () => paintPlaces());
 });
+placeLis.forEach(li => {
+  li.addEventListener('mouseenter', () => paintPlaces(li.dataset.place)); li.addEventListener('mouseleave', () => paintPlaces());
+  li.addEventListener('focus', () => paintPlaces(li.dataset.place)); li.addEventListener('blur', () => paintPlaces());
+  li.addEventListener('click', e => { e.stopPropagation(); pinnedPlace = pinnedPlace === li.dataset.place ? null : li.dataset.place; paintPlaces(); });
+  li.addEventListener('keydown', e => { if (e.key === 'Enter') li.click(); });
+});
+// a click anywhere else lets go of the chosen place
+document.addEventListener('click', e => { if (pinnedPlace && !e.target.closest('.map .pt, .places li, .swipe-btn')) { pinnedPlace = null; paintPlaces(); } });
 
 /* ---------- FAQ ---------- */
 $$('.q button').forEach(b => b.addEventListener('click', () => {
@@ -536,6 +565,8 @@ $$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels')
     const c = track.firstElementChild;
     const media = c && c.querySelector('img, video, .ph');
     const y = media && media.offsetHeight > 40 ? media.getBoundingClientRect().top - track.getBoundingClientRect().top + media.offsetHeight / 2 : track.offsetHeight / 2;
+    // rows of text-only cards: the arrows go under the cards, so they never cover the words
+    wrap.classList.toggle('text-only', !(media && media.offsetHeight > 40));
     wrap.style.setProperty('--arrow-y', Math.round(y) + 'px');
   };
   const update = () => {

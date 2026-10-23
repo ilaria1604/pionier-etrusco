@@ -462,6 +462,12 @@ p{margin:0 0 14px}
 .map .pt text{font-family:var(--f-mono);font-size:15px;fill:var(--text-secondary);transition:fill .35s var(--ease-out)}
 .map .pt.on circle{fill:var(--accent)}
 .map .pt.on text{fill:var(--text-primary)}
+.map .pt{cursor:pointer;outline:none}
+.map .pt circle.hit,.map .pt.on circle.hit{fill:transparent;stroke:none}
+.map .pt:focus-visible circle:not(.hit){stroke:var(--accent-bright);stroke-width:3}
+.places li{cursor:pointer}
+.places li.sel{background:rgba(0,128,126,.08);box-shadow:inset 3px 0 0 var(--accent);border-radius:0 12px 12px 0;padding-left:16px}
+.places li.sel h3{color:var(--accent)}
 .map .home circle{fill:var(--accent);stroke:var(--accent)}
 .map .home text{font-family:var(--f-display);font-weight:700;font-size:19px;fill:var(--text-primary)}
 .map .home .pulse{fill:none;stroke:var(--accent);animation:pulse 3.6s var(--ease-soft) -1s infinite;animation-play-state:paused;transform-origin:center;transform-box:fill-box}
@@ -1030,6 +1036,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .album.archive{row-gap:0;margin-top:14px}
   .places li{padding:16px 16px 18px;border:1px solid rgba(106,87,75,.22);border-radius:16px;background:#FBF8F3}
   .places li:hover,.places li.on{padding-left:16px}
+  .places li.sel{border-color:var(--accent);box-shadow:0 0 0 1.5px var(--accent);border-radius:16px;padding-left:16px}
   .places h3{flex-direction:column;align-items:flex-start;gap:4px}
   .extras{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gut));padding:2px var(--gut) 6px}
   .extras::-webkit-scrollbar{display:none}
@@ -1044,6 +1051,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .swipe-btn.next{right:calc(-1*var(--gut) + 6px)}
   .swipe-btn.off{opacity:0;pointer-events:none}
   .reels-sec .swipe-btn.prev{left:6px}.reels-sec .swipe-btn.next{right:6px}
+  .swipe.text-only.scrollable{padding-bottom:52px}
+  .swipe.text-only .swipe-btn{top:auto;bottom:0;margin-top:0}
+  .swipe.text-only .swipe-btn.prev{left:auto;right:58px}
+  .swipe.text-only .swipe-btn.next{right:0}
   .reels-nav{display:none}
 
   /* the history: first paragraph, the rest on request */

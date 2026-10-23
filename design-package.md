@@ -685,3 +685,6 @@ Periods (weekly bands are [start, next start)):
 
 ### Rev 67: "Vai al mare" under the title
 The walk button `#hold` moves from the walk controls to the section header, right under "Il mare è a 3 minuti. Provalo." (`.mare-cta`, reveal index 2). The clock stays with the path. The walk behaves as before (one tap, 3:00, "Rifai la passeggiata"); checked on desktop and phone.
+
+### Rev 68: "Vai al mare" on the right of the title
+`.mare-head` is a two-column grid (title | button). The label spans both columns, and the button is aligned with the bottom of the title at the right edge. On phones (up to 720px) it falls back under the title, since there is no room beside it.

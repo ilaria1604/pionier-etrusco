@@ -386,6 +386,11 @@ p{margin:0 0 14px}
 #camper-stop{padding:72px 0}
 .cani-band.no-photo{grid-template-columns:1fr;max-width:none;padding:clamp(24px,3vw,36px) clamp(24px,3.4vw,44px)}
 .cani-band.no-photo .cani-copy{padding:0}
+/* camper stop banner with the dog photo: same 24px+ breathing room as the text-only version */
+.cani-band.with-photo{grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:clamp(24px,3vw,40px);max-width:none;padding:clamp(24px,3vw,32px)}
+.cani-band.with-photo img{height:100%;min-height:260px;aspect-ratio:auto;object-fit:cover;object-position:50% 64%;border-radius:14px}
+.cani-band.with-photo .cani-copy{padding:0}
+@media (max-width:700px){.cani-band.with-photo{grid-template-columns:1fr;padding:24px}.cani-band.with-photo img{height:auto;min-height:0;aspect-ratio:4/3}}
 @media (max-width:700px){.cani-band{grid-template-columns:1fr;gap:14px}.cani-band img{aspect-ratio:16/9}.cani-copy{padding:0 6px 6px}}
 
 /* ---------- tariffe ---------- */

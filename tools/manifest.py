@@ -53,6 +53,8 @@ OS='review/oldsite-servizi/'
 M.update({'piscina-1':(OS+'2021_04_01-7.jpg','web'),'piscina-2':(OS+'2021_04_03-5.jpg','web'),'piscina-giochi':(OS+'2021_04_02-6.jpg','web'),
  'ristorante-esterno':(OS+'2021_04_02-5.jpg','web'),'animazione-prato':(OS+'2021_04_05-5.jpg','web'),'beach-volley':(OS+'2021_04_04-5.jpg','web'),
  'mare-onde':(OS+'2021_04_01-4.jpg','web'),'mare-bici':(OS+'2021_04_06-2.jpg','web'),'mare-orizzonte':(OS+'2021_05_Header-10.jpg','web')})
+# camper stop banner (rev 69): a dog on the beach at sunset, sent by the owner
+M.update({'cani-spiaggia':(MAT('IMG_9563.heic'),'ext')})
 # covers are cropped by hand from the originals (see design-package rev 17-18): bung-cover, bung-cover-card = 'EXT bungalow 4 posti'; sup-pineta = 'Immagine copertina bungalow'
 if __name__=='__main__':
     import os,sys

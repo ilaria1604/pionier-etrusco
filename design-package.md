@@ -706,3 +706,6 @@ It goes into both camper stop banners: home #cani and the Piazzole #camper-stop,
   - Hover on either side still previews.
   - Points are focusable buttons (Enter or Space).
 - **Phone arrows.** Rows of text-only cards (excursions, beaches) get the swipe arrows as a pair under the cards (`.swipe.text-only`), so they no longer cover the words.
+
+### Rev 71: "Vai al mare" right after the title
+The grid version left a large gap, because the title box was wider than its words. Now the title is inline (one line on desktop) and the button sits inline right after "Provalo.", 20 to 32px away and vertically centred on the text. Checked at 1024, 1440 and 1920. Phones keep the button under the title.

@@ -300,12 +300,11 @@ p{margin:0 0 14px}
 .walker{fill:var(--canvas);stroke:var(--accent-bright);stroke-width:3}
 .walk-labels{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:14px;letter-spacing:.06em;color:var(--on-night-2);margin-top:6px}
 .walk-ui{display:flex;flex-wrap:wrap;align-items:center;gap:22px 32px;margin-top:34px}
-/* the walk button sits on the right of the title, on the same line */
-.mare-head{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:32px;align-items:end}
-.mare-head .label{grid-column:1/-1}
-.mare-head .h2{margin-bottom:0}
-.mare-cta{justify-self:end;padding-bottom:6px}
-@media (max-width:720px){.mare-head{grid-template-columns:1fr}.mare-cta{justify-self:start;padding:18px 0 0}}
+/* the walk button follows the title on the same line, right after "Provalo." */
+.mare-head{margin-bottom:22px;line-height:1.06}
+.mare-head .h2{display:inline;max-width:none}
+.mare-cta{display:inline-block;vertical-align:.4em;margin-left:clamp(20px,2.2vw,32px)}
+@media (max-width:720px){.mare-head .h2{display:block;margin-bottom:0}.mare-cta{display:block;margin:18px 0 0}}
 .clock{font-family:var(--f-mono);font-weight:700;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:.02em;color:var(--canvas);min-width:4ch;font-variant-numeric:lining-nums tabular-nums}
 .clock small{display:block;font-size:13px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--on-night-2);margin-top:8px}
 .hold{position:relative;overflow:hidden;isolation:isolate;appearance:none;border:1.5px solid var(--accent-bright);background:rgba(0,173,170,.08);color:var(--on-night);border-radius:999px;min-height:56px;padding:14px 30px;font-weight:600;font-size:17px;cursor:pointer;-webkit-user-select:none;user-select:none;transition:border-color .3s var(--ease-out),background-color .3s var(--ease-out)}

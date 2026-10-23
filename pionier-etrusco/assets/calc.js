@@ -1,32 +1,35 @@
-/* Camping Pionier Etrusco · price calculator (listino 2026)
+/* Camping Pionier Etrusco · price calculator (listino 2027)
    To update the season: change YEAR, the band dates and the prices below. */
 (() => {
 const boxes = document.querySelectorAll('.calc');
 if (!boxes.length) return;
 
-const YEAR = 2026;
+const YEAR = 2027;
 const D = (m, d) => Date.UTC(YEAR, m - 1, d);
 const DAY = 864e5;
-const OPEN = D(4, 4), CLOSE = D(9, 27);
+const OPEN = D(4, 15), CLOSE = D(9, 26);
 const SEASON = ['bassissima', 'bassa', 'media', 'alta'];
 
 // Weekly stays: [from, to) with the season index. Bungalow weeks run Saturday to Saturday, glamping and home Sunday to Sunday.
+// From 2027 glamping and home have different bands, so each house has its own list.
 const WEEK_BANDS = {
-  sat: [[D(4, 4), D(5, 23), 0], [D(5, 23), D(6, 20), 1], [D(6, 20), D(8, 1), 2], [D(8, 1), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
-  sun: [[D(4, 5), D(5, 24), 0], [D(5, 24), D(6, 21), 1], [D(6, 21), D(8, 2), 2], [D(8, 2), D(8, 23), 3], [D(8, 23), D(8, 30), 2], [D(8, 30), D(9, 13), 1], [D(9, 13), D(9, 27), 0]],
+  bung: [[D(4, 17), D(5, 22), 0], [D(5, 22), D(6, 19), 1], [D(6, 19), D(7, 24), 2], [D(7, 24), D(8, 21), 3], [D(8, 21), D(8, 28), 2], [D(8, 28), D(9, 11), 1], [D(9, 11), D(9, 25), 0]],
+  home: [[D(4, 18), D(5, 23), 0], [D(5, 23), D(6, 20), 1], [D(6, 20), D(7, 25), 2], [D(7, 25), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
+  glam: [[D(4, 18), D(5, 23), 0], [D(5, 23), D(6, 13), 1], [D(6, 13), D(8, 1), 2], [D(8, 1), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
 };
 // Pitches: each night is priced by the day it starts, ranges inclusive.
-const NIGHT_BANDS = [[D(4, 4), D(5, 21), 0], [D(5, 22), D(6, 19), 1], [D(6, 20), D(7, 30), 2], [D(7, 31), D(8, 25), 3], [D(8, 26), D(8, 31), 2], [D(9, 1), D(9, 14), 1], [D(9, 15), D(9, 27), 0]];
+// The 2027 PDF lists Media up to 23/07 and Alta from 23/07: the night of 23 July is priced Alta.
+const NIGHT_BANDS = [[D(4, 15), D(5, 20), 0], [D(5, 21), D(6, 17), 1], [D(6, 18), D(7, 22), 2], [D(7, 23), D(8, 24), 3], [D(8, 25), D(8, 31), 2], [D(9, 1), D(9, 13), 1], [D(9, 14), D(9, 26), 0]];
 const PITCH = { pitch: [9, 11, 14, 20], adult: [10, 11, 14, 16], kid: [0, 4, 6, 8], car: [4, 5, 5, 6] };
 
 const TYPES = {
   piaz: { cap: 8, name: 'Piazzola', sub: 'camper, roulotte o tenda', kind: 'night', pick: 'Piazzola camper' },
-  mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
-  tri: { cap: 4, name: 'Bungalow Trilocale', sub: '28 mq, 3 o 4 posti', kind: 'week', band: 'sat', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
-  sup5: { cap: 4, name: 'Bungalow Superior', sub: '48 mq, 4 posti', kind: 'week', band: 'sat', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
-  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 5 o 6 posti', kind: 'week', band: 'sat', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
-  glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 mq, 4 posti', kind: 'week', band: 'sun', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
-  home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 mq, 4 posti', kind: 'week', band: 'sun', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
+  mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', bands: 'bung', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
+  tri: { cap: 4, name: 'Bungalow Trilocale', sub: '28 mq, 3 o 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
+  sup5: { cap: 4, name: 'Bungalow Superior', sub: '48 mq, 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
+  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 5 o 6 posti', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
+  glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 mq, 4 posti', kind: 'week', band: 'sun', bands: 'glam', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
+  home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 mq, 4 posti', kind: 'week', band: 'sun', bands: 'home', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
 };
 
 const fmtDay = new Intl.DateTimeFormat('it-IT', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
@@ -41,7 +44,6 @@ const span = (a, b) => dayWord(a, 'da') + ' ' + dayWord(b, 'a');
 const iso = t => new Date(t).toISOString().slice(0, 10);
 const parse = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3]) : NaN; };
 const bandOf = (list, t, inclusive) => { for (const [a, b, s] of list) if (t >= a && (inclusive ? t <= b : t < b)) return s; return -1; };
-const weekStarts = band => { const out = []; const first = WEEK_BANDS[band][0][0], last = WEEK_BANDS[band].at(-1)[1]; for (let t = first; t + 7 * DAY <= last; t += 7 * DAY) out.push(t); return out; };
 const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
@@ -54,9 +56,9 @@ const longDay = t => fmtDay.format(t);
 const TODAY = (() => { const n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); })();
 const FIRST = TODAY > CLOSE ? OPEN : Math.max(OPEN, TODAY);
 const CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-// Bungalow, glamping, home: dates are free, but a stay that touches June, July or August must be made of whole weeks,
+// Bungalow, glamping, home: dates are free, but a stay that touches 14 June to 31 August must be made of whole weeks,
 // arriving on the house's changeover day (Saturday for bungalows, Sunday for glamping and home).
-const SUMMER_FROM = D(6, 1), SUMMER_TO = D(9, 1);
+const SUMMER_FROM = D(6, 14), SUMMER_TO = D(9, 1);
 const DAYNAME = { sat: 'sabato', sun: 'domenica' }, DAYNUM = { sat: 6, sun: 0 };
 const touchesSummer = (a, b) => a < SUMMER_TO && b > SUMMER_FROM;
 
@@ -123,7 +125,7 @@ boxes.forEach(box => {
   const T = () => TYPES[type];
   const weekly = () => type && T().kind === 'week';
   const bounds = () => weekly()
-    ? [Math.max(FIRST, WEEK_BANDS[T().band][0][0]), WEEK_BANDS[T().band].at(-1)[1]]
+    ? [Math.max(FIRST, WEEK_BANDS[T().bands][0][0]), WEEK_BANDS[T().bands].at(-1)[1]]
     : [Math.max(FIRST, OPEN), CLOSE];
   const selectable = t => {
     if (!type) return false;
@@ -137,9 +139,9 @@ boxes.forEach(box => {
   const problem = () => {
     if (!weekly() || from === null || to === null || !touchesSummer(from, to)) return null;
     const n = (to - from) / DAY, day = DAYNAME[T().band];
-    if (!changeDay(from)) return `L'arrivo è ${longDay(from)}: da giugno ad agosto si arriva di ${day}.`;
-    if (!changeDay(to)) return `La partenza è ${longDay(to)}: da giugno ad agosto si riparte di ${day}.`;
-    if (n % 7) return `Hai scelto ${plural(n, 'notte', 'notti')}: da giugno ad agosto il soggiorno è di 7, 14 o 21 notti.`;
+    if (!changeDay(from)) return `L'arrivo è ${longDay(from)}: dal 14 giugno al 31 agosto si arriva di ${day}.`;
+    if (!changeDay(to)) return `La partenza è ${longDay(to)}: dal 14 giugno al 31 agosto si riparte di ${day}.`;
+    if (n % 7) return `Hai scelto ${plural(n, 'notte', 'notti')}: dal 14 giugno al 31 agosto il soggiorno è di 7, 14 o 21 notti.`;
     return null;
   };
   const drawCal = () => {
@@ -166,7 +168,7 @@ boxes.forEach(box => {
   const help = () => {
     if (!type) return 'Prima scegli la sistemazione.';
     const step = from !== null && to === null ? 'Ora tocca il giorno di partenza.' : 'Tocca il giorno di arrivo, poi quello di partenza.';
-    if (weekly()) return `${step} Da giugno ad agosto si prenota a settimane, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]} (bollino verde).`;
+    if (weekly()) return `${step} Dal 14 giugno al 31 agosto si prenota a settimane, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]} (bollino verde).`;
     return step;
   };
 
@@ -199,7 +201,7 @@ boxes.forEach(box => {
       <div class="calc-bad" role="alert">
         <p class="calc-bad-t">Rivedi le date</p>
         <p>Hai selezionato <b>da ${longDay(from)} a ${longDay(to)}</b>.</p>
-        <p>Da giugno ad agosto si prenota solo <b>da ${d} a ${d}</b>: scegli ${dd} per l'arrivo e ${dd} per la partenza, una, due o tre settimane dopo.</p>
+        <p>Dal 14 giugno al 31 agosto si prenota solo <b>da ${d} a ${d}</b>: scegli ${dd} per l'arrivo e ${dd} per la partenza, una, due o tre settimane dopo.</p>
         <p class="calc-bad-why">${d === 'sabato' ? 'I sabati' : 'Le domeniche'} ${d === 'sabato' ? 'sono segnati' : 'sono segnate'} nel calendario con il bollino verde.</p>
       </div>`;
       return;
@@ -217,7 +219,7 @@ boxes.forEach(box => {
         return;
       }
       for (let w = from; w < to; w += 7 * DAY) {
-        const s = bandOf(WEEK_BANDS[T().band], w, false);
+        const s = bandOf(WEEK_BANDS[T().bands], w, false);
         total += T().price[s];
         lines.push([span(w, w + 7 * DAY), `${SEASON[s]} stagione`, T().price[s]]);
       }
@@ -276,7 +278,7 @@ boxes.forEach(box => {
     $('.cal-sum').innerHTML = summary();
     const lg = $('.cal-legend');
     lg.hidden = !weekly();
-    if (weekly()) $('.txt', lg).textContent = `Bollino verde: ${T().band === 'sat' ? 'i sabati' : 'le domeniche'} di giugno, luglio e agosto, gli unici giorni di arrivo e partenza in estate.`;
+    if (weekly()) $('.txt', lg).textContent = `Bollino verde: ${T().band === 'sat' ? 'i sabati' : 'le domeniche'} dal 14 giugno al 31 agosto, gli unici giorni di arrivo e partenza in estate.`;
     result();
     $('.c-next[data-to="2"]').disabled = !(type && adults > 0);
     $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null);

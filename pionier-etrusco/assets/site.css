@@ -401,6 +401,7 @@ p{margin:0 0 14px}
 .tcap{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;margin-bottom:12px}
 .tcap h3{font-family:var(--f-display);font-weight:700;font-size:26px;margin:0}
 .tcap span{font-family:var(--f-mono);font-size:14px;color:var(--text-secondary)}
+.tcap2{margin-top:30px}
 .ptable{width:100%;border-collapse:separate;border-spacing:0;background:#FBF8F3;border-radius:16px;overflow:hidden;box-shadow:0 1px 0 rgba(51,39,31,.06);font-variant-numeric:lining-nums tabular-nums}
 .ptable th,.ptable td{padding:14px 16px;text-align:right;border-bottom:1px solid rgba(106,87,75,.16);vertical-align:top}
 .ptable th:first-child,.ptable td:first-child{text-align:left}

@@ -652,3 +652,33 @@ Glamping and home read domenica / domeniche. The separate technical reason line 
 - **Opening dates.** "Aperto dal 15 aprile al 26 settembre 2027" in all footers; the price list lede reads "La stagione va dal 15 aprile al 26 settembre 2027".
 - **Short stays.** "Su richiesta, periodi brevi dal 15 aprile al 13 giugno e da settembre" in Da sapere, the price-list note and the FAQ.
 - **Waiting on the owner:** the 2027 band dates (and any price change). Until then the price list tables, the calculator (YEAR 2026) and the PDF still carry the 2026 periods.
+
+### Rev 66: listino 2027
+Source: "TARIFFE 2027.pdf", copied to `assets/tariffe-2027.pdf`. The 2026 PDF is removed; it stays in git history. Prices are unchanged from 2026; the periods change, and glamping and home now have different bands.
+
+Periods (weekly bands are [start, next start)):
+
+| Season | Pitches (nightly) | Bungalow (Sat to Sat) | Home (Sun to Sun) | Glamping (Sun to Sun) |
+|---|---|---|---|---|
+| Bassissima | 15/04 to 20/05; 14/09 to 26/09 | 17/04 to 22/05; 11/09 to 25/09 | 18/04 to 23/05; 12/09 to 26/09 | 18/04 to 23/05; 12/09 to 26/09 |
+| Bassa | 21/05 to 17/06; 01/09 to 13/09 | 22/05 to 19/06; 28/08 to 11/09 | 23/05 to 20/06; 29/08 to 12/09 | 23/05 to 13/06; 29/08 to 12/09 |
+| Media | 18/06 to 22/07*; 25/08 to 31/08 | 19/06 to 24/07; 21/08 to 28/08 | 20/06 to 25/07; 22/08 to 29/08 | 13/06 to 01/08; 22/08 to 29/08 |
+| Alta | 23/07 to 24/08 | 24/07 to 21/08 | 25/07 to 22/08 | 01/08 to 22/08 |
+
+\* The PDF lists Media "18/06-23/07" and Alta "23/07-24/08". The night of 23 July is treated as Alta, and the site shows Media as "al 22 luglio". This was flagged to the owner.
+
+**Calculator.**
+- YEAR is 2027 and the season runs from 15 April to 26 September; the calendar opens on April 2027.
+- Each house has `bands` (bung, home, glam) separate from `band` (its changeover day).
+- The summer whole-weeks rule now starts on **14 June** (until 31 August), at the owner's request, matching short stays allowed until 13 June. All the messages say "Dal 14 giugno al 31 agosto".
+
+**Pages.**
+- The generator SEASONS now have bung, home, glam and day keys.
+- The home "Glamping e Home" tab shows two tables, each with its own periods.
+- The season bar is recomputed from the bungalow weeks.
+- The seasonal subscription now runs 15 April to 19 September.
+- All "2026" labels and links are now 2027.
+
+**Superior.** The bunk-bed photo (`sup-castello.jpg`) is removed from the Superior photos, which are now 9.
+
+**PDF vs site.** The PDF still says "Trilocale 48 mq 4/5 posti / 6 posti" and short stays "dal 04/04 al 14/06". The site keeps the owner's requested wording ("4 posti", "5 o 6 posti", "dal 15 aprile al 13 giugno"); flagged.

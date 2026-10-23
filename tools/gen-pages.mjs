@@ -32,9 +32,10 @@ const ICONS = {
 const ic = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[k]}</svg>`;
 
 const SEASONS = {
-  sat: ['dal 4 aprile al 23 maggio<br>dal 12 al 26 settembre', 'dal 23 maggio al 20 giugno<br>dal 29 agosto al 12 settembre', 'dal 20 giugno al 1° agosto<br>dal 22 al 29 agosto', 'dal 1° al 22 agosto'],
-  sun: ['dal 5 aprile al 24 maggio<br>dal 13 al 27 settembre', 'dal 24 maggio al 21 giugno<br>dal 30 agosto al 13 settembre', 'dal 21 giugno al 2 agosto<br>dal 23 al 30 agosto', 'dal 2 al 23 agosto'],
-  day: ['dal 4 aprile al 21 maggio<br>dal 15 al 27 settembre', 'dal 22 maggio al 19 giugno<br>dal 1° al 14 settembre', 'dal 20 giugno al 30 luglio<br>dal 26 al 31 agosto', 'dal 31 luglio al 25 agosto'],
+  bung: ["dal 17 aprile al 22 maggio<br>dall'11 al 25 settembre", "dal 22 maggio al 19 giugno<br>dal 28 agosto all'11 settembre", "dal 19 giugno al 24 luglio<br>dal 21 al 28 agosto", "dal 24 luglio al 21 agosto"],
+  home: ["dal 18 aprile al 23 maggio<br>dal 12 al 26 settembre", "dal 23 maggio al 20 giugno<br>dal 29 agosto al 12 settembre", "dal 20 giugno al 25 luglio<br>dal 22 al 29 agosto", "dal 25 luglio al 22 agosto"],
+  glam: ["dal 18 aprile al 23 maggio<br>dal 12 al 26 settembre", "dal 23 maggio al 13 giugno<br>dal 29 agosto al 12 settembre", "dal 13 giugno al 1° agosto<br>dal 22 al 29 agosto", "dal 1° al 22 agosto"],
+  day: ["dal 15 aprile al 20 maggio<br>dal 14 al 26 settembre", "dal 21 maggio al 17 giugno<br>dal 1° al 13 settembre", "dal 18 giugno al 22 luglio<br>dal 25 al 31 agosto", "dal 23 luglio al 24 agosto"],
 };
 const SN = ['Bassissima', 'Bassa', 'Media', 'Alta'];
 const table = (first, seasons, rows) => `<table class="ptable">
@@ -65,7 +66,7 @@ const PAGES = [
   {
     file: 'piazzole.html', reels: [['reel-piazzole', 'Le piazzole'], ['reel-piazzole-verde', 'Tra i pini']], key: 'piazzole', pick: 'Piazzola camper',
     title: 'Piazzole e area camper stop nella pineta · Camping Pionier Etrusco',
-    desc: 'Piazzole ombreggiate per camper, roulotte e tende nella pineta di Montalto Marina, a 100 metri dal mare. Area camper stop pet friendly. Tariffe 2026.',
+    desc: 'Piazzole ombreggiate per camper, roulotte e tende nella pineta di Montalto Marina, a 100 metri dal mare. Area camper stop pet friendly. Tariffe 2027.',
     heroImg: 'assets/foto/piaz-11.jpg', heroPos: '50% 45%',
     h1: 'Piazzole',
     lede: "Piazzole nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. E un'area camper stop per le soste brevi, dove anche il tuo cane è il benvenuto.",
@@ -101,7 +102,7 @@ const PAGES = [
   {
     file: 'bungalow.html', reels: [['reel-pineta', 'Bungalow e glamping nella pineta']], key: 'bungalow', pick: 'Bungalow trilocale 28 mq',
     title: 'Bungalow in legno nella pineta · Camping Pionier Etrusco',
-    desc: 'Bungalow in legno nella pineta di Montalto Marina: monolocale 20 mq, trilocale 28 mq e trilocale superior 48 mq, fino a 6 persone. Planimetrie e tariffe 2026.',
+    desc: 'Bungalow in legno nella pineta di Montalto Marina: monolocale 20 mq, trilocale 28 mq e trilocale superior 48 mq, fino a 6 persone. Planimetrie e tariffe 2027.',
     heroImg: 'assets/foto/bung-cover.jpg', heroPos: '50% 50%',
     h1: 'Bungalow',
     lede: 'Bungalow in legno immersi nella pineta secolare, fino a 6 persone, con tutti i comfort: cucina, bagno con doccia, veranda e aria condizionata.',
@@ -114,19 +115,19 @@ const PAGES = [
     types: [
       { id: 'monolocale', cover: 'mono-veranda.jpg', photos: [['mono-passerella.jpg', 'Monolocale: il vialetto nel verde che porta ai bungalow piccoli'], ['mono-camera.jpg', 'Monolocale: la camera matrimoniale'], ['mono-cucina.jpg', 'Monolocale: angolo cottura e tavolo'], ['mono-veranda.jpg', 'Monolocale: la veranda con i fiori'], ['mono-bagno.jpg', 'Monolocale: il bagno'], ['mono-doccia.jpg', 'Monolocale: lavabo e cabina doccia']], h: 'Monolocale 20 mq', cap: 'Fino a 2 persone + lettino da campeggio su prenotazione', p: 'Un\'ampia camera matrimoniale con guardaroba, tavolo, aria condizionata e TV. Bagno con cabina doccia e asciugacapelli, angolo cottura con piano a gas e veranda.', plans: [['monolocale.jpg', 'Planimetria (due monolocali affiancati)']], from: ['€ 350', 'a settimana, in bassissima stagione'], pick: 'Bungalow monolocale 20 mq', calc: 'mono' },
       { id: 'trilocale', cover: 'tri-esterno.jpg', photos: [['tri-esterno.jpg', 'Trilocale 28 mq: il bungalow tra le siepi'], ['tri-ingresso.jpg', 'Trilocale 28 mq: l\'ingresso con i gradini'], ['tri-104.jpg', 'Trilocale 28 mq: il bungalow con la tenda da sole'], ['tri-cucina.jpg', 'Trilocale 28 mq: la cucina'], ['tri-camera.jpg', 'Trilocale 28 mq: la camera matrimoniale'], ['tri-castello.jpg', 'Trilocale 28 mq: la camera con letto a castello'], ['tri-bagno.jpg', 'Trilocale 28 mq: il bagno con doccia'], ['tri-veranda.jpg', 'Trilocale 28 mq: la veranda'], ['tri-veranda-2.jpg', 'Trilocale 28 mq: la veranda da un\'altra prospettiva']], h: 'Trilocale 28 mq', cap: 'Fino a 3 o 4 persone', p: 'Camera matrimoniale, camera con letto a castello, soggiorno con TV, bagno con cabina doccia, angolo cottura con piano a gas e veranda.', plans: [['trilocale-a.jpg', 'Planimetria tipo A'], ['trilocale-b.jpg', 'Planimetria tipo B']], from: ['€ 450', 'a settimana, in bassissima stagione'], pick: 'Bungalow trilocale 28 mq', calc: 'tri' },
-      { id: 'superior', cover: 'sup-esterno.jpg', photos: [['sup-pineta.jpg', 'Trilocale Superior: il bungalow sul prato, sotto i pini'], ['sup-esterno.jpg', 'Trilocale Superior: il bungalow con la veranda'], ['sup-soggiorno.jpg', 'Trilocale Superior: il soggiorno'], ['sup-soggiorno-2.jpg', 'Trilocale Superior: il soggiorno con il tavolo'], ['sup-cucina.jpg', 'Trilocale Superior: la cucina con piano a induzione'], ['sup-camera.jpg', 'Trilocale Superior: la camera matrimoniale'], ['sup-cameretta.jpg', 'Trilocale Superior: la seconda camera, con due letti'], ['sup-castello.jpg', 'Trilocale Superior: la camera con letto a castello'], ['sup-bagno.jpg', 'Trilocale Superior: il bagno'], ['sup-veranda.jpg', 'Trilocale Superior: la veranda']], h: 'Trilocale Superior 48 mq', cap: 'Fino a 6 persone', p: 'Un\'ampia camera matrimoniale con guardaroba, una camera con letti singoli e un soggiorno grande con divano letto da 2 posti, TV e tavolo. Bagno con cabina doccia e asciugacapelli, cucina con piano a induzione e veranda.', plans: [['trilocale-superior.jpg', 'Planimetria']], from: ['€ 500', 'a settimana per 4 posti, € 560 per 5 o 6 posti'], pick: 'Bungalow trilocale superior 48 mq', calc: 'sup5' },
+      { id: 'superior', cover: 'sup-esterno.jpg', photos: [['sup-pineta.jpg', 'Trilocale Superior: il bungalow sul prato, sotto i pini'], ['sup-esterno.jpg', 'Trilocale Superior: il bungalow con la veranda'], ['sup-soggiorno.jpg', 'Trilocale Superior: il soggiorno'], ['sup-soggiorno-2.jpg', 'Trilocale Superior: il soggiorno con il tavolo'], ['sup-cucina.jpg', 'Trilocale Superior: la cucina con piano a induzione'], ['sup-camera.jpg', 'Trilocale Superior: la camera matrimoniale'], ['sup-cameretta.jpg', 'Trilocale Superior: la seconda camera, con due letti'], ['sup-bagno.jpg', 'Trilocale Superior: il bagno'], ['sup-veranda.jpg', 'Trilocale Superior: la veranda']], h: 'Trilocale Superior 48 mq', cap: 'Fino a 6 persone', p: 'Un\'ampia camera matrimoniale con guardaroba, una camera con letti singoli e un soggiorno grande con divano letto da 2 posti, TV e tavolo. Bagno con cabina doccia e asciugacapelli, cucina con piano a induzione e veranda.', plans: [['trilocale-superior.jpg', 'Planimetria']], from: ['€ 500', 'a settimana per 4 posti, € 560 per 5 o 6 posti'], pick: 'Bungalow trilocale superior 48 mq', calc: 'sup5' },
     ],
     photosH: 'I bungalow, dentro e <em>fuori</em>.',
     gallery: [['sup-pineta.jpg', 'Un bungalow sul prato, sotto i pini'], ['bung-pino.jpg', 'La veranda di un bungalow accanto al tronco di un pino'], ['tri-esterno.jpg', 'Un bungalow tra le siepi'], ['mono-veranda.jpg', 'La veranda con i fiori'], ['bung-matrimoniale.jpg', 'Camera matrimoniale con armadio'], ['bung-castello.jpg', 'Camera con letto a castello'], ['sup-soggiorno.jpg', 'Il soggiorno del Superior'], ['bung-cucina-bianca.jpg', 'Angolo cottura con piano a gas'], ['tri-veranda.jpg', 'Una veranda attrezzata']],
     pricesH: 'Bungalow, a <em>settimana</em>',
-    prices: table('Tipologia', 'sat', [['Monolocale 20 mq', '2 posti', ['€ 350', '€ 500', '€ 750', '€ 900']], ['Trilocale 28 mq', '3 o 4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Trilocale Superior 48 mq', '4 posti', ['€ 500', '€ 700', '€ 1.150', '€ 1.400']], ['Trilocale Superior 48 mq', '5 o 6 posti', ['€ 560', '€ 750', '€ 1.200', '€ 1.500']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
+    prices: table('Tipologia', 'bung', [['Monolocale 20 mq', '2 posti', ['€ 350', '€ 500', '€ 750', '€ 900']], ['Trilocale 28 mq', '3 o 4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Trilocale Superior 48 mq', '4 posti', ['€ 500', '€ 700', '€ 1.150', '€ 1.400']], ['Trilocale Superior 48 mq', '5 o 6 posti', ['€ 560', '€ 750', '€ 1.200', '€ 1.500']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da sabato a sabato'),
     ctaH: 'Ti piace? Chiedici se è <em>libero</em>.',
   },
   {
     file: 'glamping.html', reels: [['reel-glamping', 'Il glamping'], ['reel-glamping-verde', 'Il verde intorno']], key: 'glamping', pick: 'Glamping Luxury Lodge',
     title: 'Glamping Luxury Lodge nella pineta · Camping Pionier Etrusco',
-    desc: 'Glamping Luxury Lodge 45 mq a forma di A, su due piani, per 4 persone, con bagno privato e cucina, nella pineta di Montalto Marina. Tariffe 2026.',
+    desc: 'Glamping Luxury Lodge 45 mq a forma di A, su due piani, per 4 persone, con bagno privato e cucina, nella pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/glam-cover.jpg', heroPos: '50% 56%',
     h1: 'Glamping',
     lede: 'La Glamping Luxury Lodge è una tenda a forma di A su due piani, con tutti i comfort: cucina, bagno privato e due camere. Il camping in tenda, ma comodo.',
@@ -142,14 +143,14 @@ const PAGES = [
     ],
     gallery: [['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini']],
     pricesH: 'Glamping, a <em>settimana</em>',
-    prices: table('Tipologia', 'sun', [['Glamping Luxury Lodge 45 mq', '4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
+    prices: table('Tipologia', 'glam', [['Glamping Luxury Lodge 45 mq', '4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da domenica a domenica'),
     ctaH: 'Ti piace? Chiedici se è <em>libera</em>.',
   },
   {
     file: 'home.html', key: 'home', pick: 'Home Premium Comfort',
     title: 'Home Premium Comfort nella pineta · Camping Pionier Etrusco',
-    desc: 'Home Premium Comfort 34 mq per 4 persone, con due camere, due bagni, lavastoviglie e veranda sulla pineta di Montalto Marina. Tariffe 2026.',
+    desc: 'Home Premium Comfort 34 mq per 4 persone, con due camere, due bagni, lavastoviglie e veranda sulla pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/home-2.jpg', heroPos: '50% 55%',
     h1: 'Home',
     lede: 'Le nuovissime Home Premium Comfort: 34 mq con due camere, due bagni e una veranda arredata affacciata sulla pineta.',
@@ -165,7 +166,7 @@ const PAGES = [
     ],
     gallery: [['home-3.jpg', 'La Home tra le siepi e gli alberi'], ['home-soggiorno.jpg', 'Il soggiorno con divano giallo e tavolo'], ['home-cucina.jpg', 'La cucina attrezzata'], ['home-matrimoniale.jpg', 'La camera matrimoniale'], ['home-letti-singoli.jpg', 'La camera con due letti singoli'], ['home-bagno.jpg', 'Uno dei due bagni'], ['home-veranda.jpg', 'La veranda arredata con tavolo in legno']],
     pricesH: 'Home, a <em>settimana</em>',
-    prices: table('Tipologia', 'sun', [['Home Premium Comfort 34 mq', '4 posti', ['€ 600', '€ 800', '€ 1.150', '€ 1.450']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
+    prices: table('Tipologia', 'home', [['Home Premium Comfort 34 mq', '4 posti', ['€ 600', '€ 800', '€ 1.150', '€ 1.450']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da domenica a domenica'),
     ctaH: 'Ti piace? Chiedici se è <em>libera</em>.',
   },
@@ -224,7 +225,7 @@ const FOOT = `<footer class="foot">
       Aperto dal 15 aprile al 26 settembre 2027
     </address>
     <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Home</a></li></ul></div>
-    <div><h4>Info</h4><ul><li><a href="index.html#tariffe">Tariffe 2026</a></li><li><a href="assets/tariffe-2026.pdf" download>Listino in PDF</a></li><li><a href="index.html#servizi">Servizi</a></li><li><a href="index.html#richiesta">Contatti</a></li></ul></div>
+    <div><h4>Info</h4><ul><li><a href="index.html#tariffe">Tariffe 2027</a></li><li><a href="assets/tariffe-2027.pdf" download>Listino 2027 in PDF</a></li><li><a href="index.html#servizi">Servizi</a></li><li><a href="index.html#richiesta">Contatti</a></li></ul></div>
     <div class="fine">
       <span>© Camping Pionier Etrusco · P. IVA 01513620565</span>
     </div>
@@ -362,7 +363,7 @@ ${P.types ? choose + inside : photos + inside}
 
 <section class="detail tariffe" id="prezzi" aria-labelledby="prezzi-t">
   <div class="wrap">
-    <div data-reveal><p class="label rv" style="--i:0">Quanto costa</p><h2 class="h2 rv" id="prezzi-t" style="--i:1">${P.pricesH}.</h2><p class="lede rv" style="--i:2">Tariffe 2026, con tasse e IVA al 10% incluse.</p></div>
+    <div data-reveal><p class="label rv" style="--i:0">Quanto costa</p><h2 class="h2 rv" id="prezzi-t" style="--i:1">${P.pricesH}.</h2><p class="lede rv" style="--i:2">Tariffe 2027, con tasse e IVA al 10% incluse.</p></div>
     <div class="calc-wrap" id="calcola">
       <h3 class="calc-title">Calcola il tuo prezzo</h3>
       <p class="calc-sub">${P.calc === 'piaz' ? 'Scegli le date e quanti siete: il totale compare subito.' : 'Scegli il giorno di arrivo e quello di partenza: il totale compare subito.'}</p>
@@ -370,10 +371,10 @@ ${P.types ? choose + inside : photos + inside}
     </div>
     <h3 class="listino-h">Il listino completo</h3>
     <details class="listino d-list" data-open-wide>
-      <summary><span class="t">Vedi il listino completo<small>Tutte le tariffe 2026, stagione per stagione</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <summary><span class="t">Vedi il listino completo<small>Tutte le tariffe 2027, stagione per stagione</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
       <div class="listino-in">
     ${P.prices}
-    <p style="margin-top:20px"><a class="tlink" href="assets/tariffe-2026.pdf" download>Scarica il listino 2026 in PDF</a></p>
+    <p style="margin-top:20px"><a class="tlink" href="assets/tariffe-2027.pdf" download>Scarica il listino 2027 in PDF</a></p>
       </div>
     </details>
   </div>

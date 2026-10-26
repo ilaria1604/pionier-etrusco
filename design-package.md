@@ -725,3 +725,6 @@ At the owner's request, the old exterior photo (`ristorante-esterno.jpg`, from t
 ### Rev 74: square dog photo
 - **Crop.** The camper stop banners (home page and Piazzole page) now show the dog photo as a square, framed like the owner's own crop: the horizon near the top and the dog large in the middle. The crop is taken from the original HEIC (`CROP['cani-spiaggia']` in `tools/grade.py`, 1006x1006).
 - **Display.** The image is now square everywhere: 300x300 beside the text on desktop, full width on phones (it was 300x359 on desktop and 4:3 on phones).
+
+### Rev 75: "Vai al mare" back beside the clock
+At the owner's request, the button goes back to its original place in `.walk-ui`, right after the minutes counter, on desktop and phones. This reverts revs 66 to 71: the title-line styles (`.mare-head`, `.mare-cta`) are removed, and the title is a normal block again. Checked at 1440 and 390: the tap still walks the route to 3:00 and opens the beaches.

@@ -709,3 +709,12 @@ It goes into both camper stop banners: home #cani and the Piazzole #camper-stop,
 
 ### Rev 71: "Vai al mare" right after the title
 The grid version left a large gap, because the title box was wider than its words. Now the title is inline (one line on desktop) and the button sits inline right after "Provalo.", 20 to 32px away and vertically centred on the text. Checked at 1024, 1440 and 1920. Phones keep the button under the title.
+
+### Rev 72: restaurant photos
+- **Source.** The owner sent four photos: the dining room and three dishes (risotto alla pescatora, spaghetti with squid and yellow tomatoes, fried polpette with rocket and orange peel). The originals are kept in `materiali/ristorante/`.
+- **Grade.** Each photo gets one light grade of its own (`rist-*` in `tools/grade.py`), approved by the owner side by side with the original:
+  - Dining room: shadows opened a touch, whites a little less yellow, the warm bulb light kept.
+  - Risotto and spaghetti: the plates sat in shade and read blue, so they are now a clean white. The spaghetti is balanced only in the highlights, so the yellow tomatoes keep their own hue (measured 36.1° before, 35.9° after).
+  - Polpette: cleaner whites, slightly richer colour.
+- **Restaurant card (Servizi).** The gallery goes from 1 to 5 photos: dining room, risotto, spaghetti, polpette, exterior. The pile shows the risotto on top, with a count of 5.
+- **Phones.** The three-photo pile reached into the first line of the text, so that line keeps a 52px float clear on cards with photos.

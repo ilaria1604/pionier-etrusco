@@ -1029,6 +1029,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .bento .item:not(.photo) h3{font-size:21px;margin:0;line-height:1.2}
   .bento .item:not(.photo) p{grid-column:2;font-size:15px;line-height:1.5;max-width:none}
   .bento .item.has-photos:not(.photo) h3{padding-right:62px}
+  /* the photo pile reaches down into the first line of the text: keep that line clear */
+  .bento .item.has-photos:not(.photo) p::before{content:"";float:right;width:52px;height:1.4em}
   .bento .item .pile{top:14px;right:6px;transform:scale(.68);transform-origin:top right}
   .item:hover{transform:none}
   .album.archive figure,.album.archive figure:nth-child(n){transform:none!important}

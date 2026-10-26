@@ -55,6 +55,9 @@ M.update({'piscina-1':(OS+'2021_04_01-7.jpg','web'),'piscina-2':(OS+'2021_04_03-
  'mare-onde':(OS+'2021_04_01-4.jpg','web'),'mare-bici':(OS+'2021_04_06-2.jpg','web'),'mare-orizzonte':(OS+'2021_05_Header-10.jpg','web')})
 # camper stop banner (rev 69): a dog on the beach at sunset, sent by the owner
 M.update({'cani-spiaggia':(MAT('IMG_9563.heic'),'ext')})
+# restaurant (rev 72): the dining room and three dishes, sent by the owner
+M.update({'ristorante-sala':(MAT('ristorante/sala.jpg'),'rist-sala'),'ristorante-risotto':(MAT('ristorante/risotto.jpg'),'rist-risotto'),
+ 'ristorante-spaghetti':(MAT('ristorante/spaghetti.jpg'),'rist-spaghetti'),'ristorante-polpette':(MAT('ristorante/polpette.jpg'),'rist-polpette')})
 # covers are cropped by hand from the originals (see design-package rev 17-18): bung-cover, bung-cover-card = 'EXT bungalow 4 posti'; sup-pineta = 'Immagine copertina bungalow'
 if __name__=='__main__':
     import os,sys

@@ -6,6 +6,7 @@ FF = os.path.expanduser('~/.local/bin/ffmpeg')
 TMP = os.path.join(os.path.dirname(__file__), 'grade-png')
 os.makedirs(TMP, exist_ok=True)
 SHARP = 'unsharp=5:5:0.6:5:5:0'
+RSHARP = 'unsharp=5:5:0.45:5:5:0'
 G = {
   # daylight exteriors: deeper blacks, opened shadows, brighter mids, vibrance for greens and sky, clarity
   'ext':   "curves=all='0/0 0.08/0.07 0.25/0.27 0.5/0.54 0.75/0.8 1/1',vibrance=intensity=0.2," + SHARP,
@@ -18,6 +19,12 @@ G = {
   # already professional web photos: only a light clarity pass
   'web':   "unsharp=3:3:0.35:3:3:0",
   'keep':  "null",
+  # restaurant photos sent by the owner (rev 72): one light grade each, checked side by side with the original
+  'rist-sala':      "colorchannelmixer=rr=0.99:bb=1.05,curves=all='0/0 0.06/0.08 0.2/0.25 0.5/0.57 0.8/0.85 1/1',vibrance=intensity=0.04," + RSHARP,
+  'rist-risotto':   "colorchannelmixer=rr=1.04:gg=1.005:bb=0.965,curves=all='0/0 0.25/0.235 0.5/0.51 0.85/0.9 1/1',vibrance=intensity=0.1," + RSHARP,
+  'rist-polpette':  "colorchannelmixer=rr=1.01:bb=0.985,curves=all='0/0 0.25/0.23 0.5/0.5 0.85/0.9 1/1',vibrance=intensity=0.1," + RSHARP,
+  # white balance only in the highlights, so the yellow tomatoes keep their own colour
+  'rist-spaghetti': "format=rgb24,colorbalance=rh=0.008:bh=-0.028,curves=all='0/0 0.2/0.185 0.5/0.5 0.85/0.88 1/1',hue=h=1.5:s=0.95," + RSHARP,
 }
 CROP = {'bung-hero': 'crop=iw*0.9:ih:iw*0.1:0'}
 def run(name, outdir):

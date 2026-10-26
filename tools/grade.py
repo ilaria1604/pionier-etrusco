@@ -26,7 +26,9 @@ G = {
   # white balance only in the highlights, so the yellow tomatoes keep their own colour
   'rist-spaghetti': "format=rgb24,colorbalance=rh=0.008:bh=-0.028,curves=all='0/0 0.2/0.185 0.5/0.5 0.85/0.88 1/1',hue=h=1.5:s=0.95," + RSHARP,
 }
-CROP = {'bung-hero': 'crop=iw*0.9:ih:iw*0.1:0'}
+CROP = {'bung-hero': 'crop=iw*0.9:ih:iw*0.1:0',
+        # square, framed like the owner's own crop (rev 74): horizon near the top, the dog large in the middle
+        'cani-spiaggia': 'crop=iw*0.753:iw*0.753:iw*0.137:ih*0.186'}
 def run(name, outdir):
     src, kind = M[name]
     src = P + src

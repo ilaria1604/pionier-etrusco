@@ -721,3 +721,7 @@ The grid version left a large gap, because the title box was wider than its word
 
 ### Rev 73: old exterior photo out
 At the owner's request, the old exterior photo (`ristorante-esterno.jpg`, from the previous site) is removed from the restaurant gallery, which now holds 4 photos. The file stays in `assets/foto` but is no longer referenced, so the build leaves it out.
+
+### Rev 74: square dog photo
+- **Crop.** The camper stop banners (home page and Piazzole page) now show the dog photo as a square, framed like the owner's own crop: the horizon near the top and the dog large in the middle. The crop is taken from the original HEIC (`CROP['cani-spiaggia']` in `tools/grade.py`, 1006x1006).
+- **Display.** The image is now square everywhere: 300x300 beside the text on desktop, full width on phones (it was 300x359 on desktop and 4:3 on phones).

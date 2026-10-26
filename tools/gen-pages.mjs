@@ -80,7 +80,7 @@ const PAGES = [
 <section class="detail" id="camper-stop" aria-labelledby="cs-t">
   <div class="wrap" data-reveal>
     <div class="cani-band with-photo rv">
-      <img src="assets/foto/cani-spiaggia.jpg" alt="Un cagnolino seduto sulla sabbia della spiaggia, nella luce del tramonto" loading="lazy" width="1169" height="1400">
+      <img src="assets/foto/cani-spiaggia.jpg" alt="Un cagnolino seduto sulla sabbia della spiaggia, nella luce del tramonto" loading="lazy" width="1006" height="1006">
       <div class="cani-copy">
         <svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.paw}</svg>
         <h2 class="h2" id="cs-t">Area camper stop</h2>

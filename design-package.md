@@ -718,3 +718,6 @@ The grid version left a large gap, because the title box was wider than its word
   - Polpette: cleaner whites, slightly richer colour.
 - **Restaurant card (Servizi).** The gallery goes from 1 to 5 photos: dining room, risotto, spaghetti, polpette, exterior. The pile shows the risotto on top, with a count of 5.
 - **Phones.** The three-photo pile reached into the first line of the text, so that line keeps a 52px float clear on cards with photos.
+
+### Rev 73: old exterior photo out
+At the owner's request, the old exterior photo (`ristorante-esterno.jpg`, from the previous site) is removed from the restaurant gallery, which now holds 4 photos. The file stays in `assets/foto` but is no longer referenced, so the build leaves it out.

@@ -728,3 +728,9 @@ At the owner's request, the old exterior photo (`ristorante-esterno.jpg`, from t
 
 ### Rev 75: "Vai al mare" back beside the clock
 At the owner's request, the button goes back to its original place in `.walk-ui`, right after the minutes counter, on desktop and phones. This reverts revs 66 to 71: the title-line styles (`.mare-head`, `.mare-cta`) are removed, and the title is a normal block again. Checked at 1440 and 390: the tap still walks the route to 3:00 and opens the beaches.
+
+### Rev 76: camping cot tick box (Monolocale)
+- **Calculator.** When the house allows a camping cot (`cot: true` in `TYPES`, today only the Monolocale), step 1 shows "Aggiungi il lettino da campeggio" under the capacity line. When ticked, the price box shows "Lettino da campeggio aggiunto alla richiesta", for both full weeks and short stays.
+- **No price.** The 2027 PDF lists no price for the cot, so the total does not change.
+- **Request form.** The calculator passes `lettino=1` to the request, both through the link from detail pages and through the in-page prefill. The form has the same tick box, visible only while "Bungalow monolocale 20 mq" is selected, and the email gets the line "Lettino da campeggio: sì".
+- **Checked.** Bungalow page and home page at 1440, phone at 390. Picking another house hides the box. No errors.

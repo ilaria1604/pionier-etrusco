@@ -527,6 +527,7 @@ p{margin:0 0 14px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f{display:flex;flex-direction:column;gap:6px}
 .f.full{grid-column:1/-1}
+.f-cot{grid-column:1/-1;margin-top:-4px}
 .f label{font-size:14px;font-weight:600}
 .f label .opt{font-weight:400;color:var(--text-secondary)}
 .f input,.f select,.f textarea{width:100%;min-height:48px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:#FFFCF7;transition:border-color .3s var(--ease-out),box-shadow .3s var(--ease-out)}
@@ -805,7 +806,10 @@ p{margin:0 0 14px}
 .calc-ask{width:100%;margin-top:8px;text-align:center}
 .calc-sep{margin-top:26px;padding-top:24px;border-top:1px solid rgba(106,87,75,.16)}
 .calc-cap{margin:4px 0 0;font-size:14.5px;line-height:1.45;color:var(--text-secondary)}
-.c-car-f{margin-top:10px}
+.c-car-f,.c-cot-f{margin-top:10px}
+/* the camping cot, when ticked, shows in the price box (no price: it goes with the request) */
+.calc-extra{display:inline-flex;align-items:flex-start;gap:8px;color:var(--text-primary);font-weight:600}
+.calc-extra svg{flex:none;width:18px;height:18px;margin-top:2px;fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .calc [hidden]{display:none!important}
 .calc-todo{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
 .calc-todo li{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--text-secondary)}

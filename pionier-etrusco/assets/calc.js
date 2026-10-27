@@ -24,7 +24,8 @@ const PITCH = { pitch: [9, 11, 14, 20], adult: [10, 11, 14, 16], kid: [0, 4, 6, 
 
 const TYPES = {
   piaz: { cap: 8, name: 'Piazzola', sub: 'camper, roulotte o tenda', kind: 'night', pick: 'Piazzola camper' },
-  mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', bands: 'bung', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
+  // cot: a camping cot can be added to the booking (no price in the 2027 list, so it does not change the total)
+  mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', cot: true, name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', bands: 'bung', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
   tri: { cap: 4, name: 'Bungalow Trilocale', sub: '28 mq, 3 o 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
   sup5: { cap: 4, name: 'Bungalow Superior', sub: '48 mq, 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
   sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 5 o 6 posti', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
@@ -99,6 +100,7 @@ boxes.forEach(box => {
           </div>
           <p class="calc-cap" aria-live="polite"></p>
           <label class="chk c-car-f" hidden><input type="checkbox" class="c-car"><span>Ho una seconda auto</span></label>
+          <label class="chk c-cot-f" hidden><input type="checkbox" class="c-cot"><span>Aggiungi il lettino da campeggio</span></label>
         </div>
         <div class="calc-stepnav"><button type="button" class="btn c-next" data-to="2">Avanti</button></div>
       </div>
@@ -121,9 +123,10 @@ boxes.forEach(box => {
     </div>`;
 
   const $ = s => box.querySelector(s);
-  const selType = $('.c-type'), car = $('.c-car'), res = $('.calc-res'), grid = $('.cal-grid');
+  const selType = $('.c-type'), car = $('.c-car'), cot = $('.c-cot'), res = $('.calc-res'), grid = $('.cal-grid');
   const T = () => TYPES[type];
   const weekly = () => type && T().kind === 'week';
+  const withCot = () => !!(type && T().cot && cot.checked);
   const bounds = () => weekly()
     ? [Math.max(FIRST, WEEK_BANDS[T().bands][0][0]), WEEK_BANDS[T().bands].at(-1)[1]]
     : [Math.max(FIRST, OPEN), CLOSE];
@@ -179,13 +182,15 @@ boxes.forEach(box => {
     $('.c-a-p').disabled = !type || adults + kids >= cap; $('.c-k-p').disabled = !type || adults + kids >= cap;
     $('.c-kidage').textContent = type && T().kind === 'night' ? '(3-8 anni)' : '';
     $('.c-car-f').hidden = !(type && T().kind === 'night');
+    $('.c-cot-f').hidden = !(type && T().cot);
     $('.calc-cap').textContent = !type ? '' : T().kind === 'night'
       ? 'Sotto i 3 anni non si paga. Per ogni piazzola si contano almeno 2 persone.'
       : `${T().name}: al massimo ${T().cap} persone${T().capNote ? ', ' + T().capNote : ''}.`;
   };
 
+  const request = () => ({ sist: T().pick, arrivo: iso(from), partenza: iso(to), adulti: adults, bambini: kids, ...(withCot() ? { lettino: 1 } : {}) });
   const askLink = () => {
-    const p = new URLSearchParams({ sist: T().pick, arrivo: iso(from), partenza: iso(to), adulti: adults, bambini: kids });
+    const p = new URLSearchParams(request());
     return (onHome ? '?' : 'index.html?') + p.toString() + '#richiesta';
   };
 
@@ -214,6 +219,7 @@ boxes.forEach(box => {
         res.innerHTML = `
       <p class="calc-total short"><b>Su richiesta</b><small>${plural(n, 'notte', 'notti')}, soggiorno breve</small></p>
       <p class="calc-note">Fuori dall'estate puoi restare anche pochi giorni. Il listino è a settimane: per i soggiorni brevi il prezzo te lo diamo noi.</p>
+      ${withCot() ? `<p class="calc-note"><span class="calc-extra">${CHECK}Lettino da campeggio aggiunto alla richiesta</span></p>` : ''}
       <a class="btn calc-ask" href="${askLink()}">Chiedi il prezzo e la disponibilità</a>`;
         hookAsk();
         return;
@@ -223,6 +229,7 @@ boxes.forEach(box => {
         total += T().price[s];
         lines.push([span(w, w + 7 * DAY), `${SEASON[s]} stagione`, T().price[s]]);
       }
+      if (withCot()) notes.push(`<span class="calc-extra">${CHECK}Lettino da campeggio aggiunto alla richiesta</span>`);
       notes.push("All'arrivo si aggiungono € 50 per la pulizia dell'angolo cottura.");
     } else {
       const billed = Math.max(adults, 2 - kids);
@@ -247,7 +254,7 @@ boxes.forEach(box => {
   function hookAsk() {
     if (onHome) $('.calc-ask').addEventListener('click', e => {
       e.preventDefault();
-      window.prefillRequest && window.prefillRequest({ sist: T().pick, arrivo: iso(from), partenza: iso(to), adulti: adults, bambini: kids });
+      window.prefillRequest && window.prefillRequest(request());
       const target = document.getElementById('richiesta');
       if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     });

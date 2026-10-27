@@ -657,14 +657,20 @@ if (form) {
   $('#f-arrivo').min = today; $('#f-partenza').min = today;
   // the price calculator (and links from the detail pages) can fill in the request
   const put = (el, v) => { if (el && v !== undefined && v !== null && v !== '') el.value = v; };
+  // the camping cot can only be added to the monolocale
+  const COT = 'Bungalow monolocale 20 mq', cotBox = $('.f-cot', form), cot = $('#f-lettino');
+  const syncCot = () => { cotBox.hidden = sist.value !== COT; };
   window.prefillRequest = o => {
     if (o.sist && [...sist.options].some(x => x.value === o.sist)) sist.value = o.sist;
     put($('#f-arrivo'), o.arrivo); put($('#f-partenza'), o.partenza);
     put($('#f-adulti'), o.adulti); put($('#f-bambini'), o.bambini);
+    cot.checked = !!o.lettino;
+    syncCot();
   };
   const qp = new URLSearchParams(location.search);
-  prefillRequest({ sist: qp.get('sist'), arrivo: qp.get('arrivo'), partenza: qp.get('partenza'), adulti: qp.get('adulti'), bambini: qp.get('bambini') });
-  $$('[data-pick]').forEach(a => a.addEventListener('click', () => { if ([...sist.options].some(o => o.value === a.dataset.pick)) sist.value = a.dataset.pick; }));
+  prefillRequest({ sist: qp.get('sist'), arrivo: qp.get('arrivo'), partenza: qp.get('partenza'), adulti: qp.get('adulti'), bambini: qp.get('bambini'), lettino: qp.get('lettino') });
+  sist.addEventListener('change', syncCot);
+  $$('[data-pick]').forEach(a => a.addEventListener('click', () => { if ([...sist.options].some(o => o.value === a.dataset.pick)) sist.value = a.dataset.pick; syncCot(); }));
   $('#f-arrivo').addEventListener('change', e => { $('#f-partenza').min = e.target.value || today; });
   // every field except the message is required: each one says what is missing, right under it
   const say = (name, msg) => {
@@ -723,6 +729,7 @@ if (form) {
       'Partenza: ' + fmt(v('partenza')),
       'Sistemazione: ' + v('sistemazione'),
       'Adulti: ' + v('adulti') + ', bambini: ' + v('bambini'),
+      !cotBox.hidden && cot.checked ? 'Lettino da campeggio: sì' : null,
       v('messaggio') ? '' : null,
       v('messaggio') ? v('messaggio') : null,
       '', 'Grazie!'

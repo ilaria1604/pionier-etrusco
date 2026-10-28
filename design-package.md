@@ -750,3 +750,15 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Lodge card gallery.** It opens on the two new photos (7 photos in all).
 - **Page gallery.** 7 photos and 3 videos: the new exterior is first and large, followed by the interior, and the hero photo `glam-cover.jpg` fills the last cell. A new per-page `reelSlots: [2, 6, 7]` places the videos so that the 4-column grid (2 columns on phones) has no holes. The `'big'` tile option from rev 77 is no longer needed and is removed.
 - **Checked.** 1440 and 390: grid fully packed, all images load, no errors.
+
+### Rev 79: hosting moved to GitHub Pages
+- **Why.** Netlify's free plan gives 300 credits a month, and each production deploy costs 15. Two Netlify projects (`playful-duckanoo-9045d3` and `vocal-yeot-9ae6f5`) were both linked to this repo, so every push cost 30. The credits ran out on 23 October, and every deploy after `1fc1858` was skipped. Builds themselves were fast (16 s), so the repo size was not the cause.
+- **New address.** https://ilaria1604.github.io/pionier-etrusco/ (GitHub Pages, free, no limit on deploys).
+- **How to publish.** Run `sh tools/publish.sh` after pushing main. The script:
+  - builds `dist/` with the Pages address (`og:url`, `og:image`);
+  - commits `dist/` to the `gh-pages` branch, without a checkout;
+  - pushes `gh-pages`.
+
+  Only changed files are uploaded, because photos and videos are the same objects already on main. GitHub serves the result in about a minute.
+- **Not a workflow.** The GitHub token has no `workflow` scope, so a GitHub Actions workflow cannot be pushed. The branch deploy needs nothing more.
+- **Netlify.** The old Netlify addresses stay on the 23 October version. When the credits reset on 10 November, both projects would start deploying from main again unless they are deleted.

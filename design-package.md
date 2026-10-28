@@ -734,3 +734,9 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **No price.** The 2027 PDF lists no price for the cot, so the total does not change.
 - **Request form.** The calculator passes `lettino=1` to the request, both through the link from detail pages and through the in-page prefill. The form has the same tick box, visible only while "Bungalow monolocale 20 mq" is selected, and the email gets the line "Lettino da campeggio: sì".
 - **Checked.** Bungalow page and home page at 1440, phone at 390. Picking another house hides the box. No errors.
+
+### Rev 77: hammock video on the Glamping page
+- **Source.** The owner's walk "from the hammock to the glamping", 21.6 s, portrait 480x848. The original is kept in `materiali/video/glamping-amaca.mp4`.
+- **Stabilization.** Two-pass vid.stab: detect with shakiness 8 and accuracy 15, then transform with smoothing 24, adaptive zoom (`optzoom=2`, zoomspeed 0.15) and bicubic interpolation, plus a light unsharp. The fixed zoom cropped about 25% of the picture; the adaptive one only zooms when needed. Checked frame by frame: no empty corners.
+- **File.** `assets/video/reel-glamping-amaca.mp4`, H.264 main, crf 28, 30 fps, no audio (the owner chose muted, like every reel; the original sound was near-silent ambience), 2.4 MB. The poster is the hammock frame at 0.6 s, the sharpest of the opening.
+- **Gallery.** Third reel on the Glamping page, captioned "Dall'amaca al glamping". So that three reels fill the grid with no holes, a gallery photo can be marked `'big'` (2x2 cells) in `tools/gen-pages.mjs`; here that is the night photo. Checked at 1440 and 390.

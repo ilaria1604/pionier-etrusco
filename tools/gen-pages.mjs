@@ -126,7 +126,7 @@ const PAGES = [
     ctaH: 'Ti piace? Chiedici se è <em>libero</em>.',
   },
   {
-    file: 'glamping.html', reels: [['reel-glamping', 'Il glamping'], ['reel-glamping-verde', 'Il verde intorno']], key: 'glamping', pick: 'Glamping Luxury Lodge',
+    file: 'glamping.html', reels: [['reel-glamping', 'Il glamping'], ['reel-glamping-verde', 'Il verde intorno'], ['reel-glamping-amaca', "Dall'amaca al glamping"]], key: 'glamping', pick: 'Glamping Luxury Lodge',
     title: 'Glamping Luxury Lodge nella pineta · Camping Pionier Etrusco',
     desc: 'Glamping Luxury Lodge 45 mq a forma di A, su due piani, per 4 persone, con bagno privato e cucina, nella pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/glam-cover.jpg', heroPos: '50% 56%',
@@ -142,7 +142,7 @@ const PAGES = [
     types: [
       { id: 'lodge', calc: 'glam', cover: 'glam-fiori.jpg', photos: [['glam-cover.jpg', 'Il glamping tra i pini, in fondo al prato'], ['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini']], h: 'Glamping Luxury Lodge 45 mq', cap: 'Fino a 4 persone', p: 'Alloggio in tenda su due piani, con due camere, bagno privato, cucina e un\'ampia area lounge che si estende all\'esterno.', plans: [['glamping.jpg', 'Planimetria e sezione']], from: ['€ 450', 'a settimana, in bassissima stagione'], pick: 'Glamping Luxury Lodge' },
     ],
-    gallery: [['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini']],
+    gallery: [['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini', 'big']],
     pricesH: 'Glamping, a <em>settimana</em>',
     prices: table('Tipologia', 'glam', [['Glamping Luxury Lodge 45 mq', '4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da domenica a domenica'),
@@ -257,8 +257,9 @@ for (const P of PAGES) {
 
   // 1. the photos: one mosaic, the first picture large, videos in between
   const mosaic = (() => {
+    // a third field 'big' makes a photo take 2x2 cells, to fill the grid when there are three videos
     const tiles = P.gallery.map(g => `
-      <button type="button" class="m-ph" aria-label="Ingrandisci: ${g[1]}"><img src="assets/foto/${g[0]}" alt="${g[1]}" loading="lazy"></button>`);
+      <button type="button" class="m-ph${g[2] === 'big' ? ' big' : ''}" aria-label="Ingrandisci: ${g[1]}"><img src="assets/foto/${g[0]}" alt="${g[1]}" loading="lazy"></button>`);
     const slots = [2, 6];
     (P.reels || []).forEach((r, i) => tiles.splice(Math.min(slots[i] ?? tiles.length, tiles.length), 0, reelTile(r)));
     return tiles.join('');

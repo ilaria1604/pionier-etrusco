@@ -52,7 +52,7 @@ const KNOW_UNIT = (day) => ['Check-in dalle 16 alle 20, check-out entro le 10', 
 const UNITS = {
   piazzole: { href: 'piazzole.html', title: 'Piazzole', img: 'assets/foto/piazzole-pineta.jpg', alt: 'Piazzole per camper sotto i pini curvi della pineta', meta: 'Camper · Roulotte · Tende', price: ['€ 9', 'a notte'] },
   bungalow: { href: 'bungalow.html', title: 'Bungalow', img: 'assets/foto/bung-cover-card.jpg', alt: 'Bungalow in legno circondato da siepi e pini', meta: 'Da 20 a 48 mq · fino a 6 posti', price: ['€ 350', 'a settimana'] },
-  glamping: { href: 'glamping.html', title: 'Glamping', img: 'assets/foto/glam-fiori.jpg', alt: 'Glamping a forma di A in legno e tela chiara tra i pini', meta: 'Luxury Lodge 45 mq · 4 posti', price: ['€ 450', 'a settimana'] },
+  glamping: { href: 'glamping.html', title: 'Glamping', img: 'assets/foto/glam-esterno.jpg', alt: 'Il glamping a forma di A tra i pini, con la veranda in legno', meta: 'Luxury Lodge 45 mq · 4 posti', price: ['€ 450', 'a settimana'] },
   home: { href: 'home.html', title: 'Home', img: 'assets/foto/home-2.jpg', alt: 'La Home con la veranda coperta, nella luce della sera', meta: 'Premium Comfort 34 mq · 4 posti', price: ['€ 600', 'a settimana'] },
 };
 const card = (u, i) => `<a class="unit rv" style="--i:${i}" href="${u.href}">
@@ -140,9 +140,10 @@ const PAGES = [
     gearH: 'Dotazioni e servizi',
     gear: [['floors', 'Su due piani'], ['bed', '2 camere da letto'], ['shower', 'Bagno privato con doccia'], ['kitchen', 'Cucina attrezzata'], ['stove', 'Piano cottura a induzione'], ['fridge', 'Frigorifero con freezer'], ['ac', 'Aria condizionata'], ['heat', 'Riscaldamento'], ['tv', 'TV'], ['dryer', 'Asciugacapelli'], ['veranda', 'Veranda attrezzata'], ['umbrella', 'Ombrellone e 2 lettini in spiaggia'], ['clean', 'Pulizia iniziale e finale'], ['linen', 'Biancheria da letto'], ['parking', 'Parcheggio di 1 auto'], ['wifi', 'Wi-fi']],
     types: [
-      { id: 'lodge', calc: 'glam', cover: 'glam-fiori.jpg', photos: [['glam-cover.jpg', 'Il glamping tra i pini, in fondo al prato'], ['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini']], h: 'Glamping Luxury Lodge 45 mq', cap: 'Fino a 4 persone', p: 'Alloggio in tenda su due piani, con due camere, bagno privato, cucina e un\'ampia area lounge che si estende all\'esterno.', plans: [['glamping.jpg', 'Planimetria e sezione']], from: ['€ 450', 'a settimana, in bassissima stagione'], pick: 'Glamping Luxury Lodge' },
+      { id: 'lodge', calc: 'glam', cover: 'glam-esterno.jpg', photos: [['glam-esterno.jpg', 'Il glamping a forma di A tra i pini, con la veranda in legno'], ['glam-interno-surf.jpg', "L'ingresso sotto la tela, con la cucina in fondo"], ['glam-cover.jpg', 'Il glamping tra i pini, in fondo al prato'], ['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini']], h: 'Glamping Luxury Lodge 45 mq', cap: 'Fino a 4 persone', p: 'Alloggio in tenda su due piani, con due camere, bagno privato, cucina e un\'ampia area lounge che si estende all\'esterno.', plans: [['glamping.jpg', 'Planimetria e sezione']], from: ['€ 450', 'a settimana, in bassissima stagione'], pick: 'Glamping Luxury Lodge' },
     ],
-    gallery: [['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini', 'big']],
+    // 7 photos and 3 videos: the first photo large, the videos at 2, 6 and 7 fill a 4-column grid with no holes
+    gallery: [['glam-esterno.jpg', 'Il glamping a forma di A tra i pini, con la veranda in legno'], ['glam-fiori.jpg', 'Il glamping di giorno, con una bici e i fiori nel cestino'], ['glamping-interno-1.jpg', "L'interno, con la cucina e la scala per il piano di sopra"], ['glam-interno-surf.jpg', "L'ingresso sotto la tela, con la cucina in fondo"], ['glamping-interno-3.jpg', 'Il divano della zona lounge'], ['glam-notte.jpg', 'Il glamping di sera, con le lucine accese tra i pini'], ['glam-cover.jpg', 'Il glamping tra i pini, in fondo al prato']], reelSlots: [2, 6, 7],
     pricesH: 'Glamping, a <em>settimana</em>',
     prices: table('Tipologia', 'glam', [['Glamping Luxury Lodge 45 mq', '4 posti', ['€ 450', '€ 650', '€ 1.000', '€ 1.250']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da domenica a domenica'),
@@ -257,10 +258,9 @@ for (const P of PAGES) {
 
   // 1. the photos: one mosaic, the first picture large, videos in between
   const mosaic = (() => {
-    // a third field 'big' makes a photo take 2x2 cells, to fill the grid when there are three videos
     const tiles = P.gallery.map(g => `
-      <button type="button" class="m-ph${g[2] === 'big' ? ' big' : ''}" aria-label="Ingrandisci: ${g[1]}"><img src="assets/foto/${g[0]}" alt="${g[1]}" loading="lazy"></button>`);
-    const slots = [2, 6];
+      <button type="button" class="m-ph" aria-label="Ingrandisci: ${g[1]}"><img src="assets/foto/${g[0]}" alt="${g[1]}" loading="lazy"></button>`);
+    const slots = P.reelSlots || [2, 6];
     (P.reels || []).forEach((r, i) => tiles.splice(Math.min(slots[i] ?? tiles.length, tiles.length), 0, reelTile(r)));
     return tiles.join('');
   })();

@@ -23,6 +23,9 @@ G = {
   'rist-sala':      "colorchannelmixer=rr=0.99:bb=1.05,curves=all='0/0 0.06/0.08 0.2/0.25 0.5/0.57 0.8/0.85 1/1',vibrance=intensity=0.04," + RSHARP,
   'rist-risotto':   "colorchannelmixer=rr=1.04:gg=1.005:bb=0.965,curves=all='0/0 0.25/0.235 0.5/0.51 0.85/0.9 1/1',vibrance=intensity=0.1," + RSHARP,
   'rist-polpette':  "colorchannelmixer=rr=1.01:bb=0.985,curves=all='0/0 0.25/0.23 0.5/0.5 0.85/0.9 1/1',vibrance=intensity=0.1," + RSHARP,
+  # glamping photos sent by the owner (rev 78): shade opened, sky and pines a little richer / interior brighter, canvas kept warm
+  'glam-esterno':   "curves=all='0/0 0.1/0.1 0.3/0.36 0.5/0.57 0.8/0.84 0.95/0.96 1/1',vibrance=intensity=0.14,unsharp=5:5:0.5:5:5:0",
+  'glam-interno':   "colorchannelmixer=rr=0.99:bb=1.015,curves=all='0/0 0.1/0.11 0.3/0.35 0.5/0.56 0.8/0.85 1/1',vibrance=intensity=0.06,unsharp=5:5:0.5:5:5:0",
   # white balance only in the highlights, so the yellow tomatoes keep their own colour
   'rist-spaghetti': "format=rgb24,colorbalance=rh=0.008:bh=-0.028,curves=all='0/0 0.2/0.185 0.5/0.5 0.85/0.88 1/1',hue=h=1.5:s=0.95," + RSHARP,
 }

@@ -58,6 +58,8 @@ M.update({'cani-spiaggia':(MAT('IMG_9563.heic'),'ext')})
 # restaurant (rev 72): the dining room and three dishes, sent by the owner
 M.update({'ristorante-sala':(MAT('ristorante/sala.jpg'),'rist-sala'),'ristorante-risotto':(MAT('ristorante/risotto.jpg'),'rist-risotto'),
  'ristorante-spaghetti':(MAT('ristorante/spaghetti.jpg'),'rist-spaghetti'),'ristorante-polpette':(MAT('ristorante/polpette.jpg'),'rist-polpette')})
+# glamping (rev 78): the new card cover and an interior with the surfboards, sent by the owner
+M.update({'glam-esterno':(MAT('glamping/glamping-esterno.jpg'),'glam-esterno'),'glam-interno-surf':(MAT('glamping/glamping-interno-surf.jpg'),'glam-interno')})
 # covers are cropped by hand from the originals (see design-package rev 17-18): bung-cover, bung-cover-card = 'EXT bungalow 4 posti'; sup-pineta = 'Immagine copertina bungalow'
 if __name__=='__main__':
     import os,sys

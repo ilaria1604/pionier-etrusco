@@ -740,3 +740,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Stabilization.** Two-pass vid.stab: detect with shakiness 8 and accuracy 15, then transform with smoothing 24, adaptive zoom (`optzoom=2`, zoomspeed 0.15) and bicubic interpolation, plus a light unsharp. The fixed zoom cropped about 25% of the picture; the adaptive one only zooms when needed. Checked frame by frame: no empty corners.
 - **File.** `assets/video/reel-glamping-amaca.mp4`, H.264 main, crf 28, 30 fps, no audio (the owner chose muted, like every reel; the original sound was near-silent ambience), 2.4 MB. The poster is the hammock frame at 0.6 s, the sharpest of the opening.
 - **Gallery.** Third reel on the Glamping page, captioned "Dall'amaca al glamping". So that three reels fill the grid with no holes, a gallery photo can be marked `'big'` (2x2 cells) in `tools/gen-pages.mjs`; here that is the night photo. Checked at 1440 and 390.
+
+### Rev 78: new glamping card photo and an interior
+- **Source.** The owner sent two photos: "glamping esterno" (the A-frame with the veranda, surfboards and the table) and an interior with the surfboards. The originals are in `materiali/glamping/`.
+- **Grade.** One light grade each, approved by the owner side by side with the original (`glam-esterno` and `glam-interno` in `tools/grade.py`):
+  - Exterior: shade opened, sky and pines a little richer.
+  - Interior: brighter, canvas kept warm.
+- **Card.** `glam-esterno.jpg` is now the glamping card image everywhere: the home page, the lodge card on the Glamping page, and the "altre sistemazioni" cards on the other detail pages.
+- **Lodge card gallery.** It opens on the two new photos (7 photos in all).
+- **Page gallery.** 7 photos and 3 videos: the new exterior is first and large, followed by the interior, and the hero photo `glam-cover.jpg` fills the last cell. A new per-page `reelSlots: [2, 6, 7]` places the videos so that the 4-column grid (2 columns on phones) has no holes. The `'big'` tile option from rev 77 is no longer needed and is removed.
+- **Checked.** 1440 and 390: grid fully packed, all images load, no errors.

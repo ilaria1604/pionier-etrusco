@@ -341,15 +341,15 @@ $$('[role=tablist]').forEach(list => {
   });
 });
 
-/* ---------- the walk to the sea (one click, a quick 3-minute walk) ---------- */
+/* ---------- the walk to the sea (one click, or dragging the dot: a quick 3-minute walk) ---------- */
 const mare = $('#mare'), hold = $('#hold');
 let pinWalk = () => {};
 if (mare && hold) {
   const route = $('#route'), walker = $('#walker'), clock = $('#clock'), live = $('#arrive-live');
-  const walkSvg = $('.walk-svg');
+  const walkSvg = $('.walk-svg'), hit = $('#walker-hit');
   const DURATION = 1400;
   const easeInOut = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  let hp = 0, walkRaf = null, t0 = 0, arrived = false, lastClock = '';
+  let hp = 0, hp0 = 0, walkRaf = null, t0 = 0, arrived = false, lastClock = '';
   const routeLen = route.getTotalLength();
   const more = $('#mare-more');
   if (more) {
@@ -365,6 +365,8 @@ if (mare && hold) {
     hold.style.setProperty('--hp', hp.toFixed(4));
     const pt = route.getPointAtLength(routeLen * hp);
     walker.setAttribute('cx', pt.x.toFixed(1)); walker.setAttribute('cy', pt.y.toFixed(1));
+    hit.setAttribute('cx', pt.x.toFixed(1)); hit.setAttribute('cy', pt.y.toFixed(1));
+    walkSvg.classList.toggle('at-start', hp === 0);
     const secs = Math.round(hp * 180);
     const txt = Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0');
     if (txt !== lastClock) { lastClock = txt; clock.textContent = txt; }
@@ -379,7 +381,7 @@ if (mare && hold) {
   };
   const walkStep = now => {
     const t = Math.min(1, (now - t0) / DURATION);
-    hp = easeInOut(t);
+    hp = hp0 + (1 - hp0) * easeInOut(t);
     renderWalk();
     if (t < 1) walkRaf = requestAnimationFrame(walkStep);
     else { walkRaf = null; arrive(); }
@@ -394,10 +396,41 @@ if (mare && hold) {
     if (arrived) resetWalk();
     hold.textContent = 'On the way...';
     if (reduced) { hp = 1; renderWalk(); arrive(); return; }
-    t0 = performance.now();
+    hp0 = hp; t0 = performance.now();
     walkRaf = requestAnimationFrame(walkStep);
   };
   hold.addEventListener('click', go);
+  // Dragging the dot. On phones the drawing slides while the dot moves, so where the dot runs on screen is worked out on grabbing it.
+  const STEPS = 120;
+  const screenPath = () => {
+    const leftAt = h => { walkSvg.style.setProperty('--hp', h); return walkSvg.getBoundingClientRect().left; };
+    const a = leftAt(0), b = leftAt(1), scale = walkSvg.getBoundingClientRect().width / walkSvg.viewBox.baseVal.width;
+    walkSvg.style.setProperty('--hp', hp.toFixed(4));
+    return Array.from({ length: STEPS + 1 }, (_, i) => a + (b - a) * i / STEPS + route.getPointAtLength(routeLen * i / STEPS).x * scale);
+  };
+  const hpAt = (path, x) => {
+    if (x <= path[0]) return 0;
+    const i = path.findIndex(p => p >= x);
+    return i < 0 ? 1 : (i - 1 + (x - path[i - 1]) / (path[i] - path[i - 1])) / STEPS;
+  };
+  let drag = null;
+  const endDrag = () => { drag = null; mare.classList.remove('dragging'); };
+  hit.addEventListener('pointerdown', e => {
+    if (arrived || walkRaf !== null || e.button) return;
+    e.preventDefault();
+    const path = screenPath();
+    drag = { path, grab: e.clientX - path[Math.round(hp * STEPS)] };
+    hit.setPointerCapture(e.pointerId);
+    mare.classList.add('dragging');
+  });
+  hit.addEventListener('pointermove', e => {
+    if (!drag) return;
+    hp = hpAt(drag.path, e.clientX - drag.grab);
+    if (hp < .985) { renderWalk(); return; }
+    hp = 1; endDrag(); renderWalk(); arrive();
+  });
+  hit.addEventListener('pointerup', endDrag);
+  hit.addEventListener('pointercancel', endDrag);
   pinWalk = () => { if (!arrived) { if (walkRaf !== null) { cancelAnimationFrame(walkRaf); walkRaf = null; } hp = 1; renderWalk(); arrive(); } };
 }
 

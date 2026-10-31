@@ -414,23 +414,30 @@ if (mare && hold) {
     return i < 0 ? 1 : (i - 1 + (x - path[i - 1]) / (path[i] - path[i - 1])) / STEPS;
   };
   let drag = null;
-  const endDrag = () => { drag = null; mare.classList.remove('dragging'); };
+  const moveDrag = e => {
+    if (e.pointerId !== drag.id) return;
+    if (!e.buttons) { endDrag(); return; } // the button was let go outside the window
+    hp = hpAt(drag.path, e.clientX - drag.grab);
+    if (hp < .985) { renderWalk(); return; }
+    hp = 1; endDrag(); renderWalk(); arrive();
+  };
+  const endDrag = () => {
+    drag = null; mare.classList.remove('dragging');
+    removeEventListener('pointermove', moveDrag);
+    removeEventListener('pointerup', endDrag);
+    removeEventListener('pointercancel', endDrag);
+  };
   hit.addEventListener('pointerdown', e => {
     if (arrived || walkRaf !== null || e.button) return;
     e.preventDefault();
     const path = screenPath();
-    drag = { path, grab: e.clientX - path[Math.round(hp * STEPS)] };
-    hit.setPointerCapture(e.pointerId);
+    drag = { id: e.pointerId, path, grab: e.clientX - path[Math.round(hp * STEPS)] };
     mare.classList.add('dragging');
+    // on the window, so a fast hand that leaves the dot behind does not stop the drag
+    addEventListener('pointermove', moveDrag);
+    addEventListener('pointerup', endDrag);
+    addEventListener('pointercancel', endDrag);
   });
-  hit.addEventListener('pointermove', e => {
-    if (!drag) return;
-    hp = hpAt(drag.path, e.clientX - drag.grab);
-    if (hp < .985) { renderWalk(); return; }
-    hp = 1; endDrag(); renderWalk(); arrive();
-  });
-  hit.addEventListener('pointerup', endDrag);
-  hit.addEventListener('pointercancel', endDrag);
   pinWalk = () => { if (!arrived) { if (walkRaf !== null) { cancelAnimationFrame(walkRaf); walkRaf = null; } hp = 1; renderWalk(); arrive(); } };
 }
 

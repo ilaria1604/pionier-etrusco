@@ -3,6 +3,7 @@
 // Usage: node tools/build.mjs https://indirizzo-del-sito
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const SRC = path.join(ROOT, 'pionier-etrusco');
@@ -28,12 +29,15 @@ for (const f of files) {
   fs.copyFileSync(f, path.join(OUT, rel));
   kept++;
 }
+// each page asks for the exact version of its styles and scripts, so a browser never pairs a new page with an old script
+const version = rel => crypto.createHash('sha1').update(fs.readFileSync(path.join(OUT, 'assets', rel))).digest('hex').slice(0, 8);
 // social previews: real address instead of the placeholder
 for (const p of pages) {
   const out = path.join(OUT, path.relative(SRC, p));
   const html = fs.readFileSync(out, 'utf8')
     .replaceAll('https://example.com', SITE)
-    .replace(/\s*<!-- DEPLOY STEP:[^>]*-->/g, '');
+    .replace(/\s*<!-- DEPLOY STEP:[^>]*-->/g, '')
+    .replace(/(href|src)="((?:\.\.\/)?assets\/)([\w.-]+\.(?:css|js))"/g, (m, a, dir, f) => `${a}="${dir}${f}?v=${version(f)}"`);
   fs.writeFileSync(out, html);
 }
 // for search engines, and the old addresses of the WordPress site

@@ -798,8 +798,15 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 82: the walk dot can be dragged
 - **What.** In the sea section the dot can now be dragged along the path with the mouse or a finger, as well as walked with the button. The clock and the button's fill follow the dot, and reaching 98.5% of the path counts as arrival.
 - **Letting go halfway.** The dot stays where it is. It can be dragged further, or the button finishes the walk from there (`hp0`).
-- **Target.** An invisible `#walker-hit` circle (radius 34) follows the dot, so it is easy to grab. `touch-action:none` applies only to that circle, so the page still scrolls everywhere else.
+- **Target.** An invisible `#walker-hit` circle (radius 34) follows the dot, so it is easy to grab.
 - **Phones.** The drawing slides while the dot moves, so the dot's path on screen is measured on grabbing it (`screenPath`, which reads the slide at `--hp` 0 and 1 instead of repeating the CSS value). The dot stays under the pointer.
 - **Hint.** The dot pulses slowly until it first moves (`.at-start`), because nothing else says it can be dragged. Off with reduced motion.
 - **After arrival.** The dot can no longer be grabbed. "Rifai la passeggiata" starts again.
 - **Checked.** Real mouse drags at 1280 and at 665 px, where the drawing slides: the dot lands exactly under the pointer, arrival opens the beaches, the button continues from a half-way dot, and it restarts after arrival. Italian and English, no errors. Not tried with a real finger on a phone.
+
+### Rev 83: dragging the dot, fixed
+- **The fault.** The owner could not drag the dot. With a finger it stopped after a few pixels: `touch-action` on the inner `circle` has no effect in Chrome, so the browser took the gesture for scrolling and sent `pointercancel`. Rev 82 had only been tried with the mouse, in one long move.
+- **Fix.** `touch-action:pan-y` now sits on the `svg` itself: a sideways finger drags the dot, a vertical one still scrolls the page.
+- **Fast hands.** During a drag the moves are read on the window, not on the circle, so a quick hand that leaves the dot behind keeps dragging. If the button is let go outside the window, the next move ends the drag.
+- **Stale files.** GitHub Pages lets browsers keep files for 10 minutes, so a new page could run with an old script. `tools/build.mjs` now adds `?v=<hash of the file>` to every style and script in `dist/`, so each page asks for its exact version.
+- **Test.** The script dispatches real input to Chrome, in small steps as a hand does: mouse at 1920 and 1000, big jumps off the dot, touch at 390, and a vertical swipe on the dot, which scrolls the page. Safari cannot be driven from here and is not tested.

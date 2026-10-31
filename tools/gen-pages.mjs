@@ -230,6 +230,7 @@ const FOOT = `<footer class="foot">
     <div><h4>Info</h4><ul><li><a href="index.html#tariffe">Tariffe 2027</a></li><li><a href="assets/tariffe-2027.pdf" download>Listino 2027 in PDF</a></li><li><a href="index.html#servizi">Servizi</a></li><li><a href="index.html#richiesta">Contatti</a></li></ul></div>
     <div class="fine">
       <span>© Camping Pionier Etrusco · P. IVA 01513620565</span>
+      <span class="legal"><a href="privacy.html">Privacy e cookie</a><button class="cookie-link" type="button" data-cookie-prefs hidden>Preferenze cookie</button></span>
     </div>
   </div>
 </footer>`;
@@ -334,9 +335,6 @@ for (const P of PAGES) {
 <!-- DEPLOY STEP: sostituire https://example.com con l'indirizzo reale del sito prima di pubblicare -->
 <meta property="og:url" content="https://example.com/${P.file}">
 <meta property="og:image" content="https://example.com/${P.heroImg}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="detail-page">
@@ -424,6 +422,7 @@ ${FOOT}
   <button class="nav-b next" type="button" aria-label="Foto successiva"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
 </dialog>
 
+<script src="assets/consent.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/calc.js"></script>
 </body>
@@ -432,3 +431,90 @@ ${FOOT}
   writeFileSync(`${OUT}/${P.file}`, html);
   console.log('wrote', P.file, html.length);
 }
+
+// the privacy and cookie page
+const LEGAL_TITLE = 'Privacy e cookie · Camping Pionier Etrusco';
+const LEGAL_DESC = 'Come il Camping Pionier Etrusco tratta i dati di chi visita il sito e di chi invia una richiesta, e quali cookie usa.';
+writeFileSync(`${OUT}/privacy.html`, `<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${LEGAL_TITLE}</title>
+<meta name="description" content="${LEGAL_DESC}">
+<meta name="theme-color" content="#17211D">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="detail-page">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="env" aria-hidden="true"></div>
+
+${NAV('')}
+
+<main id="main" tabindex="-1" class="legal-page">
+  <div class="wrap">
+    <p class="label">Ultimo aggiornamento: 31 ottobre 2026</p>
+    <h1 class="h2">Privacy e cookie</h1>
+    <p class="lede">Cosa facciamo con i dati di chi visita questo sito e di chi ci scrive.</p>
+
+    <h2>Chi tratta i dati</h2>
+    <p>Il titolare del trattamento è <strong>Coreal di Eleuteri M. &amp; C. s.n.c.</strong>, che gestisce il Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT), P. IVA 01513620565, REA 90814. Per qualsiasi domanda sui tuoi dati scrivi a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a> o chiama lo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
+
+    <h2>Quali dati usiamo e perché</h2>
+    <h3>Richieste dal modulo, email e telefonate</h3>
+    <ul>
+      <li><strong>Dati:</strong> nome, email, telefono, date del soggiorno, sistemazione, numero di persone e quello che scegli di scriverci.</li>
+      <li><strong>Perché:</strong> per risponderti e preparare il tuo soggiorno.</li>
+      <li><strong>Base giuridica:</strong> la tua richiesta e le misure precontrattuali (art. 6, par. 1, lett. b del GDPR).</li>
+      <li><strong>Per quanto tempo:</strong> fino a 24 mesi dall'ultimo contatto. Se prenoti, i dati necessari restano per il tempo previsto dalle norme fiscali e contabili.</li>
+    </ul>
+    <p>Senza i campi obbligatori del modulo non possiamo rispondere alla richiesta. I dati del modulo non vengono usati per newsletter o pubblicità.</p>
+    <h3>Statistiche di visita, solo se accetti</h3>
+    <ul>
+      <li><strong>Dati:</strong> pagine viste, durata della visita, tipo di dispositivo, zona geografica approssimativa e un identificativo casuale del browser.</li>
+      <li><strong>Perché:</strong> per capire quali pagine sono utili e migliorare il sito, con Google Analytics. Le funzioni pubblicitarie sono disattivate.</li>
+      <li><strong>Base giuridica:</strong> il tuo consenso (art. 6, par. 1, lett. a del GDPR), che puoi revocare quando vuoi.</li>
+      <li><strong>Per quanto tempo:</strong> fino a 14 mesi.</li>
+    </ul>
+    <h3>Dati tecnici di navigazione</h3>
+    <ul>
+      <li><strong>Dati:</strong> indirizzo IP, tipo di browser, data e ora delle visite.</li>
+      <li><strong>Perché:</strong> per far funzionare il sito e proteggerlo da abusi.</li>
+      <li><strong>Base giuridica:</strong> il nostro legittimo interesse (art. 6, par. 1, lett. f del GDPR).</li>
+      <li><strong>Per quanto tempo:</strong> per il tempo strettamente necessario a questi scopi.</li>
+    </ul>
+
+    <h2>Chi può vedere i dati</h2>
+    <p>I dati li vede chi lavora al campeggio. Non li vendiamo a nessuno. Ci aiutano alcuni fornitori, che li trattano per nostro conto:</p>
+    <ul>
+      <li><strong>Google</strong> per la posta e per l'archivio delle richieste (Gmail e Fogli Google) e per le statistiche (Google Analytics), queste ultime solo se accetti.</li>
+      <li><strong>Il fornitore che ospita il sito</strong>, che tratta i dati tecnici di navigazione.</li>
+    </ul>
+    <p>Alcuni di questi fornitori hanno sede negli Stati Uniti. In quei casi il trasferimento avviene sulla base del Data Privacy Framework UE-USA o delle clausole contrattuali standard approvate dalla Commissione europea. Possiamo comunicare i dati alle autorità solo quando la legge lo richiede.</p>
+
+    <h2 id="cookie">Cookie</h2>
+    <p>Non usiamo cookie pubblicitari o di profilazione. Sul tuo dispositivo possono essere salvati solo questi elementi:</p>
+    <ul>
+      <li><strong>cp-consenso</strong> (questo sito, memoria del browser): ricorda la tua scelta sui cookie per 6 mesi. È tecnico e non richiede consenso.</li>
+      <li><strong>_ga e _ga_*</strong> (Google Analytics): distinguono i visitatori nelle statistiche, fino a 2 anni. Vengono salvati solo se accetti.</li>
+    </ul>
+    <p>Se rifiuti, il sito funziona lo stesso. <button class="tlink cookie-link" type="button" data-cookie-prefs hidden>Cambia la tua scelta</button></p>
+
+    <h2>I tuoi diritti</h2>
+    <p>Puoi chiederci di vedere i tuoi dati, correggerli, cancellarli o limitarne l'uso, di riceverli in un formato leggibile e di opporti al trattamento. Basta scrivere a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a>. Puoi anche presentare un reclamo al <a class="tlink" href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione dei dati personali</a>.</p>
+
+    <h2>Modifiche</h2>
+    <p>Se cambiamo questa pagina, aggiorniamo la data in alto.</p>
+  </div>
+</main>
+
+${FOOT}
+
+<script src="assets/consent.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
+`);
+console.log('wrote privacy.html');

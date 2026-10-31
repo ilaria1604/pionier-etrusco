@@ -15,9 +15,6 @@
 <!-- DEPLOY STEP: sostituire https://example.com con l'indirizzo reale del sito prima di pubblicare -->
 <meta property="og:url" content="https://example.com/">
 <meta property="og:image" content="https://example.com/assets/og.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Figtree:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/mappa.css">
 </head>
@@ -919,13 +916,22 @@
           <div class="f-cot" hidden><label class="chk"><input type="checkbox" id="f-lettino" name="lettino"><span>Aggiungi il lettino da campeggio</span></label></div>
           <div class="f full"><label for="f-msg">Messaggio <span class="opt">(facoltativo)</span></label><textarea id="f-msg" name="messaggio" placeholder="Per esempio: viaggiamo con un cane, arriviamo in serata..."></textarea></div>
         </div>
-        <button class="btn" type="submit">Prepara la richiesta</button>
+        <div class="hp" aria-hidden="true"><label>Non compilare<input name="sito" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn" type="submit">Invia la richiesta</button>
         <p class="note" id="form-err" role="alert"></p>
+        <p class="note">Usiamo questi dati solo per rispondere alla tua richiesta. <a class="tlink" href="privacy.html">Informativa privacy</a></p>
       </div>
       <div class="done-state" tabindex="-1">
-        <p class="h3">La tua email è pronta.</p>
-        <p>Controlla i dati e premi Invia.</p>
-        <p class="note">Non si è aperta? Scrivici a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a> o chiamaci allo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
+        <div class="done-form">
+          <p class="h3">Richiesta inviata, grazie!</p>
+          <p>Ti rispondiamo appena possibile, all'email o al telefono che ci hai lasciato.</p>
+          <p class="note">Ti serve una risposta subito? Chiamaci allo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
+        </div>
+        <div class="done-mail">
+          <p class="h3">La tua email è pronta.</p>
+          <p>Controlla i dati e premi Invia.</p>
+          <p class="note">Non si è aperta? Scrivici a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a> o chiamaci allo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
+        </div>
         <button type="button" id="form-back">Modifica la richiesta</button>
       </div>
     </form>
@@ -954,6 +960,7 @@
     <div class="fine">
       <span>Il video iniziale è un'illustrazione creata con l'intelligenza artificiale. Le foto nelle sezioni sono del campeggio.</span>
       <span>© Camping Pionier Etrusco · P. IVA 01513620565</span>
+      <span class="legal"><a href="privacy.html">Privacy e cookie</a><button class="cookie-link" type="button" data-cookie-prefs hidden>Preferenze cookie</button></span>
     </div>
   </div>
 </footer>
@@ -966,6 +973,7 @@
   <button class="nav-b next" type="button" aria-label="Foto successiva"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
 </dialog>
 
+<script src="assets/consent.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/calc.js"></script>
 <script src="assets/mappa.js"></script>

@@ -648,9 +648,12 @@ if (reels.length) {
   });
 }
 
-/* ---------- form: prepares an email to the campsite ---------- */
+/* ---------- form: sends the request to the campsite ---------- */
 const form = $('#form');
 if (form) {
+  // Google Apps Script web app, see tools/modulo-richieste.gs. While empty, the request opens the visitor's email app.
+  const FORM_URL = 'https://script.google.com/macros/s/AKfycbzNbCRQB6PlQ7caKu_94jFph8XQu2yy95aFkwDfoAan8bd9LNE-VO5Ehp8ZXJOeTxEN/exec';
+  const opened = Date.now();
   const err = $('#form-err');
   const sist = $('#f-sist');
   const today = new Date().toISOString().slice(0, 10);
@@ -705,7 +708,7 @@ if (form) {
     const recheck = () => { if (el.closest('.f').classList.contains('invalid')) { say(n, check()[n]); summary(); } };
     el.addEventListener('input', recheck); el.addEventListener('change', recheck);
   });
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     err.textContent = '';
     const errs = check();
@@ -735,9 +738,35 @@ if (form) {
       '', 'Grazie!'
     ].filter(x => x !== null).join('\n');
     const subject = 'Richiesta disponibilità ' + fmt(v('arrivo')) + ' - ' + fmt(v('partenza'));
-    location.href = 'mailto:info@pionieretrusco.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    form.classList.add('sent');
-    $('.done-state', form).focus();
+    const mailto = 'mailto:info@pionieretrusco.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    const finish = byMail => {
+      form.classList.toggle('by-mail', byMail);
+      $('#form-back').textContent = byMail ? 'Modifica la richiesta' : "Invia un'altra richiesta";
+      form.classList.add('sent');
+      $('.done-state', form).focus();
+    };
+    if (!FORM_URL) { location.href = mailto; finish(true); return; }
+    const btn = $('button[type=submit]', form), label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Invio in corso...';
+    try {
+      const res = await fetch(FORM_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // a plain request, the only kind Apps Script accepts from another site
+        body: JSON.stringify({
+          nome: v('nome'), email: v('email'), telefono: v('telefono'), arrivo: v('arrivo'), partenza: v('partenza'),
+          sistemazione: v('sistemazione'), adulti: v('adulti'), bambini: v('bambini'), lettino: !cotBox.hidden && cot.checked,
+          messaggio: v('messaggio'), sito: v('sito'), ms: Date.now() - opened
+        }),
+        signal: AbortSignal.timeout(20000)
+      });
+      if (!(await res.json()).ok) throw new Error('rifiutata');
+      window.gtag?.('event', 'generate_lead');
+      finish(false);
+    } catch {
+      err.innerHTML = `Non siamo riusciti a inviare la richiesta. Riprova tra poco, <a href="${mailto}">mandala con la tua email</a> oppure chiamaci allo <a href="tel:+390766802807">0766 802807</a>.`;
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
   });
   $('#form-back').addEventListener('click', () => { form.classList.remove('sent'); $('#f-nome').focus(); });
 }

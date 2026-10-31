@@ -1,4 +1,15 @@
 /* Camping Pionier Etrusco · shared styles */
+/* fonts, hosted here so that no visitor data reaches Google before consent */
+@font-face{font-family:"Courier Prime";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/courier-prime-400-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Courier Prime";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/courier-prime-400-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Courier Prime";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/courier-prime-700-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Courier Prime";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/courier-prime-700-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/figtree-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Figtree";font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/figtree-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Playfair Display";font-style:italic;font-weight:400 900;font-display:swap;src:url(fonts/playfair-italic-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Playfair Display";font-style:italic;font-weight:400 900;font-display:swap;src:url(fonts/playfair-italic-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/playfair-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:400 900;font-display:swap;src:url(fonts/playfair-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 :root{
   --canvas:#F3EEE7;
   --panel:#E9E0D5;
@@ -544,6 +555,10 @@ p{margin:0 0 14px}
 .f.invalid input:focus,.f.invalid select:focus{border-color:#A8281F;box-shadow:0 0 0 3px rgba(168,40,31,.2)}
 #form-err:not(:empty){margin-top:14px;padding:12px 14px;border-radius:12px;background:#FBE9E6;color:#8E1F17;font-size:15px;font-weight:600}
 .done-state{display:none;text-align:left}
+.done-mail,.form.by-mail .done-form{display:none}
+.form.by-mail .done-mail{display:block}
+.hp{position:absolute;left:-9999px}
+#form-err a{color:inherit}
 .form.sent .fields{display:none}
 .form.sent .done-state{display:block;animation:panelin .7s var(--ease-out) both}
 .done-state .h3{font-family:var(--f-display);font-weight:700;font-size:30px;margin:0 0 10px}
@@ -1098,3 +1113,22 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .foot .logo{width:84px;grid-column:1/-1}
   .foot address{grid-column:1/-1;line-height:1.75}
 }
+
+/* ---------- cookie choice ---------- */
+.cookie-box{position:fixed;left:16px;bottom:16px;z-index:60;width:min(420px,100% - 32px);padding:20px;border-radius:16px;background:var(--night);color:var(--on-night);box-shadow:0 18px 50px -16px rgba(0,0,0,.7);font-size:15px;line-height:1.5}
+.cookie-box p{margin:0 0 14px}
+.cookie-box a{color:inherit}
+.cookie-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cookie-link{background:none;border:0;padding:0;font:inherit;cursor:pointer}
+.foot .legal{display:inline-flex;flex-wrap:wrap;gap:6px 18px}
+.foot .cookie-link{color:var(--canvas);border-bottom:1px solid rgba(243,238,231,.3)}
+.foot .cookie-link:hover{border-color:var(--accent-bright)}
+@media (max-width:560px){.cookie-box{left:10px;bottom:10px;width:calc(100% - 20px);padding:16px}}
+
+/* ---------- privacy page ---------- */
+.legal-page{padding:calc(var(--nav-h) + 56px) 0 90px}
+.legal-page .wrap{width:min(760px,100% - 2*var(--gut))}
+.legal-page h2:not(.h2){font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.15;margin:44px 0 12px;scroll-margin-top:calc(var(--nav-h) + 20px)}
+.legal-page h3{font-size:18px;font-weight:600;margin:26px 0 8px}
+.legal-page ul{margin:0 0 16px;padding-left:20px}
+.legal-page li{margin-bottom:6px}

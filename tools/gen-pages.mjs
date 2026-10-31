@@ -195,6 +195,7 @@ const NAV = cur => `<header class="nav" id="nav">
       <li><a href="index.html#richiesta">Contatti</a></li>
     </ul>
   </nav>
+  <a class="lang-link" href="en/${cur}.html" hreflang="en" lang="en" aria-label="English version">EN</a>
   <a class="btn btn-sm" href="index.html#richiesta">Prenota</a>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
 </header>
@@ -213,6 +214,7 @@ const NAV = cur => `<header class="nav" id="nav">
     <li><a href="index.html#servizi">Servizi</a></li>
     <li><a href="index.html#tariffe">Tariffe</a></li>
     <li><a href="index.html#richiesta">Contatti</a></li>
+    <li><a href="en/${cur}.html" hreflang="en" lang="en">English</a></li>
   </ul>
 </div>`;
 
@@ -335,6 +337,10 @@ for (const P of PAGES) {
 <!-- DEPLOY STEP: sostituire https://example.com con l'indirizzo reale del sito prima di pubblicare -->
 <meta property="og:url" content="https://example.com/${P.file}">
 <meta property="og:image" content="https://example.com/${P.heroImg}">
+<link rel="canonical" href="https://example.com/${P.file}">
+<link rel="alternate" hreflang="it" href="https://example.com/${P.file}">
+<link rel="alternate" hreflang="en" href="https://example.com/en/${P.file}">
+<link rel="alternate" hreflang="x-default" href="https://example.com/${P.file}">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="detail-page">
@@ -445,13 +451,17 @@ writeFileSync(`${OUT}/privacy.html`, `<!doctype html>
 <meta name="theme-color" content="#17211D">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="canonical" href="https://example.com/privacy.html">
+<link rel="alternate" hreflang="it" href="https://example.com/privacy.html">
+<link rel="alternate" hreflang="en" href="https://example.com/en/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://example.com/privacy.html">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body class="detail-page">
 <a class="skip" href="#main">Vai al contenuto</a>
 <div class="env" aria-hidden="true"></div>
 
-${NAV('')}
+${NAV('privacy')}
 
 <main id="main" tabindex="-1" class="legal-page">
   <div class="wrap">

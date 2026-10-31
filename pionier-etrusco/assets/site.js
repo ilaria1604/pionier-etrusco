@@ -755,7 +755,7 @@ if (form) {
         body: JSON.stringify({
           nome: v('nome'), email: v('email'), telefono: v('telefono'), arrivo: v('arrivo'), partenza: v('partenza'),
           sistemazione: v('sistemazione'), adulti: v('adulti'), bambini: v('bambini'), lettino: !cotBox.hidden && cot.checked,
-          messaggio: v('messaggio'), sito: v('sito'), ms: Date.now() - opened
+          messaggio: (document.documentElement.lang === 'en' ? '[EN] ' : '') + v('messaggio'), sito: v('sito'), ms: Date.now() - opened
         }),
         signal: AbortSignal.timeout(20000)
       });

@@ -1,12 +1,14 @@
 #!/bin/sh
 # Publish the site on GitHub Pages: builds dist/ and commits it to the gh-pages branch, then pushes.
 # Only new or changed files are uploaded (photos and videos are the same objects already on main).
+# The English pages are rebuilt first: a text with no translation stops the publishing.
 # Usage: sh tools/publish.sh
 set -e
 cd "$(dirname "$0")/.."
 URL=https://ilaria1604.github.io/pionier-etrusco
 NODE=$(command -v node || echo "$HOME/.local/node/bin/node")
 
+"$NODE" tools/gen-en.mjs
 "$NODE" tools/build.mjs "$URL"
 touch dist/.nojekyll
 

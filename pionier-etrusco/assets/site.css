@@ -1132,3 +1132,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .legal-page h3{font-size:18px;font-weight:600;margin:26px 0 8px}
 .legal-page ul{margin:0 0 16px;padding-left:20px}
 .legal-page li{margin-bottom:6px}
+
+/* ---------- language link ---------- */
+.lang-link{font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;color:inherit;text-decoration:none;padding:8px 4px;margin-left:auto}
+.lang-link+.btn{margin-left:0}
+.lang-link:hover{color:var(--accent-bright)}
+.nav.solid .lang-link:hover{color:var(--accent)}

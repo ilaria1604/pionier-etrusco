@@ -36,5 +36,10 @@ for (const p of pages) {
     .replace(/\s*<!-- DEPLOY STEP:[^>]*-->/g, '');
   fs.writeFileSync(out, html);
 }
+// for search engines, and the old addresses of the WordPress site
+const urls = pages.map(p => path.relative(SRC, p)).filter(r => r !== '404.html').map(r => `${SITE}/${r.replace(/(^|\/)index\.html$/, '$1')}`);
+fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}\n</urlset>\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+fs.copyFileSync(path.join(ROOT, 'tools/redirects.txt'), path.join(OUT, '_redirects'));
 console.log(`dist/: ${kept} file copiati, ${skipped.length} non usati lasciati fuori`);
 if (skipped.length) console.log('  fuori: ' + skipped.join(', '));

@@ -1,0 +1,334 @@
+/* Camping Pionier Etrusco · price calculator (listino 2027)
+   To update the season: change YEAR, the band dates and the prices below. */
+(() => {
+const boxes = document.querySelectorAll('.calc');
+if (!boxes.length) return;
+
+const YEAR = 2027;
+const D = (m, d) => Date.UTC(YEAR, m - 1, d);
+const DAY = 864e5;
+const OPEN = D(4, 15), CLOSE = D(9, 26);
+const SEASON = ['Lowest', 'Low', 'Mid', 'High'];
+
+// Weekly stays: [from, to) with the season index. Bungalow weeks run Saturday to Saturday, glamping and home Sunday to Sunday.
+// From 2027 glamping and home have different bands, so each house has its own list.
+const WEEK_BANDS = {
+  bung: [[D(4, 17), D(5, 22), 0], [D(5, 22), D(6, 19), 1], [D(6, 19), D(7, 24), 2], [D(7, 24), D(8, 21), 3], [D(8, 21), D(8, 28), 2], [D(8, 28), D(9, 11), 1], [D(9, 11), D(9, 25), 0]],
+  home: [[D(4, 18), D(5, 23), 0], [D(5, 23), D(6, 20), 1], [D(6, 20), D(7, 25), 2], [D(7, 25), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
+  glam: [[D(4, 18), D(5, 23), 0], [D(5, 23), D(6, 13), 1], [D(6, 13), D(8, 1), 2], [D(8, 1), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
+};
+// Pitches: each night is priced by the day it starts, ranges inclusive.
+// The 2027 PDF lists Media up to 23/07 and Alta from 23/07: the night of 23 July is priced Alta.
+const NIGHT_BANDS = [[D(4, 15), D(5, 20), 0], [D(5, 21), D(6, 17), 1], [D(6, 18), D(7, 22), 2], [D(7, 23), D(8, 24), 3], [D(8, 25), D(8, 31), 2], [D(9, 1), D(9, 13), 1], [D(9, 14), D(9, 26), 0]];
+const PITCH = { pitch: [9, 11, 14, 20], adult: [10, 11, 14, 16], kid: [0, 4, 6, 8], car: [4, 5, 5, 6] };
+
+const TYPES = {
+  piaz: { cap: 8, name: 'Pitch', sub: 'motorhome, caravan or tent', kind: 'night', pick: 'Piazzola camper' },
+  // cot: a camping cot can be added to the booking (no price in the 2027 list, so it does not change the total)
+  mono: { cap: 2, capNote: 'plus a travel cot on request', cot: true, name: 'Studio Bungalow', sub: '20 sqm, 2 guests', kind: 'week', band: 'sat', bands: 'bung', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
+  tri: { cap: 4, name: 'Two-bedroom Bungalow', sub: '28 sqm, 3 or 4 guests', kind: 'week', band: 'sat', bands: 'bung', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
+  sup5: { cap: 4, name: 'Superior Bungalow', sub: '48 sqm, 4 guests', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
+  sup6: { cap: 6, name: 'Superior Bungalow', sub: '48 sqm, 5 or 6 guests', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
+  glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 sqm, 4 guests', kind: 'week', band: 'sun', bands: 'glam', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
+  home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 sqm, 4 guests', kind: 'week', band: 'sun', bands: 'home', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
+};
+
+const fmtDay = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+const fmtShort = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+const eur = n => '€ ' + String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+// "dal 4 luglio all'11 luglio", "dal 1° agosto all'8 agosto": Italian elision before 8 and 11
+const dayWord = (t, art) => (art === 'da' ? 'from ' : 'to ') + new Date(t).getUTCDate() + ' ' + MONTHS[new Date(t).getUTCMonth()];
+// "5 → 12 luglio" or "26 luglio → 2 agosto": short enough for a phone
+const weekLabel = (a, b) => { const A = new Date(a), B = new Date(b); return A.getUTCMonth() === B.getUTCMonth() ? `${A.getUTCDate()} → ${B.getUTCDate()} ${MONTHS[B.getUTCMonth()]}` : `${A.getUTCDate()} ${MONTHS[A.getUTCMonth()]} → ${B.getUTCDate()} ${MONTHS[B.getUTCMonth()]}`; };
+const span = (a, b) => dayWord(a, 'da') + ' ' + dayWord(b, 'a');
+const iso = t => new Date(t).toISOString().slice(0, 10);
+const parse = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3]) : NaN; };
+const bandOf = (list, t, inclusive) => { for (const [a, b, s] of list) if (t >= a && (inclusive ? t <= b : t < b)) return s; return -1; };
+const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
+
+// how each type reads in the select, grouped
+const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
+const optLabel = k => ({ piaz: 'Pitch for motorhome, caravan or tent', mono: 'Studio, 20 sqm, 2 guests', tri: 'Two-bedroom, 28 sqm, 3 or 4 guests', sup5: 'Superior, 48 sqm, 4 guests', sup6: 'Superior, 48 sqm, 5 or 6 guests', glam: 'Glamping, 45 sqm, 4 guests', home: 'Home, 34 sqm, 4 guests' })[k];
+const WD = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+const WDLONG = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const longDay = t => fmtDay.format(t);
+// days before today cannot be booked; once the listed season is over everything stays selectable (until next year's prices go in)
+const TODAY = (() => { const n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); })();
+const FIRST = TODAY > CLOSE ? OPEN : Math.max(OPEN, TODAY);
+const CHECK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+// Bungalow, glamping, home: dates are free, but a stay that touches 14 June to 31 August must be made of whole weeks,
+// arriving on the house's changeover day (Saturday for bungalows, Sunday for glamping and home).
+const SUMMER_FROM = D(6, 14), SUMMER_TO = D(9, 1);
+const DAYNAME = { sat: 'Saturday', sun: 'Sunday' }, DAYNUM = { sat: 6, sun: 0 };
+const touchesSummer = (a, b) => a < SUMMER_TO && b > SUMMER_FROM;
+
+let uid = 0;
+boxes.forEach(box => {
+  const id = 'calc' + (++uid);
+  const allowed = (box.dataset.types || Object.keys(TYPES).join(',')).split(',').filter(k => TYPES[k]);
+  const single = allowed.length === 1;
+  const onHome = !!document.getElementById('form');
+  let type = allowed.includes(box.dataset.preset) ? box.dataset.preset : (single ? allowed[0] : null);
+  let adults = 0, kids = 0, from = null, to = null;
+  let view = new Date(FIRST).getUTCMonth();
+  const head = (i, t) => `<p class="calc-q" id="${id}-q${i}"><span class="n" aria-hidden="true">${i}</span>${t}</p>`;
+  const stepper = (cls, label) => `<div class="stepper" role="group" aria-label="${label}"><button type="button" class="${cls}-m" aria-label="${label}: one fewer">−</button><output class="${cls}" aria-live="polite">0</output><button type="button" class="${cls}-p" aria-label="${label}: one more">+</button></div>`;
+  const groups = GROUPS.map(([g, keys]) => {
+    const ks = keys.filter(k => allowed.includes(k));
+    if (!ks.length) return '';
+    const opts = ks.map(k => `<option value="${k}"${k === type ? ' selected' : ''}>${optLabel(k)}</option>`).join('');
+    return g && ks.length > 1 ? `<optgroup label="${g}">${opts}</optgroup>` : opts;
+  }).join('');
+
+  // one card, three columns of the same height: what and how many / when / price
+  box.innerHTML = `
+    <div class="calc-card" data-step="1">
+      <ol class="calc-prog" aria-hidden="true"><li>Who and how many</li><li>Dates</li><li>Price</li></ol>
+      <div class="calc-col">
+        <div role="group" aria-labelledby="${id}-q1">
+          ${head(1, 'Where do you want to sleep?')}
+          ${single
+            ? `<p class="calc-fixed"><b>${TYPES[type].name}</b><span>${TYPES[type].sub}</span></p>`
+            : `<label class="fld"><span>Accommodation</span><select class="c-type">${type ? '' : '<option value="" selected disabled>Choose your accommodation</option>'}${groups}</select></label>`}
+        </div>
+        <div class="calc-sep" role="group" aria-labelledby="${id}-q2">
+          ${head(2, 'How many are you?')}
+          <div class="fld2">
+            <div class="fld"><span>Adults</span>${stepper('c-a', 'Adults')}</div>
+            <div class="fld"><span>Children <small class="c-kidage"></small></span>${stepper('c-k', 'Children')}</div>
+          </div>
+          <p class="calc-cap" aria-live="polite"></p>
+          <label class="chk c-car-f" hidden><input type="checkbox" class="c-car"><span>I have a second car</span></label>
+          <label class="chk c-cot-f" hidden><input type="checkbox" class="c-cot"><span>Add a travel cot</span></label>
+        </div>
+        <div class="calc-stepnav"><button type="button" class="btn c-next" data-to="2">Next</button></div>
+      </div>
+      <div class="calc-col" role="group" aria-labelledby="${id}-q3">
+        ${head(3, 'When are you arriving?')}
+        <p class="cal-help"></p>
+        <div class="cal">
+          <div class="cal-head"><button type="button" class="cal-nav cal-prev" aria-label="Previous month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><b class="cal-m" aria-live="polite"></b><button type="button" class="cal-nav cal-next" aria-label="Next month"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
+          <div class="cal-grid" role="grid"></div>
+        </div>
+        <p class="cal-legend" hidden><span class="dot" aria-hidden="true"></span><span class="txt"></span></p>
+        <p class="cal-sum" aria-live="polite"></p>
+        <div class="calc-stepnav"><button type="button" class="c-back" data-to="1">Back</button><button type="button" class="btn c-next" data-to="3">See the price</button></div>
+      </div>
+      <div class="calc-col calc-out" role="group" aria-labelledby="${id}-q4">
+        ${head(4, 'Your price')}
+        <div class="calc-res" aria-live="polite"></div>
+        <div class="calc-stepnav"><button type="button" class="c-back" data-to="2">Change the dates</button><button type="button" class="c-back" data-to="1">Change accommodation or guests</button></div>
+      </div>
+    </div>`;
+
+  const $ = s => box.querySelector(s);
+  const selType = $('.c-type'), car = $('.c-car'), cot = $('.c-cot'), res = $('.calc-res'), grid = $('.cal-grid');
+  const T = () => TYPES[type];
+  const weekly = () => type && T().kind === 'week';
+  const withCot = () => !!(type && T().cot && cot.checked);
+  const bounds = () => weekly()
+    ? [Math.max(FIRST, WEEK_BANDS[T().bands][0][0]), WEEK_BANDS[T().bands].at(-1)[1]]
+    : [Math.max(FIRST, OPEN), CLOSE];
+  const selectable = t => {
+    if (!type) return false;
+    const [lo, hi] = bounds();
+    if (t < lo) return false;
+    if (from !== null && to === null) return t > from ? t <= hi : t < hi;
+    return t < hi;
+  };
+  const changeDay = t => new Date(t).getUTCDay() === DAYNUM[T().band];
+  // why the chosen dates do not work in summer (null when they are fine)
+  const problem = () => {
+    if (!weekly() || from === null || to === null || !touchesSummer(from, to)) return null;
+    const n = (to - from) / DAY, day = DAYNAME[T().band];
+    if (!changeDay(from)) return `Arrival is on ${longDay(from)}: from 14 June to 31 August arrival is on a ${day}.`;
+    if (!changeDay(to)) return `Departure is on ${longDay(to)}: from 14 June to 31 August departure is on a ${day}.`;
+    if (n % 7) return `You chose ${plural(n, 'night', 'nights')}: from 14 June to 31 August stays are 7, 14 or 21 nights.`;
+    return null;
+  };
+  const drawCal = () => {
+    const first = Date.UTC(YEAR, view, 1), days = new Date(Date.UTC(YEAR, view + 1, 0)).getUTCDate();
+    const lead = (new Date(first).getUTCDay() + 6) % 7;
+    // in summer the changeover days get a dot; once an arrival is chosen, the right departures get a dashed ring
+    const sugFrom = weekly() && from !== null && to === null && changeDay(from) && touchesSummer(from, from + 7 * DAY);
+    $('.cal-m').textContent = MONTHS[view] + ' ' + YEAR;
+    $('.cal-prev').disabled = view <= new Date(FIRST).getUTCMonth();
+    $('.cal-next').disabled = view >= new Date(CLOSE).getUTCMonth();
+    let html = WD.map((d, i) => `<span class="cal-wd" aria-hidden="true" title="${WDLONG[i]}">${d}</span>`).join('') + '<span></span>'.repeat(lead);
+    for (let d = 1; d <= days; d++) {
+      const t = Date.UTC(YEAR, view, d);
+      const ok = selectable(t) || t === from || t === to;   // the chosen first and last day can always be tapped again
+      const inR = from !== null && t >= from && t <= (to ?? from);
+      const wk = weekly() && changeDay(t) && t >= SUMMER_FROM && t < SUMMER_TO;
+      const sug = sugFrom && t > from && (t - from) % (7 * DAY) === 0;
+      const cls = ['cal-d', inR ? 'in' : '', t === from ? 'start' : '', t === to ? 'end' : '', wk ? 'wk' : '', sug ? 'sug' : ''].filter(Boolean).join(' ');
+      html += `<button type="button" class="${cls}" data-t="${t}"${ok ? '' : ' disabled'} aria-pressed="${inR}" aria-label="${longDay(t)}${wk ? ', arrival day' : ''}">${d}</button>`;
+    }
+    grid.innerHTML = html;
+  };
+
+  const help = () => {
+    if (!type) return 'First choose your accommodation.';
+    const step = from !== null && to === null ? 'Now tap your departure day.' : 'Tap your arrival day, then your departure day.';
+    if (weekly()) return `${step} From 14 June to 31 August bookings are by the week, ${DAYNAME[T().band]} to ${DAYNAME[T().band]} (green dot).`;
+    return step;
+  };
+
+  const people = () => {
+    const cap = type ? T().cap : 8;
+    $('.c-a').textContent = adults; $('.c-k').textContent = kids;
+    $('.c-a-m').disabled = adults <= 0; $('.c-k-m').disabled = kids <= 0;
+    $('.c-a-p').disabled = !type || adults + kids >= cap; $('.c-k-p').disabled = !type || adults + kids >= cap;
+    $('.c-kidage').textContent = type && T().kind === 'night' ? '(3-8 years)' : '';
+    $('.c-car-f').hidden = !(type && T().kind === 'night');
+    $('.c-cot-f').hidden = !(type && T().cot);
+    $('.calc-cap').textContent = !type ? '' : T().kind === 'night'
+      ? 'Under 3s go free. A minimum of 2 people is charged per pitch.'
+      : `${T().name}: ${T().cap} people at most${T().capNote ? ', ' + T().capNote : ''}.`;
+  };
+
+  const request = () => ({ sist: T().pick, arrivo: iso(from), partenza: iso(to), adulti: adults, bambini: kids, ...(withCot() ? { lettino: 1 } : {}) });
+  const askLink = () => {
+    const p = new URLSearchParams(request());
+    return (onHome ? '?' : 'index.html?') + p.toString() + '#richiesta';
+  };
+
+  const result = () => {
+    const missing = [['your accommodation', !!type], ['how many people', adults > 0], ['your dates', from !== null && to !== null]];
+    if (missing.some(m => !m[1])) {
+      res.innerHTML = `<p class="calc-total empty"><b>€ ...</b></p><p class="calc-wait-t">The price appears once you have chosen:</p><ul class="calc-todo">${missing.map(([t, ok]) => `<li class="${ok ? 'ok' : ''}">${CHECK}${t}</li>`).join('')}</ul>`;
+      return;
+    }
+    if (problem()) {
+      const d = DAYNAME[T().band], dd = d === 'Saturday' ? 'a Saturday' : 'a Sunday';
+      res.innerHTML = `<p class="calc-total empty"><b>€ ...</b></p>
+      <div class="calc-bad" role="alert">
+        <p class="calc-bad-t">Check your dates</p>
+        <p>You selected <b>from ${longDay(from)} to ${longDay(to)}</b>.</p>
+        <p>From 14 June to 31 August you can only book <b>${d} to ${d}</b>: choose ${dd} for arrival and ${dd} for departure, one, two or three weeks later.</p>
+        <p class="calc-bad-why">${d}s are marked in the calendar with a green dot.</p>
+      </div>`;
+      return;
+    }
+    let total = 0, lines = [], notes = [];
+    if (weekly()) {
+      const n = (to - from) / DAY;
+      if (n % 7) {
+        // a short stay outside the summer: allowed, priced by the campsite
+        res.innerHTML = `
+      <p class="calc-total short"><b>On request</b><small>${plural(n, 'night', 'nights')}, short stay</small></p>
+      <p class="calc-note">Outside the summer you can also stay for just a few days. The price list is by the week: for short stays we will give you the price.</p>
+      ${withCot() ? `<p class="calc-note"><span class="calc-extra">${CHECK}Travel cot added to the request</span></p>` : ''}
+      <a class="btn calc-ask" href="${askLink()}">Ask for price and availability</a>`;
+        hookAsk();
+        return;
+      }
+      for (let w = from; w < to; w += 7 * DAY) {
+        const s = bandOf(WEEK_BANDS[T().bands], w, false);
+        total += T().price[s];
+        lines.push([span(w, w + 7 * DAY), `${SEASON[s]} season`, T().price[s]]);
+      }
+      if (withCot()) notes.push(`<span class="calc-extra">${CHECK}Travel cot added to the request</span>`);
+      notes.push('€ 50 is added on arrival for kitchenette cleaning.');
+    } else {
+      const billed = Math.max(adults, 2 - kids);
+      const per = [0, 0, 0, 0], sum = [0, 0, 0, 0];
+      for (let t = from; t < to; t += DAY) {
+        const s = bandOf(NIGHT_BANDS, t, true);
+        per[s]++;
+        sum[s] += PITCH.pitch[s] + billed * PITCH.adult[s] + kids * PITCH.kid[s] + (car.checked ? PITCH.car[s] : 0);
+      }
+      per.forEach((c, s) => { if (c) { total += sum[s]; lines.push([plural(c, 'night', 'nights'), `${SEASON[s]} season`, sum[s]]); } });
+      notes.push(`Includes the pitch, ${[plural(billed, 'adult', 'adults'), kids ? plural(kids, 'child', 'children') : '', car.checked ? 'the second car' : ''].filter(Boolean).join(', ')}.`);
+      if (per[3] && (to - from) / DAY < 7) notes.push('<b>In high season the minimum stay is 7 nights.</b>');
+    }
+    res.innerHTML = `
+      <p class="calc-total"><b>${eur(total)}</b><small>taxes and VAT included</small></p>
+      <ul class="calc-lines">${lines.map(l => `<li><span>${l[0]}<small>${l[1]}</small></span><b>${eur(l[2])}</b></li>`).join('')}</ul>
+      ${notes.map(x => `<p class="calc-note">${x}</p>`).join('')}
+      <a class="btn calc-ask" href="${askLink()}">Check availability</a>
+      <p class="calc-note small">Indicative price: we will confirm availability.</p>`;
+    hookAsk();
+  };
+  function hookAsk() {
+    if (onHome) $('.calc-ask').addEventListener('click', e => {
+      e.preventDefault();
+      window.prefillRequest && window.prefillRequest(request());
+      const target = document.getElementById('richiesta');
+      if (target) target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+  }
+
+  const summary = () => {
+    if (from === null) return '';
+    if (to === null) return `Arrival: <b>${longDay(from)}</b>. Now choose your departure.<br><small>To remove the arrival, tap it again.</small>`;
+    const n = (to - from) / DAY;
+    const len = weekly() && n % 7 === 0 ? plural(n / 7, 'week', 'weeks') : plural(n, 'night', 'nights');
+    return `From <b>${longDay(from)}</b> to <b>${longDay(to)}</b> (${len}).<br><small>To remove a day, tap it again, or <button type="button" class="cal-reset">clear the dates</button>.</small>`;
+  };
+
+  // phones: one step at a time (the computer shows the three columns together)
+  const card = $('.calc-card');
+  const setStep = n => {
+    card.dataset.step = n;
+    if (matchMedia('(max-width:720px)').matches) {
+      const top = card.getBoundingClientRect().top;
+      if (top < 110 || top > innerHeight * .5) card.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+  };
+  const render = () => {
+    people();
+    $('.cal-help').textContent = help();
+    $('.cal').classList.toggle('off', !type);
+    drawCal();
+    $('.cal-sum').innerHTML = summary();
+    const lg = $('.cal-legend');
+    lg.hidden = !weekly();
+    if (weekly()) $('.txt', lg).textContent = `Green dot: ${T().band === 'sat' ? 'Saturdays' : 'Sundays'} from 14 June to 31 August, the only arrival and departure days in summer.`;
+    result();
+    $('.c-next[data-to="2"]').disabled = !(type && adults > 0);
+    $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null);
+  };
+
+  const setType = k => {
+    const wasWeekly = weekly(), oldBand = type && T().band;
+    type = k;
+    if (selType) { selType.value = k; const ph = selType.querySelector('option[value=""]'); if (ph) ph.remove(); }
+    // dates only survive if the booking rhythm is the same
+    if (wasWeekly !== weekly() || oldBand !== (T().band)) { from = null; to = null; }
+    // people above the new maximum: drop children first, then adults
+    while (adults + kids > T().cap) { if (kids > 0) kids--; else adults--; }
+    render();
+  };
+
+  grid.addEventListener('click', e => {
+    const b = e.target.closest('.cal-d');
+    if (!b || b.disabled) return;
+    const t = +b.dataset.t;
+    // tap the arrival, then the departure; tapping a chosen day again takes it away
+    if (t === from) { from = null; to = null; }
+    else if (t === to) to = null;
+    else if (from === null || to !== null || t < from) { from = t; to = null; }
+    else to = t;
+    render();
+  });
+  box.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.matches('.c-next, .c-back')) { setStep(+b.dataset.to); return; }
+    if (b.matches('.cal-prev')) view--; else if (b.matches('.cal-next')) view++;
+    else if (b.matches('.cal-reset')) { from = null; to = null; }
+    else if (b.matches('.c-a-m')) adults = Math.max(0, adults - 1); else if (b.matches('.c-a-p')) adults++;
+    else if (b.matches('.c-k-m')) kids = Math.max(0, kids - 1); else if (b.matches('.c-k-p')) kids++;
+    else return;
+    render();
+  });
+  box.addEventListener('change', e => { if (e.target === selType) setType(e.target.value); else render(); });
+  // buttons elsewhere on the page can preselect a type: <a href="#calcola" data-calc-pick="tri">
+  document.querySelectorAll('[data-calc-pick]').forEach(a => a.addEventListener('click', () => {
+    if (allowed.includes(a.dataset.calcPick)) setType(a.dataset.calcPick);
+  }));
+  if (type) setType(type); else render();
+});
+})();

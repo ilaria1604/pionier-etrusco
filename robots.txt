@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ilaria1604.github.io/pionier-etrusco/sitemap.xml

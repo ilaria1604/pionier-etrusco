@@ -794,3 +794,12 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - drop `.html` from canonical, `hreflang`, `og:url` and the sitemap;
   - switch off GitHub Pages, whose terms do not allow it to host an online business.
 - **Checked.** Calculator totals match the Italian pages (bungalow, home, pitch); summer date errors, short stays, form errors and sending in English; 375 px with no sideways scroll on all six English pages and the Italian home and bungalow pages; no console errors, no missing files.
+
+### Rev 82: the walk dot can be dragged
+- **What.** In the sea section the dot can now be dragged along the path with the mouse or a finger, as well as walked with the button. The clock and the button's fill follow the dot, and reaching 98.5% of the path counts as arrival.
+- **Letting go halfway.** The dot stays where it is. It can be dragged further, or the button finishes the walk from there (`hp0`).
+- **Target.** An invisible `#walker-hit` circle (radius 34) follows the dot, so it is easy to grab. `touch-action:none` applies only to that circle, so the page still scrolls everywhere else.
+- **Phones.** The drawing slides while the dot moves, so the dot's path on screen is measured on grabbing it (`screenPath`, which reads the slide at `--hp` 0 and 1 instead of repeating the CSS value). The dot stays under the pointer.
+- **Hint.** The dot pulses slowly until it first moves (`.at-start`), because nothing else says it can be dragged. Off with reduced motion.
+- **After arrival.** The dot can no longer be grabbed. "Rifai la passeggiata" starts again.
+- **Checked.** Real mouse drags at 1280 and at 665 px, where the drawing slides: the dot lands exactly under the pointer, arrival opens the beaches, the button continues from a half-way dot, and it restarts after arrival. Italian and English, no errors. Not tried with a real finger on a phone.

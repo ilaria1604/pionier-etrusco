@@ -308,7 +308,15 @@ p{margin:0 0 14px}
 .walk-svg .pine{fill:none;stroke:rgba(243,238,231,.55);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .walk-svg .sea{fill:none;stroke:var(--accent-bright);stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease-out)}
 .mare.arrived .walk-svg .sea{stroke-dashoffset:0}
-.walker{fill:var(--canvas);stroke:var(--accent-bright);stroke-width:3}
+.walker{fill:var(--canvas);stroke:var(--accent-bright);stroke-width:3;pointer-events:none}
+/* the dot can be dragged: a bigger invisible target, and a slow pulse until it first moves */
+.walker-hit{fill:none;pointer-events:all;cursor:grab;touch-action:none}
+.walker-hit:hover + .walker{stroke-width:5}
+.mare.dragging,.mare.dragging .walker-hit{cursor:grabbing;user-select:none;-webkit-user-select:none}
+.mare.arrived .walker-hit{pointer-events:none}
+.walk-svg.at-start .walker{animation:walker-hint 2.4s ease-in-out infinite}
+@keyframes walker-hint{50%{stroke-width:11;stroke-opacity:.45}}
+@media (prefers-reduced-motion:reduce){.walk-svg.at-start .walker{animation:none}}
 .walk-labels{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:14px;letter-spacing:.06em;color:var(--on-night-2);margin-top:6px}
 .walk-ui{display:flex;flex-wrap:wrap;align-items:center;gap:22px 32px;margin-top:34px}
 .clock{font-family:var(--f-mono);font-weight:700;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:.02em;color:var(--canvas);min-width:4ch;font-variant-numeric:lining-nums tabular-nums}

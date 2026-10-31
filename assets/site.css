@@ -302,7 +302,7 @@ p{margin:0 0 14px}
 .mare-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,33,29,.92) 0%,rgba(23,33,29,.55) 45%,rgba(23,33,29,.9) 100%)}
 .mare.arrived .mare-bg{opacity:1}
 .walk{position:relative;margin-top:40px}
-.walk-svg{width:100%;height:auto;overflow:visible}
+.walk-svg{width:100%;height:auto;overflow:visible;touch-action:pan-y}
 .walk-svg .route-ghost{fill:none;stroke:rgba(243,238,231,.16);stroke-width:2;stroke-dasharray:2 9;stroke-linecap:round}
 .walk-svg .route{fill:none;stroke:var(--accent-bright);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--hp,0))}
 .walk-svg .pine{fill:none;stroke:rgba(243,238,231,.55);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -310,7 +310,7 @@ p{margin:0 0 14px}
 .mare.arrived .walk-svg .sea{stroke-dashoffset:0}
 .walker{fill:var(--canvas);stroke:var(--accent-bright);stroke-width:3;pointer-events:none}
 /* the dot can be dragged: a bigger invisible target, and a slow pulse until it first moves */
-.walker-hit{fill:none;pointer-events:all;cursor:grab;touch-action:none}
+.walker-hit{fill:none;pointer-events:all;cursor:grab}
 .walker-hit:hover + .walker{stroke-width:5}
 .mare.dragging,.mare.dragging .walker-hit{cursor:grabbing;user-select:none;-webkit-user-select:none}
 .mare.arrived .walker-hit{pointer-events:none}

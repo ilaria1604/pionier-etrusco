@@ -122,22 +122,46 @@
 .cmap .cell.cur rect,.cmap .cell.cur polygon{stroke:var(--night);stroke-width:2.6}
 .cmap .cell.cur text{opacity:1}
 
-/* phones: the map is a preview in the page; a tap opens it full screen with legend and zoom */
-.cmap-fsbar,.cmap-open{display:none}
+/* phones: the map is a preview in the page; a tap opens it full screen, where it moves and zooms like a maps app */
+.cmap-fsbar,.cmap-open,.cmap-zoom,.cmap-gest,.cmap-sheet-h,.cmap-prices-sheet{display:none}
+.cmap-sheet{display:contents}
 @media (max-width:720px){
-  .cmap-sec:not(.fs) .cmap-tools,.cmap-sec:not(.fs) .cmap-legend{display:none}
+  .cmap-sec:not(.fs) .cmap-tools,.cmap-sec:not(.fs) .cmap-sheet{display:none}
   .cmap-sec:not(.fs) .cmap{width:100%}
   .cmap-sec:not(.fs) .cmap-scroll{overflow:hidden}
   .cmap-sec:not(.fs) .cmap-frame{cursor:zoom-in;margin-top:22px}
   .cmap-open{display:inline-flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:600 16px var(--f-body);box-shadow:0 10px 24px -10px rgba(0,60,58,.7)}
   .cmap-open svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .cmap-sec.fs{position:fixed;inset:0;z-index:70;overflow-y:auto;overscroll-behavior:contain;padding:0 0 40px;background:var(--panel)}
-  .cmap-sec.fs .cmap-head,.cmap-sec.fs .cmap-open{display:none}
-  .cmap-sec.fs .cmap-fsbar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:4;margin:0 calc(-1*var(--gut));padding:10px var(--gut);background:rgba(233,224,213,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(106,87,75,.16)}
+  html.fs-lock,html.fs-lock body{overflow:hidden}
+
+  /* full screen: title bar, the map in all the space left, the legend in a panel that slides up from the bottom */
+  .cmap-sec.fs{--peek:calc(64px + env(safe-area-inset-bottom));position:fixed;inset:0;z-index:70;overflow:hidden;overscroll-behavior:contain;padding:0;background:var(--panel)}
+  .cmap-sec.fs .wrap{width:100%;height:100%;display:flex;flex-direction:column}
+  .cmap-sec.fs .cmap-head,.cmap-sec.fs .cmap-open,.cmap-sec.fs .cmap-tools{display:none}
+  .cmap-sec.fs .cmap-fsbar{display:flex;flex:none;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:6;padding:10px var(--gut);background:var(--panel);border-bottom:1px solid rgba(106,87,75,.16)}
   .cmap-fsbar b{font-family:var(--f-display);font-weight:700;font-size:20px}
   .cmap-close{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--text-primary);background:#fff;color:var(--text-primary);font:600 15px var(--f-body)}
   .cmap-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
-  .cmap-sec.fs .cmap{width:1100px;max-width:none}
-  .cmap-sec.fs .cmap-tools{margin-top:14px}
-  html.fs-lock,html.fs-lock body{overflow:hidden}
+  .cmap-sec.fs .cmap-frame{flex:1;min-height:0;margin:0 0 var(--peek);border-radius:0;box-shadow:none}
+  .cmap-sec.fs .cmap-scroll{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}
+  .cmap-sec.fs .cmap-scroll:active{cursor:grabbing}
+  .cmap-sec.fs .cmap{width:100%;height:100%;max-width:none;aspect-ratio:auto}
+
+  .cmap-sec.fs .cmap-zoom{display:flex;flex-direction:column;gap:8px;position:absolute;right:12px;bottom:14px;z-index:3}
+  .cmap-zoom button{display:grid;place-items:center;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 6px 18px -8px rgba(51,39,31,.55);cursor:pointer}
+  .cmap-zoom svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .cmap-sec.fs .cmap-gest{display:block;position:absolute;left:50%;top:12px;z-index:3;max-width:calc(100% - 24px);margin:0;padding:8px 14px;border-radius:999px;background:var(--night);color:var(--on-night);font-size:14px;line-height:1.3;text-align:center;pointer-events:none;opacity:0;transform:translateX(-50%);transition:opacity .4s var(--ease-out)}
+  .cmap-sec.fs .cmap-gest.show{opacity:.92}
+
+  .cmap-sec.fs .cmap-sheet{display:flex;flex-direction:column;position:absolute;left:0;right:0;bottom:0;z-index:5;max-height:min(72%,560px);padding-bottom:env(safe-area-inset-bottom);background:var(--panel);border-radius:20px 20px 0 0;box-shadow:0 -14px 30px -20px rgba(51,39,31,.5);transform:translateY(calc(100% - var(--peek)));transition:transform .35s var(--ease-out)}
+  .cmap-sec.fs .cmap-sheet.open{transform:none}
+  .cmap-sec.fs .cmap-sheet-h{display:flex;flex:none;align-items:center;gap:12px;position:relative;width:100%;min-height:64px;padding:14px var(--gut) 8px;border:0;background:none;color:var(--text-primary);font:600 16px var(--f-body);text-align:left;cursor:pointer}
+  .cmap-sheet-h .grip{position:absolute;top:7px;left:50%;width:38px;height:4px;margin-left:-19px;border-radius:2px;background:rgba(106,87,75,.35)}
+  .cmap-sheet-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cmap-sheet-sel{color:var(--accent)}
+  .cmap-sheet-sel:not(:empty)::before{content:" · ";color:var(--text-secondary)}
+  .cmap-sheet-h svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease-out)}
+  .cmap-sheet.open .cmap-sheet-h svg{transform:rotate(180deg)}
+  .cmap-sec.fs .cmap-legend{flex:1;min-height:0;margin:0;padding:2px var(--gut) 8px;overflow-y:auto;overscroll-behavior:contain}
+  .cmap-sec.fs .cmap-prices-sheet{display:inline-flex;flex:none;align-self:flex-start;margin:8px var(--gut) 16px}
 }

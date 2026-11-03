@@ -285,10 +285,20 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
       <div class="cmap-scroll">${svg}</div>
       <div class="cmap-tip" role="status" aria-live="polite"></div>
       <button type="button" class="cmap-open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Apri la mappa</button>
+      <div class="cmap-zoom" role="group" aria-label="Zoom della mappa">
+        <button type="button" class="cmap-zin" aria-label="Ingrandisci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <button type="button" class="cmap-zout" aria-label="Riduci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <button type="button" class="cmap-fit" aria-label="Mostra tutto il camping"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+      <p class="cmap-gest" aria-hidden="true">Due dita per ingrandire, un dito per spostarti</p>
     </div>
-    <div class="cmap-legend">
-      <div><h3>Sistemazioni</h3><ul>${typeLegend}</ul></div>
-      <div><h3>Servizi</h3><ul class="cols">${servLegend}</ul></div>
+    <div class="cmap-sheet">
+      <button type="button" class="cmap-sheet-h" aria-expanded="false"><span class="grip" aria-hidden="true"></span><span class="cmap-sheet-l"><span>Piazzole e servizi</span><span class="cmap-sheet-sel"></span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+      <div class="cmap-legend">
+        <div><h3>Sistemazioni</h3><ul>${typeLegend}</ul></div>
+        <div><h3>Servizi</h3><ul class="cols">${servLegend}</ul></div>
+      </div>
+      <a class="cmap-prices cmap-prices-sheet" href="#tariffe">Vedi le tariffe<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>`;

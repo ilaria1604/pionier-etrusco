@@ -366,8 +366,8 @@ p{margin:0 0 14px}
 .item h3{font-family:var(--f-display);font-weight:700;font-size:24px;margin:0 0 6px}
 .item p{color:var(--text-secondary);font-size:16px;margin:0;max-width:34ch}
 .item.photo{grid-column:span 2;grid-row:span 2;padding:0;overflow:hidden;position:relative;min-height:360px;color:var(--on-night)}
-.item.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
-.item.photo:hover img{transform:scale(1.03)}
+.item.photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.item.photo:hover>img{transform:scale(1.03)}
 .item.photo .cap{position:absolute;left:0;right:0;bottom:0;padding:70px 26px 24px;background:linear-gradient(transparent,rgba(12,16,14,.82))}
 .item.photo h3{color:var(--canvas)}
 .item.photo p{color:#E7DFD5}
@@ -380,6 +380,8 @@ p{margin:0 0 14px}
 .sport-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.45;color:#E7DFD5}
 .sport-list svg{flex:none;width:26px;height:26px;margin:0;fill:none;stroke:var(--accent-muted);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .sport-list b{display:block;font-weight:600;color:var(--canvas);font-size:16px}
+/* phone version of the Sport card (icon, one line, photo pile): hidden on larger screens */
+.sport-pile,.sport-ico,.sport-sub{display:none}
 @media (max-width:980px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.bento{grid-template-columns:1fr}.item.photo{grid-column:auto;grid-row:auto}}
 
@@ -1043,18 +1045,21 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .units::-webkit-scrollbar,.spiagge ul::-webkit-scrollbar,.album.archive::-webkit-scrollbar,.choose::-webkit-scrollbar,.places::-webkit-scrollbar{display:none}
   .units>*,.spiagge ul>*,.album.archive>*,.choose>*,.places>*{flex:0 0 80%;scroll-snap-align:start;min-width:0}
   .unit .ph{aspect-ratio:4/3}
-  /* services: one list, every card as tall as its own content (no empty cards next to the long Sport one) */
-  .bento{grid-template-columns:1fr;gap:10px;margin-top:26px}
-  .bento .item.photo,.bento .item.photo.sport{grid-column:auto;grid-row:auto;min-height:0}
-  .bento .item.photo.sport .cap{padding-top:150px}
-  .bento .item:not(.photo){display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start;padding:16px 16px 18px}
-  .bento .item:not(.photo)>svg{grid-row:1/3;width:40px;height:40px;margin:2px 0 0}
-  .bento .item:not(.photo) h3{font-size:21px;margin:0;line-height:1.2}
-  .bento .item:not(.photo) p{grid-column:2;font-size:15px;line-height:1.5;max-width:none}
-  .bento .item.has-photos:not(.photo) h3{padding-right:62px}
-  /* the photo pile reaches down into the first line of the text: keep that line clear */
-  .bento .item.has-photos:not(.photo) p::before{content:"";float:right;width:52px;height:1.4em}
-  .bento .item .pile{top:14px;right:6px;transform:scale(.68);transform-origin:top right}
+  /* services: one row of cards that slides sideways, all built the same way: icon, title, a short text, the photo pile */
+  .bento{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin:26px calc(-1*var(--gut)) 0;padding:4px var(--gut) 14px;scrollbar-width:none}
+  .bento::-webkit-scrollbar{display:none}
+  .bento>.item{flex:0 0 80%;scroll-snap-align:start;min-width:0;padding:18px 18px 20px}
+  .bento .item>svg{display:block;width:40px;height:40px;margin:0 0 14px}
+  .bento .item h3{font-size:21px;margin:0 0 6px;line-height:1.2}
+  .bento .item p{font-size:15px;line-height:1.5;max-width:none}
+  .bento .item .pile{top:14px;right:12px;transform:scale(.8);transform-origin:top right}
+  /* Sport: no background photo on the phone, it looks like the other cards */
+  .bento .item.photo.sport{display:block;min-height:0;overflow:visible;color:inherit}
+  .bento .item.photo.sport>img,.bento .item.sport .ph-badge,.bento .item.sport .sport-list{display:none}
+  .bento .item.sport .sport-pile,.bento .item.sport .sport-ico,.bento .item.sport .sport-sub{display:block}
+  .bento .item.photo.sport .cap{position:static;padding:0;background:none}
+  .bento .item.photo.sport h3{color:inherit;font-size:21px;margin:0 0 6px}
+  .bento .item.photo.sport p{color:var(--text-secondary)}
   .item:hover{transform:none}
   .album.archive figure,.album.archive figure:nth-child(n){transform:none!important}
   .album.archive{row-gap:0;margin-top:14px}

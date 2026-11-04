@@ -14,23 +14,23 @@
 
 .cmap .street{fill:#FBF8F3}
 .cmap .edge{fill:none;stroke:#DDD2C5;stroke-width:1.2}
-.cmap .land{fill:#DDE4CD}
+.cmap .land{fill:#EBE3DC}
 .cmap .land-pines{fill:url(#cm-pines-s)}
-.cmap .pine{fill:#D2DBBE}
-.cmap .pine.d{fill:#86A375}
+.cmap .pine{fill:#DED1C6}
+.cmap .pine.d{fill:#A08D80}
 .cmap .road{fill:#FBF8F3}
-.cmap .lawn{fill:#CBD9B6;stroke:#A6D9D7;stroke-width:4;stroke-linejoin:round}
-.cmap .macchia{fill:#93AE82}
+.cmap .lawn{fill:#E3D7CE;stroke:#94D2CF;stroke-width:4;stroke-linejoin:round}
+.cmap .macchia{fill:#B5A497}
 .cmap .macchia-pines{fill:url(#cm-pines)}
-.cmap .lake{fill:#A6D9D7;stroke:#4FB9B6;stroke-width:2}
-.cmap .wave{fill:none;stroke:#4FB9B6;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;display:inline;width:auto;height:auto}
-.cmap .strip{fill:#FBF8F3;stroke:#A6D9D7;stroke-width:3;stroke-linejoin:round}
+.cmap .lake{fill:#94D2CF;stroke:#00ADAA;stroke-width:2}
+.cmap .wave{fill:none;stroke:#00ADAA;stroke-width:1.8;stroke-linecap:butt;stroke-linejoin:miter;display:inline;width:auto;height:auto}
+.cmap .strip{fill:#FBF8F3;stroke:#94D2CF;stroke-width:3;stroke-linejoin:round}
 .cmap .lane{fill:none;stroke:#DDD2C5;stroke-width:1.2;stroke-dasharray:7 6}
-.cmap .path{fill:#EEF1E4}
-.cmap .field{fill:#E4EBD6;stroke:#FBF8F3;stroke-width:2.5}
+.cmap .path{fill:#F3EEE7}
+.cmap .field{fill:#F0EBE6;stroke:#FBF8F3;stroke-width:2.5}
 .cmap .field-l{fill:none;stroke:#FBF8F3;stroke-width:1.6}
 .cmap .pool-deck{fill:#FBF8F3}
-.cmap .pool{fill:#A6D9D7;stroke:#4FB9B6;stroke-width:1.5}
+.cmap .pool{fill:#94D2CF;stroke:#00ADAA;stroke-width:1.5}
 .cmap .bld{fill:#fff;stroke:#DDD2C5;stroke-width:1}
 .cmap .bld-o{fill:none;stroke:#DDD2C5;stroke-width:1}
 .cmap .ground{fill:#FFFDF9}
@@ -40,17 +40,19 @@
 
 .cmap .cell{transition:opacity .4s var(--ease-out)}
 .cmap .cell rect,.cmap .cell polygon{stroke:#FFFDF9;stroke-width:1.1}
-.cmap .t-P rect,.cmap .t-P polygon{fill:#E6C9A8}
-.cmap .t-T rect,.cmap .t-T polygon{fill:#C4855C}
-.cmap .t-G rect,.cmap .t-G polygon{fill:#7A4E3D}
-.cmap .t-GL rect,.cmap .t-GL polygon{fill:#F7E8D7;stroke:#DDBF9C}
-.cmap .t-H rect,.cmap .t-H polygon{fill:#587486}
-.cmap .t-B rect,.cmap .t-B polygon{fill:#8D9A93}
-.cmap .t-B .deck{fill:#C9D1CC}
+.cmap .t-P rect,.cmap .t-P polygon{fill:#DACCC0}
+.cmap .t-T rect,.cmap .t-T polygon{fill:#A59386}
+.cmap .t-G rect,.cmap .t-G polygon{fill:#705A4C}
+.cmap .t-GL rect,.cmap .t-GL polygon{fill:#94D2CF}
+.cmap .t-H rect,.cmap .t-H polygon{fill:#00ADAA}
+.cmap .t-B rect,.cmap .t-B polygon{fill:#00807E}
+.cmap .t-B .deck{fill:#94D2CF}
 .cmap .t-B .slats{fill:none;stroke:#FFFDF9;stroke-width:1.1}
-.cmap .t-L rect,.cmap .t-L polygon{fill:#74C0BD}
+.cmap .t-L rect,.cmap .t-L polygon{fill:#FFFFFF;stroke:#A59386}
 .cmap .cell text{font-family:var(--f-mono);font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#5A4536;pointer-events:none;opacity:0;transition:opacity .5s var(--ease-out)}
-.cmap .t-T text,.cmap .t-G text,.cmap .t-B text,.cmap .t-H text{fill:#FBF4EC}
+.cmap .t-G text,.cmap .t-B text{fill:#FBF4EC}
+.cmap .t-T text{fill:#33271F}
+.cmap .t-H text,.cmap .t-GL text{fill:#0B3B3A}
 .cmap-frame[data-view="camp"] .cell text{opacity:1}
 /* when something is selected, every other place is switched off: flat light grey, no number */
 .cmap .cell rect,.cmap .cell polygon{transition:fill .35s var(--ease-out),stroke .35s var(--ease-out)}
@@ -64,7 +66,7 @@
 .cmap .zl{font-family:var(--f-mono);font-weight:700;font-size:22px;letter-spacing:.16em;text-transform:uppercase;fill:#F6F2EA}
 .cmap .zl.s{font-size:16px;letter-spacing:.1em;fill:#5E4C40}
 .cmap .zl.s.w{fill:#1E6563}
-.cmap .title{font-family:var(--f-display);font-size:40px;fill:#3F5A3A;text-anchor:middle}
+.cmap .title{font-family:var(--f-display);font-size:40px;fill:#705A4C;text-anchor:middle}
 
 .cmap .mk{cursor:pointer}
 .cmap .mk .dot{fill:#fff;stroke:var(--accent);stroke-width:1.3;transition:fill .25s var(--ease-out)}
@@ -88,13 +90,13 @@
 .cmap-legend button:hover{background:rgba(251,248,243,.7)}
 .cmap-legend button[aria-pressed="true"]{background:#DCEFEE}
 .cmap-legend .sw{width:18px;height:14px;border-radius:3px;flex:none}
-.cmap-legend .sw.t-P{background:#E6C9A8}
-.cmap-legend .sw.t-T{background:#C4855C}
-.cmap-legend .sw.t-G{background:#7A4E3D}
-.cmap-legend .sw.t-GL{background:#F7E8D7;box-shadow:inset 0 0 0 1px #DDBF9C}
-.cmap-legend .sw.t-H{background:#587486}
-.cmap-legend .sw.t-B{background:#8D9A93}
-.cmap-legend .sw.t-L{background:#74C0BD}
+.cmap-legend .sw.t-P{background:#DACCC0}
+.cmap-legend .sw.t-T{background:#A59386}
+.cmap-legend .sw.t-G{background:#705A4C}
+.cmap-legend .sw.t-GL{background:#94D2CF}
+.cmap-legend .sw.t-H{background:#00ADAA}
+.cmap-legend .sw.t-B{background:#00807E}
+.cmap-legend .sw.t-L{background:#FFFFFF;box-shadow:inset 0 0 0 1px #A59386}
 .cmap-legend svg{width:20px;height:20px;flex:none;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 @media (max-width:860px){.cmap-legend{grid-template-columns:1fr}.cmap-legend ul.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -138,7 +140,7 @@
   .cmap-sec.fs{--peek:calc(64px + env(safe-area-inset-bottom));position:fixed;inset:0;z-index:70;overflow:hidden;overscroll-behavior:contain;padding:0;background:var(--panel)}
   .cmap-sec.fs .wrap{width:100%;height:100%;display:flex;flex-direction:column}
   .cmap-sec.fs .cmap-head,.cmap-sec.fs .cmap-open,.cmap-sec.fs .cmap-tools{display:none}
-  .cmap-sec.fs .cmap-fsbar{display:flex;flex:none;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:6;padding:10px var(--gut);background:var(--panel);border-bottom:1px solid rgba(106,87,75,.16)}
+  .cmap-sec.fs .cmap-fsbar{display:flex;flex:none;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:6;padding:10px var(--gut);background:var(--panel);border-bottom:1px solid rgba(112,90,76,.16)}
   .cmap-fsbar b{font-family:var(--f-display);font-weight:700;font-size:20px}
   .cmap-close{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--text-primary);background:#fff;color:var(--text-primary);font:600 15px var(--f-body)}
   .cmap-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
@@ -156,7 +158,7 @@
   .cmap-sec.fs .cmap-sheet{display:flex;flex-direction:column;position:absolute;left:0;right:0;bottom:0;z-index:5;max-height:min(72%,560px);padding-bottom:env(safe-area-inset-bottom);background:var(--panel);border-radius:20px 20px 0 0;box-shadow:0 -14px 30px -20px rgba(51,39,31,.5);transform:translateY(calc(100% - var(--peek)));transition:transform .35s var(--ease-out)}
   .cmap-sec.fs .cmap-sheet.open{transform:none}
   .cmap-sec.fs .cmap-sheet-h{display:flex;flex:none;align-items:center;gap:12px;position:relative;width:100%;min-height:64px;padding:14px var(--gut) 8px;border:0;background:none;color:var(--text-primary);font:600 16px var(--f-body);text-align:left;cursor:pointer}
-  .cmap-sheet-h .grip{position:absolute;top:7px;left:50%;width:38px;height:4px;margin-left:-19px;border-radius:2px;background:rgba(106,87,75,.35)}
+  .cmap-sheet-h .grip{position:absolute;top:7px;left:50%;width:38px;height:4px;margin-left:-19px;border-radius:2px;background:rgba(112,90,76,.35)}
   .cmap-sheet-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cmap-sheet-sel{color:var(--accent)}
   .cmap-sheet-sel:not(:empty)::before{content:" · ";color:var(--text-secondary)}

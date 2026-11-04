@@ -584,7 +584,7 @@ $$('.more-btn').forEach(b => {
 
 /* ---------- phones: side arrows on every row of cards that scrolls sideways ---------- */
 // The arrows sit on the middle of the photos; the left one hides at the start, the right one at the end.
-$$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels').forEach(track => {
+$$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels, .bento').forEach(track => {
   const wrap = document.createElement('div');
   wrap.className = 'swipe';
   // reveal classes move to the wrapper so the arrows fade in together with the cards

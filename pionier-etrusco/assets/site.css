@@ -1048,7 +1048,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   /* services: one row of cards that slides sideways, all built the same way: icon, title, a short text, the photo pile */
   .bento{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin:26px calc(-1*var(--gut)) 0;padding:4px var(--gut) 14px;scrollbar-width:none}
   .bento::-webkit-scrollbar{display:none}
-  .bento>.item{flex:0 0 80%;scroll-snap-align:start;min-width:0;padding:18px 18px 20px}
+  /* the card being read sits in the middle, so the side arrows lie on the edges of the cards next to it and never on the words */
+  .bento>.item{flex:0 0 80%;scroll-snap-align:center;min-width:0;padding:18px 18px 20px}
   .bento .item>svg{display:block;width:40px;height:40px;margin:0 0 14px}
   .bento .item h3{font-size:21px;margin:0 0 6px;line-height:1.2}
   .bento .item p{font-size:15px;line-height:1.5;max-width:none}
@@ -1060,7 +1061,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .bento .item.photo.sport .cap{position:static;padding:0;background:none}
   .bento .item.photo.sport h3{color:inherit;font-size:21px;margin:0 0 6px}
   .bento .item.photo.sport p{color:var(--text-secondary)}
-  .item:hover{transform:none}
+  /* no hover look on phones: after a tap it stuck on the card, and the row cut its shadow off */
+  .item:hover{transform:none;box-shadow:none;background:rgba(255,252,247,.72)}
   .album.archive figure,.album.archive figure:nth-child(n){transform:none!important}
   .album.archive{row-gap:0;margin-top:14px}
   .places li{padding:16px 16px 18px;border:1px solid rgba(106,87,75,.22);border-radius:16px;background:#FBF8F3}

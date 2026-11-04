@@ -603,10 +603,14 @@ $$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels, 
   next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduced ? 'auto' : 'smooth' }));
   const place = () => {
     const c = track.firstElementChild;
-    const media = c && c.querySelector('img, video, .ph');
-    const y = media && media.offsetHeight > 40 ? media.getBoundingClientRect().top - track.getBoundingClientRect().top + media.offsetHeight / 2 : track.offsetHeight / 2;
-    // rows of text-only cards: the arrows go under the cards, so they never cover the words
-    wrap.classList.toggle('text-only', !(media && media.offsetHeight > 40));
+    // services: the arrows sit on the sides at the middle of the cards, as on the accommodation cards
+    const sides = track.matches('.bento');
+    const media = !sides && c && c.querySelector('img, video, .ph');
+    const y = media && media.offsetHeight > 40 ? media.getBoundingClientRect().top - track.getBoundingClientRect().top + media.offsetHeight / 2
+      // offsetTop: the card's resting place, not where its fade-in animation has it right now
+      : sides && c ? c.offsetTop + c.offsetHeight / 2 - 4 : track.offsetHeight / 2;
+    // other rows of text-only cards: the arrows go under the cards, so they never cover the words
+    wrap.classList.toggle('text-only', !sides && !(media && media.offsetHeight > 40));
     wrap.style.setProperty('--arrow-y', Math.round(y) + 'px');
   };
   const update = () => {
@@ -619,6 +623,8 @@ $$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels, 
   addEventListener('resize', () => { place(); update(); });
   addEventListener('load', () => { place(); update(); });
   track.querySelectorAll('img').forEach(i => i.addEventListener('load', place, { once: true }));
+  // the cards change height when the web fonts arrive: measure again then
+  if ('ResizeObserver' in window) new ResizeObserver(() => { place(); update(); }).observe(track);
   place(); update();
 });
 

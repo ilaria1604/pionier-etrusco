@@ -454,7 +454,8 @@ const showPlace = place => {
   const li = placeLis.find(l => l.dataset.place === place);
   if (!li) return;
   const track = li.parentElement;
-  if (track.scrollWidth > track.clientWidth + 8) track.scrollTo({ left: li.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft || 0), behavior: reduced ? 'auto' : 'smooth' });
+  // the cards snap to the centre of the row, so the chosen one is brought to the centre
+  if (track.scrollWidth > track.clientWidth + 8) track.scrollTo({ left: track.scrollLeft + li.getBoundingClientRect().left - track.getBoundingClientRect().left - (track.clientWidth - li.offsetWidth) / 2, behavior: reduced ? 'auto' : 'smooth' });
   const r = li.getBoundingClientRect();
   if (r.top < 80 || r.bottom > innerHeight - 90) li.scrollIntoView({ block: 'center', inline: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
 };
@@ -603,14 +604,13 @@ $$('.units, .spiagge ul, .album.archive, .choose:not(.single), .places, .reels, 
   next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduced ? 'auto' : 'smooth' }));
   const place = () => {
     const c = track.firstElementChild;
-    // services: the arrows sit on the sides at the middle of the cards, as on the accommodation cards
-    const sides = track.matches('.bento');
-    const media = !sides && c && c.querySelector('img, video, .ph');
+    // cards with a photo: the arrows sit on the middle of the photo. Text cards (services, beaches, excursions):
+    // on the middle of the card; those cards snap to the centre, so the arrows lie on the cards next to it, never on the words.
+    // The small photos of a pile do not count as a photo.
+    const media = c && c.querySelector('img:not(.pile img), video, .ph');
     const y = media && media.offsetHeight > 40 ? media.getBoundingClientRect().top - track.getBoundingClientRect().top + media.offsetHeight / 2
       // offsetTop: the card's resting place, not where its fade-in animation has it right now
-      : sides && c ? c.offsetTop + c.offsetHeight / 2 - 4 : track.offsetHeight / 2;
-    // other rows of text-only cards: the arrows go under the cards, so they never cover the words
-    wrap.classList.toggle('text-only', !sides && !(media && media.offsetHeight > 40));
+      : c ? c.offsetTop + c.offsetHeight / 2 - 4 : track.offsetHeight / 2;
     wrap.style.setProperty('--arrow-y', Math.round(y) + 'px');
   };
   const update = () => {

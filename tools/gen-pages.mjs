@@ -327,7 +327,7 @@ for (const P of PAGES) {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${P.title}</title>
 <meta name="description" content="${P.desc}">
-<meta name="theme-color" content="#28201B">
+<meta name="theme-color" content="#17211D">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <meta property="og:type" content="website">
@@ -448,7 +448,7 @@ writeFileSync(`${OUT}/privacy.html`, `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${LEGAL_TITLE}</title>
 <meta name="description" content="${LEGAL_DESC}">
-<meta name="theme-color" content="#28201B">
+<meta name="theme-color" content="#17211D">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="canonical" href="https://example.com/privacy.html">

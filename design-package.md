@@ -8,18 +8,18 @@ Deploy folder: `pionier-etrusco/` (index.html + assets/). Raw generations and re
 
 ## 2. The palette as CSS tokens
 
-Taken from the brand guide (Declinaz_LOGO Pionier2021, CMYK, shown on screen through macOS colour management: teal C100 Y41 = #00ADAA, light teal C46 Y19 = #94D2CF, brown C47 M61 Y68 K35 = #705A4C, sand C15 M20 Y23 = #DACCC0, white; rev 90) and tuned to the dusk grade of the hero. Declared deviation: sand canvas + a serif display is close to a banned default look, but here it IS the brand's own printed palette, the accent is the brand teal (not terracotta), and the signature line motif keeps it off the stock template. Final dusk tones get sampled from the approved footage after the video gate.
+Taken from the brand guide (Declinaz_LOGO Pionier2021: teal #00ADAA, light teal #A6D9D7, brown #745E51, sand #D3C4B9, off-white) and tuned to the dusk grade of the hero. Declared deviation: sand canvas + a serif display is close to a banned default look, but here it IS the brand's own printed palette, the accent is the brand teal (not terracotta), and the signature line motif keeps it off the stock template. Final dusk tones get sampled from the approved footage after the video gate.
 
 ```css
 :root{
   --canvas:#F3EEE7;        /* sabbia chiara, never pure white */
   --panel:#E9E0D5;         /* raised cards, sand */
-  --night:#28201B;         /* the logo brown, deep: dark sections (rev 90; was pine green #17211D) */
+  --night:#17211D;         /* pineta at dusk: hero stage, footer */
   --accent:#00807E;        /* deep brand teal: CTA fill with white text (4.8:1) */
   --accent-hover:#006B69;
   --accent-bright:#00ADAA; /* the logo's teal: lines and marks on dark */
-  --accent-muted:#94D2CF;  /* the logo's light teal: italic words on dark, glows, borders */
-  --text-secondary:#705A4C; /* the logo brown: 5.6:1 on canvas */
+  --accent-muted:#A6D9D7;  /* acqua chiara: whisper glows, particles, borders */
+  --text-secondary:#6A574B;
   --text-primary:#33271F;  /* tronco di pino */
 }
 ```
@@ -853,13 +853,5 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Form.** All fields drop the native look (`appearance:none`): iPhone added its own inner shadow and rounding and centred the dates. Text, email, phone, dates, list and numbers are all 50 px high with the text in the middle; the message box is 110 px. Placeholders, the empty list and empty dates are grey. The list has its own teal arrow. On iPhone and iPad an empty date field shows a calendar icon. Fields filled in by the browser keep the cream background. The error look keeps the list arrow.
 - **Checked.** 390 px Italian and 320 px English: arrows on the card centres at every step for services, excursions and beaches, the map tap, the beaches panel closed and open, no page overflow. Form empty, filled and with two errors, phone and desktop. Rows on piazzole and bungalow keep their arrow heights. Not tested on Safari or on a real phone.
 
-### Rev 90: every colour from the logo palette
-- **Source.** The brand guide gives five colours, in CMYK: teal, light teal, brown, sand and white. On screen they are #00ADAA, #94D2CF, #705A4C, #DACCC0 and #FFFFFF, read from the PDF through macOS colour management. Earlier the light teal (#A6D9D7) and the brown had been read slightly off.
-- **Exact values.** Light teal is now #94D2CF everywhere (token, map water, glows, borders). Secondary text is the logo brown #705A4C (5.6:1 on the canvas, 4.9:1 on the cards). The logo teal #00ADAA replaces the mid teal #4FB9B6 (map water outline, third price swatch).
-- **Still tuned, but from the palette.** Buttons and links keep the deep teal #00807E, because white on #00ADAA is only 2.8:1. Main text #33271F is the logo brown made darker. Canvas and cards are sand made lighter.
-- **Dark sections.** The pine green (#17211D, footer #111915) is gone. Hero stage, sea, request form, videos, booking band, offers box, cookie box, map tooltip, sticky bar and phone arrows use the logo brown made deep: #28201B, #312821 for the second tone, #1E1815 for the footer. All dark shadows and veils over photos and video use the same brown-black instead of a green-black. The browser bar colour (`theme-color`) is #28201B on every page and in `tools/gen-pages.mjs`.
-- **Italic words.** No terracotta. The italic word in each heading is the deep teal #00807E on light backgrounds and the light teal #94D2CF on dark ones and over photos and video. "Dal 19xx" is teal too. The `--terra` tokens are removed.
-- **Other.** The sunlit spots on the page background are white light instead of yellow, and the pine shade spots are brown instead of green. The specks in the sea section are sand. The bold words in the calculator notes are dark brown instead of amber.
-- **Map.** Pitches go from sand to brown: Piazzole #DACCC0, Piazzole tenda #A59386 (dark numbers), Tenda grande #705A4C. Rentals are teal: Bungalow #00807E (deck #94D2CF), Home #00ADAA, Glamping #94D2CF, both with dark teal numbers. Locali tecnici are white with a brown outline. Ground, pine wood, scrub, lawn, sports field and paths are tints of the sand and the brown instead of greens. Water is the light teal with a teal outline. The map title is the logo brown.
-- **Not changed.** The error red in the form and the calculator, and the green dot for changeover days, stay as signals.
-- **Checked.** Home and Piazzole at 1440 and 390 px, before and after: hero, services, sea, map (whole and zoomed, numbers readable on every type), request form, videos, booking band and footer. English pages regenerated.
+### Rev 91: back to the colours before rev 90
+- **Owner's choice.** Rev 90 (every colour from the logo palette: brown dark sections, teal italics, map in sand, brown and teal) was published and then undone at the owner's request. The site is back to the rev 89 colours: pine green dark sections, terracotta italics, the earlier map colours, light teal #A6D9D7 and secondary text #6A574B.

@@ -875,3 +875,10 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 95: square corners on the selected excursion
 - **Owner's request.** On desktop the selected excursion in the list (`.places li.sel`, after a click on the list or the map) no longer has rounded corners on the right: the light teal band is now a plain rectangle with the teal line on the left. On phones the excursions stay rounded cards, like the other cards.
 - **Right padding.** The selected row also gets 16px on the right (`padding-right`, animated like the left one), so the travel time no longer touches the end of the band.
+
+### Rev 96: the excursion text never re-wraps
+- **Owner's question.** Why did some lines wrap when clicking an excursion? The 16px padding on both sides of the selected row (rev 95) made the text 32px narrower, so at 1440px Capalbio and Argentario went from one line to two. The 10px hover shift did the same on a smaller scale.
+- **Selected row.** The band now grows outward instead of inward: `margin-inline:-16px` with `padding-inline:16px`, animated together, so the text keeps its place and width and the band runs 16px past the column on each side. The selected row has no bottom line, because a line wider than the others looked off. It still clears the map (about 40px at 1440px).
+- **Hover.** The name and the description move 10px right with `transform` instead of padding, so nothing re-wraps. The travel time stays at the right edge. The shift is skipped on the selected row.
+- **Phones.** No change. The cards keep their padding, with no shift and no negative margins.
+- **Checked.** At 1440, 1280, 1100, 900, 800 and 390px, every row keeps its height and line count with no state, on hover, selected, and selected while hovered.

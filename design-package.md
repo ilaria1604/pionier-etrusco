@@ -874,3 +874,4 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 95: square corners on the selected excursion
 - **Owner's request.** On desktop the selected excursion in the list (`.places li.sel`, after a click on the list or the map) no longer has rounded corners on the right: the light teal band is now a plain rectangle with the teal line on the left. On phones the excursions stay rounded cards, like the other cards.
+- **Right padding.** The selected row also gets 16px on the right (`padding-right`, animated like the left one), so the travel time no longer touches the end of the band.

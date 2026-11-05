@@ -480,7 +480,7 @@ p{margin:0 0 14px}
 .map .pt circle.hit,.map .pt.on circle.hit{fill:transparent;stroke:none}
 .map .pt:focus-visible circle:not(.hit){stroke:var(--accent-bright);stroke-width:3}
 .places li{cursor:pointer}
-.places li.sel{background:rgba(0,128,126,.08);box-shadow:inset 3px 0 0 var(--accent);padding-left:16px}
+.places li.sel{background:rgba(0,128,126,.08);box-shadow:inset 3px 0 0 var(--accent);padding-left:16px;padding-right:16px}
 .places li.sel h3{color:var(--accent)}
 .map .home circle{fill:var(--accent);stroke:var(--accent)}
 .map .home text{font-family:var(--f-display);font-weight:700;font-size:19px;fill:var(--text-primary)}
@@ -488,7 +488,7 @@ p{margin:0 0 14px}
 .dintorni.inview .map .home .pulse{animation-play-state:running}
 @keyframes pulse{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(3.2)}}
 .places{list-style:none;margin:0;padding:0}
-.places li{padding:14px 0;border-bottom:1px solid rgba(106,87,75,.25);cursor:default;transition:padding-left .45s var(--ease-out)}
+.places li{padding:14px 0;border-bottom:1px solid rgba(106,87,75,.25);cursor:default;transition:padding-left .45s var(--ease-out),padding-right .45s var(--ease-out)}
 .places li:hover,.places li:focus-within,.places li.on{padding-left:10px}
 .places h3{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-family:var(--f-display);font-weight:700;font-size:21px;margin:0 0 4px}
 .places .t{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-body);font-size:13.5px;color:var(--label);white-space:nowrap}

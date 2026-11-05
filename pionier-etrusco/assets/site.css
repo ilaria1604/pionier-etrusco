@@ -21,6 +21,8 @@
   --accent-muted:#A6D9D7;
   --text-secondary:#6A574B;
   --text-primary:#33271F;
+  --label:#716A64;          /* labels above headings: neutral grey, 4.6:1 on canvas */
+  --label-on-night:#A9A39D; /* the same labels on the dark sections */
   --on-night:#F3EEE7;
   --on-night-2:#C9BFB4;
   --line:#8A7A6E;
@@ -48,7 +50,9 @@ button,input,select,textarea{font:inherit;color:inherit}
 .skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;transition:top .3s var(--ease-out)}
 .skip:focus{top:12px}
 .wrap{width:min(1240px,100% - 2*var(--gut));margin-inline:auto}
-.label{font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.label{font-family:var(--f-body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin:0 0 14px}
+/* on the darker sand sections the grey goes one step darker, so it reads the same */
+.sistemazioni,.tariffe,.voci,.cmap-sec{--label:#6B645F}
 .h2{font-family:var(--f-display);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:1.06;letter-spacing:-.015em;margin:0 0 22px;max-width:24ch;text-wrap:balance}
 /* editorial accent: one word per heading in italic terracotta (rev 48) */
 .h2 em,.page-hero h1 em,.calc-title em,.arrive .big em,.hero-h em{font-style:italic;color:var(--terra)}
@@ -281,8 +285,8 @@ p{margin:0 0 14px}
 .unit h3{font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.1;margin:0}
 .unit .meta{font-family:var(--f-body);font-weight:500;font-size:15.5px;line-height:1.4;color:var(--text-secondary)}
 .unit .price{margin-top:auto;padding-top:14px;display:flex;align-items:baseline;justify-content:flex-start;gap:8px;border-top:1px dashed rgba(106,87,75,.35)}
-.unit .price b{font-family:var(--f-display);font-weight:700;font-size:22px;color:var(--accent)}
-.unit .price small{font-size:13px;color:var(--text-secondary)}
+.unit .price b{font-family:var(--f-body);font-weight:600;font-size:22px;color:var(--text-primary)}
+.unit .price small{font-size:13px;color:var(--text-primary)}
 .unit .go{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:rgba(251,248,243,.92);display:grid;place-items:center;transition:transform .5s var(--ease-out),background-color .35s var(--ease-out)}
 .unit .go svg{width:18px;height:18px;stroke:var(--text-primary);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .unit:hover .go{transform:rotate(-45deg);background:var(--accent)}
@@ -295,7 +299,7 @@ p{margin:0 0 14px}
 
 /* ---------- S3 mare (interactive) ---------- */
 .mare{position:relative;padding:120px 0 130px;background:var(--night);color:var(--on-night);overflow:hidden;isolation:isolate;scroll-margin-top:var(--nav-h)}
-.mare .label{color:var(--accent-muted)}
+.mare .label{color:var(--label-on-night)}
 .mare .h2{max-width:16ch}
 .mare-bg{position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity 1.6s var(--ease-soft)}
 .mare-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 70%}
@@ -533,7 +537,7 @@ p{margin:0 0 14px}
 .richiesta-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;opacity:.42}
 .richiesta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,33,29,.96) 0%,rgba(23,33,29,.78) 48%,rgba(23,33,29,.55) 100%)}
 .req-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,80px);align-items:start}
-.richiesta .label{color:var(--accent-muted)}
+.richiesta .label{color:var(--label-on-night)}
 .richiesta .h2{color:var(--canvas)}
 .richiesta .lede{color:#E2D9CE}
 .contacts{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:18px}
@@ -683,7 +687,7 @@ p{margin:0 0 14px}
 
 /* ---------- reels (silent vertical clips) ---------- */
 .reels-sec{padding:110px 0 120px;background:var(--night);color:var(--on-night);overflow:hidden}
-.reels-sec .label{color:var(--accent-muted)}
+.reels-sec .label{color:var(--label-on-night)}
 .reels-sec .h2{color:var(--canvas);margin:0}
 .reels-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 40px;margin-bottom:34px}
 .reels-head .lede{color:#DDD4C9;margin:14px 0 0}
@@ -982,8 +986,8 @@ body.detail-page .foot{padding-bottom:110px}
 .ch-body .cap{font-family:var(--f-mono);font-size:14px;color:var(--accent);margin:0 0 10px}
 .ch-desc{margin:0 0 16px;color:var(--text-secondary);font-size:15.5px;line-height:1.55}
 .ch-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:auto 0 0;padding-top:14px;border-top:1px dashed rgba(106,87,75,.3)}
-.ch-price b{font-family:var(--f-display);font-weight:700;font-size:28px;color:var(--accent)}
-.ch-price span{font-size:14px;color:var(--text-secondary)}
+.ch-price b{font-family:var(--f-body);font-weight:600;font-size:26px;color:var(--text-primary)}
+.ch-price span{font-size:14px;color:var(--text-primary)}
 .ch-links{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding-top:14px}
 .ch-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0;border:0;background:none;color:var(--accent);font:600 15.5px var(--f-body);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;cursor:pointer}
 .ch-link svg{width:19px;height:19px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

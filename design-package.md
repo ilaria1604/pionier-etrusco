@@ -28,7 +28,7 @@ Taken from the brand guide (Declinaz_LOGO Pionier2021: teal #00ADAA, light teal 
 
 - Display: **Young Serif** 400. Warm, heavy, vintage; the painted signs of a 1950s Italian seaside.
 - Body: **Figtree** 400, 500, 600. Quiet and legible.
-- Mono labels: **Courier Prime** 400, 700. The typewriter of a 1953 guest register.
+- Mono labels: **Courier Prime** 400, 700. The typewriter of a 1953 guest register. Since rev 92 the labels above the headings are in Figtree; Courier Prime stays for small captions, the map and the clock.
 
 ## 4. The band map (hero ~480vh, starting points for the flick test)
 
@@ -855,3 +855,9 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 91: back to the colours before rev 90
 - **Owner's choice.** Rev 90 (every colour from the logo palette: brown dark sections, teal italics, map in sand, brown and teal) was published and then undone at the owner's request. The site is back to the rev 89 colours: pine green dark sections, terracotta italics, the earlier map colours, light teal #A6D9D7 and secondary text #6A574B.
+
+### Rev 92: grey labels in the body font, black prices
+- **Labels above the headings** (`.label`, every page): Figtree 600, 13px, capitals spaced .12em, instead of Courier Prime 14px in teal. The colour is a neutral grey, so the heading is the first thing the eye reads. The grey is #716A64 on the canvas (4.6:1), #6B645F on the darker sand sections (Sistemazioni, Mappa, Tariffe, Dicono di noi; 4.5:1), and #A9A39D on the dark sections (Il mare, Video, Prenota; 6.6:1 or more). Tokens `--label` and `--label-on-night`.
+- **Prices in the accommodation cards.** The "Sistemazioni" cards on the home page (`.unit .price`) and the "Quale scegliere" cards on the Bungalow, Glamping and Home pages (`.ch-price`): the amount is Figtree 600 instead of Playfair, 22px and 26px, and the whole line (da, amount, a notte or a settimana) is the main text colour #33271F instead of teal and brown.
+- **Not changed.** The small teal mono captions under the card titles ("Fino a 4 persone"), the map labels, the clock in the sea section and the footer headings.
+- **Checked.** Home, Bungalow at 1440 and 390 px, before and after: labels on light, sand and dark sections, prices in both kinds of card.

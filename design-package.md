@@ -871,3 +871,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 94: no "dal 1953" under the logo
 - **Owner's request.** The big italic "dal 1953" under the drawn logo in "La nostra storia" (home, Italian and English) is removed, with its `.since` styles and its translation. The year stays in the label above the heading ("La nostra storia · dal 1953") and in the text. Checked at 1440 and 390 px.
+
+### Rev 95: square corners on the selected excursion
+- **Owner's request.** On desktop the selected excursion in the list (`.places li.sel`, after a click on the list or the map) no longer has rounded corners on the right: the light teal band is now a plain rectangle with the teal line on the left. On phones the excursions stay rounded cards, like the other cards.

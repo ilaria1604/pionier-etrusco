@@ -480,7 +480,7 @@ p{margin:0 0 14px}
 .map .pt circle.hit,.map .pt.on circle.hit{fill:transparent;stroke:none}
 .map .pt:focus-visible circle:not(.hit){stroke:var(--accent-bright);stroke-width:3}
 .places li{cursor:pointer}
-.places li.sel{background:rgba(0,128,126,.08);box-shadow:inset 3px 0 0 var(--accent);border-radius:0 12px 12px 0;padding-left:16px}
+.places li.sel{background:rgba(0,128,126,.08);box-shadow:inset 3px 0 0 var(--accent);padding-left:16px}
 .places li.sel h3{color:var(--accent)}
 .map .home circle{fill:var(--accent);stroke:var(--accent)}
 .map .home text{font-family:var(--f-display);font-weight:700;font-size:19px;fill:var(--text-primary)}

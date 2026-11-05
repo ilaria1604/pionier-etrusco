@@ -868,3 +868,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **One colour.** All of it uses the label grey: `--label` #716A64 on the canvas, #6B645F on the sand sections, and on the dark sections (Il mare, Video, Prenota, footer, photo viewer) `--label` switches to #A9A39D. The teal and the on-night beige that some of these texts had are gone.
 - **Kept as they were, apart from the font.** The clock digits stay cream (Figtree 600; tabular numbers, so the width does not change while it counts). The pitch numbers and zone names inside the camping map keep their colours, which are set for each pitch colour. The "EN" link stays the colour of the menu.
 - **Checked.** Home and Bungalow at 1440 and 390 px; map zoomed in, numbers readable on every pitch type.
+
+### Rev 94: no "dal 1953" under the logo
+- **Owner's request.** The big italic "dal 1953" under the drawn logo in "La nostra storia" (home, Italian and English) is removed, with its `.since` styles and its translation. The year stays in the label above the heading ("La nostra storia · dal 1953") and in the text. Checked at 1440 and 390 px.

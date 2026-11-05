@@ -77,7 +77,7 @@ export const TEXT = {
 
   // home page: opening
   'Le sistemazioni': 'The accommodation', 'sotto una pineta a 3 minuti dal mare.': 'under a pine wood 3 minutes from the sea.', 'Scorri o tocca qui': 'Scroll or tap here', 'Scopri il camping': 'Discover the campsite',
-  'dal 1953': 'since 1953', 'La nostra storia · dal 1953': 'Our story · since 1953',
+  'La nostra storia · dal 1953': 'Our story · since 1953',
   'Il Camping Pionier Etrusco nasce nel 1953 nella pineta di Montalto Marina. Oggi siamo alla terza generazione: per la nostra famiglia, più che un lavoro, è una passione e uno stile di vita.': 'Camping Pionier Etrusco was founded in 1953 in the pine wood of Montalto Marina. Today we are the third generation: for our family it is more than a job, it is a passion and a way of life.',
   'Il nostro obiettivo è semplice: che il Pionier Etrusco diventi il vostro camping, quello a cui tornare ogni estate. Ci trovate alla reception, al bar, tra le piazzole, pronti a consigliarvi una spiaggia o una gita.': 'Our goal is simple: for Pionier Etrusco to become your campsite, the one you come back to every summer. You will find us at reception, at the bar and among the pitches, ready to suggest a beach or a day trip.',
   "La pineta è a 100 metri dal mare. D'estate regala ombra e fresco, e ospita scoiattoli, tortore, upupe, assioli e ricci che ogni tanto passano a salutare.": 'The pine wood is 100 metres from the sea. In summer it gives shade and cool air, and it is home to squirrels, turtle doves, hoopoes, scops owls and hedgehogs that drop by now and then to say hello.',

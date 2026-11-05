@@ -28,7 +28,7 @@ Taken from the brand guide (Declinaz_LOGO Pionier2021: teal #00ADAA, light teal 
 
 - Display: **Young Serif** 400. Warm, heavy, vintage; the painted signs of a 1950s Italian seaside.
 - Body: **Figtree** 400, 500, 600. Quiet and legible.
-- Mono labels: **Courier Prime** 400, 700. The typewriter of a 1953 guest register. Since rev 92 the labels above the headings are in Figtree; Courier Prime stays for small captions, the map and the clock.
+- Mono labels: **Courier Prime** 400, 700. The typewriter of a 1953 guest register. Since rev 92 the labels above the headings are in Figtree, and since rev 93 Courier Prime is not used anywhere.
 
 ## 4. The band map (hero ~480vh, starting points for the flick test)
 
@@ -861,3 +861,10 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Prices in the accommodation cards.** The "Sistemazioni" cards on the home page (`.unit .price`) and the "Quale scegliere" cards on the Bungalow, Glamping and Home pages (`.ch-price`): the amount is Figtree 600 instead of Playfair, 22px and 26px, and the whole line (da, amount, a notte or a settimana) is the main text colour #33271F instead of teal and brown.
 - **Not changed.** The small teal mono captions under the card titles ("Fino a 4 persone"), the map labels, the clock in the sea section and the footer headings.
 - **Checked.** Home, Bungalow at 1440 and 390 px, before and after: labels on light, sand and dark sections, prices in both kinds of card.
+
+### Rev 93: no more Courier Prime, one grey for all small type
+- **Owner's request.** Courier Prime is removed from the whole site: its @font-face rules and the `--f-mono` token are gone, so the font is never downloaded. The files stay in `assets/fonts` but nothing loads them.
+- **Everything that used it is now Figtree.** Small capitals headings (map legend, beaches list, "Incluso nel prezzo" notes, "Cosa è incluso" boxes, footer columns, Fisso / Cellulare / Email under the contacts, "Minuti a piedi") use the label style: Figtree 600, 13px, capitals spaced .12em. Small lowercase text (captions under the card titles such as "Fino a 6 persone", travel times of the excursions, excursion map names, months of the season bar, notes in the price tables, album captions, "Dalle recensioni degli ospiti", "La tua piazzola" / "La spiaggia", map hint, submenu notes, step numbers in the calculator) is Figtree 400 at 13 to 14.5px, without letter spacing.
+- **One colour.** All of it uses the label grey: `--label` #716A64 on the canvas, #6B645F on the sand sections, and on the dark sections (Il mare, Video, Prenota, footer, photo viewer) `--label` switches to #A9A39D. The teal and the on-night beige that some of these texts had are gone.
+- **Kept as they were, apart from the font.** The clock digits stay cream (Figtree 600; tabular numbers, so the width does not change while it counts). The pitch numbers and zone names inside the camping map keep their colours, which are set for each pitch colour. The "EN" link stays the colour of the menu.
+- **Checked.** Home and Bungalow at 1440 and 390 px; map zoomed in, numbers readable on every pitch type.

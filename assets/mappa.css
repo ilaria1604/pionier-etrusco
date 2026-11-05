@@ -5,7 +5,7 @@
 .cmap-view{display:inline-flex;background:var(--canvas);border-radius:999px;padding:4px}
 .cmap-view button{border:0;background:none;padding:9px 18px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;color:var(--text-primary);transition:background .3s var(--ease-out),color .3s var(--ease-out)}
 .cmap-view button[aria-pressed="true"]{background:var(--accent);color:#fff}
-.cmap-hint{display:none;align-items:center;gap:8px;font-family:var(--f-mono);font-size:13px;color:var(--text-secondary);margin:0}
+.cmap-hint{display:none;align-items:center;gap:8px;font-family:var(--f-body);font-size:13.5px;color:var(--label);margin:0}
 .cmap-hint svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cmap-frame{position:relative;border-radius:22px;overflow:hidden;background:#FBF8F3;box-shadow:0 1px 0 rgba(51,39,31,.05),0 24px 60px -36px rgba(51,39,31,.4)}
 .cmap-scroll{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
@@ -49,7 +49,7 @@
 .cmap .t-B .deck{fill:#C9D1CC}
 .cmap .t-B .slats{fill:none;stroke:#FFFDF9;stroke-width:1.1}
 .cmap .t-L rect,.cmap .t-L polygon{fill:#74C0BD}
-.cmap .cell text{font-family:var(--f-mono);font-weight:700;text-anchor:middle;dominant-baseline:central;fill:#5A4536;pointer-events:none;opacity:0;transition:opacity .5s var(--ease-out)}
+.cmap .cell text{font-family:var(--f-body);font-weight:600;text-anchor:middle;dominant-baseline:central;fill:#5A4536;pointer-events:none;opacity:0;transition:opacity .5s var(--ease-out)}
 .cmap .t-T text,.cmap .t-G text,.cmap .t-B text,.cmap .t-H text{fill:#FBF4EC}
 .cmap-frame[data-view="camp"] .cell text{opacity:1}
 /* when something is selected, every other place is switched off: flat light grey, no number */
@@ -61,7 +61,7 @@
 .cmap.dim-type .halo{opacity:0}
 
 .cmap .labels text{pointer-events:none}
-.cmap .zl{font-family:var(--f-mono);font-weight:700;font-size:22px;letter-spacing:.16em;text-transform:uppercase;fill:#F6F2EA}
+.cmap .zl{font-family:var(--f-body);font-weight:600;font-size:22px;letter-spacing:.16em;text-transform:uppercase;fill:#F6F2EA}
 .cmap .zl.s{font-size:16px;letter-spacing:.1em;fill:#5E4C40}
 .cmap .zl.s.w{fill:#1E6563}
 .cmap .title{font-family:var(--f-display);font-size:40px;fill:#3F5A3A;text-anchor:middle}
@@ -81,7 +81,7 @@
 .cmap-tip.show{opacity:1}
 
 .cmap-legend{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px clamp(24px,4vw,56px);margin-top:30px}
-.cmap-legend h3{font-family:var(--f-mono);font-weight:400;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.cmap-legend h3{font-family:var(--f-body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin:0 0 10px}
 .cmap-legend ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
 .cmap-legend ul.cols{grid-template-columns:repeat(3,minmax(0,1fr))}
 .cmap-legend button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:10px;font-size:15px;line-height:1.3;cursor:pointer;color:var(--text-primary);transition:background .25s var(--ease-out)}

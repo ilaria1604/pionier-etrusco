@@ -238,11 +238,12 @@ p{margin:0 0 14px}
 .fam-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
 .fig{position:sticky;top:calc(var(--nav-h) + 40px)}
 .logo-draw{position:relative;width:min(100%,360px);aspect-ratio:560/590}
-.logo-draw span{position:absolute;inset:0;-webkit-mask:url(logo-mark.png) center/contain no-repeat;mask:url(logo-mark.png) center/contain no-repeat}
+.logo-draw span{position:absolute;inset:0;-webkit-mask:url(logo-body.png) center/contain no-repeat;mask:url(logo-body.png) center/contain no-repeat}
+/* the cup in the figure's hand is a layer of its own that rocks around the grip while the section scrolls (rev 98) */
+.logo-draw .cup{-webkit-mask:none;mask:none;transform:rotate(var(--cup,0deg));transform-origin:69.6% 53.2%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.logo-draw .cup span{-webkit-mask-image:url(logo-cup.png);mask-image:url(logo-cup.png)}
 .logo-draw .ghost{background:var(--accent);opacity:.12}
-/* the logo is traced like a pen drawing while the section scrolls (rev 97): each stroke has its slot in the progress --d (starts at --a, lasts --w), the wide teal pen is clipped to the logo's own lines */
-.logo-draw .ink{position:absolute;inset:0;width:100%;height:100%}
-.logo-draw .ink path{fill:none;stroke:var(--accent);stroke-width:13;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;--t:clamp(0,(var(--d,0) - var(--a)) / var(--w),1);stroke-dashoffset:calc(1.02 * (1 - var(--t)))}
+.logo-draw .ink{background:var(--accent);clip-path:inset(calc((1 - var(--d,0))*100%) 0 0 0)}
 .logo-draw .glow{background:var(--accent-bright);filter:blur(10px);opacity:0;animation:glow 6s var(--ease-soft) -2s infinite}
 .famiglia.inview .logo-draw .glow{animation-play-state:running}
 .famiglia:not(.inview) .logo-draw .glow{animation-play-state:paused}
@@ -1029,7 +1030,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .album figure:nth-child(1){transform:rotate(-1.6deg)}
   .album figure:nth-child(2){transform:rotate(1.4deg) translateY(28px)}
   .dl{stroke-dashoffset:0}
-  .logo-draw .ink path{stroke-dashoffset:0}
+  .logo-draw .ink{clip-path:none}
   .marquee{flex-wrap:wrap;width:auto;justify-content:center}
   .marquee span.dup{display:none}
   .motes{display:none}

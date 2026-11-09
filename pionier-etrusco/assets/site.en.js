@@ -253,8 +253,7 @@ const drawWaves = () => waves.forEach(p => {
 if (waves.length) { drawWaves(); let wt; addEventListener('resize', () => { clearTimeout(wt); wt = setTimeout(drawWaves, 150); }); }
 
 /* ---------- scroll-drawn lines, logo ink ---------- */
-// the story logo: on wide screens it stays put beside the text, so it is traced over the whole text and photos
-const draws = $$('[data-draw]').map(el => ({ el, d: -1, on: false, story: el.classList.contains('logo-draw') ? el.closest('.fam-grid') : null }));
+const draws = $$('[data-draw]').map(el => ({ el, d: -1, on: false, cup: $('.cup', el) ? el.closest('.fam-grid') : null, a: '' }));
 let drawQueued = false;
 function updateDraws() {
   drawQueued = false;
@@ -265,11 +264,13 @@ function updateDraws() {
     if (reduced) d = 1;
     else {
       const r = it.el.getBoundingClientRect();
-      if (it.story && getComputedStyle(it.el.parentElement).position === 'sticky') {
-        // from the moment the logo comes in until the last archive photo is in view
-        const g = it.story.getBoundingClientRect();
-        d = clamp((vh * 0.92 - g.top) / (vh * 0.07 + g.height), 0, 1);
-      } else d = clamp((vh * 0.92 - r.top) / (vh * 0.55 + r.height * 0.35), 0, 1);
+      d = clamp((vh * 0.92 - r.top) / (vh * 0.55 + r.height * 0.35), 0, 1);
+      if (it.cup) {
+        // the cup rocks gently, twice over the section: on wide screens (logo standing beside the text) over the text and photos, on phones while the logo crosses the screen
+        const g = getComputedStyle(it.el.parentElement).position === 'sticky' ? it.cup.getBoundingClientRect() : r;
+        const a = (Math.sin(clamp((vh - g.top) / (vh + g.height), 0, 1) * Math.PI * 4) * 5).toFixed(2);
+        if (a !== it.a) { it.a = a; it.el.style.setProperty('--cup', a + 'deg'); }
+      }
     }
     if (Math.abs(d - it.d) > 0.004 || (d !== it.d && (d === 0 || d === 1))) { it.d = d; it.el.style.setProperty('--d', d.toFixed(3)); }
   }

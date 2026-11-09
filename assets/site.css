@@ -239,9 +239,11 @@ p{margin:0 0 14px}
 .fig{position:sticky;top:calc(var(--nav-h) + 40px)}
 .logo-draw{position:relative;width:min(100%,360px);aspect-ratio:560/590}
 .logo-draw span{position:absolute;inset:0;-webkit-mask:url(logo-body.png) center/contain no-repeat;mask:url(logo-body.png) center/contain no-repeat}
-/* the cup in the figure's hand is a layer of its own that rocks around the grip while the section scrolls (rev 98) */
-.logo-draw .cup{-webkit-mask:none;mask:none;transform:rotate(var(--cup,0deg));transform-origin:69.6% 53.2%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+/* the cup in the figure's hand is a layer of its own: it tips around the grip with the speed of the scroll and wobbles back (site.js), the waves inside slosh (rev 99) */
+.logo-draw .cup{-webkit-mask:none;mask:none;transform:rotate(var(--cup,0deg));transform-origin:69.6% 53.2%}
 .logo-draw .cup span{-webkit-mask-image:url(logo-cup.png);mask-image:url(logo-cup.png)}
+.logo-draw .cup .slosh{-webkit-mask:none;mask:none;transform:translateX(var(--slosh,0%))}
+.logo-draw .slosh span{-webkit-mask-image:url(logo-waves.png);mask-image:url(logo-waves.png)}
 .logo-draw .ghost{background:var(--accent);opacity:.12}
 .logo-draw .ink{background:var(--accent);clip-path:inset(calc((1 - var(--d,0))*100%) 0 0 0)}
 .logo-draw .glow{background:var(--accent-bright);filter:blur(10px);opacity:0;animation:glow 6s var(--ease-soft) -2s infinite}

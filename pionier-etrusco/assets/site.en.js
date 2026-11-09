@@ -253,7 +253,7 @@ const drawWaves = () => waves.forEach(p => {
 if (waves.length) { drawWaves(); let wt; addEventListener('resize', () => { clearTimeout(wt); wt = setTimeout(drawWaves, 150); }); }
 
 /* ---------- scroll-drawn lines, logo ink ---------- */
-const draws = $$('[data-draw]').map(el => ({ el, d: -1, on: false, cup: $('.cup', el) ? el.closest('.fam-grid') : null, a: '' }));
+const draws = $$('[data-draw]').map(el => ({ el, d: -1, on: false }));
 let drawQueued = false;
 function updateDraws() {
   drawQueued = false;
@@ -265,12 +265,6 @@ function updateDraws() {
     else {
       const r = it.el.getBoundingClientRect();
       d = clamp((vh * 0.92 - r.top) / (vh * 0.55 + r.height * 0.35), 0, 1);
-      if (it.cup) {
-        // the cup rocks gently, twice over the section: on wide screens (logo standing beside the text) over the text and photos, on phones while the logo crosses the screen
-        const g = getComputedStyle(it.el.parentElement).position === 'sticky' ? it.cup.getBoundingClientRect() : r;
-        const a = (Math.sin(clamp((vh - g.top) / (vh + g.height), 0, 1) * Math.PI * 4) * 5).toFixed(2);
-        if (a !== it.a) { it.a = a; it.el.style.setProperty('--cup', a + 'deg'); }
-      }
     }
     if (Math.abs(d - it.d) > 0.004 || (d !== it.d && (d === 0 || d === 1))) { it.d = d; it.el.style.setProperty('--d', d.toFixed(3)); }
   }
@@ -283,6 +277,28 @@ const drawIO = new IntersectionObserver(es => {
 draws.forEach(it => drawIO.observe(it.el));
 addEventListener('scroll', queueDraws, { passive: true });
 addEventListener('resize', queueDraws, { passive: true });
+
+/* the cup in the story logo: it tips with the speed of the scroll, as if it had weight, and wobbles back to rest; the waves inside slosh with it */
+const cupEl = $('.logo-draw .cup');
+if (cupEl) {
+  const logo = cupEl.parentElement;
+  let ang = 0, spin = 0, push = 0, lastY = scrollY, running = false, onScreen = false;
+  const step = () => {
+    const y = scrollY;
+    push = push * 0.75 + (y - lastY) * 0.25; lastY = y;          // smoothed scroll speed, px per frame
+    spin = (spin + (clamp(push * 0.45, -9, 9) - ang) * 0.06) * 0.9; // a damped spring towards the tilt the speed asks for
+    ang = clamp(ang + spin, -11, 11);
+    const still = reduced || (Math.abs(ang) < 0.03 && Math.abs(spin) < 0.03 && Math.abs(push) < 0.2);
+    if (still) ang = spin = push = 0;
+    logo.style.setProperty('--cup', ang.toFixed(2) + 'deg');
+    logo.style.setProperty('--slosh', (ang * 0.22).toFixed(2) + '%');
+    running = onScreen && !still;
+    if (running) requestAnimationFrame(step);
+  };
+  const kick = () => { if (onScreen && !running && !reduced) { running = true; requestAnimationFrame(step); } };
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; lastY = scrollY; kick(); }).observe(logo);
+  addEventListener('scroll', kick, { passive: true });
+}
 
 /* ---------- entrances ---------- */
 const revealIO = new IntersectionObserver(es => es.forEach(e => {

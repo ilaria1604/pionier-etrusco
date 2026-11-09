@@ -241,7 +241,7 @@ p{margin:0 0 14px}
 .logo-draw span{position:absolute;inset:0;-webkit-mask:url(logo-body.png) center/contain no-repeat;mask:url(logo-body.png) center/contain no-repeat}
 /* the cup in the figure's hand is a layer of its own: it tips around the grip with the speed of the scroll and wobbles back (site.js), the waves inside slosh (rev 99) */
 .logo-draw .cup{-webkit-mask:none;mask:none;transform:rotate(var(--cup,0deg));transform-origin:69.6% 53.2%}
-.logo-draw .cup span{-webkit-mask-image:url(logo-cup.png);mask-image:url(logo-cup.png)}
+.logo-draw .cup span{-webkit-mask-image:url(logo-coppa.png);mask-image:url(logo-coppa.png)}
 .logo-draw .cup .slosh{-webkit-mask:none;mask:none;transform:translateX(var(--slosh,0%))}
 .logo-draw .slosh span{-webkit-mask-image:url(logo-waves.png);mask-image:url(logo-waves.png)}
 .logo-draw .ghost{background:var(--accent);opacity:.12}

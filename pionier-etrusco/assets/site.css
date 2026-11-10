@@ -357,7 +357,7 @@ p{margin:0 0 14px}
 .duo .note-inc svg{width:28px;height:28px}
 .duo .note-inc p{font-size:15px}
 /* ---------- premium look for the fixed accommodation (rev 101): deep pine, the warm terracotta of the hero words, terracotta buttons; the pitches stay light and natural ---------- */
-.duo{--warm:var(--terra-light);--warm-grad:linear-gradient(135deg,#F4C3A3 0%,#E8A27A 50%,#C9794F 100%);--warm-line:rgba(232,162,122,.34);--warm-ink:#2B1B12}
+.duo{--warm:var(--terra-light);--warm-line:rgba(232,162,122,.34);--warm-ink:#2B1B12}
 /* both blocks: a pill button under the text; the round + only shows on the narrow strip */
 .st-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px 10px 18px;border-radius:999px;background:rgba(251,248,243,.94);color:var(--text-primary);font-weight:600;font-size:15px;line-height:1.2;transition:transform .45s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out),box-shadow .45s var(--ease-out)}
 .st-cta svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;transition:transform .5s var(--ease-out)}
@@ -369,17 +369,15 @@ p{margin:0 0 14px}
 .duo-tile[data-side=p]:hover .st-cta{background:var(--accent);color:#fff}
 .st-btn{opacity:0;transition:opacity .35s var(--ease-out),transform .5s var(--ease-out),background-color .35s var(--ease-out)}
 .duo.p-open .duo-tile[data-side=s] .st-btn,.duo.s-open .duo-tile[data-side=p] .st-btn{opacity:1;transition-delay:.3s}
-/* the accommodation block: darker pine veil with a warm light from the top corner, a warm hairline, warm words and button */
+/* the accommodation block: darker pine veil with a warm light from the top corner, a warm hairline, words and button in flat terracotta; on hover the button turns teal like the pitches one (rev 102) */
 .duo-tile[data-side=s]::after{background:radial-gradient(90% 60% at 88% 0%,rgba(232,162,122,.30),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.6) 45%,rgba(12,19,16,.12) 78%)}
 .duo-tile[data-side=s]::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--warm-line);pointer-events:none}
 .duo-tile[data-side=s] .st-kicker{color:var(--warm)}
-.duo-tile[data-side=s] .st-title,.duo-tile[data-side=s] .st-vert{background:var(--warm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.duo-tile[data-side=s] .st-cta{background:var(--warm-grad);color:var(--warm-ink);box-shadow:0 10px 26px -12px rgba(232,162,122,.75)}
-.duo-tile[data-side=s]:hover .st-cta{box-shadow:0 14px 30px -10px rgba(232,162,122,.9)}
-.duo-tile[data-side=s] .st-btn{background:var(--warm-grad)}
+.duo-tile[data-side=s] .st-title,.duo-tile[data-side=s] .st-vert{color:var(--warm)}
+.duo-tile[data-side=s] .st-cta{background:var(--warm);color:var(--warm-ink)}
+.duo-tile[data-side=s]:hover .st-cta{background:var(--accent);color:#fff}
+.duo-tile[data-side=s] .st-btn{background:var(--warm)}
 .duo-tile[data-side=s] .st-btn svg{stroke:var(--warm-ink)}
-.duo-tile[data-side=s]:hover .st-btn{background:var(--warm-grad)}
-.duo-tile[data-side=s]:hover .st-btn svg{stroke:var(--warm-ink)}
 /* the accommodation panel: a deep pine box with the same warm light; dark cards with warm prices and arrows */
 .duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:radial-gradient(110% 80% at 100% 0%,rgba(232,162,122,.22),rgba(232,162,122,0) 55%),linear-gradient(160deg,#24342D 0%,#131C18 100%);box-shadow:inset 0 0 0 1px var(--warm-line)}
 .duo-panel[data-side=s] .unit{background:linear-gradient(180deg,#27362F 0%,#1A2520 100%);box-shadow:inset 0 0 0 1px rgba(232,162,122,.18)}
@@ -387,15 +385,17 @@ p{margin:0 0 14px}
 .duo-panel[data-side=s] .unit h3{color:var(--on-night)}
 .duo-panel[data-side=s] .unit .meta{color:var(--on-night-2)}
 .duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.3)}
-.duo-panel[data-side=s] .unit .price b{background:var(--warm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.duo-panel[data-side=s] .unit .price b{color:var(--warm)}
 .duo-panel[data-side=s] .unit .price small{color:var(--on-night-2)}
-.duo-panel[data-side=s] .unit .go,.duo-panel[data-side=s] .unit:hover .go{background:var(--warm-grad)}
-.duo-panel[data-side=s] .unit .go svg,.duo-panel[data-side=s] .unit:hover .go svg{stroke:var(--warm-ink)}
+.duo-panel[data-side=s] .unit .go{background:var(--warm)}
+.duo-panel[data-side=s] .unit .go svg{stroke:var(--warm-ink)}
+.duo-panel[data-side=s] .unit:hover .go{background:var(--accent)}
+.duo-panel[data-side=s] .unit:hover .go svg{stroke:#fff}
 .duo-panel[data-side=s] .note-inc{display:flex;align-items:center;gap:14px;background:rgba(232,162,122,.07);border:1px solid var(--warm-line)}
 .duo-panel[data-side=s] .note-inc svg{stroke:var(--warm)}
 .duo-panel[data-side=s] .note-inc p{flex:1;color:var(--on-night)}
-.pr-cta{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:9px 18px;border-radius:999px;background:var(--warm-grad);color:var(--warm-ink);font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 10px 24px -12px rgba(232,162,122,.8);transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
-.pr-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(232,162,122,.95)}
+.pr-cta{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:9px 18px;border-radius:999px;background:var(--warm);color:var(--warm-ink);font-weight:600;font-size:15px;text-decoration:none;transition:transform .45s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out)}
+.pr-cta:hover{transform:translateY(-2px);background:var(--accent);color:#fff}
 @media (max-width:1060px){
   /* one block under the other: each opens below itself */
   .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.7) 55%,rgba(23,33,29,.3) 100%)}

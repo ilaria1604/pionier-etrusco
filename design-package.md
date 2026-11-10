@@ -921,3 +921,9 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Accommodation panel.** A deep pine box (#24342D to #131C18) with the warm light and hairline. Dark cards with light text, terracotta gradient prices, terracotta arrow circles and a warm border on hover. The beach note is on a warm-tinted ground, with a new "Richiedi disponibilità" button that links to `#richiesta`. On phones the box runs edge to edge, and its padding opens with the panel so nothing shows when it is closed.
 - **Also.** The card photos take the free height (the card body no longer grows). The veil behind the block texts is stronger, so the small kicker reads on bright skies, and stronger still on stacked layouts. Stacked blocks are 260 px tall (240 px on phones).
 - **English.** "Explore the pitches" and "Explore the accommodation" were added.
+
+### Rev 102: flat terracotta, teal hover like the pitches
+- **Owner's request.** Remove the gradient from the accommodation block, and give its button the same hover as the pitches button.
+- **Flat terracotta.** The title "Sistemazioni" (and its vertical strip), the pill button, the round + on the strip, the card prices, the card arrows and "Richiedi disponibilità" are now flat #E8A27A, with dark text #2B1B12 on the buttons. The terracotta glow shadows under the buttons are gone, and the `--warm-grad` token is removed. The dark pine veil and box, with their soft warm light and hairline, stay as they were.
+- **Hover.** Like the Piazzole pill, the Sistemazioni pill and "Richiedi disponibilità" turn teal (`--accent`) with white text, and the button still lifts 2px. The card arrows go back to the site's standard: teal, white arrow, turned 45°.
+- **Checked.** Real mouse hover at 1440 px on the block button, a card and the request button.

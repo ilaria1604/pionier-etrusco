@@ -912,3 +912,12 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Naming.** The classes are `.duo`, `.duo-tile` and `.duo-panel`, because `.split` is already taken by the split headline text.
 - **English.** Eight new strings were added to `tools/en-testi.mjs`.
 - **Checked.** 1440 and 1280 px in all three states, 1024 and 390 px with each block open, and clicks in a real browser (open, switch, close), with no console errors.
+
+### Rev 101: the fixed accommodation looks premium, in the hero terracotta
+- **Owner's request.** The fixed accommodation should feel premium and stand apart from the pitches, with different colours, gradients and buttons. A gold version was previewed first. The owner then asked for the colour of the hero instead: the terracotta light #E8A27A of the italic hero words.
+- **Tokens.** These are scoped to `.duo`: `--warm` = `var(--terra-light)`, `--warm-grad` = 135° from #F4C3A3 through #E8A27A to #C9794F, `--warm-line` = rgba(232,162,122,.34), and `--warm-ink` #2B1B12 for text on the warm buttons. The pitches keep the light, natural look.
+- **Sistemazioni block.** It has a darker pine veil with a warm light from the top right corner and a warm hairline border. The kicker "Trovi tutto pronto" is terracotta, and the title "Sistemazioni" uses the terracotta gradient (also on the vertical strip).
+- **Buttons on both blocks.** Each block has a pill button under its text that swaps between "Scopri le ..." and "Chiudi", and its + turns into ×. The Piazzole pill is cream and turns teal on hover. The Sistemazioni pill uses the terracotta gradient with a soft glow. The round + in the corner now shows only on the narrow strip, and never on stacked layouts.
+- **Accommodation panel.** A deep pine box (#24342D to #131C18) with the warm light and hairline. Dark cards with light text, terracotta gradient prices, terracotta arrow circles and a warm border on hover. The beach note is on a warm-tinted ground, with a new "Richiedi disponibilità" button that links to `#richiesta`. On phones the box runs edge to edge, and its padding opens with the panel so nothing shows when it is closed.
+- **Also.** The card photos take the free height (the card body no longer grows). The veil behind the block texts is stronger, so the small kicker reads on bright skies, and stronger still on stacked layouts. Stacked blocks are 260 px tall (240 px on phones).
+- **English.** "Explore the pitches" and "Explore the accommodation" were added.

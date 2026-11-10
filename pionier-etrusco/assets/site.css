@@ -302,7 +302,7 @@ p{margin:0 0 14px}
 .duo-tile[data-side=s]{margin-left:16px}
 .duo-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
 .duo-tile:hover img{transform:scale(1.04)}
-.duo-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,33,29,.9) 0%,rgba(23,33,29,.4) 42%,rgba(23,33,29,0) 72%)}
+.duo-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.55) 48%,rgba(23,33,29,0) 80%)}
 .duo-tile:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px}
 .st-text{position:absolute;left:28px;right:28px;bottom:26px;z-index:1;display:flex;flex-direction:column;gap:8px;transition:opacity .35s var(--ease-out)}
 .st-kicker{font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label-on-night)}
@@ -352,14 +352,59 @@ p{margin:0 0 14px}
 .duo .unit{min-height:0}
 .duo .unit:hover{transform:none}
 .duo .unit .ph{aspect-ratio:auto;flex:1 1 0;min-height:0}
+.duo .unit .body{flex:none}
 .duo .note-inc{margin:0;max-width:none;padding:12px 18px}
 .duo .note-inc svg{width:28px;height:28px}
 .duo .note-inc p{font-size:15px}
+/* ---------- premium look for the fixed accommodation (rev 101): deep pine, the warm terracotta of the hero words, terracotta buttons; the pitches stay light and natural ---------- */
+.duo{--warm:var(--terra-light);--warm-grad:linear-gradient(135deg,#F4C3A3 0%,#E8A27A 50%,#C9794F 100%);--warm-line:rgba(232,162,122,.34);--warm-ink:#2B1B12}
+/* both blocks: a pill button under the text; the round + only shows on the narrow strip */
+.st-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px 10px 18px;border-radius:999px;background:rgba(251,248,243,.94);color:var(--text-primary);font-weight:600;font-size:15px;line-height:1.2;transition:transform .45s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out),box-shadow .45s var(--ease-out)}
+.st-cta svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;transition:transform .5s var(--ease-out)}
+.st-close{display:none}
+.duo-tile[aria-expanded=true] .st-open{display:none}
+.duo-tile[aria-expanded=true] .st-close{display:inline}
+.duo-tile[aria-expanded=true] .st-cta svg{transform:rotate(45deg)}
+.duo-tile:hover .st-cta{transform:translateY(-2px)}
+.duo-tile[data-side=p]:hover .st-cta{background:var(--accent);color:#fff}
+.st-btn{opacity:0;transition:opacity .35s var(--ease-out),transform .5s var(--ease-out),background-color .35s var(--ease-out)}
+.duo.p-open .duo-tile[data-side=s] .st-btn,.duo.s-open .duo-tile[data-side=p] .st-btn{opacity:1;transition-delay:.3s}
+/* the accommodation block: darker pine veil with a warm light from the top corner, a warm hairline, warm words and button */
+.duo-tile[data-side=s]::after{background:radial-gradient(90% 60% at 88% 0%,rgba(232,162,122,.30),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.6) 45%,rgba(12,19,16,.12) 78%)}
+.duo-tile[data-side=s]::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--warm-line);pointer-events:none}
+.duo-tile[data-side=s] .st-kicker{color:var(--warm)}
+.duo-tile[data-side=s] .st-title,.duo-tile[data-side=s] .st-vert{background:var(--warm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.duo-tile[data-side=s] .st-cta{background:var(--warm-grad);color:var(--warm-ink);box-shadow:0 10px 26px -12px rgba(232,162,122,.75)}
+.duo-tile[data-side=s]:hover .st-cta{box-shadow:0 14px 30px -10px rgba(232,162,122,.9)}
+.duo-tile[data-side=s] .st-btn{background:var(--warm-grad)}
+.duo-tile[data-side=s] .st-btn svg{stroke:var(--warm-ink)}
+.duo-tile[data-side=s]:hover .st-btn{background:var(--warm-grad)}
+.duo-tile[data-side=s]:hover .st-btn svg{stroke:var(--warm-ink)}
+/* the accommodation panel: a deep pine box with the same warm light; dark cards with warm prices and arrows */
+.duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:radial-gradient(110% 80% at 100% 0%,rgba(232,162,122,.22),rgba(232,162,122,0) 55%),linear-gradient(160deg,#24342D 0%,#131C18 100%);box-shadow:inset 0 0 0 1px var(--warm-line)}
+.duo-panel[data-side=s] .unit{background:linear-gradient(180deg,#27362F 0%,#1A2520 100%);box-shadow:inset 0 0 0 1px rgba(232,162,122,.18)}
+.duo-panel[data-side=s] .unit:hover{box-shadow:inset 0 0 0 1px rgba(232,162,122,.5),0 24px 40px -24px rgba(0,0,0,.7)}
+.duo-panel[data-side=s] .unit h3{color:var(--on-night)}
+.duo-panel[data-side=s] .unit .meta{color:var(--on-night-2)}
+.duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.3)}
+.duo-panel[data-side=s] .unit .price b{background:var(--warm-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.duo-panel[data-side=s] .unit .price small{color:var(--on-night-2)}
+.duo-panel[data-side=s] .unit .go,.duo-panel[data-side=s] .unit:hover .go{background:var(--warm-grad)}
+.duo-panel[data-side=s] .unit .go svg,.duo-panel[data-side=s] .unit:hover .go svg{stroke:var(--warm-ink)}
+.duo-panel[data-side=s] .note-inc{display:flex;align-items:center;gap:14px;background:rgba(232,162,122,.07);border:1px solid var(--warm-line)}
+.duo-panel[data-side=s] .note-inc svg{stroke:var(--warm)}
+.duo-panel[data-side=s] .note-inc p{flex:1;color:var(--on-night)}
+.pr-cta{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:9px 18px;border-radius:999px;background:var(--warm-grad);color:var(--warm-ink);font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 10px 24px -12px rgba(232,162,122,.8);transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out)}
+.pr-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(232,162,122,.95)}
 @media (max-width:1060px){
   /* one block under the other: each opens below itself */
-  .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.9) 0%,rgba(23,33,29,.66) 55%,rgba(23,33,29,.22) 100%)}
+  .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.7) 55%,rgba(23,33,29,.3) 100%)}
+  .duo-tile[data-side=s]::after{background:radial-gradient(90% 70% at 88% 0%,rgba(232,162,122,.26),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.74) 55%,rgba(12,19,16,.34) 100%)}
+  .st-btn{display:none}
+  .duo-panel[data-side=s] .sp-in{padding-block:0;transition:padding .7s var(--ease-out)}
+  .duo.s-open .duo-panel[data-side=s] .sp-in{padding-block:14px}
   .duo{flex-direction:column;height:auto;container-type:normal}
-  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{flex:none;height:230px;margin:0}
+  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{flex:none;height:260px;margin:0}
   .duo-tile[data-side=s],.duo.p-open .duo-tile[data-side=s],.duo.s-open .duo-tile[data-side=s]{order:3;margin:16px 0 0}
   .duo-panel[data-side=s]{order:4}
   .duo-panel{display:grid;grid-template-rows:0fr;flex:none;overflow:visible;transition:grid-template-rows .7s var(--ease-out),margin .7s var(--ease-out),opacity .3s var(--ease-out),visibility 0s .7s}
@@ -1142,7 +1187,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   /* text cards (beaches, excursions) stop in the middle, so the side arrows lie on the cards next to them, never on the words */
   .spiagge ul>*,.places>*{scroll-snap-align:center}
   .unit .ph{aspect-ratio:4/3}
-  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{height:190px}
+  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{height:240px}
   .st-text{left:20px;right:20px;bottom:18px;gap:6px}
   .st-title{font-size:36px}
   .st-sub{font-size:15px}
@@ -1151,7 +1196,10 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .pz-body{padding:20px 20px 22px}
   .duo .unit .ph{aspect-ratio:4/3}
   /* the carousel of the three accommodations runs to the screen edges, like the others */
-  .duo-panel[data-side=s] .sp-in{margin-inline:calc(-1*var(--gut));padding-inline:var(--gut)}
+  .duo-panel[data-side=s] .sp-in{margin-inline:calc(-1*var(--gut));padding:0 var(--gut);border-radius:0;transition:padding .7s var(--ease-out)}
+  .duo.s-open .duo-panel[data-side=s] .sp-in{padding-block:18px}
+  .duo-panel[data-side=s] .note-inc{flex-wrap:wrap}
+  .pr-cta{margin-left:48px}
   .duo-panel[data-side=s] .note-inc{margin-top:2px}
   /* services: one row of cards that slides sideways, all built the same way: icon, title, a short text, the photo pile */
   .bento{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin:26px calc(-1*var(--gut)) 0;padding:4px var(--gut) 14px;scrollbar-width:none}

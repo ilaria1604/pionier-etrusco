@@ -295,6 +295,80 @@ p{margin:0 0 14px}
 .note-inc svg{flex:none;width:34px;height:34px;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .note-inc p{margin:0;font-size:16px}
 @media (max-width:1060px){.units{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- sistemazioni in two blocks (rev 100): the pitches open their detail to the right, the accommodations open their three choices to the left ---------- */
+.duo{--tile-min:92px;display:flex;height:clamp(480px,40vw,560px);container-type:inline-size}
+.duo-tile{position:relative;flex:1 1 0;min-width:0;container-type:inline-size;margin:0;padding:0;border:0;border-radius:20px;overflow:hidden;cursor:pointer;background:var(--night);color:var(--canvas);text-align:left;font:inherit;transition:flex-grow .8s var(--ease-out),flex-shrink .8s var(--ease-out),flex-basis .8s var(--ease-out)}
+.duo-tile[data-side=s]{margin-left:16px}
+.duo-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.duo-tile:hover img{transform:scale(1.04)}
+.duo-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,33,29,.9) 0%,rgba(23,33,29,.4) 42%,rgba(23,33,29,0) 72%)}
+.duo-tile:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px}
+.st-text{position:absolute;left:28px;right:28px;bottom:26px;z-index:1;display:flex;flex-direction:column;gap:8px;transition:opacity .35s var(--ease-out)}
+.st-kicker{font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label-on-night)}
+/* the title shrinks with its block, so a long word fits when the block narrows */
+.st-title{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,12cqi,52px);line-height:1}
+.st-sub{font-size:16px;line-height:1.4;color:rgba(243,238,231,.88)}
+.st-vert{position:absolute;left:50%;bottom:28px;z-index:1;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1;white-space:nowrap;opacity:0;transition:opacity .35s var(--ease-out)}
+.st-btn{position:absolute;top:16px;right:16px;z-index:1;width:46px;height:46px;border-radius:50%;background:rgba(251,248,243,.92);display:grid;place-items:center;transition:transform .5s var(--ease-out),background-color .35s var(--ease-out)}
+.st-btn svg{width:20px;height:20px;fill:none;stroke:var(--text-primary);stroke-width:1.8;stroke-linecap:round;transition:stroke .35s var(--ease-out)}
+.duo-tile:hover .st-btn{background:var(--accent)}
+.duo-tile:hover .st-btn svg{stroke:#fff}
+.duo-tile[aria-expanded=true] .st-btn{transform:rotate(45deg)}
+.duo-panel{flex:0 0 0;min-width:0;overflow:hidden;display:flex;opacity:0;visibility:hidden;transition:flex-grow .8s var(--ease-out),margin .8s var(--ease-out),opacity .3s var(--ease-out),visibility 0s .8s}
+.duo-panel[data-side=s]{justify-content:flex-end}
+/* the content has its final width from the start, so it is uncovered as the panel opens instead of squeezing */
+.sp-in{flex:none;width:calc(74cqw - var(--tile-min) - 32px);height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:14px}
+.duo.p-open .duo-tile[data-side=p],.duo.s-open .duo-tile[data-side=s]{flex:0 0 26%}
+.duo.p-open .duo-tile[data-side=s],.duo.s-open .duo-tile[data-side=p]{flex:0 0 var(--tile-min)}
+.duo.p-open .duo-tile[data-side=s] .st-text,.duo.s-open .duo-tile[data-side=p] .st-text{opacity:0}
+.duo.p-open .duo-tile[data-side=s] .st-vert,.duo.s-open .duo-tile[data-side=p] .st-vert{opacity:1;transition-delay:.3s}
+.duo.p-open .duo-panel[data-side=p],.duo.s-open .duo-panel[data-side=s]{flex-grow:1;margin-left:16px;opacity:1;visibility:visible;transition:flex-grow .8s var(--ease-out),margin .8s var(--ease-out),opacity .5s var(--ease-out) .25s,visibility 0s}
+/* pitches: one wide card with what is included, and the camper stop below */
+.pz-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:0;background:#FBF8F3;border-radius:20px;overflow:hidden;text-decoration:none;color:var(--text-primary);transition:box-shadow .55s var(--ease-out)}
+.pz-card:hover{box-shadow:0 24px 40px -28px rgba(51,39,31,.55)}
+.pz-card .ph{min-height:0;overflow:hidden}
+.pz-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+.pz-card:hover .ph img{transform:scale(1.04)}
+.pz-body{display:flex;flex-direction:column;gap:14px;min-height:0;padding:26px 28px 24px}
+.pz-body h3{font-family:var(--f-display);font-weight:700;font-size:30px;line-height:1.1;margin:0}
+.pz-body p{margin:0;font-size:15.5px;line-height:1.5;color:var(--text-secondary)}
+.pz-inc{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.pz-inc li{padding:5px 11px;border-radius:999px;background:rgba(0,128,126,.09);font-size:13.5px;font-weight:500}
+.pz-foot{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px dashed rgba(106,87,75,.35)}
+.pz-foot .price{display:flex;align-items:baseline;gap:8px}
+.pz-foot .price b{font-weight:600;font-size:22px}
+.pz-foot .price small{font-size:13px}
+.pz-go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;color:var(--accent)}
+.pz-go svg,.pz-stop svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s var(--ease-out)}
+.pz-card:hover .pz-go svg,.pz-stop:hover svg{transform:translateX(4px)}
+.pz-stop{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;border-radius:16px;background:#FBF8F3;text-decoration:none;font-size:15.5px;color:var(--text-secondary);transition:background-color .35s var(--ease-out)}
+.pz-stop:hover{background:#fff}
+.pz-stop b{margin-right:6px;font-weight:600;color:var(--text-primary)}
+.pz-stop svg{color:var(--accent)}
+/* accommodations: the three cards fill the panel, the beach note under them */
+.duo .swipe{min-height:0}
+.duo .units{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:minmax(0,1fr);height:100%;min-height:0}
+.duo .unit{min-height:0}
+.duo .unit:hover{transform:none}
+.duo .unit .ph{aspect-ratio:auto;flex:1 1 0;min-height:0}
+.duo .note-inc{margin:0;max-width:none;padding:12px 18px}
+.duo .note-inc svg{width:28px;height:28px}
+.duo .note-inc p{font-size:15px}
+@media (max-width:1060px){
+  /* one block under the other: each opens below itself */
+  .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.9) 0%,rgba(23,33,29,.66) 55%,rgba(23,33,29,.22) 100%)}
+  .duo{flex-direction:column;height:auto;container-type:normal}
+  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{flex:none;height:230px;margin:0}
+  .duo-tile[data-side=s],.duo.p-open .duo-tile[data-side=s],.duo.s-open .duo-tile[data-side=s]{order:3;margin:16px 0 0}
+  .duo-panel[data-side=s]{order:4}
+  .duo-panel{display:grid;grid-template-rows:0fr;flex:none;overflow:visible;transition:grid-template-rows .7s var(--ease-out),margin .7s var(--ease-out),opacity .3s var(--ease-out),visibility 0s .7s}
+  .duo.p-open .duo-panel[data-side=p],.duo.s-open .duo-panel[data-side=s]{grid-template-rows:1fr;margin:16px 0 0;transition:grid-template-rows .7s var(--ease-out),margin .7s var(--ease-out),opacity .5s var(--ease-out) .15s,visibility 0s}
+  .sp-in{width:auto;height:auto;min-height:0;overflow:hidden;grid-template-rows:none}
+  .duo.p-open .duo-tile[data-side] .st-text,.duo.s-open .duo-tile[data-side] .st-text{opacity:1}
+  .duo.p-open .duo-tile[data-side] .st-vert,.duo.s-open .duo-tile[data-side] .st-vert{opacity:0}
+  .duo .unit .ph{aspect-ratio:4/5;flex:none}
+}
 @media (max-width:520px){.units{grid-template-columns:1fr}.unit .ph{aspect-ratio:4/3}}
 
 /* ---------- S3 mare (interactive) ---------- */
@@ -1068,6 +1142,17 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   /* text cards (beaches, excursions) stop in the middle, so the side arrows lie on the cards next to them, never on the words */
   .spiagge ul>*,.places>*{scroll-snap-align:center}
   .unit .ph{aspect-ratio:4/3}
+  .duo-tile,.duo.p-open .duo-tile[data-side],.duo.s-open .duo-tile[data-side]{height:190px}
+  .st-text{left:20px;right:20px;bottom:18px;gap:6px}
+  .st-title{font-size:36px}
+  .st-sub{font-size:15px}
+  .pz-card{grid-template-columns:1fr}
+  .pz-card .ph{aspect-ratio:4/3}
+  .pz-body{padding:20px 20px 22px}
+  .duo .unit .ph{aspect-ratio:4/3}
+  /* the carousel of the three accommodations runs to the screen edges, like the others */
+  .duo-panel[data-side=s] .sp-in{margin-inline:calc(-1*var(--gut));padding-inline:var(--gut)}
+  .duo-panel[data-side=s] .note-inc{margin-top:2px}
   /* services: one row of cards that slides sideways, all built the same way: icon, title, a short text, the photo pile */
   .bento{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin:26px calc(-1*var(--gut)) 0;padding:4px var(--gut) 14px;scrollbar-width:none}
   .bento::-webkit-scrollbar{display:none}

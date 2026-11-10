@@ -501,6 +501,27 @@ placeLis.forEach(li => {
 // a click anywhere else lets go of the chosen place
 document.addEventListener('click', e => { if (pinnedPlace && !e.target.closest('.map .pt, .places li, .swipe-btn')) { pinnedPlace = null; paintPlaces(); } });
 
+/* ---------- sistemazioni in two blocks: a click on a block opens its choices, a second click closes them ---------- */
+const duo = $('.duo');
+if (duo) {
+  const tiles = $$('.duo-tile', duo), panels = $$('.duo-panel', duo);
+  const setOpen = side => {
+    duo.classList.toggle('p-open', side === 'p'); duo.classList.toggle('s-open', side === 's');
+    tiles.forEach(t => t.setAttribute('aria-expanded', String(t.dataset.side === side)));
+    panels.forEach(p => { const on = p.dataset.side === side; p.inert = !on; p.setAttribute('aria-hidden', String(!on)); });
+  };
+  tiles.forEach(t => t.addEventListener('click', () => {
+    const side = duo.classList.contains(t.dataset.side + '-open') ? null : t.dataset.side;
+    setOpen(side);
+    // one block under the other: bring the opened choices into view
+    if (side && getComputedStyle(duo).flexDirection === 'column') {
+      const p = panels.find(x => x.dataset.side === side);
+      setTimeout(() => { const r = p.getBoundingClientRect(); if (r.bottom > innerHeight) p.scrollIntoView({ block: 'end', behavior: reduced ? 'auto' : 'smooth' }); }, 450);
+    }
+  }));
+  setOpen(null);
+}
+
 /* ---------- FAQ ---------- */
 $$('.q button').forEach(b => b.addEventListener('click', () => {
   const open = b.getAttribute('aria-expanded') !== 'true';

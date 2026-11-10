@@ -46,6 +46,12 @@ export const MARKUP = [
 ];
 
 export const TEXT = {
+  // sistemazioni in two blocks (rev 100)
+  'Con la tua attrezzatura': 'With your own gear', 'Camper, roulotte e tende · da € 9 a notte': 'Motorhomes, caravans and tents · from € 9 per night',
+  'Trovi tutto pronto': 'Everything ready for you', 'Bungalow, glamping e home · da € 350 a settimana': 'Bungalows, glamping and homes · from € 350 per week',
+  'Una piazzola sotto i pini, con il camper e la tenda': 'A pitch under the pines, with a motorhome and a tent',
+  "Nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. Dicci come viaggi e ti suggeriamo noi la zona giusta.": 'In the heart of the pine wood, in the shade of the pines, for motorhomes, caravans, tents and rooftop tents. Tell us how you travel and we will suggest the right area.',
+  'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared
   'Vai al contenuto': 'Skip to content', 'Chi siamo': 'About us', 'Sistemazioni': 'Accommodation', 'Piazzole e camper stop': 'Pitches and camper stop',
   'camper, roulotte, tende': 'motorhomes, caravans, tents', 'da 20 a 48 mq': 'from 20 to 48 sqm', 'Luxury Lodge 45 mq': 'Luxury Lodge 45 sqm', 'Premium Comfort 34 mq': 'Premium Comfort 34 sqm',

@@ -927,3 +927,7 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Flat terracotta.** The title "Sistemazioni" (and its vertical strip), the pill button, the round + on the strip, the card prices, the card arrows and "Richiedi disponibilità" are now flat #E8A27A, with dark text #2B1B12 on the buttons. The terracotta glow shadows under the buttons are gone, and the `--warm-grad` token is removed. The dark pine veil and box, with their soft warm light and hairline, stay as they were.
 - **Hover.** Like the Piazzole pill, the Sistemazioni pill and "Richiedi disponibilità" turn teal (`--accent`) with white text, and the button still lifts 2px. The card arrows go back to the site's standard: teal, white arrow, turned 45°.
 - **Checked.** Real mouse hover at 1440 px on the block button, a card and the request button.
+
+### Rev 103: the Home on the accommodation block
+- **Owner's request.** Put a photo of the Home on the Sistemazioni block of the home page, instead of the bungalow.
+- **Photo.** `home-3.jpg` (1050×1400): the Home in warm evening light among the trees. It replaces `bungalow-pineta.jpg`. `home-2.jpg` is not used here because it is already the photo of the Home card, which sits right next to the block when it opens. Checked closed and open at 1440 px, and on a 390 px phone (centre crop, the Home stays in view).

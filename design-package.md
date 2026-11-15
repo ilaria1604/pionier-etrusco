@@ -1013,3 +1013,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** Align the texts of the Piazzole and Strutture blocks. The Strutture block has an extra line of ticks, so its text started higher. The titles also had different sizes, because each scaled with its own block width.
 - **Fix (wide screens, at rest).** The Piazzole button gets the height of that missing line as extra space above it (`margin-top: calc(10px + 14px * 1.3 + 8px)`). Both titles use the same size, `clamp(38px, 3.6vw, 52px)`. The open and narrow states keep the size that follows the block width. On stacked layouts nothing changes.
 - **Checked.** The kickers, titles, lines and buttons sit at the same pixel height at 1440, 1280 and 1100 px.
+
+### Rev 114: no accommodation switcher on the detail pages
+- **Owner's request.** Remove the pill switcher (Piazzole · Bungalow · Glamping · Home) from the top of every accommodation page.
+- **What changed.** The list is removed from `piazzole.html`, `bungalow.html`, `glamping.html` and `home.html` (and so from the English pages), and from the template in `tools/gen-pages.mjs`. On wide screens the "Tutte le sistemazioni" back link stays at the top left, as before. On phones that link was already hidden, so the top of the photo is now clear. The switcher styles stay but match nothing.
+- **Checked.** Bungalow page at 1440 px and glamping page at 390 px.

@@ -341,7 +341,6 @@ ${NAV(P.key)}
   <nav class="unit-switch" aria-label="Sistemazioni">
     <div class="wrap">
       <a class="back" href="index.html#sistemazioni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tutte le sistemazioni</a>
-      <ul>${[['piazzole', 'Piazzole'], ['bungalow', 'Bungalow'], ['glamping', 'Glamping'], ['home', 'Home']].map(([k, t]) => `<li><a href="${k}.html"${k === P.key ? ' aria-current="page"' : ''}>${t}</a></li>`).join('')}</ul>
     </div>
   </nav>
   <div class="wrap">

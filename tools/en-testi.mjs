@@ -134,7 +134,7 @@ export const TEXT = {
 
   // home page: map
   'La mappa': 'The map', 'Tocca un tipo di piazzola o un servizio per trovarlo sulla mappa. Per tornare alla mappa completa, toccalo di nuovo o tocca un punto qualsiasi fuori.': 'Tap a type of pitch or a service to find it on the map. To go back to the full map, tap it again or tap anywhere outside.',
-  'La mappa del camping': 'The campsite map', 'Tutto il camping': 'Whole campsite', 'Zoom sulle piazzole': 'Zoom in on the pitches', 'Vedi le tariffe': 'See the prices', 'Scorri la mappa di lato': 'Scroll the map sideways', 'Vista della mappa': 'Map view',
+  'La mappa del camping': 'The campsite map', 'Tutto il camping': 'Whole campsite', 'Zoom sulle piazzole': 'Zoom in on the pitches', 'Scorri la mappa di lato': 'Scroll the map sideways', 'Vista della mappa': 'Map view',
   'Zoom della mappa': 'Map zoom', 'Ingrandisci': 'Zoom in', 'Riduci': 'Zoom out', 'Mostra tutto il camping': 'Show the whole campsite',
   'Due dita per ingrandire, un dito per spostarti': 'Two fingers to zoom, one finger to move', 'Piazzole e servizi': 'Pitches and services',
   'Mappa del Camping Pionier Etrusco': 'Map of Camping Pionier Etrusco', "Pianta del camping con piazzole numerate, bungalow, glamping, home e servizi, più l'area mediterranea con il laghetto, l'area sport, la piscina, il parcheggio e il camper stop.": 'Plan of the campsite with numbered pitches, bungalows, glamping, homes and services, plus the Mediterranean area with the pond, the sports area, the pool, the car park and the camper stop.',

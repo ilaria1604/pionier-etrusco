@@ -947,3 +947,10 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Badges.** The badges are removed from the markup and the styles: the small teal count pill (`.pile b`) on Ristorante, Piscina, Animazione and Sport, and the dark "5 foto" pill (`.ph-badge`) on the large Sport photo card. Each card still opens its photos with a click, as before.
 - **Sport.** The three round photos (bike in the pine wood, kayak and SUP, e-bikes) now also show on wide screens, at the top right of the large Sport photo card, with the same teal ring and hover spread as the other cards.
 - **Checked.** At 1440 and 390 px.
+
+### Rev 107: map without "Vedi le tariffe", Prenota only on a tapped pitch
+- **Owner's request.** Remove the "Vedi le tariffe" button from the camping map. A "Prenota" button should appear only when a pitch is tapped.
+- **Removed.** Both "Vedi le tariffe" links (above the map, and in the phone full-screen sheet) are gone from `index.html` and `tools/gen-mappa.mjs`, with their styles, their script and the translation.
+- **Prenota.** A tap on a pitch (or on a bungalow, glamping or home; not on the technical room) shows its label with a teal "Prenota" pill and an arrow inside it. Hovering shows only the name, as before. While a pitch is selected, hovering other places does not replace its label, and a tap on the label keeps the selection. The button text lives in the page as a hidden `<a class="cmap-book">`, so the English page gets "Book". The script clones it into the label.
+- **What Prenota does.** It closes the full-screen map if it is open and goes to the request form. It fills in the message with the place, for example "Piazzola tenda 164.", unless the guest already wrote something. It sets the type when it is unambiguous: Piazzola tenda, Glamping Luxury Lodge or Home Premium Comfort. Plain pitches and bungalows leave the choice to the guest.
+- **Checked.** At 1440 px with real clicks (zoom, tap on pitch 164, hover on 88, Prenota leading to the form with the type and message filled in), and on a 390 px phone with real taps (full-screen map, zoom, tap on pitch 42, Prenota closing the map and reaching the form).

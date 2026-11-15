@@ -278,12 +278,12 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
         <button type="button" data-view="all" aria-pressed="true">Tutto il camping</button>
         <button type="button" data-view="camp" aria-pressed="false">Zoom sulle piazzole</button>
       </div>
-      <a class="cmap-prices" href="#tariffe">Vedi le tariffe<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <p class="cmap-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Scorri la mappa di lato</p>
     </div>
     <div class="cmap-frame" data-view="all">
       <div class="cmap-scroll">${svg}</div>
       <div class="cmap-tip" role="status" aria-live="polite"></div>
+      <a class="cmap-book" href="#richiesta" hidden>Prenota<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       <button type="button" class="cmap-open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Apri la mappa</button>
       <div class="cmap-zoom" role="group" aria-label="Zoom della mappa">
         <button type="button" class="cmap-zin" aria-label="Ingrandisci"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
@@ -298,7 +298,6 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
         <div><h3>Sistemazioni</h3><ul>${typeLegend}</ul></div>
         <div><h3>Servizi</h3><ul class="cols">${servLegend}</ul></div>
       </div>
-      <a class="cmap-prices cmap-prices-sheet" href="#tariffe">Vedi le tariffe<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>`;

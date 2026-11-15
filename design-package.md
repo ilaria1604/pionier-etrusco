@@ -1082,3 +1082,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Backgrounds.** The map section now sits on the page colour instead of the sand panel, so the three sections alternate sand, page, sand.
 - **Menus.** The menus of every page (and `tools/gen-pages.mjs`) are Sistemazioni · Mappa · Tariffe · Servizi · Spiagge · Escursioni · Chi siamo · Contatti. "Mappa" is new. The desktop bar still fits at 1440 px.
 - **English.** Five new strings were added.
+
+### Rev 121: no quick path
+- **Owner's request.** Remove the "Organizza la vacanza" quick path added in rev 120. The owner had not asked for it, and it repeated the menu and the sections right under it.
+- **What changed.** The `nav.pianifica` block, its styles and its four translations are gone. The scroll cue at the end of the opening leads to `#sistemazioni` again. The numbered labels (1 Sistemazioni, 2 La mappa, 3 Tariffe 2027), the new order and the menus stay.
+- **Where they now start (wide screen).** Sistemazioni 4.3 screens, Mappa 5.4, Tariffe 6.9.

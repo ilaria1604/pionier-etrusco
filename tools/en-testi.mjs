@@ -55,8 +55,7 @@ export const TEXT = {
   'Per camper, roulotte e tende': 'For motorhomes, caravans and tents', 'Per la tenda': 'For your tent', 'Per tenda grande, roulotte e camper': 'For large tents, caravans and motorhomes', 'Cucina': 'Kitchen', 'Bagno privato': 'Private bathroom', '2 bagni': '2 bathrooms',
   // rentals showcase (rev 111)
   'Fino a 6 posti': 'Up to 6 guests', 'Nuove · 2 bagni': 'Brand new · 2 bathrooms', 'Ombrellone in spiaggia': 'Beach umbrella included',
-  // quick path to the three main sections (rev 120)
-  'Organizza la vacanza': 'Plan your holiday', 'Mappa': 'Map', 'Piazzole, bungalow, glamping e home': 'Pitches, bungalows, glamping and homes', 'Trova il posto che preferisci': 'Find the spot you like', 'Calcola il prezzo in un minuto': 'Work out the price in a minute',
+  'Mappa': 'Map',
   'Scopri le piazzole': 'Explore the pitches', 'Scopri le strutture': 'Explore the rentals', 'Strutture': 'Rentals',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared

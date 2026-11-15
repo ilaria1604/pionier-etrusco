@@ -393,6 +393,9 @@ p{margin:0 0 14px}
 @media (min-width:1061px){
   .duo:not(.p-open):not(.s-open) .duo-tile[data-side=p]{flex-grow:2}
   .duo:not(.p-open):not(.s-open) .duo-tile[data-side=s]{flex-grow:3}
+  /* the pitches block leaves room for the line of ticks the other block has, so the two kickers, titles and lines sit at the same height (rev 113) */
+  .duo:not(.p-open):not(.s-open) .duo-tile[data-side=p] .st-cta{margin-top:calc(10px + 14px * 1.3 + 8px)}
+  .duo:not(.p-open):not(.s-open) .st-title{font-size:clamp(38px,3.6vw,52px)}
 }
 .st-perks{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;line-height:1.3;color:rgba(243,238,231,.92)}
 .st-perks>span{display:inline-flex;align-items:center;gap:6px}

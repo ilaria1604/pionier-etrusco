@@ -53,6 +53,8 @@ export const TEXT = {
   "Nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. Dicci come viaggi e ti suggeriamo noi la zona giusta.": 'In the heart of the pine wood, in the shade of the pines, for motorhomes, caravans, tents and rooftop tents. Tell us how you travel and we will suggest the right area.',
   // the pitch card on the camping map (rev 108)
   'Per camper, roulotte e tende': 'For motorhomes, caravans and tents', 'Per la tenda': 'For your tent', 'Per tenda grande, roulotte e camper': 'For large tents, caravans and motorhomes', 'Cucina': 'Kitchen', 'Bagno privato': 'Private bathroom', '2 bagni': '2 bathrooms',
+  // rentals showcase (rev 111)
+  'Fino a 6 posti': 'Up to 6 guests', 'Nuove · 2 bagni': 'Brand new · 2 bathrooms', 'Biancheria da letto inclusa': 'Bed linen included', 'Biancheria e pulizie incluse': 'Linen and cleaning included', 'Ombrellone in spiaggia': 'Beach umbrella included',
   'Scopri le piazzole': 'Explore the pitches', 'Scopri gli alloggi': 'Explore the rentals', 'Alloggi': 'Rentals',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared
@@ -103,7 +105,6 @@ export const TEXT = {
   "Piazzole all'ombra dei pini, bungalow in legno, glamping e home nuovissime. Ogni sistemazione ha la sua pagina con foto, planimetria e prezzi.": 'Pitches in the shade of the pines, wooden bungalows, glamping and brand-new homes. Each type of accommodation has its own page with photos, floor plan and prices.',
   'Piazzole': 'Pitches', 'Camper · Roulotte · Tende': 'Motorhomes · Caravans · Tents', 'da': 'from', 'a notte': 'per night', 'a settimana': 'per week',
   'Da 20 a 48 mq · fino a 6 posti': 'From 20 to 48 sqm · up to 6 guests', 'Luxury Lodge 45 mq · 4 posti': 'Luxury Lodge 45 sqm · 4 guests', 'Premium Comfort 34 mq · 4 posti': 'Premium Comfort 34 sqm · 4 guests',
-  'Con bungalow, glamping e home sono inclusi ombrellone e 2 lettini allo stabilimento balneare.': 'Bungalows, glamping and homes include a beach umbrella and 2 sunloungers at the beach club.',
   'Piazzole per camper sotto i pini curvi della pineta': 'Motorhome pitches under the curved pines of the pine wood', 'Un bungalow in legno sul prato, sotto i pini': 'A wooden bungalow on the lawn, under the pines',
   'Il glamping a forma di A tra i pini, con la veranda in legno': 'The A-shaped glamping among the pines, with its wooden veranda', 'La Home con la veranda coperta, nella luce della sera': 'The Home with its covered veranda, in the evening light',
 

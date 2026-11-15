@@ -991,3 +991,14 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - Bungalow: in June, days 1 to 13, 19 and 26 are enabled; in July, 3, 10, 17, 24 and 31; in August, 7, 14, 21 and 28; all of September. After arriving on 3 July, only 10, 17, 24 and 31 July are enabled.
   - Glamping, July: 4, 11, 18 and 25.
   - Pitch, July: every day.
+
+### Rev 111: rentals as a showcase (proposal 2, keeping the Home photo)
+- **Owner's choice.** Proposal 2 "Vetrina", but with the block photo of proposal 1: the Home in evening light (`home-3.jpg`) instead of the glamping at night.
+- **At rest (wide screens).** The Alloggi block is wider than Piazzole (flex 3 to 2, about 60/40). Under its line it lists three inclusions with terracotta ticks: "Biancheria e pulizie incluse", "Aria condizionata", "Ombrellone in spiaggia". They are hidden on phones, where the block is short.
+- **Inside.** The Home is the large card on the left, spanning two rows. Bungalow and Glamping are stacked on the right (CSS `order` and `grid-row`, with the markup order unchanged). Every card is a full photo with a dark pine veil from the bottom, and the name (36 px on the Home), the size and the terracotta price written over it.
+- **Tags.** Each card has a tag at the top left, a dark glass pill with a terracotta hairline: "Fino a 6 posti" (bungalow), "Su due piani" (glamping), "Nuove · 2 bagni" (home).
+- **Included strip.** The beach note is replaced by four terracotta line icons: "Biancheria da letto inclusa", "Pulizia iniziale e finale", "Aria condizionata", "Ombrellone e 2 lettini in spiaggia". "Richiedi disponibilità" stays beside them. These four are listed as included on all three detail pages.
+- **Tablets.** The same showcase sits under the block (two rows of 240 px).
+- **Phones.** The cards stay a sideways carousel with the Home first. Each card is 380 px tall with the photo filling it (`aspect-ratio:auto` overrides the 4:3 phone rule) and a lighter veil. The included strip is two by two, with the button across the full width.
+- **English.** Five new strings were added and the old beach-note translation was removed.
+- **Checked.** At 1440 px closed and open, 1024 px open, and 390 px open.

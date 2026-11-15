@@ -941,3 +941,9 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 105: white rentals button, terracotta on hover
 - **Owner's request.** The "Scopri gli alloggi" button is white at rest, the same cream-white pill as "Scopri le piazzole". On hover it turns terracotta (#E8A27A) with dark text. The pitches button still turns teal on hover. Checked with a real mouse hover at 1440 px.
+
+### Rev 106: no photo count badges, round photos on Sport too
+- **Owner's request.** Remove the camera-and-number badge from all service cards, and give the Sport card the same round photos.
+- **Badges.** The badges are removed from the markup and the styles: the small teal count pill (`.pile b`) on Ristorante, Piscina, Animazione and Sport, and the dark "5 foto" pill (`.ph-badge`) on the large Sport photo card. Each card still opens its photos with a click, as before.
+- **Sport.** The three round photos (bike in the pine wood, kayak and SUP, e-bikes) now also show on wide screens, at the top right of the large Sport photo card, with the same teal ring and hover spread as the other cards.
+- **Checked.** At 1440 and 390 px.

@@ -111,7 +111,6 @@ boxes.forEach(box => {
           <div class="cal-head"><button type="button" class="cal-nav cal-prev" aria-label="Mese precedente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><b class="cal-m" aria-live="polite"></b><button type="button" class="cal-nav cal-next" aria-label="Mese successivo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div>
           <div class="cal-grid" role="grid"></div>
         </div>
-        <p class="cal-legend" hidden><span class="dot" aria-hidden="true"></span><span class="txt"></span></p>
         <p class="cal-sum" aria-live="polite"></p>
         <div class="calc-stepnav"><button type="button" class="c-back" data-to="1">Indietro</button><button type="button" class="btn c-next" data-to="3">Vedi il prezzo</button></div>
       </div>
@@ -130,14 +129,21 @@ boxes.forEach(box => {
   const bounds = () => weekly()
     ? [Math.max(FIRST, WEEK_BANDS[T().bands][0][0]), WEEK_BANDS[T().bands].at(-1)[1]]
     : [Math.max(FIRST, OPEN), CLOSE];
+  const changeDay = t => new Date(t).getUTCDay() === DAYNUM[T().band];
+  // bungalow, glamping, home from 14 June to 31 August: only the changeover day can start or end a stay, in whole weeks;
+  // every other day is shown disabled (rev 110, it replaces the green dot)
+  const arrivalOk = t => !weekly() || t < SUMMER_FROM || t >= SUMMER_TO || changeDay(t);
+  const stayOk = (a, b) => !weekly() || !touchesSummer(a, b) || (changeDay(a) && changeDay(b) && (b - a) % (7 * DAY) === 0);
   const selectable = t => {
     if (!type) return false;
     const [lo, hi] = bounds();
     if (t < lo) return false;
-    if (from !== null && to === null) return t > from ? t <= hi : t < hi;
-    return t < hi;
+    if (from !== null && to === null) {
+      if (t > from) return t <= hi && stayOk(from, t);   // a departure
+      return t < hi && arrivalOk(t);                      // an earlier day becomes the new arrival
+    }
+    return t < hi && arrivalOk(t);
   };
-  const changeDay = t => new Date(t).getUTCDay() === DAYNUM[T().band];
   // why the chosen dates do not work in summer (null when they are fine)
   const problem = () => {
     if (!weekly() || from === null || to === null || !touchesSummer(from, to)) return null;
@@ -150,7 +156,7 @@ boxes.forEach(box => {
   const drawCal = () => {
     const first = Date.UTC(YEAR, view, 1), days = new Date(Date.UTC(YEAR, view + 1, 0)).getUTCDate();
     const lead = (new Date(first).getUTCDay() + 6) % 7;
-    // in summer the changeover days get a dot; once an arrival is chosen, the right departures get a dashed ring
+    // in summer only the changeover days can be tapped; once an arrival is chosen, the right departures get a dashed ring
     const sugFrom = weekly() && from !== null && to === null && changeDay(from) && touchesSummer(from, from + 7 * DAY);
     $('.cal-m').textContent = MONTHS[view] + ' ' + YEAR;
     $('.cal-prev').disabled = view <= new Date(FIRST).getUTCMonth();
@@ -162,7 +168,7 @@ boxes.forEach(box => {
       const inR = from !== null && t >= from && t <= (to ?? from);
       const wk = weekly() && changeDay(t) && t >= SUMMER_FROM && t < SUMMER_TO;
       const sug = sugFrom && t > from && (t - from) % (7 * DAY) === 0;
-      const cls = ['cal-d', inR ? 'in' : '', t === from ? 'start' : '', t === to ? 'end' : '', wk ? 'wk' : '', sug ? 'sug' : ''].filter(Boolean).join(' ');
+      const cls = ['cal-d', inR ? 'in' : '', t === from ? 'start' : '', t === to ? 'end' : '', sug ? 'sug' : ''].filter(Boolean).join(' ');
       html += `<button type="button" class="${cls}" data-t="${t}"${ok ? '' : ' disabled'} aria-pressed="${inR}" aria-label="${longDay(t)}${wk ? ', giorno di arrivo' : ''}">${d}</button>`;
     }
     grid.innerHTML = html;
@@ -171,7 +177,7 @@ boxes.forEach(box => {
   const help = () => {
     if (!type) return 'Prima scegli la sistemazione.';
     const step = from !== null && to === null ? 'Ora tocca il giorno di partenza.' : 'Tocca il giorno di arrivo, poi quello di partenza.';
-    if (weekly()) return `${step} Dal 14 giugno al 31 agosto si prenota a settimane, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]} (bollino verde).`;
+    if (weekly()) return `${step} Dal 14 giugno al 31 agosto si prenota a settimane, da ${DAYNAME[T().band]} a ${DAYNAME[T().band]}: gli altri giorni non si possono scegliere.`;
     return step;
   };
 
@@ -207,7 +213,7 @@ boxes.forEach(box => {
         <p class="calc-bad-t">Rivedi le date</p>
         <p>Hai selezionato <b>da ${longDay(from)} a ${longDay(to)}</b>.</p>
         <p>Dal 14 giugno al 31 agosto si prenota solo <b>da ${d} a ${d}</b>: scegli ${dd} per l'arrivo e ${dd} per la partenza, una, due o tre settimane dopo.</p>
-        <p class="calc-bad-why">${d === 'sabato' ? 'I sabati' : 'Le domeniche'} ${d === 'sabato' ? 'sono segnati' : 'sono segnate'} nel calendario con il bollino verde.</p>
+        <p class="calc-bad-why">Nel calendario gli altri giorni non si possono scegliere.</p>
       </div>`;
       return;
     }
@@ -283,9 +289,6 @@ boxes.forEach(box => {
     $('.cal').classList.toggle('off', !type);
     drawCal();
     $('.cal-sum').innerHTML = summary();
-    const lg = $('.cal-legend');
-    lg.hidden = !weekly();
-    if (weekly()) $('.txt', lg).textContent = `Bollino verde: ${T().band === 'sat' ? 'i sabati' : 'le domeniche'} dal 14 giugno al 31 agosto, gli unici giorni di arrivo e partenza in estate.`;
     result();
     $('.c-next[data-to="2"]').disabled = !(type && adults > 0);
     $('.c-next[data-to="3"]').disabled = !(from !== null && to !== null);

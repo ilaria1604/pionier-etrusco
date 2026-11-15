@@ -79,6 +79,14 @@
 
 .cmap-tip{position:absolute;left:0;top:0;z-index:2;pointer-events:none;background:var(--night);color:var(--on-night);font-size:14px;font-weight:500;line-height:1.3;padding:7px 11px;border-radius:9px;white-space:nowrap;opacity:0;transform:translate(-50%,calc(-100% - 12px));transition:opacity .2s}
 .cmap-tip.show{opacity:1}
+/* a tapped pitch: its name and a Prenota button (rev 107) */
+.cmap-tip.book{display:flex;align-items:center;gap:10px;padding:6px 6px 6px 12px}
+.cmap-tip.show.book{pointer-events:auto}
+.cmap-book{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:6px 12px 6px 14px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:14px;text-decoration:none;transition:background-color .3s var(--ease-out)}
+.cmap-book[hidden]{display:none}
+.cmap-book:hover{background:#006765}
+.cmap-book svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
+.cmap-book:hover svg{transform:translateX(3px)}
 
 .cmap-legend{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px clamp(24px,4vw,56px);margin-top:30px}
 .cmap-legend h3{font-family:var(--f-body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin:0 0 10px}
@@ -110,10 +118,6 @@
 .cmap .mk.entry .etx{font:600 11px var(--f-body);fill:#fff;text-anchor:middle;pointer-events:none}
 .cmap .mk.entry:hover .dot,.cmap .mk.entry.on .dot{fill:var(--accent-hover)}
 /* from the map straight to the prices */
-.cmap-prices{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:8px 16px 8px 20px;border-radius:999px;border:1.5px solid var(--accent);background:#fff;color:var(--accent);font:600 15px var(--f-body);text-decoration:none}
-.cmap-prices svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
-.cmap-prices:hover{background:var(--accent);color:#fff}
-.cmap-prices:hover svg{transform:translateX(3px)}
 .cmap-tools{justify-content:flex-start}
 .cmap-hint{margin-left:auto}
 
@@ -123,7 +127,7 @@
 .cmap .cell.cur text{opacity:1}
 
 /* phones: the map is a preview in the page; a tap opens it full screen, where it moves and zooms like a maps app */
-.cmap-fsbar,.cmap-open,.cmap-zoom,.cmap-gest,.cmap-sheet-h,.cmap-prices-sheet{display:none}
+.cmap-fsbar,.cmap-open,.cmap-zoom,.cmap-gest,.cmap-sheet-h{display:none}
 .cmap-sheet{display:contents}
 @media (max-width:720px){
   .cmap-sec:not(.fs) .cmap-tools,.cmap-sec:not(.fs) .cmap-sheet{display:none}
@@ -163,5 +167,4 @@
   .cmap-sheet-h svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease-out)}
   .cmap-sheet.open .cmap-sheet-h svg{transform:rotate(180deg)}
   .cmap-sec.fs .cmap-legend{flex:1;min-height:0;margin:0;padding:2px var(--gut) 8px;overflow-y:auto;overscroll-behavior:contain}
-  .cmap-sec.fs .cmap-prices-sheet{display:inline-flex;flex:none;align-self:flex-start;margin:8px var(--gut) 16px}
 }

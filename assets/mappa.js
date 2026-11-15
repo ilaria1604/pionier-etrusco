@@ -118,8 +118,8 @@
     if (cell === curCell) { curCell = null; paint(); hideTip(); return; }
     selType = null; selServ = null; curCell = cell;
     paint();
-    if (!live() && view === 'all') { go('camp'); setTimeout(() => { if (curCell === cell) showTip(cell); }, reduced ? 0 : 950); }
-    else showTip(cell);
+    if (!live() && view === 'all') { go('camp'); setTimeout(() => { if (curCell === cell) showTip(cell, true); }, reduced ? 0 : 950); }
+    else showTip(cell, true);
   });
 
   // Legend: one type or one service at a time (a service selection can hold several keys, e.g. "bagni,docce")
@@ -195,17 +195,33 @@
   // a tap anywhere else (outside the icons, the legend and the highlighted pitches) brings back the whole map
   document.addEventListener('click', e => {
     if (!selType && !selServ && !curCell) return;
-    if (e.target.closest('.mk, .lg-type, .lg-serv, .cmap-view, [data-map-serv], .cell, .cmap-zoom, .cmap-sheet-h, .cmap-fsbar')) return;
+    if (e.target.closest('.mk, .lg-type, .lg-serv, .cmap-view, [data-map-serv], .cell, .cmap-zoom, .cmap-sheet-h, .cmap-fsbar, .cmap-tip')) return;
     selType = null; selServ = null; curCell = null;
     paint(); hideTip();
   });
 
   // Tooltip
-  function hideTip() { tip.classList.remove('show'); }
-  const showTip = (el) => {
+  function hideTip() { tip.classList.remove('show', 'book'); }
+  // a tapped pitch (or bungalow, glamping, home) also gets a "Prenota" button in its label: it fills in the request form and goes there
+  const bookTpl = sec.querySelector('.cmap-book');
+  const SIST = { T: 'Piazzola tenda', GL: 'Glamping Luxury Lodge', H: 'Home Premium Comfort' };
+  const book = (e, cell) => {
+    e.preventDefault(); e.stopPropagation();
+    const form = document.querySelector('#richiesta'), sist = document.querySelector('#f-sist'), msg = document.querySelector('#f-msg');
+    if (!form) return;
+    const v = SIST[cell.dataset.type];
+    if (v && sist && [...sist.options].some(o => o.value === v)) { sist.value = v; sist.dispatchEvent(new Event('change')); }
+    if (msg && !msg.value.trim()) msg.value = cell.dataset.tip + '. ';
+    const toForm = () => form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+    if (sec.classList.contains('fs')) { closeFs(); setTimeout(toForm, 120); } else toForm();
+  };
+  const showTip = (el, withBook) => {
     const label = el.dataset.tip;
     if (!label) return;
     tip.textContent = label;
+    const bookable = !!(withBook && bookTpl && el.classList.contains('cell') && el.dataset.type !== 'L');
+    tip.classList.toggle('book', bookable);
+    if (bookable) { const b = bookTpl.cloneNode(true); b.hidden = false; b.addEventListener('click', e => book(e, el)); tip.append(b); }
     const fr = frame.getBoundingClientRect();
     const r = (el.querySelector('.dot') || el.querySelector('rect,polygon')).getBoundingClientRect();
     let x = r.left + r.width / 2 - fr.left;
@@ -216,12 +232,12 @@
     tip.classList.add('show');
   };
   svg.addEventListener('pointerover', e => {
-    if (live() && e.pointerType !== 'mouse') return;
+    if (curCell || (live() && e.pointerType !== 'mouse')) return;
     const el = e.target.closest('.mk, .cell');
     if (el) showTip(el);
   });
   svg.addEventListener('pointerout', e => {
-    if (live() && e.pointerType !== 'mouse') return;
+    if (curCell || (live() && e.pointerType !== 'mouse')) return;
     const el = e.target.closest('.mk, .cell');
     if (el && !el.contains(e.relatedTarget)) hideTip();
   });
@@ -309,7 +325,7 @@
       e.preventDefault(); e.stopPropagation();
       selType = null; selServ = null; curCell = cell;
       paint();
-      zoomAt(px, py, Math.min(4, Math.max(1.6, 40 / side)), true, () => { if (curCell === cell) showTip(cell); });
+      zoomAt(px, py, Math.min(4, Math.max(1.6, 40 / side)), true, () => { if (curCell === cell) showTip(cell, true); });
     } else if (k < .8) {
       e.preventDefault(); e.stopPropagation();
       zoomAt(px, py, 2.5);
@@ -363,13 +379,6 @@
   sec.querySelector('.cmap-close').addEventListener('click', closeFs);
   addEventListener('keydown', e => { if (e.key === 'Escape') closeFs(); });
   PHONE.addEventListener('change', e => { if (!e.matches) closeFs(); });
-  // "Vedi le tariffe" from inside the full map: close it first, then go to the prices
-  sec.querySelectorAll('.cmap-prices').forEach(a => a.addEventListener('click', e => {
-    if (!sec.classList.contains('fs')) return;
-    e.preventDefault();
-    closeFs();
-    setTimeout(() => { const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }); }, 120);
-  }));
 
   // Arriving from the Piazzole page: open straight on the zoom
   if (new URLSearchParams(location.search).get('vista') === 'piazzole') {

@@ -18,8 +18,8 @@ const WEEK_BANDS = {
   glam: [[D(4, 18), D(5, 23), 0], [D(5, 23), D(6, 13), 1], [D(6, 13), D(8, 1), 2], [D(8, 1), D(8, 22), 3], [D(8, 22), D(8, 29), 2], [D(8, 29), D(9, 12), 1], [D(9, 12), D(9, 26), 0]],
 };
 // Pitches: each night is priced by the day it starts, ranges inclusive.
-// The 2027 PDF lists Media up to 23/07 and Alta from 23/07: the night of 23 July is priced Alta.
-const NIGHT_BANDS = [[D(4, 15), D(5, 20), 0], [D(5, 21), D(6, 17), 1], [D(6, 18), D(7, 22), 2], [D(7, 23), D(8, 24), 3], [D(8, 25), D(8, 31), 2], [D(9, 1), D(9, 13), 1], [D(9, 14), D(9, 26), 0]];
+// The 2027 PDF lists Media up to 23/07 and Alta from 23/07: the site shows both dates as the PDF does, and prices the night of 23 July as Media (rev 118).
+const NIGHT_BANDS = [[D(4, 15), D(5, 20), 0], [D(5, 21), D(6, 17), 1], [D(6, 18), D(7, 23), 2], [D(7, 24), D(8, 24), 3], [D(8, 25), D(8, 31), 2], [D(9, 1), D(9, 13), 1], [D(9, 14), D(9, 26), 0]];
 const PITCH = { pitch: [9, 11, 14, 20], adult: [10, 11, 14, 16], kid: [0, 4, 6, 8], car: [4, 5, 5, 6] };
 
 const TYPES = {
@@ -27,8 +27,8 @@ const TYPES = {
   // cot: a camping cot can be added to the booking (no price in the 2027 list, so it does not change the total)
   mono: { cap: 2, capNote: 'più un lettino da campeggio su prenotazione', cot: true, name: 'Bungalow Monolocale', sub: '20 mq, 2 posti', kind: 'week', band: 'sat', bands: 'bung', price: [350, 500, 750, 900], pick: 'Bungalow monolocale 20 mq' },
   tri: { cap: 4, name: 'Bungalow Trilocale', sub: '28 mq, 3 o 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [450, 650, 1000, 1250], pick: 'Bungalow trilocale 28 mq' },
-  sup5: { cap: 4, name: 'Bungalow Superior', sub: '48 mq, 4 posti', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
-  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 5 o 6 posti', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
+  sup5: { cap: 5, name: 'Bungalow Superior', sub: '48 mq, 4 o 5 posti', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
+  sup6: { cap: 6, name: 'Bungalow Superior', sub: '48 mq, 6 posti', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
   glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 mq, 4 posti', kind: 'week', band: 'sun', bands: 'glam', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
   home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 mq, 4 posti', kind: 'week', band: 'sun', bands: 'home', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
 };
@@ -49,7 +49,7 @@ const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
 const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
-const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Monolocale, 20 mq, 2 posti', tri: 'Trilocale, 28 mq, 3 o 4 posti', sup5: 'Superior, 48 mq, 4 posti', sup6: 'Superior, 48 mq, 5 o 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Home, 34 mq, 4 posti' })[k];
+const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Monolocale, 20 mq, 2 posti', tri: 'Trilocale, 28 mq, 3 o 4 posti', sup5: 'Superior, 48 mq, 4 o 5 posti', sup6: 'Superior, 48 mq, 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Home, 34 mq, 4 posti' })[k];
 const WD = ['L', 'M', 'M', 'G', 'V', 'S', 'D'];
 const WDLONG = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
 const longDay = t => fmtDay.format(t);

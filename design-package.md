@@ -1008,3 +1008,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Strip.** The four icons and their "Richiedi disponibilità" button are removed, with the `.perks` and `.pr-cta` styles and the one translation they alone used. The three cards now fill the whole panel. The three ticks in the block itself ("Biancheria e pulizie incluse", "Aria condizionata", "Ombrellone in spiaggia") stay.
 - **Name.** The title, the vertical strip and the button now read "Strutture" and "Scopri le strutture". The English stays "Rentals" and "Explore the rentals".
 - **Checked.** At 1440 px closed and open, and 390 px open.
+
+### Rev 113: the two blocks' texts aligned
+- **Owner's request.** Align the texts of the Piazzole and Strutture blocks. The Strutture block has an extra line of ticks, so its text started higher. The titles also had different sizes, because each scaled with its own block width.
+- **Fix (wide screens, at rest).** The Piazzole button gets the height of that missing line as extra space above it (`margin-top: calc(10px + 14px * 1.3 + 8px)`). Both titles use the same size, `clamp(38px, 3.6vw, 52px)`. The open and narrow states keep the size that follows the block width. On stacked layouts nothing changes.
+- **Checked.** The kickers, titles, lines and buttons sit at the same pixel height at 1440, 1280 and 1100 px.

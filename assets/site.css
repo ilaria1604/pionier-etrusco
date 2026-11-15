@@ -353,9 +353,6 @@ p{margin:0 0 14px}
 .duo .unit:hover{transform:none}
 .duo .unit .ph{aspect-ratio:auto;flex:1 1 0;min-height:0}
 .duo .unit .body{flex:none}
-.duo .note-inc{margin:0;max-width:none;padding:12px 18px}
-.duo .note-inc svg{width:28px;height:28px}
-.duo .note-inc p{font-size:15px}
 /* ---------- premium look for the fixed accommodation (rev 101): deep pine, the warm terracotta of the hero words, terracotta buttons; the pitches stay light and natural ---------- */
 .duo{--warm:var(--terra-light);--warm-line:rgba(232,162,122,.34);--warm-ink:#2B1B12}
 /* both blocks: a pill button under the text; the round + only shows on the narrow strip */
@@ -391,11 +388,43 @@ p{margin:0 0 14px}
 .duo-panel[data-side=s] .unit .go svg{stroke:var(--warm-ink)}
 .duo-panel[data-side=s] .unit:hover .go{background:var(--accent)}
 .duo-panel[data-side=s] .unit:hover .go svg{stroke:#fff}
-.duo-panel[data-side=s] .note-inc{display:flex;align-items:center;gap:14px;background:rgba(232,162,122,.07);border:1px solid var(--warm-line)}
-.duo-panel[data-side=s] .note-inc svg{stroke:var(--warm)}
-.duo-panel[data-side=s] .note-inc p{flex:1;color:var(--on-night)}
 .pr-cta{flex:none;display:inline-flex;align-items:center;min-height:40px;padding:9px 18px;border-radius:999px;background:var(--warm);color:var(--warm-ink);font-weight:600;font-size:15px;text-decoration:none;transition:transform .45s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out)}
 .pr-cta:hover{transform:translateY(-2px);background:var(--accent);color:#fff}
+/* rentals as a showcase (rev 111): the block is wider at rest and lists three inclusions; inside, the Home is the large card,
+   bungalow and glamping sit beside it, every card is a full photo with its name, a tag and the price over it; a strip of what is included */
+@media (min-width:1061px){
+  .duo:not(.p-open):not(.s-open) .duo-tile[data-side=p]{flex-grow:2}
+  .duo:not(.p-open):not(.s-open) .duo-tile[data-side=s]{flex-grow:3}
+}
+.st-perks{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;line-height:1.3;color:rgba(243,238,231,.92)}
+.st-perks>span{display:inline-flex;align-items:center;gap:6px}
+.st-perks svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--warm);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.duo-panel[data-side=s] .units{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
+.duo-panel[data-side=s] .unit:nth-child(3){order:-1;grid-row:span 2}
+.duo-panel[data-side=s] .unit{position:relative;justify-content:flex-end}
+.duo-panel[data-side=s] .unit .ph{position:absolute;inset:0;aspect-ratio:auto}
+.duo-panel[data-side=s] .unit .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.78) 45%,rgba(12,19,16,.15) 85%)}
+.duo-panel[data-side=s] .unit .body{position:relative;z-index:1;padding:18px 20px}
+.duo-panel[data-side=s] .unit:nth-child(3) .body{padding:26px 28px}
+.duo-panel[data-side=s] .unit:nth-child(3) h3{font-size:36px}
+.duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.4)}
+.u-tag{position:absolute;top:14px;left:14px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(17,25,21,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--on-night);font-size:13px;font-weight:600;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(232,162,122,.55)}
+.duo-panel[data-side=s] .perks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;align-items:center;gap:14px;padding:14px 18px;border-radius:14px;background:rgba(232,162,122,.07);border:1px solid var(--warm-line)}
+.perks>div{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.3;color:var(--on-night)}
+.perks svg{flex:none;width:24px;height:24px;fill:none;stroke:var(--warm);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.perks .pr-cta{justify-content:center}
+@media (max-width:1060px){
+  .duo-panel[data-side=s] .units{grid-template-rows:repeat(2,240px)}
+}
+@media (max-width:720px){
+  .st-perks{display:none}
+  .duo-panel[data-side=s] .unit{height:380px}
+  .duo-panel[data-side=s] .unit .ph::after{background:linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.62) 34%,rgba(12,19,16,.08) 62%)}
+  .duo-panel[data-side=s] .unit:nth-child(3) .body{padding:18px 20px}
+  .duo-panel[data-side=s] .unit:nth-child(3) h3{font-size:30px}
+  .duo-panel[data-side=s] .perks{grid-template-columns:repeat(2,minmax(0,1fr));padding:14px 16px}
+  .perks .pr-cta{grid-column:1/-1}
+}
 @media (max-width:1060px){
   /* one block under the other: each opens below itself */
   .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.7) 55%,rgba(23,33,29,.3) 100%)}
@@ -1181,9 +1210,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   /* the carousel of the three accommodations runs to the screen edges, like the others */
   .duo-panel[data-side=s] .sp-in{margin-inline:calc(-1*var(--gut));padding:0 var(--gut);border-radius:0;transition:padding .7s var(--ease-out)}
   .duo.s-open .duo-panel[data-side=s] .sp-in{padding-block:18px}
-  .duo-panel[data-side=s] .note-inc{flex-wrap:wrap}
-  .pr-cta{margin-left:48px}
-  .duo-panel[data-side=s] .note-inc{margin-top:2px}
   /* services: one row of cards that slides sideways, all built the same way: icon, title, a short text, the photo pile */
   .bento{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gut);margin:26px calc(-1*var(--gut)) 0;padding:4px var(--gut) 14px;scrollbar-width:none}
   .bento::-webkit-scrollbar{display:none}

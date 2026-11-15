@@ -938,3 +938,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **"Alloggi".** The fixed accommodation block is called "Alloggi" (title, vertical strip, button "Scopri gli alloggi"). In English it is "Rentals" and "Explore the rentals".
 - **Excursions map.** The outlines around Argentario, Isola del Giglio and Vulci (the teal lake) are removed, and only their dots stay. Their names now sit next to their dots like the others: Vulci at the right of its dot, Argentario centred under its dot (clear of the coast), and Isola del Giglio at the right of its dot. The campsite dot moves from (390,206) to (378,217), right against the coastline.
 - **Checked.** Services at 1440 and 390 px, the map at 1440 and 390 px, the menu links in the page, a click on Vulci on the map selecting it in the list, and no console errors.
+
+### Rev 105: white rentals button, terracotta on hover
+- **Owner's request.** The "Scopri gli alloggi" button is white at rest, the same cream-white pill as "Scopri le piazzole". On hover it turns terracotta (#E8A27A) with dark text. The pitches button still turns teal on hover. Checked with a real mouse hover at 1440 px.

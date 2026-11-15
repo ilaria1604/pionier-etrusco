@@ -118,8 +118,8 @@
     if (cell === curCell) { curCell = null; paint(); hideTip(); return; }
     selType = null; selServ = null; curCell = cell;
     paint();
-    if (!live() && view === 'all') { go('camp'); setTimeout(() => { if (curCell === cell) showTip(cell, true); }, reduced ? 0 : 950); }
-    else showTip(cell, true);
+    if (!live() && view === 'all') { go('camp'); setTimeout(() => { if (curCell === cell) showCard(cell); }, reduced ? 0 : 950); }
+    else showCard(cell);
   });
 
   // Legend: one type or one service at a time (a service selection can hold several keys, e.g. "bagni,docce")
@@ -195,33 +195,64 @@
   // a tap anywhere else (outside the icons, the legend and the highlighted pitches) brings back the whole map
   document.addEventListener('click', e => {
     if (!selType && !selServ && !curCell) return;
-    if (e.target.closest('.mk, .lg-type, .lg-serv, .cmap-view, [data-map-serv], .cell, .cmap-zoom, .cmap-sheet-h, .cmap-fsbar, .cmap-tip')) return;
+    if (e.target.closest('.mk, .lg-type, .lg-serv, .cmap-view, [data-map-serv], .cell, .cmap-zoom, .cmap-sheet-h, .cmap-fsbar, .cmap-tip, .cmap-card')) return;
     selType = null; selServ = null; curCell = null;
     paint(); hideTip();
   });
 
   // Tooltip
-  function hideTip() { tip.classList.remove('show', 'book'); }
-  // a tapped pitch (or bungalow, glamping, home) also gets a "Prenota" button in its label: it fills in the request form and goes there
-  const bookTpl = sec.querySelector('.cmap-book');
+  function hideTip() { tip.classList.remove('show'); hideCard(); }
+  // a tapped pitch (or bungalow, glamping, home) opens a small card with what it is, what is included, the price and "Prenota":
+  // on wide screens it sits on the pitch, on phones it slides up from the bottom (rev 108)
+  const card = sec.querySelector('.cmap-card'), infos = sec.querySelector('.cmap-info');
   const SIST = { T: 'Piazzola tenda', GL: 'Glamping Luxury Lodge', H: 'Home Premium Comfort' };
+  function hideCard() { if (card && !card.hidden) { card.hidden = true; card.classList.remove('show'); } }
   const book = (e, cell) => {
     e.preventDefault(); e.stopPropagation();
     const form = document.querySelector('#richiesta'), sist = document.querySelector('#f-sist'), msg = document.querySelector('#f-msg');
-    if (!form) return;
+    if (!form || !cell) return;
     const v = SIST[cell.dataset.type];
     if (v && sist && [...sist.options].some(o => o.value === v)) { sist.value = v; sist.dispatchEvent(new Event('change')); }
     if (msg && !msg.value.trim()) msg.value = cell.dataset.tip + '. ';
+    hideCard();
     const toForm = () => form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
     if (sec.classList.contains('fs')) { closeFs(); setTimeout(toForm, 120); } else toForm();
   };
-  const showTip = (el, withBook) => {
+  const placeCard = cell => {
+    const fr = frame.getBoundingClientRect(), r = cell.querySelector('rect,polygon').getBoundingClientRect();
+    const cw = card.offsetWidth, ch = card.offsetHeight, x = r.left + r.width / 2 - fr.left;
+    const left = Math.max(10, Math.min(fr.width - cw - 10, x - cw / 2));
+    let top = r.top - fr.top - ch - 14, below = false;
+    if (top < 8) { top = r.bottom - fr.top + 14; below = true; }
+    top = Math.max(8, Math.min(fr.height - ch - 8, top));
+    card.style.left = left + 'px'; card.style.top = top + 'px';
+    card.style.setProperty('--ax', Math.max(20, Math.min(cw - 20, x - left)) + 'px');
+    card.classList.toggle('below', below);
+  };
+  const showCard = cell => {
+    const info = infos && infos.querySelector(`[data-type="${cell.dataset.type}"]`);
+    if (!card || !info) { hideCard(); showTip(cell); return; }   // the technical room: just its name
+    tip.classList.remove('show');
+    const label = cell.dataset.tip || '', m = label.match(/\s(\d+(?:\s+(?:e|and)\s+\d+)?)$/);
+    card.querySelector('.cc-t').textContent = m ? info.querySelector('.n').textContent + ' ' + m[1] : label;
+    card.querySelector('.cc-s').textContent = info.querySelector('.s').textContent;
+    card.querySelector('.cc-inc').innerHTML = info.querySelector('ul').innerHTML;
+    card.querySelector('.cc-p').innerHTML = info.querySelector('.p').innerHTML;
+    card.cell = cell;
+    card.classList.remove('show');
+    card.classList.toggle('sheet', PHONE.matches);
+    card.hidden = false;
+    if (!PHONE.matches) placeCard(cell);
+    requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('show')));
+  };
+  if (card) {
+    card.querySelector('.cmap-book').addEventListener('click', e => book(e, card.cell));
+    card.querySelector('.cc-x').addEventListener('click', e => { e.stopPropagation(); curCell = null; paint(); hideTip(); });
+  }
+  const showTip = (el) => {
     const label = el.dataset.tip;
     if (!label) return;
     tip.textContent = label;
-    const bookable = !!(withBook && bookTpl && el.classList.contains('cell') && el.dataset.type !== 'L');
-    tip.classList.toggle('book', bookable);
-    if (bookable) { const b = bookTpl.cloneNode(true); b.hidden = false; b.addEventListener('click', e => book(e, el)); tip.append(b); }
     const fr = frame.getBoundingClientRect();
     const r = (el.querySelector('.dot') || el.querySelector('rect,polygon')).getBoundingClientRect();
     let x = r.left + r.width / 2 - fr.left;
@@ -325,7 +356,7 @@
       e.preventDefault(); e.stopPropagation();
       selType = null; selServ = null; curCell = cell;
       paint();
-      zoomAt(px, py, Math.min(4, Math.max(1.6, 40 / side)), true, () => { if (curCell === cell) showTip(cell, true); });
+      zoomAt(px, py, Math.min(4, Math.max(1.6, 40 / side)), true, () => { if (curCell === cell) showCard(cell); });
     } else if (k < .8) {
       e.preventDefault(); e.stopPropagation();
       zoomAt(px, py, 2.5);

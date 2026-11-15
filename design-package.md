@@ -977,3 +977,17 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - Home: Premium Comfort 34 sqm, 4 people; equipped kitchen, 2 bathrooms, furnished veranda; from € 600 per week.
 - **Prenota.** It works as in rev 107: it closes the full-screen map, goes to the form, fills in the message with the place, and fills in the type when it is unambiguous.
 - **Checked.** At 1440 px with real clicks on a pitch in the middle (card above), places at the top (card below), and a bungalow, the glamping, a home, a large pitch and the technical room. Prenota from the glamping filled in "Glamping Luxury Lodge" and "Glamping 117.". On a 390 px phone with real taps: full-screen map, tap on pitch 42, the sheet, the ×, tap on 43, then Prenota closing the map and reaching the form. The English page shows "Home 121 · Premium Comfort 34 sqm · 4 guests · from € 600 per week · Book". No console errors.
+
+### Rev 110: summer days that cannot be booked are disabled, no green dot
+- **Owner's request.** In the price calendar, show the dates that cannot be booked (mid June, July and August) as disabled, and remove the green dot.
+- **Rule.** From 14 June to 31 August, bungalow, glamping and home are booked by whole weeks, from changeover day to changeover day: Saturday for bungalows, Sunday for glamping and home. The calendar now enforces this instead of only marking it:
+  - Within that period only the changeover days can be tapped as an arrival. Every other day is disabled, with the same grey look as past days.
+  - Once an arrival is chosen, a departure that makes the stay touch the period must be a changeover day a whole number of weeks later, so only those days stay enabled. They keep the dashed ring.
+  - A stay that arrives before 14 June on another weekday can only end by 14 June.
+  - Pitches have no change: every day is open.
+  - In `calc.js`, `arrivalOk` and `stayOk` feed `selectable`. The "Rivedi le date" message stays as a safety net for dates that arrive from a link.
+- **Green dot removed.** The `.wk` dot on the changeover days, the legend under the calendar ("Bollino verde: ...") and its styles are gone. The help line now reads "Dal 14 giugno al 31 agosto si prenota a settimane, da sabato a sabato: gli altri giorni non si possono scegliere." The English texts were updated.
+- **Checked.** With real clicks on the home page calculator:
+  - Bungalow: in June, days 1 to 13, 19 and 26 are enabled; in July, 3, 10, 17, 24 and 31; in August, 7, 14, 21 and 28; all of September. After arriving on 3 July, only 10, 17, 24 and 31 July are enabled.
+  - Glamping, July: 4, 11, 18 and 25.
+  - Pitch, July: every day.

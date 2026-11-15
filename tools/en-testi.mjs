@@ -54,8 +54,8 @@ export const TEXT = {
   // the pitch card on the camping map (rev 108)
   'Per camper, roulotte e tende': 'For motorhomes, caravans and tents', 'Per la tenda': 'For your tent', 'Per tenda grande, roulotte e camper': 'For large tents, caravans and motorhomes', 'Cucina': 'Kitchen', 'Bagno privato': 'Private bathroom', '2 bagni': '2 bathrooms',
   // rentals showcase (rev 111)
-  'Fino a 6 posti': 'Up to 6 guests', 'Nuove · 2 bagni': 'Brand new · 2 bathrooms', 'Biancheria da letto inclusa': 'Bed linen included', 'Biancheria e pulizie incluse': 'Linen and cleaning included', 'Ombrellone in spiaggia': 'Beach umbrella included',
-  'Scopri le piazzole': 'Explore the pitches', 'Scopri gli alloggi': 'Explore the rentals', 'Alloggi': 'Rentals',
+  'Fino a 6 posti': 'Up to 6 guests', 'Nuove · 2 bagni': 'Brand new · 2 bathrooms', 'Biancheria e pulizie incluse': 'Linen and cleaning included', 'Ombrellone in spiaggia': 'Beach umbrella included',
+  'Scopri le piazzole': 'Explore the pitches', 'Scopri le strutture': 'Explore the rentals', 'Strutture': 'Rentals',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared
   'Vai al contenuto': 'Skip to content', 'Chi siamo': 'About us', 'Sistemazioni': 'Accommodation', 'Piazzole e camper stop': 'Pitches and camper stop',

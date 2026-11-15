@@ -1002,3 +1002,9 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Phones.** The cards stay a sideways carousel with the Home first. Each card is 380 px tall with the photo filling it (`aspect-ratio:auto` overrides the 4:3 phone rule) and a lighter veil. The included strip is two by two, with the button across the full width.
 - **English.** Five new strings were added and the old beach-note translation was removed.
 - **Checked.** At 1440 px closed and open, 1024 px open, and 390 px open.
+
+### Rev 112: no included strip, "Strutture" instead of "Alloggi"
+- **Owner's request.** Remove the strip of included services under the rental cards, and call the block "Strutture" instead of "Alloggi".
+- **Strip.** The four icons and their "Richiedi disponibilità" button are removed, with the `.perks` and `.pr-cta` styles and the one translation they alone used. The three cards now fill the whole panel. The three ticks in the block itself ("Biancheria e pulizie incluse", "Aria condizionata", "Ombrellone in spiaggia") stay.
+- **Name.** The title, the vertical strip and the button now read "Strutture" and "Scopri le strutture". The English stays "Rentals" and "Explore the rentals".
+- **Checked.** At 1440 px closed and open, and 390 px open.

@@ -870,11 +870,6 @@ p{margin:0 0 14px}
 .pile img+img{margin-left:-14px}
 .item.has-photos:hover .pile img+img{margin-left:-4px}
 .item.has-photos:hover .pile img{transform:translateY(-2px)}
-.pile.sport-pile{display:none}
-.pile b{position:absolute;right:-8px;bottom:-4px;z-index:1;display:inline-flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:999px;background:var(--accent);color:#fff;font:600 13px/1.4 var(--f-body);box-shadow:0 4px 10px -4px rgba(0,60,58,.6)}
-.pile b svg,.item .pile b svg{width:14px;height:14px;margin:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ph-badge{position:absolute;top:18px;right:18px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;background:rgba(8,12,10,.62);backdrop-filter:blur(6px);color:#fff;font-weight:600;font-size:15px;pointer-events:none}
-.ph-badge svg,.item .ph-badge svg{width:18px;height:18px;margin:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .item.photo .ia,.spiagge .ia{border-color:rgba(166,217,215,.75);color:#E6F4F3}
 .item.photo .ia:hover,.spiagge .ia:hover{background:rgba(166,217,215,.18);color:#fff}
 .item.photo .ia-photos,.spiagge .ia-photos{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -1205,7 +1200,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .bento .item .pile{top:14px;right:12px;transform:scale(.8);transform-origin:top right}
   /* Sport: no background photo on the phone, it looks like the other cards */
   .bento .item.photo.sport{display:block;min-height:0;overflow:visible;color:inherit}
-  .bento .item.photo.sport>img,.bento .item.sport .ph-badge,.bento .item.sport .sport-list{display:none}
+  .bento .item.photo.sport>img,.bento .item.sport .sport-list{display:none}
   .bento .item.sport .sport-ico,.bento .item.sport .sport-sub{display:block}
   .bento .item.sport .pile.sport-pile{display:flex}
   .bento .item.photo.sport .cap{position:static;padding:0;background:none}

@@ -1055,3 +1055,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **4. 23 July for pitches.** The tables show Media "dal 18 giugno al 23 luglio" and Alta "dal 23 luglio al 24 agosto", as the PDF does. The calculator prices the night of 23 July as Media: one night for 2 adults costs € 42, and from 24 July it costs € 52 (Alta).
 - **English.** Updated. "5 o 6 posti" and the old short-stay sentence were removed as no longer used.
 - **Checked.** With the home page calculator: pitch 23 to 24 July € 42, pitch 24 to 25 July € 52, Superior 4/5 accepts 5 adults (€ 500 in the lowest season), Superior 6 accepts 6 (€ 560). Text checks on every page.
+
+### Rev 119: sheets included, bath linen on request
+- **Owner's request.** Make it clear that for the rentals the sheets are included in the price (bed linen included) and the bath linen is on request. This matches the PDF: "biancheria da letto (con cambio settimanale su richiesta)" is included, and "asciugamani da bagno 2 pezzi € 5,00 (su richiesta)" is an extra.
+- **Strutture block.** The tick reads "Lenzuola e pulizie incluse" (was "Biancheria e pulizie incluse").
+- **Price section.** In both "Incluso nel prezzo" notes, "biancheria da letto" is now "biancheria da letto (lenzuola)". In "Da sapere", "Asciugamani (2 pezzi) € 5 su richiesta" is now "Biancheria da bagno su richiesta: 2 asciugamani € 5".
+- **Bungalow, glamping and home pages.**
+  - In "Dotazioni e servizi", "Biancheria da letto" becomes "Biancheria da letto (lenzuola)". A new item follows it, "Biancheria da bagno su richiesta", with a towel icon (also added to the `ICONS` of `tools/gen-pages.mjs`).
+  - In "Prima di arrivare", the towels line becomes "Biancheria da bagno su richiesta: 2 asciugamani € 5".
+- **English.** "Sheets and cleaning included", "Bed linen (sheets)", "Bath linen on request", "Bath linen on request: 2 towels € 5".
+- **Checked.** The Home page list and notes. The two blocks are still aligned at 1440, 1280 and 1100 px.

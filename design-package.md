@@ -1036,3 +1036,7 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **English.** The texts were updated and the translations no longer used were removed.
 - **Checked.** Every page in both languages: the only remaining mentions are "not included" and the kitchenette cleaning fee. The two blocks are still aligned at 1440, 1280 and 1100 px.
 - **Note.** In rev 104, 109 and 111 linen and cleaning were described as included, because the detail pages listed them that way at the time.
+
+### Rev 117: "Clicca qui" and a still dot on the walk to the sea
+- **Owner's request.** The walk button in the sea section reads "Clicca qui" instead of "Vai al mare" ("Click here" in English). While walking it still reads "In cammino...", then "Rifai la passeggiata". The dot at the start of the path no longer pulses: the `walker-hint` animation and its reduced-motion override are removed, so it sits still until the walk starts or it is dragged.
+- **Checked.** At 1440 px the dot at rest has no animation and a 3 px ring.

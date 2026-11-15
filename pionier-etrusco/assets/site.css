@@ -461,9 +461,6 @@ p{margin:0 0 14px}
 .walker-hit:hover + .walker{stroke-width:5}
 .mare.dragging,.mare.dragging .walker-hit{cursor:grabbing;user-select:none;-webkit-user-select:none}
 .mare.arrived .walker-hit{pointer-events:none}
-.walk-svg.at-start .walker{animation:walker-hint 2.4s ease-in-out infinite}
-@keyframes walker-hint{50%{stroke-width:11;stroke-opacity:.45}}
-@media (prefers-reduced-motion:reduce){.walk-svg.at-start .walker{animation:none}}
 .walk-labels{display:flex;justify-content:space-between;font-family:var(--f-body);font-size:14px;color:var(--label);margin-top:6px}
 .walk-ui{display:flex;flex-wrap:wrap;align-items:center;gap:22px 32px;margin-top:34px}
 .clock{font-family:var(--f-body);font-weight:600;font-size:clamp(44px,6vw,72px);line-height:1;letter-spacing:0;color:var(--canvas);min-width:4ch;font-variant-numeric:lining-nums tabular-nums}

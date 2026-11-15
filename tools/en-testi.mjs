@@ -109,7 +109,7 @@ export const TEXT = {
   'Il glamping a forma di A tra i pini, con la veranda in legno': 'The A-shaped glamping among the pines, with its wooden veranda', 'La Home con la veranda coperta, nella luce della sera': 'The Home with its covered veranda, in the evening light',
 
   // home page: sea and beaches
-  'Il mare e le spiagge': 'The sea and the beaches', 'La tua piazzola': 'Your pitch', 'La spiaggia': 'The beach', 'minuti a piedi': 'minutes on foot', 'Vai al mare': 'Walk to the sea', 'Sei arrivato.': "You're here.",
+  'Il mare e le spiagge': 'The sea and the beaches', 'La tua piazzola': 'Your pitch', 'La spiaggia': 'The beach', 'minuti a piedi': 'minutes on foot', 'Clicca qui': 'Click here', 'Sei arrivato.': "You're here.",
   'La pineta dista 100 metri dal mare. Il lungomare di Montalto Marina, circa 1,5 km, ha stabilimenti, negozi, ristoranti e mercatini serali. La macchina resta ferma per tutta la vacanza.': 'The pine wood is 100 metres from the sea. The Montalto Marina seafront, about 1.5 km long, has beach clubs, shops, restaurants and evening markets. Your car can stay parked for the whole holiday.',
   'Le spiagge': 'The beaches', '25 km di litorale di sabbia vulcanica grigio scuro. Nel 2011 ha ricevuto le quattro vele di Legambiente e Touring Club.': '25 km of dark grey volcanic sand. In 2011 it received the four sails award from Legambiente and Touring Club.',
   'Apri su Google Maps': 'Open in Google Maps', "Oltre 4 km di dune e macchia mediterranea, con un mare trasparente. Davanti alla spiaggia c'era il porto etrusco di Regisvilla.": 'More than 4 km of dunes and Mediterranean scrub, with crystal-clear water. The Etruscan port of Regisvilla once stood off this beach.',

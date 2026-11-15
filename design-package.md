@@ -1023,3 +1023,16 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** On the rental cards (Home, Bungalow, Glamping), the arrows and the prices should be white, and the arrow should change colour only on hover.
 - **What changed.** The price is white (#fff) instead of terracotta. The round arrow is white with a dark arrow. On hover it turns terracotta (#E8A27A) with a dark arrow and turns 45° like the other cards on the site.
 - **Checked.** Real mouse hover on the bungalow card at 1440 px (bungalow arrow terracotta, the others white, every price white).
+
+### Rev 116: bed linen and cleaning are not included
+- **Owner's correction.** Bed linen and cleaning are not included in the price of bungalow, glamping and home. The whole site was updated.
+- **Removed as "included":**
+  - "Biancheria e pulizie incluse", the tick in the Strutture block. Two ticks stay: Aria condizionata, Ombrellone in spiaggia.
+  - "Biancheria da letto" among the glamping chips on the map card, now "Aria condizionata", also in `tools/gen-mappa.mjs`.
+  - "pulizia iniziale e finale, biancheria da letto" in both "Incluso nel prezzo" notes of the price section. They now read "Ombrellone e 2 lettini allo stabilimento, acqua, luce e gas, parcheggio di 1 auto, wi-fi, Mini Club e area relax."
+  - "Pulizia iniziale e finale" and "Biancheria da letto" in the "Cosa è incluso" lists of the bungalow, glamping and home pages.
+  - The same items in `tools/gen-pages.mjs`: the three gear lists, plus `INCL_UNIT`, which the pages do not use.
+- **Added as "not included".** "Biancheria da letto e pulizia non sono incluse nel prezzo" is now in the "Da sapere" note of the price section and in the "Prima di arrivare" lists of the three detail pages (and in `KNOW_UNIT`), right before the kitchenette cleaning fee (€ 50), which stays.
+- **English.** The texts were updated and the translations no longer used were removed.
+- **Checked.** Every page in both languages: the only remaining mentions are "not included" and the kitchenette cleaning fee. The two blocks are still aligned at 1440, 1280 and 1100 px.
+- **Note.** In rev 104, 109 and 111 linen and cleaning were described as included, because the detail pages listed them that way at the time.

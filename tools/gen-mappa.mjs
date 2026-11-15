@@ -268,7 +268,7 @@ const servLegend = Object.entries(SERV).map(([k, v]) => `<li><button type="butto
 const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
   <div class="wrap">
     <div class="cmap-head" data-reveal>
-      <p class="label rv" style="--i:0">La mappa</p>
+      <p class="label rv" style="--i:0"><span class="pf-k">2</span>La mappa</p>
       <h2 class="h2 rv" id="mappa-t" style="--i:1">Ogni <em>piazzola</em>, ogni servizio.</h2>
       <p class="cmap-intro rv" style="--i:2">Tocca un tipo di piazzola o un servizio per trovarlo sulla mappa. Per tornare alla mappa completa, toccalo di nuovo o tocca un punto qualsiasi fuori.</p>
     </div>

@@ -1065,3 +1065,20 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - In "Prima di arrivare", the towels line becomes "Biancheria da bagno su richiesta: 2 asciugamani € 5".
 - **English.** "Sheets and cleaning included", "Bed linen (sheets)", "Bath linen on request", "Bath linen on request: 2 towels € 5".
 - **Checked.** The Home page list and notes. The two blocks are still aligned at 1440, 1280 and 1100 px.
+
+### Rev 120: Sistemazioni, Mappa and Tariffe come first
+- **Owner's request.** After reviewing the information hierarchy (proposals A, B and C were not adopted), the owner wants to highlight three things: accommodation, the map and the prices.
+- **New home page order.** Hero → quick path → Sistemazioni → Mappa → Tariffe → Il mare → Servizi → Recensioni → Escursioni → Video → La nostra storia → Cani → Domande → Richiesta. Before, it was hero, storia, sistemazioni, mare, servizi, mappa, video, cani, tariffe, escursioni, recensioni, domande, richiesta. The blocks were moved whole, and the content is unchanged.
+- **Where they now start.**
+
+  | Section | Wide screen, before → now (screen) | Phone, before → now (screen) |
+  |---|---|---|
+  | Sistemazioni | 6.2 → 4.6 (right after the 4.2-screen opening video) | 2.5 → 1.6 |
+  | Mappa | 9.4 → 5.7 | 4.8 → 2.6 |
+  | Tariffe | 12.4 → 7.1 | 7.1 → 3.0 |
+
+- **Quick path.** A new `nav.pianifica` sits right under the opening, labelled "Organizza la vacanza". It has three cards, numbered 1 to 3 and each with a teal icon tile: Sistemazioni ("Piazzole, bungalow, glamping e home"), La mappa ("Trova il posto che preferisci"), Tariffe 2027 ("Calcola il prezzo in un minuto"). Each card lifts on hover and its arrow slides. The cards are three across on wide screens and stacked under 860 px. The scroll cue at the end of the opening ("Scopri il camping") now leads here.
+- **Numbered labels.** The labels of the three sections carry the same number in a teal disc: 1 Sistemazioni, 2 La mappa (also in `tools/gen-mappa.mjs`), 3 Tariffe 2027.
+- **Backgrounds.** The map section now sits on the page colour instead of the sand panel, so the three sections alternate sand, page, sand.
+- **Menus.** The menus of every page (and `tools/gen-pages.mjs`) are Sistemazioni · Mappa · Tariffe · Servizi · Spiagge · Escursioni · Chi siamo · Contatti. "Mappa" is new. The desktop bar still fits at 1440 px.
+- **English.** Five new strings were added.

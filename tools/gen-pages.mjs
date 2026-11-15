@@ -179,12 +179,13 @@ const NAV = cur => `<header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Camping Pionier Etrusco, pagina principale"><span class="mark" aria-hidden="true"></span><span class="name">Pionier Etrusco</span></a>
   <nav aria-label="Principale">
     <ul class="links">
-      <li><a href="index.html#camping">Chi siamo</a></li>
       <li><a href="index.html#sistemazioni">Sistemazioni</a></li>
+      <li><a href="index.html#mappa">Mappa</a></li>
+      <li><a href="index.html#tariffe">Tariffe</a></li>
       <li><a href="index.html#servizi">Servizi</a></li>
       <li><a href="index.html#mare">Spiagge</a></li>
-      <li><a href="index.html#tariffe">Tariffe</a></li>
       <li><a href="index.html#dintorni">Escursioni</a></li>
+      <li><a href="index.html#camping">Chi siamo</a></li>
       <li><a href="index.html#richiesta">Contatti</a></li>
     </ul>
   </nav>
@@ -194,11 +195,13 @@ const NAV = cur => `<header class="nav" id="nav">
 </header>
 <div class="menu" id="menu">
   <ul>
-    <li><a href="index.html">Home page</a></li>
-    <li><a href="index.html#camping">Chi siamo</a></li>
     <li><a href="index.html#sistemazioni">Sistemazioni</a></li>
-    <li><a href="index.html#servizi">Servizi</a></li>
+    <li><a href="index.html#mappa">Mappa</a></li>
     <li><a href="index.html#tariffe">Tariffe</a></li>
+    <li><a href="index.html#servizi">Servizi</a></li>
+    <li><a href="index.html#mare">Spiagge</a></li>
+    <li><a href="index.html#dintorni">Escursioni</a></li>
+    <li><a href="index.html#camping">Chi siamo</a></li>
     <li><a href="index.html#richiesta">Contatti</a></li>
     <li><a href="en/${cur}.html" hreflang="en" lang="en">English</a></li>
   </ul>

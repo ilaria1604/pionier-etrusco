@@ -1093,3 +1093,7 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 123: dogs right after the prices
 - **Owner's request.** The "Viaggi con il cane?" section (dogs welcome in the camper stop area, camper stop prices by phone) now sits right under the price section, where it was between "La nostra storia" and the FAQ. The order is now: Sistemazioni, Mappa, Tariffe, Cani, Il mare, Servizi, Recensioni, Escursioni, Video, La nostra storia, Domande, Richiesta. The backgrounds alternate: sand prices, then the page colour for the dog card, then the dark sea section. Checked at 1440 px.
+
+### Rev 124: the dog card under "Offerte e last minute"
+- **Owner's request.** Put "Viaggi con il cane" right under the "Offerte e last minute" box. After rev 123 it was a separate section after the prices, on the page colour, with its own 72 px padding.
+- **What changed.** The dog card moved inside the price section, 16 px under the offers box, on the same sand background. It is a nested `section.cani-in` that keeps `id="cani"` and its heading. The old `section.cani` is gone (its rule stays but matches nothing). After the prices comes the sea section. Checked at 1440 and 390 px.

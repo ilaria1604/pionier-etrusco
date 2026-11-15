@@ -1087,3 +1087,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** Remove the "Organizza la vacanza" quick path added in rev 120. The owner had not asked for it, and it repeated the menu and the sections right under it.
 - **What changed.** The `nav.pianifica` block, its styles and its four translations are gone. The scroll cue at the end of the opening leads to `#sistemazioni` again. The numbered labels (1 Sistemazioni, 2 La mappa, 3 Tariffe 2027), the new order and the menus stay.
 - **Where they now start (wide screen).** Sistemazioni 4.3 screens, Mappa 5.4, Tariffe 6.9.
+
+### Rev 122: the wave band in the same sand as Sistemazioni
+- **Owner's request.** The band with the Etruscan wave under the opening video was on the page colour, and the Sistemazioni section under it is sand. Since rev 120 put Sistemazioni right after it, the two looked like separate stripes. The band (`.divider`) now has the sand panel colour (`var(--panel)`, rgb 233/224/213), so the wave and the section read as one block. Checked at 1440 and 390 px.

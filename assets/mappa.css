@@ -1,5 +1,6 @@
 /* Camping map */
-.cmap-sec{padding:clamp(80px,9vw,120px) 0;background:var(--panel);scroll-margin-top:var(--nav-h)}
+/* between the two sand sections it sits on the page colour (rev 120) */
+.cmap-sec{padding:clamp(80px,9vw,120px) 0;scroll-margin-top:var(--nav-h)}
 .cmap-intro{max-width:52ch;color:var(--text-secondary);margin:0}
 .cmap-tools{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin:30px 0 14px}
 .cmap-view{display:inline-flex;background:var(--canvas);border-radius:999px;padding:4px}

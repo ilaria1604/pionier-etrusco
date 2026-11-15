@@ -1040,3 +1040,18 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 117: "Clicca qui" and a still dot on the walk to the sea
 - **Owner's request.** The walk button in the sea section reads "Clicca qui" instead of "Vai al mare" ("Click here" in English). While walking it still reads "In cammino...", then "Rifai la passeggiata". The dot at the start of the path no longer pulses: the `walker-hint` animation and its reduced-motion override are removed, so it sits still until the walk starts or it is dragged.
 - **Checked.** At 1440 px the dot at rest has no animation and a 3 px ring.
+
+### Rev 118: the site follows the 2027 price-list PDF in every point
+- **Owner's request.** "Aggiorna le tariffe e le date" with `TARIFFE 2027 (1).pdf`. That file is byte-identical to `assets/tariffe-2027.pdf`, which is already on the site. Every price and season band already matched it. Four points differed because of earlier owner requests (rev ~85 and rev 116). Asked about them, the owner chose to follow the PDF in all four.
+- **1. Bed linen and cleaning are included again.** The PDF says the rental price includes "pulizia iniziale e finale (escluso angolo cottura € 50)" and "biancheria da letto (con cambio settimanale su richiesta)". Rev 116 was undone with `git revert` on the site files, keeping the log, so all its edits came back:
+  - the "Biancheria e pulizie incluse" tick in the Strutture block;
+  - the "Biancheria da letto" chip on the glamping map card;
+  - "pulizia iniziale e finale, biancheria da letto" in the two "Incluso nel prezzo" notes;
+  - the two items in the "Cosa è incluso" lists of the three detail pages;
+  - the generators and the English texts.
+  The "non sono incluse" lines are gone.
+- **2. Bungalow Superior 48 mq.** The tiers are "4 o 5 posti" (€ 500 / 700 / 1.150 / 1.400) and "6 posti" (€ 560 / 750 / 1.200 / 1.500), instead of "4 posti" and "5 o 6 posti". This applies to the home and bungalow price lists, the Superior card ("a settimana per 4 o 5 posti, € 560 per 6 posti"), the calculator labels and `gen-pages.mjs`. The calculator caps are now 5 and 6, so 5 people pay the 4/5 tier.
+- **3. Short stays.** The text now reads "dal 4 aprile al 14 giugno e dal 1° settembre", instead of "dal 15 aprile al 13 giugno e da settembre". This is in the price-list note, the FAQ, the "Prima di arrivare" lists of the three detail pages and the generator. The calculator rule is unchanged (whole weeks for stays that touch 14 June to 31 August).
+- **4. 23 July for pitches.** The tables show Media "dal 18 giugno al 23 luglio" and Alta "dal 23 luglio al 24 agosto", as the PDF does. The calculator prices the night of 23 July as Media: one night for 2 adults costs € 42, and from 24 July it costs € 52 (Alta).
+- **English.** Updated. "5 o 6 posti" and the old short-stay sentence were removed as no longer used.
+- **Checked.** With the home page calculator: pitch 23 to 24 July € 42, pitch 24 to 25 July € 52, Superior 4/5 accepts 5 adults (€ 500 in the lowest season), Superior 6 accepts 6 (€ 560). Text checks on every page.

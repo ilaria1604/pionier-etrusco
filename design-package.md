@@ -1090,3 +1090,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 122: the wave band in the same sand as Sistemazioni
 - **Owner's request.** The band with the Etruscan wave under the opening video was on the page colour, and the Sistemazioni section under it is sand. Since rev 120 put Sistemazioni right after it, the two looked like separate stripes. The band (`.divider`) now has the sand panel colour (`var(--panel)`, rgb 233/224/213), so the wave and the section read as one block. Checked at 1440 and 390 px.
+
+### Rev 123: dogs right after the prices
+- **Owner's request.** The "Viaggi con il cane?" section (dogs welcome in the camper stop area, camper stop prices by phone) now sits right under the price section, where it was between "La nostra storia" and the FAQ. The order is now: Sistemazioni, Mappa, Tariffe, Cani, Il mare, Servizi, Recensioni, Escursioni, Video, La nostra storia, Domande, Richiesta. The backgrounds alternate: sand prices, then the page colour for the dog card, then the dark sea section. Checked at 1440 px.

@@ -864,21 +864,14 @@ p{margin:0 0 14px}
 .ia-photos:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
 .item.has-photos{cursor:pointer;position:relative}
 /* service cards: a little stack of photos in the corner says "there are photos here"; the whole card opens them */
-.pile{position:absolute;top:18px;right:20px;width:92px;height:70px;pointer-events:none}
-.pile img{position:absolute;top:0;right:0;width:54px;height:54px;margin:0;object-fit:cover;border-radius:6px;border:3px solid #fff;box-shadow:0 8px 18px -8px rgba(51,39,31,.6);transition:transform .5s var(--ease-out)}
-.pile.n3 img:nth-child(1){transform:translate(-30px,10px) rotate(-9deg)}
-.pile.n3 img:nth-child(2){transform:translate(-15px,4px) rotate(3deg)}
-.pile.n3 img:nth-child(3){transform:rotate(9deg)}
-.pile.n2 img:nth-child(1){transform:translate(-20px,8px) rotate(-7deg)}
-.pile.n2 img:nth-child(2){transform:rotate(7deg)}
-.pile.n1 img{transform:rotate(6deg)}
-.item.has-photos:hover .pile.n3 img:nth-child(1){transform:translate(-40px,12px) rotate(-14deg)}
-.item.has-photos:hover .pile.n3 img:nth-child(2){transform:translate(-20px,2px) rotate(1deg)}
-.item.has-photos:hover .pile.n3 img:nth-child(3){transform:translate(2px,-2px) rotate(12deg)}
-.item.has-photos:hover .pile.n2 img:nth-child(1){transform:translate(-28px,8px) rotate(-11deg)}
-.item.has-photos:hover .pile.n2 img:nth-child(2){transform:translate(2px,-2px) rotate(10deg)}
-.item.has-photos:hover .pile.n1 img{transform:rotate(0) scale(1.06)}
-.pile b{position:absolute;right:-8px;bottom:0;z-index:1;display:inline-flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:999px;background:var(--accent);color:#fff;font:600 13px/1.4 var(--f-body);box-shadow:0 4px 10px -4px rgba(0,60,58,.6)}
+/* the small photos of a service: round, with a story ring, side by side like Instagram stories (rev 104) */
+.pile{position:absolute;top:18px;right:20px;display:flex;align-items:center;padding-bottom:8px;pointer-events:none}
+.pile img{position:relative;width:54px;height:54px;margin:0;object-fit:cover;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--accent),0 8px 18px -8px rgba(51,39,31,.55);transition:margin .5s var(--ease-out),transform .5s var(--ease-out)}
+.pile img+img{margin-left:-14px}
+.item.has-photos:hover .pile img+img{margin-left:-4px}
+.item.has-photos:hover .pile img{transform:translateY(-2px)}
+.pile.sport-pile{display:none}
+.pile b{position:absolute;right:-8px;bottom:-4px;z-index:1;display:inline-flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:999px;background:var(--accent);color:#fff;font:600 13px/1.4 var(--f-body);box-shadow:0 4px 10px -4px rgba(0,60,58,.6)}
 .pile b svg,.item .pile b svg{width:14px;height:14px;margin:0;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ph-badge{position:absolute;top:18px;right:18px;z-index:1;display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;background:rgba(8,12,10,.62);backdrop-filter:blur(6px);color:#fff;font-weight:600;font-size:15px;pointer-events:none}
 .ph-badge svg,.item .ph-badge svg{width:18px;height:18px;margin:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
@@ -1213,7 +1206,8 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   /* Sport: no background photo on the phone, it looks like the other cards */
   .bento .item.photo.sport{display:block;min-height:0;overflow:visible;color:inherit}
   .bento .item.photo.sport>img,.bento .item.sport .ph-badge,.bento .item.sport .sport-list{display:none}
-  .bento .item.sport .sport-pile,.bento .item.sport .sport-ico,.bento .item.sport .sport-sub{display:block}
+  .bento .item.sport .sport-ico,.bento .item.sport .sport-sub{display:block}
+  .bento .item.sport .pile.sport-pile{display:flex}
   .bento .item.photo.sport .cap{position:static;padding:0;background:none}
   .bento .item.photo.sport h3{color:inherit;font-size:21px;margin:0 0 6px}
   .bento .item.photo.sport p{color:var(--text-secondary)}

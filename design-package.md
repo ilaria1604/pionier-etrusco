@@ -1018,3 +1018,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** Remove the pill switcher (Piazzole · Bungalow · Glamping · Home) from the top of every accommodation page.
 - **What changed.** The list is removed from `piazzole.html`, `bungalow.html`, `glamping.html` and `home.html` (and so from the English pages), and from the template in `tools/gen-pages.mjs`. On wide screens the "Tutte le sistemazioni" back link stays at the top left, as before. On phones that link was already hidden, so the top of the photo is now clear. The switcher styles stay but match nothing.
 - **Checked.** Bungalow page at 1440 px and glamping page at 390 px.
+
+### Rev 115: white prices and arrows on the rental cards
+- **Owner's request.** On the rental cards (Home, Bungalow, Glamping), the arrows and the prices should be white, and the arrow should change colour only on hover.
+- **What changed.** The price is white (#fff) instead of terracotta. The round arrow is white with a dark arrow. On hover it turns terracotta (#E8A27A) with a dark arrow and turns 45° like the other cards on the site.
+- **Checked.** Real mouse hover on the bungalow card at 1440 px (bungalow arrow terracotta, the others white, every price white).

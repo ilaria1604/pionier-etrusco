@@ -382,12 +382,13 @@ p{margin:0 0 14px}
 .duo-panel[data-side=s] .unit h3{color:var(--on-night)}
 .duo-panel[data-side=s] .unit .meta{color:var(--on-night-2)}
 .duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.3)}
-.duo-panel[data-side=s] .unit .price b{color:var(--warm)}
+/* prices and arrows white; the arrow turns terracotta only on hover (rev 115) */
+.duo-panel[data-side=s] .unit .price b{color:#fff}
 .duo-panel[data-side=s] .unit .price small{color:var(--on-night-2)}
-.duo-panel[data-side=s] .unit .go{background:var(--warm)}
-.duo-panel[data-side=s] .unit .go svg{stroke:var(--warm-ink)}
-.duo-panel[data-side=s] .unit:hover .go{background:var(--accent)}
-.duo-panel[data-side=s] .unit:hover .go svg{stroke:#fff}
+.duo-panel[data-side=s] .unit .go{background:#fff}
+.duo-panel[data-side=s] .unit .go svg{stroke:var(--text-primary)}
+.duo-panel[data-side=s] .unit:hover .go{background:var(--warm)}
+.duo-panel[data-side=s] .unit:hover .go svg{stroke:var(--warm-ink)}
 /* rentals as a showcase (rev 111): the block is wider at rest and lists three inclusions; inside, the Home is the large card,
    bungalow and glamping sit beside it, every card is a full photo with its name, a tag and the price over it (rev 112: no strip under them) */
 @media (min-width:1061px){

@@ -958,3 +958,22 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 108: no service chips
 - **Owner's request.** Remove the chips under the service cards (Reception sempre presente, 3 gruppi di bagni con docce calde, Lavanderia a gettoni, Camper service, Parcheggio ombreggiato, Camper stop), together with the hint "Tocca un servizio per vederlo sulla mappa del camping."
 - **What changed.** The list and the hint are removed from the home page. Their five translations that are no longer used were removed too. "Camper service" and "Camper stop" are still used elsewhere. The section now ends 100 px (its padding) under the cards. The map legend still lists every service, so those places can still be found on the map.
+
+### Rev 109: pitch card on the map (option D), sheet from the bottom on phones (option E)
+- **Owner's choice.** Out of five mock-ups (A the current label, B a card at the bottom of the map, C a big button at the bottom, D a card on the pitch, E a sheet from the bottom on phones), the owner picked D on wide screens and E on phones.
+- **Card (wide screens and tablets).** A tap on a pitch, bungalow, glamping or home opens a 310 px cream card on it, with a small pointer that aims at the place. It sits above the place, or below it when there is no room above, and stays inside the map. It shows:
+  - the name and number ("Piazzola 99", "Glamping 117");
+  - who it is for or its size;
+  - three included items as chips;
+  - the starting price over a dashed line, next to a teal "Prenota" pill.
+  Hovering other places does not replace it. A tap elsewhere closes it. The technical room still shows only its name.
+- **Sheet (phones, full-screen map).** The same content slides up from the bottom across the full width, without the chips: name (26 px), description, price, a full-width 52 px "Prenota" button and a round × to close. The × also clears the selection.
+- **Content per type.** The text lives in a hidden `.cmap-info` block in the page, so the English page is translated by `gen-en`. The facts come from the detail pages and the price list:
+  - Piazzola: for motorhomes, caravans and tents; Corrente 3 A, Docce calde, Wi-fi gratuito; from € 9 per night.
+  - Piazzola tenda: for your tent; the same three items; from € 9 per night.
+  - Large pitch: for large tents, caravans and motorhomes; the same three items; from € 9 per night.
+  - Bungalow: 20 to 48 sqm, up to 6 people; kitchen, bathroom with shower, air conditioning; from € 350 per week.
+  - Glamping: Luxury Lodge 45 sqm, 4 people; kitchen, private bathroom, bed linen; from € 450 per week.
+  - Home: Premium Comfort 34 sqm, 4 people; equipped kitchen, 2 bathrooms, furnished veranda; from € 600 per week.
+- **Prenota.** It works as in rev 107: it closes the full-screen map, goes to the form, fills in the message with the place, and fills in the type when it is unambiguous.
+- **Checked.** At 1440 px with real clicks on a pitch in the middle (card above), places at the top (card below), and a bungalow, the glamping, a home, a large pitch and the technical room. Prenota from the glamping filled in "Glamping Luxury Lodge" and "Glamping 117.". On a 390 px phone with real taps: full-screen map, tap on pitch 42, the sheet, the ×, tap on 43, then Prenota closing the map and reaching the form. The English page shows "Home 121 · Premium Comfort 34 sqm · 4 guests · from € 600 per week · Book". No console errors.

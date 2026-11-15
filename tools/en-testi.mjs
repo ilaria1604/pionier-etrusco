@@ -51,6 +51,8 @@ export const TEXT = {
   'Trovi tutto pronto': 'Everything ready for you', 'Bungalow, glamping e home · da € 350 a settimana': 'Bungalows, glamping and homes · from € 350 per week',
   'Una piazzola sotto i pini, con il camper e la tenda': 'A pitch under the pines, with a motorhome and a tent',
   "Nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. Dicci come viaggi e ti suggeriamo noi la zona giusta.": 'In the heart of the pine wood, in the shade of the pines, for motorhomes, caravans, tents and rooftop tents. Tell us how you travel and we will suggest the right area.',
+  // the pitch card on the camping map (rev 108)
+  'Per camper, roulotte e tende': 'For motorhomes, caravans and tents', 'Per la tenda': 'For your tent', 'Per tenda grande, roulotte e camper': 'For large tents, caravans and motorhomes', 'Cucina': 'Kitchen', 'Bagno privato': 'Private bathroom', '2 bagni': '2 bathrooms',
   'Scopri le piazzole': 'Explore the pitches', 'Scopri gli alloggi': 'Explore the rentals', 'Alloggi': 'Rentals',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared

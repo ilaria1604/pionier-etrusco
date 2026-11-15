@@ -51,11 +51,10 @@ export const TEXT = {
   'Trovi tutto pronto': 'Everything ready for you', 'Bungalow, glamping e home · da € 350 a settimana': 'Bungalows, glamping and homes · from € 350 per week',
   'Una piazzola sotto i pini, con il camper e la tenda': 'A pitch under the pines, with a motorhome and a tent',
   "Nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. Dicci come viaggi e ti suggeriamo noi la zona giusta.": 'In the heart of the pine wood, in the shade of the pines, for motorhomes, caravans, tents and rooftop tents. Tell us how you travel and we will suggest the right area.',
-  'Scopri le piazzole': 'Explore the pitches', 'Scopri le sistemazioni': 'Explore the accommodation',
+  'Scopri le piazzole': 'Explore the pitches', 'Scopri gli alloggi': 'Explore the rentals', 'Alloggi': 'Rentals',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared
   'Vai al contenuto': 'Skip to content', 'Chi siamo': 'About us', 'Sistemazioni': 'Accommodation', 'Piazzole e camper stop': 'Pitches and camper stop',
-  'camper, roulotte, tende': 'motorhomes, caravans, tents', 'da 20 a 48 mq': 'from 20 to 48 sqm', 'Luxury Lodge 45 mq': 'Luxury Lodge 45 sqm', 'Premium Comfort 34 mq': 'Premium Comfort 34 sqm',
   'Servizi': 'Services', 'Spiagge': 'Beaches', 'Tariffe': 'Prices', 'Escursioni': 'Day trips', 'Contatti': 'Contact', 'Prenota': 'Book',
   'Tutte le sistemazioni': 'All accommodation', 'Altre sistemazioni': 'Other accommodation', 'Chiudi': 'Close',
   'Camping Pionier Etrusco, torna all\'inizio': 'Camping Pionier Etrusco, back to the top', 'Camping Pionier Etrusco, pagina principale': 'Camping Pionier Etrusco, home page',

@@ -309,7 +309,8 @@ p{margin:0 0 14px}
 .duo-tile[data-side=s]{margin-left:16px}
 .duo-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
 .duo-tile:hover img{transform:scale(1.04)}
-.duo-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.55) 48%,rgba(23,33,29,0) 80%)}
+/* rev 137: the same dark, even backdrop as the Strutture tile (rev 136) on both tiles */
+.duo-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.88) 46%,rgba(12,19,16,.5) 66%,rgba(12,19,16,.1) 86%)}
 .duo-tile:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px}
 .st-text{position:absolute;left:28px;right:28px;bottom:26px;z-index:1;display:flex;flex-direction:column;gap:8px;transition:opacity .35s var(--ease-out)}
 .st-kicker{font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label-on-night)}
@@ -376,7 +377,7 @@ p{margin:0 0 14px}
 /* the accommodation block: darker pine veil with a warm light from the top corner, a warm hairline, words and button in flat terracotta; on hover the button turns teal like the pitches one (rev 102) */
 /* rev 136: a darker, even backdrop under the text, so the terracotta title reads on every photo */
 .duo-tile[data-side=s]::after{background:radial-gradient(90% 60% at 88% 0%,rgba(232,162,122,.30),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.88) 46%,rgba(12,19,16,.5) 66%,rgba(12,19,16,.1) 86%)}
-.duo-tile[data-side=s] .st-title{text-shadow:0 2px 20px rgba(12,19,16,.6)}
+.duo-tile .st-title{text-shadow:0 2px 20px rgba(12,19,16,.6)}
 .duo-tile[data-side=s]::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--warm-line);pointer-events:none}
 .duo-tile[data-side=s] .st-kicker{color:var(--warm)}
 .duo-tile[data-side=s] .st-title,.duo-tile[data-side=s] .st-vert{color:var(--warm)}
@@ -442,7 +443,7 @@ p{margin:0 0 14px}
 }
 @media (max-width:1060px){
   /* one block under the other: each opens below itself */
-  .duo-tile::after{background:linear-gradient(to top,rgba(23,33,29,.92) 0%,rgba(23,33,29,.7) 55%,rgba(23,33,29,.3) 100%)}
+  .duo-tile::after{background:linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.83) 56%,rgba(12,19,16,.54) 100%)}
   .duo-tile[data-side=s]::after{background:radial-gradient(90% 70% at 88% 0%,rgba(232,162,122,.22),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.83) 56%,rgba(12,19,16,.54) 100%)}
   .st-btn{display:none}
   .duo-panel[data-side=s] .sp-in{padding-block:0;transition:padding .7s var(--ease-out)}

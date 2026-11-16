@@ -1101,3 +1101,6 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 125: no "Offerte e last minute" banner
 - **Owner's request.** Remove the dark "Offerte e last minute" banner at the end of the price section. It had the line "Pasqua, 25 aprile, 1° maggio, ponte del 2 giugno, last minute di giugno, Camping + Kayak sul Fiora e kitesurf. Chiamaci per le date libere." and the buttons "Chiama lo 0766 802807" and "Scarica il listino 2027".
 - **What changed.** The banner, its five `.offerte` rules and three translations are gone. The dog card now sits 34 px under "Vedi tutte le tariffe". The 2027 price-list PDF can still be downloaded from the footer ("Listino 2027 in PDF") and from the price section of each detail page. Checked at 1440 px.
+
+### Rev 126: no numbers on the three labels
+- **Owner's request.** Remove the 1, 2, 3 discs from the labels of Sistemazioni, La mappa and Tariffe 2027, which were added in rev 120. The labels are plain again, in the home page and in `tools/gen-mappa.mjs`, and the `.label .pf-k` style is gone. The order of the sections stays.

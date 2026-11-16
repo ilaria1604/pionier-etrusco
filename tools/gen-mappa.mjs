@@ -8,7 +8,7 @@ const TYPES = {
   T:  { name: 'Piazzole tenda', long: 'Piazzola tenda' },
   G:  { name: 'Tenda grande, roulotte e camper', long: 'Piazzola per tenda grande, roulotte e camper' },
   GL: { name: 'Glamping', long: 'Glamping' },
-  H:  { name: 'Home', long: 'Home' },
+  H:  { name: 'Mobile home', long: 'Mobile home' },
   B:  { name: 'Bungalow', long: 'Bungalow' },
   L:  { name: 'Locali tecnici', long: 'Locale tecnico' },
 };
@@ -193,7 +193,7 @@ const symbols = Object.entries(ICON).map(([k, d]) => `<symbol id="mi-${k}" viewB
 
 const svg = `<svg class="cmap" viewBox="10 262 1960 788" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="cmap-t cmap-d">
 <title id="cmap-t">Mappa del Camping Pionier Etrusco</title>
-<desc id="cmap-d">Pianta del camping con piazzole numerate, bungalow, glamping, home e servizi, più l'area mediterranea con il laghetto, l'area sport, la piscina, il parcheggio e il camper stop.</desc>
+<desc id="cmap-d">Pianta del camping con piazzole numerate, bungalow, glamping, mobile home e servizi, più l'area mediterranea con il laghetto, l'area sport, la piscina, il parcheggio e il camper stop.</desc>
 <defs>
 ${symbols}
 <pattern id="cm-pines" width="64" height="56" patternUnits="userSpaceOnUse"><g class="pine d"><circle cx="12" cy="12" r="9"/><circle cx="40" cy="30" r="11"/><circle cx="54" cy="8" r="6"/><circle cx="18" cy="42" r="7"/><circle cx="62" cy="50" r="5"/></g></pattern>
@@ -298,7 +298,7 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
         <div data-type="G" data-g="pz"><span class="k">Piazzola</span><b class="n">Piazzola</b><p class="s">Per tenda grande, roulotte e camper</p><ul><li>Corrente 3 A</li><li>Docce calde</li><li>Wi-fi gratuito</li></ul><span class="p"><small>da</small> <b>€ 9</b> <small>a notte</small></span></div>
         <div data-type="B" data-g="al"><span class="k">Struttura</span><b class="n">Bungalow</b><p class="s">Da 20 a 48 mq · fino a 6 posti</p><ul><li>Cucina</li><li>Bagno con doccia</li><li>Aria condizionata</li></ul><span class="p"><small>da</small> <b>€ 350</b> <small>a settimana</small></span></div>
         <div data-type="GL" data-g="al"><span class="k">Struttura</span><b class="n">Glamping</b><p class="s">Luxury Lodge 45 mq · 4 posti</p><ul><li>Cucina</li><li>Bagno privato</li><li>Biancheria da letto</li></ul><span class="p"><small>da</small> <b>€ 450</b> <small>a settimana</small></span></div>
-        <div data-type="H" data-g="al"><span class="k">Struttura</span><b class="n">Home</b><p class="s">Premium Comfort 34 mq · 4 posti</p><ul><li>Cucina attrezzata</li><li>2 bagni</li><li>Veranda arredata</li></ul><span class="p"><small>da</small> <b>€ 600</b> <small>a settimana</small></span></div>
+        <div data-type="H" data-g="al"><span class="k">Struttura</span><b class="n">Mobile home</b><p class="s">Premium Comfort 34 mq · 4 posti</p><ul><li>Cucina attrezzata</li><li>2 bagni</li><li>Veranda arredata</li></ul><span class="p"><small>da</small> <b>€ 600</b> <small>a settimana</small></span></div>
       </div>
       <button type="button" class="cmap-open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Apri la mappa</button>
       <div class="cmap-zoom" role="group" aria-label="Zoom della mappa">

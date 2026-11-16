@@ -1182,3 +1182,18 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** A divider between the "Chi siamo" section and the FAQ.
 - **What changed.** The same Etruscan wave as the divider under the opening (`.divider`, drawn on scroll by `data-draw` and shaped by `data-wave="40,26"`) now sits between `.famiglia` and `.domande` too. Its class `.divider.mid` drops the sand background and the padding: both sections are on the page colour, and their own spacing (120px above, 110px below on computers) keeps the wave centred. The English page gets it through `gen-en`.
 - **Checked.** At 1440 px and on a 390 px phone the wave draws fully and spans the content width. No script errors.
+
+### Rev 135: "Home" becomes "Mobile home"
+- **Owner's request.** Replace "Home" with "Mobile home".
+- **Wording.**
+  - A label or name reads "Mobile home" ("Mobile home Premium Comfort").
+  - In a sentence it reads "mobile home", feminine and invariable: "la mobile home", "le mobile home", "glamping e mobile home".
+  - Generated labels say "della mobile home…" (`ofUnit()` in `tools/gen-pages.mjs`).
+- **Where.**
+  - Home page: meta description, intro, the Strutture tile pill and panel card, map description, legend and card, the price tab "Glamping e mobile home", the price table, the FAQ, the request form option and the footer.
+  - The detail page: title, description, h1, texts and photo captions (`tools/gen-pages.mjs`). The comparison column, "Vedi le mobile home" and the "others" card.
+  - The map types (`tools/gen-mappa.mjs`): "Mobile home 121".
+  - The calculator name, label and form value (`calc.js`) and the map prefill (`mappa.js`), so the form still preselects "Mobile home Premium Comfort" from the calculator, the map and the detail page.
+- **English.** "Mobile home(s)"; `gen-en.mjs` patterns updated for "Mobile home 121" and "foto della…".
+- **Phones.** The three pills now take two rows, so under 560 px the Strutture tile is 300 px tall instead of 260 px. Tablets keep 260 px because the pills fit on one row.
+- **Not changed.** The file name `home.html`, the photo file names and the code keys (`home`). The 2027 PDF still says "Home premium confort".

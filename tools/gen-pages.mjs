@@ -54,7 +54,7 @@ const UNITS = {
   piazzole: { href: 'piazzole.html', title: 'Piazzole', img: 'assets/foto/piazzole-pineta.jpg', alt: 'Piazzole per camper sotto i pini curvi della pineta', meta: 'Camper · Roulotte · Tende', price: ['€ 9', 'a notte'] },
   bungalow: { href: 'bungalow.html', title: 'Bungalow', img: 'assets/foto/bung-cover-card.jpg', alt: 'Bungalow in legno circondato da siepi e pini', meta: 'Da 20 a 48 mq · fino a 6 posti', price: ['€ 350', 'a settimana'] },
   glamping: { href: 'glamping.html', title: 'Glamping', img: 'assets/foto/glam-esterno.jpg', alt: 'Il glamping a forma di A tra i pini, con la veranda in legno', meta: 'Luxury Lodge 45 mq · 4 posti', price: ['€ 450', 'a settimana'] },
-  home: { href: 'home.html', title: 'Home', img: 'assets/foto/home-2.jpg', alt: 'La Home con la veranda coperta, nella luce della sera', meta: 'Premium Comfort 34 mq · 4 posti', price: ['€ 600', 'a settimana'] },
+  home: { href: 'home.html', title: 'Mobile home', img: 'assets/foto/home-2.jpg', alt: 'La mobile home con la veranda coperta, nella luce della sera', meta: 'Premium Comfort 34 mq · 4 posti', price: ['€ 600', 'a settimana'] },
 };
 const card = (u, i) => `<a class="unit rv" style="--i:${i}" href="${u.href}">
         <div class="ph"><img src="${u.img}" alt="${u.alt}" loading="lazy"></div>
@@ -151,25 +151,25 @@ const PAGES = [
     ctaH: 'Ti piace? Chiedici se è <em>libera</em>.',
   },
   {
-    file: 'home.html', key: 'home', pick: 'Home Premium Comfort',
-    title: 'Home Premium Comfort nella pineta · Camping Pionier Etrusco',
-    desc: 'Home Premium Comfort 34 mq per 4 persone, con due camere, due bagni, lavastoviglie e veranda sulla pineta di Montalto Marina. Tariffe 2027.',
+    file: 'home.html', key: 'home', pick: 'Mobile home Premium Comfort',
+    title: 'Mobile home Premium Comfort nella pineta · Camping Pionier Etrusco',
+    desc: 'Mobile home Premium Comfort 34 mq per 4 persone, con due camere, due bagni, lavastoviglie e veranda sulla pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/home-2.jpg', heroPos: '50% 55%',
-    h1: 'Home',
-    lede: 'Le nuovissime Home Premium Comfort: 34 mq con due camere, due bagni e una veranda arredata affacciata sulla pineta.',
+    h1: 'Mobile home',
+    lede: 'Le nuovissime mobile home Premium Comfort: 34 mq con due camere, due bagni e una veranda arredata affacciata sulla pineta.',
     facts: [['Premium Comfort 34 mq', '#tipologie'], '4 posti', '2 bagni', ['Da domenica a domenica', '#prezzi'], ['da € 600 a settimana', '#prezzi']], calc: 'home',
-    photosH: 'La Home, dentro e <em>fuori</em>.',
+    photosH: 'La mobile home, dentro e <em>fuori</em>.',
     typesLabel: 'La sistemazione', typesH: 'Due camere e <em>due bagni</em>, per 4 persone.',
     introH: 'Due camere, due bagni, tutto <em>nuovo</em>.',
-    intro: ['Le Home sono la scelta giusta per chi cerca relax e comodità. La cucina ha lavastoviglie e piano a induzione, i bagni sono due, con cabina doccia e asciugacapelli, e uno ha anche il bidet.', 'Una camera matrimoniale, una con due letti singoli, il soggiorno con TV e una grande veranda arredata per godersi il fresco della pineta.'],
+    intro: ['Le mobile home sono la scelta giusta per chi cerca relax e comodità. La cucina ha lavastoviglie e piano a induzione, i bagni sono due, con cabina doccia e asciugacapelli, e uno ha anche il bidet.', 'Una camera matrimoniale, una con due letti singoli, il soggiorno con TV e una grande veranda arredata per godersi il fresco della pineta.'],
     gearH: 'Dotazioni e servizi',
     gear: [['bed', '2 camere da letto'], ['shower', '2 bagni con doccia'], ['kitchen', 'Cucina attrezzata'], ['dish', 'Lavastoviglie'], ['stove', 'Piano cottura a induzione'], ['fridge', 'Frigorifero con freezer'], ['ac', 'Aria condizionata'], ['heat', 'Riscaldamento'], ['tv', 'TV'], ['dryer', 'Asciugacapelli'], ['veranda', 'Veranda arredata'], ['umbrella', 'Ombrellone e 2 lettini in spiaggia'], ['clean', 'Pulizia iniziale e finale'], ['linen', 'Biancheria da letto (lenzuola)'], ['towel', 'Biancheria da bagno su richiesta'], ['parking', 'Parcheggio di 1 auto'], ['wifi', 'Wi-fi']],
     types: [
-      { id: 'premium', calc: 'home', cover: 'home-3.jpg', photos: [['home-2.jpg', 'La Home con la veranda coperta, nella luce della sera'], ['home-3.jpg', 'La Home tra le siepi e gli alberi'], ['home-soggiorno.jpg', 'Il soggiorno con divano giallo e tavolo'], ['home-cucina.jpg', 'La cucina attrezzata'], ['home-matrimoniale.jpg', 'La camera matrimoniale'], ['home-letti-singoli.jpg', 'La camera con due letti singoli'], ['home-bagno.jpg', 'Uno dei due bagni'], ['home-veranda.jpg', 'La veranda arredata con tavolo in legno']], h: 'Home Premium Comfort 34 mq', cap: 'Fino a 4 persone', p: 'Cucina attrezzata con lavastoviglie e piano a induzione, 2 bagni, 1 camera matrimoniale e 1 con due letti singoli, soggiorno con TV e ampia veranda arredata.', plans: [['home.jpg', 'Planimetria con veranda']], from: ['€ 600', 'a settimana, in bassissima stagione'], pick: 'Home Premium Comfort' },
+      { id: 'premium', calc: 'home', cover: 'home-3.jpg', photos: [['home-2.jpg', 'La mobile home con la veranda coperta, nella luce della sera'], ['home-3.jpg', 'La mobile home tra le siepi e gli alberi'], ['home-soggiorno.jpg', 'Il soggiorno con divano giallo e tavolo'], ['home-cucina.jpg', 'La cucina attrezzata'], ['home-matrimoniale.jpg', 'La camera matrimoniale'], ['home-letti-singoli.jpg', 'La camera con due letti singoli'], ['home-bagno.jpg', 'Uno dei due bagni'], ['home-veranda.jpg', 'La veranda arredata con tavolo in legno']], h: 'Mobile home Premium Comfort 34 mq', cap: 'Fino a 4 persone', p: 'Cucina attrezzata con lavastoviglie e piano a induzione, 2 bagni, 1 camera matrimoniale e 1 con due letti singoli, soggiorno con TV e ampia veranda arredata.', plans: [['home.jpg', 'Planimetria con veranda']], from: ['€ 600', 'a settimana, in bassissima stagione'], pick: 'Mobile home Premium Comfort' },
     ],
-    gallery: [['home-3.jpg', 'La Home tra le siepi e gli alberi'], ['home-soggiorno.jpg', 'Il soggiorno con divano giallo e tavolo'], ['home-cucina.jpg', 'La cucina attrezzata'], ['home-matrimoniale.jpg', 'La camera matrimoniale'], ['home-letti-singoli.jpg', 'La camera con due letti singoli'], ['home-bagno.jpg', 'Uno dei due bagni'], ['home-veranda.jpg', 'La veranda arredata con tavolo in legno']],
-    pricesH: 'Home, a <em>settimana</em>',
-    prices: table('Tipologia', 'home', [['Home Premium Comfort 34 mq', '4 posti', ['€ 600', '€ 800', '€ 1.150', '€ 1.450']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
+    gallery: [['home-3.jpg', 'La mobile home tra le siepi e gli alberi'], ['home-soggiorno.jpg', 'Il soggiorno con divano giallo e tavolo'], ['home-cucina.jpg', 'La cucina attrezzata'], ['home-matrimoniale.jpg', 'La camera matrimoniale'], ['home-letti-singoli.jpg', 'La camera con due letti singoli'], ['home-bagno.jpg', 'Uno dei due bagni'], ['home-veranda.jpg', 'La veranda arredata con tavolo in legno']],
+    pricesH: 'Mobile home, a <em>settimana</em>',
+    prices: table('Tipologia', 'home', [['Mobile home Premium Comfort 34 mq', '4 posti', ['€ 600', '€ 800', '€ 1.150', '€ 1.450']], ['Ospite', 'a persona, al giorno', ['€ 10', '€ 12', '€ 15', '€ 16']]]),
     incl: INCL_UNIT, know: KNOW_UNIT('da domenica a domenica'),
     ctaH: 'Ti piace? Chiedici se è <em>libera</em>.',
   },
@@ -191,7 +191,7 @@ const CMP_ROWS = [
 const CMP_COLS = [
   ['bungalow', 'Bungalow', '€ 350', 'a settimana', 'Vedi i bungalow'],
   ['glamping', 'Glamping', '€ 450', 'a settimana', 'Vedi il glamping'],
-  ['home', 'Home', '€ 600', 'a settimana', 'Vedi le home'],
+  ['home', 'Mobile home', '€ 600', 'a settimana', 'Vedi le mobile home'],
 ];
 const compare = cur => `<section class="detail d-compare" id="confronto" aria-labelledby="cmp-t">
   <div class="wrap">
@@ -261,7 +261,7 @@ const FOOT = `<footer class="foot">
       <a href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a><br>
       Aperto dal 15 aprile al 26 settembre 2027
     </address>
-    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Home</a></li></ul></div>
+    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></div>
     <div><h4>Info</h4><ul><li><a href="index.html#tariffe">Tariffe 2027</a></li><li><a href="assets/tariffe-2027.pdf" download>Listino 2027 in PDF</a></li><li><a href="index.html#servizi">Servizi</a></li><li><a href="index.html#richiesta">Contatti</a></li></ul></div>
     <div class="fine">
       <span>© Camping Pionier Etrusco · P. IVA 01513620565</span>
@@ -290,7 +290,9 @@ const reelTile = r => `
 for (const P of PAGES) {
   const ask = (pick) => `index.html?sist=${encodeURIComponent(pick)}#richiesta`;
   const single = P.types && P.types.length === 1 ? P.types[0] : null;
-  const plansOf = t => t.plans.map(pl => [`assets/planimetrie/${pl[0]}`, `${pl[1]} del ${t.h}`]);
+  // "del Bungalow…", but "della mobile home…" (rev 135)
+  const ofUnit = h => /^Mobile home /.test(h) ? 'della m' + h.slice(1) : 'del ' + h;
+  const plansOf = t => t.plans.map(pl => [`assets/planimetrie/${pl[0]}`, `${pl[1]} ${ofUnit(t.h)}`]);
 
   // 1. the photos: one mosaic, the first picture large, videos in between
   const mosaic = (() => {
@@ -319,7 +321,7 @@ for (const P of PAGES) {
       const start = Math.max(0, t.photos.findIndex(x => x[0] === t.cover));
       return `
       <article class="ch-card" id="${t.id}">
-        <button type="button" class="ch-ph" data-photos="${att(ph)}" data-start="${start}" aria-label="Guarda le ${ph.length} foto del ${t.h}"><img src="assets/foto/${t.cover}" alt="" loading="lazy"><span class="b-count">${SVG.cam}${ph.length} foto</span></button>
+        <button type="button" class="ch-ph" data-photos="${att(ph)}" data-start="${start}" aria-label="Guarda le ${ph.length} foto ${ofUnit(t.h)}"><img src="assets/foto/${t.cover}" alt="" loading="lazy"><span class="b-count">${SVG.cam}${ph.length} foto</span></button>
         <div class="ch-body">
           <h3>${t.h}</h3>
           <p class="cap">${t.cap}</p>

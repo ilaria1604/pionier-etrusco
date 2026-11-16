@@ -30,7 +30,7 @@ const TYPES = {
   sup5: { cap: 5, name: 'Superior Bungalow', sub: '48 sqm, 4 or 5 guests', kind: 'week', band: 'sat', bands: 'bung', price: [500, 700, 1150, 1400], pick: 'Bungalow trilocale superior 48 mq' },
   sup6: { cap: 6, name: 'Superior Bungalow', sub: '48 sqm, 6 guests', kind: 'week', band: 'sat', bands: 'bung', price: [560, 750, 1200, 1500], pick: 'Bungalow trilocale superior 48 mq' },
   glam: { cap: 4, name: 'Glamping', sub: 'Luxury Lodge 45 sqm, 4 guests', kind: 'week', band: 'sun', bands: 'glam', price: [450, 650, 1000, 1250], pick: 'Glamping Luxury Lodge' },
-  home: { cap: 4, name: 'Home', sub: 'Premium Comfort 34 sqm, 4 guests', kind: 'week', band: 'sun', bands: 'home', price: [600, 800, 1150, 1450], pick: 'Home Premium Comfort' },
+  home: { cap: 4, name: 'Mobile home', sub: 'Premium Comfort 34 sqm, 4 guests', kind: 'week', band: 'sun', bands: 'home', price: [600, 800, 1150, 1450], pick: 'Mobile home Premium Comfort' },
 };
 
 const fmtDay = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
@@ -49,7 +49,7 @@ const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
 const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
-const optLabel = k => ({ piaz: 'Pitch for motorhome, caravan or tent', mono: 'Studio, 20 sqm, 2 guests', tri: 'Two-bedroom, 28 sqm, 3 or 4 guests', sup5: 'Superior, 48 sqm, 4 or 5 guests', sup6: 'Superior, 48 sqm, 6 guests', glam: 'Glamping, 45 sqm, 4 guests', home: 'Home, 34 sqm, 4 guests' })[k];
+const optLabel = k => ({ piaz: 'Pitch for motorhome, caravan or tent', mono: 'Studio, 20 sqm, 2 guests', tri: 'Two-bedroom, 28 sqm, 3 or 4 guests', sup5: 'Superior, 48 sqm, 4 or 5 guests', sup6: 'Superior, 48 sqm, 6 guests', glam: 'Glamping, 45 sqm, 4 guests', home: 'Mobile home, 34 sqm, 4 guests' })[k];
 const WD = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 const WDLONG = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const longDay = t => fmtDay.format(t);

@@ -26,12 +26,12 @@ const tr = raw => {
   if ((m = /^Video: (.+)\. Tocca per mettere in pausa o riprendere$/.exec(k))) return `Video: ${tr(m[1])}. Tap to pause or resume`;
   if ((m = /^Video (.+)\. Tocca per mettere in pausa o riprendere$/.exec(k))) return `${tr('Video ' + m[1])}. Tap to pause or resume`;
   if ((m = /^(\d+) foto$/.exec(k))) return m[1] + ' photos';
-  if ((m = /^Guarda le (\d+) foto de[l]? (.+)$/.exec(k))) return `See the ${m[1]} photos of the ${tr(m[2])}`;
+  if ((m = /^Guarda le (\d+) foto de(?:l|lla)? (.+)$/.exec(k))) return `See the ${m[1]} photos of the ${tr(m[2])}`;
   if ((m = /^(.+): guarda le foto \((\d+)\)$/.exec(k))) return `${tr(m[1])}: see the photos (${m[2]})`;
   if ((m = /^Piazzola tenda (\d+)$/.exec(k))) return 'Tent pitch ' + m[1];
   if ((m = /^Piazzola (\d+)$/.exec(k))) return 'Pitch ' + m[1];
   if ((m = /^Piazzola per tenda grande, roulotte e camper (\d+)$/.exec(k))) return 'Pitch for large tent, caravan or motorhome ' + m[1];
-  if ((m = /^(Bungalow|Home|Glamping) (\d+)(?: e (\d+))?$/.exec(k))) return `${m[1]} ${m[2]}${m[3] ? ' and ' + m[3] : ''}`;
+  if ((m = /^(Bungalow|Mobile home|Glamping) (\d+)(?: e (\d+))?$/.exec(k))) return `${m[1]} ${m[2]}${m[3] ? ' and ' + m[3] : ''}`;
   missing.add(k);
   return k;
 };

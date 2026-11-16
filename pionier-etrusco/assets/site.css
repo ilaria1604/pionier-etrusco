@@ -1366,3 +1366,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
   .cmp tbody th,.cmp tfoot th,.cmp thead td{position:sticky;left:0;z-index:1;background:#FBF8F3;width:100px;min-width:100px;font-size:13px;box-shadow:1px 0 0 rgba(106,87,75,.16)}
   .cmp thead th{font-size:18px}
 }
+
+/* phones: the three names (with "Mobile home") take two rows, so the Strutture tile gets a little more room (rev 135) */
+@media (max-width:560px){.duo-tile[data-side=s],.duo.p-open .duo-tile[data-side=s],.duo.s-open .duo-tile[data-side=s]{height:300px}}

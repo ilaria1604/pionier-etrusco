@@ -1177,3 +1177,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - English keeps "Rentals"; only the Italian keys in `tools/en-testi.mjs` change.
   - Left as it was: the glamping type text "Alloggio in tenda su due piani…", which describes the unit and is not the group name.
 - **Checked.** The menu stays on one line at 1181 and 1440 px. "Strutture" from the Home page opens the panel on the home page. No script errors.
+
+### Rev 134: a wave divider between "Chi siamo" and the questions
+- **Owner's request.** A divider between the "Chi siamo" section and the FAQ.
+- **What changed.** The same Etruscan wave as the divider under the opening (`.divider`, drawn on scroll by `data-draw` and shaped by `data-wave="40,26"`) now sits between `.famiglia` and `.domande` too. Its class `.divider.mid` drops the sand background and the padding: both sections are on the page colour, and their own spacing (120px above, 110px below on computers) keeps the wave centred. The English page gets it through `gen-en`.
+- **Checked.** At 1440 px and on a 390 px phone the wave draws fully and spans the content width. No script errors.

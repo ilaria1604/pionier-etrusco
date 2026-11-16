@@ -232,6 +232,8 @@ p{margin:0 0 14px}
 /* the wave band takes the sand of the section under it, so the two read as one (rev 122) */
 .divider{padding:56px 0 8px;background:var(--panel)}
 .divider .dl{stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:6}
+/* the same wave between "Chi siamo" and the questions (rev 134): on the page colour, the two sections keep their own spacing */
+.divider.mid{padding:0;background:none}
 
 /* reveal entrances */
 .rv{opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out);transition-delay:calc(var(--i,0)*90ms)}

@@ -205,7 +205,7 @@
   // a tapped pitch (or bungalow, glamping, home) opens a small card with what it is, what is included, the price and "Richiedi disponibilità":
   // on wide screens it sits on the pitch, on phones it slides up from the bottom (rev 108)
   const card = sec.querySelector('.cmap-card'), infos = sec.querySelector('.cmap-info');
-  const SIST = { T: 'Piazzola tenda', GL: 'Glamping Luxury Lodge', H: 'Home Premium Comfort' };
+  const SIST = { T: 'Piazzola tenda', GL: 'Glamping Luxury Lodge', H: 'Mobile home Premium Comfort' };
   function hideCard() { if (card && !card.hidden) { card.hidden = true; card.classList.remove('show'); } }
   const book = (e, cell) => {
     e.preventDefault(); e.stopPropagation();

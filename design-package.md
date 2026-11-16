@@ -1119,3 +1119,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - In the generator, the choice (or photos) block comes before the price section, and the inside block right after it.
 - **Backgrounds.** The prices keep the sand panel between two sections on the page colour (tipologie or foto above, cosa è incluso below), so the alternation reads clearly. The existing spacing rules give 96 px on each side on wide screens and 52 px on phones.
 - **Checked.** Bungalow and piazzole at 1440 px and glamping at 390 px: the colour and spacing sequence, and the bar shown at the top, on the prices, on the calculator, on the closing band and on the footer.
+
+### Rev 129: the detail-page bar comes in with the first scroll
+- **Owner's request.** The "Prezzi / Prenota" bar must not be there when the page opens. It must appear at the first scroll and then stay.
+- **What changed.** On the detail pages (`data-hide="none"`) the bar is shown when the page is scrolled more than 8 px, and it slides in as before. It stays all the way down, prices and footer included, and hides again only back at the very top. The home page bar is unchanged.
+- **Checked.** With a real mouse-wheel step at 1440 and 390 px: hidden at the top, shown after the first step (60 px), on the prices and at the bottom, hidden again at the top.

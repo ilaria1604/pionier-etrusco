@@ -701,8 +701,12 @@ if (actbar) {
     actbar.classList.toggle('show', seen.size === 0);
   }, { threshold: 0 });
   hideOn.forEach(el => io.observe(el));
-  // the detail pages keep it on all the way down (data-hide="none", rev 128)
-  if (!hideOn.length) actbar.classList.add('show');
+  // the detail pages: hidden at the very top, it comes in with the first scroll and then stays all the way down (rev 128, rev 129)
+  if (!hideOn.length) {
+    const onScroll = () => actbar.classList.toggle('show', scrollY > 8);
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 }
 
 /* ---------- reels: silent vertical clips, loaded near the viewport, playing only while visible ---------- */

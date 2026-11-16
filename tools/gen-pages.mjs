@@ -353,7 +353,7 @@ ${NAV(P.key)}
     <div class="cta-row"><a class="btn" href="${ask(P.pick)}">Prenota</a><a class="btn ghost" href="#prezzi">Vedi i prezzi</a></div>
   </div>
 </section>
-${P.types ? choose + inside : photos + inside}
+${P.types ? choose : photos}
 
 <section class="detail tariffe" id="prezzi" aria-labelledby="prezzi-t">
   <div class="wrap">
@@ -373,6 +373,7 @@ ${P.types ? choose + inside : photos + inside}
     </details>
   </div>
 </section>
+${inside}
 
 ${P.types ? photos : ''}
 <section class="detail d-know" aria-labelledby="know-t">
@@ -403,7 +404,7 @@ ${P.extra || ''}
 
 ${FOOT}
 
-<div class="actbar" role="navigation" aria-label="Azioni rapide" data-hide=".page-hero, .cta-band, .foot, #calcola">
+<div class="actbar" role="navigation" aria-label="Azioni rapide" data-hide="none">
   <a class="btn line" href="#prezzi">Prezzi</a>
   <a class="btn" href="${ask(P.pick)}">Prenota</a>
 </div>

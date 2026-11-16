@@ -1109,3 +1109,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** On the accommodation detail pages, "Richiedi disponibilità" becomes "Prenota".
 - **What changed.** On piazzole, bungalow, glamping and home (and in `tools/gen-pages.mjs`), the hero button, the button of the closing band and the phone bar button now read "Prenota". They still lead to the request form with the type preselected. The calculator's button reads "Prenota" on the detail pages and keeps "Richiedi disponibilità" on the home page (`onHome` in `calc.js`). In English it is "Book" and "Check availability", and the "Richiedi disponibilità" text translation, no longer used, was removed.
 - **Checked.** The glamping page buttons, plus a filled-in calculator on the glamping page and on the home page.
+
+### Rev 128: detail pages with the prices higher and the bar always on
+- **Owner's request.** The floating "Prezzi / Prenota" bar on the detail pages must stay visible for the whole scroll, prices included. The prices move between the accommodation choice and "Cosa è incluso", with care for the background colours.
+- **Bar.** It used to hide while the opening photo, the calculator, the closing band or the footer were on screen. Now the four detail pages use `data-hide="none"` (also in `tools/gen-pages.mjs`). `site.js` shows the bar from the start when there is nothing to hide it, and the footer gets 110 px at the bottom so the bar never covers its last line. The home page bar keeps its own rule.
+- **New order.**
+  - Bungalow, glamping and home: tipologie, prezzi, cosa è incluso, foto, da sapere, closing band, other accommodation. Before, the prices came after "cosa è incluso".
+  - Piazzole: foto, prezzi, cosa trovi, da sapere, closing band, camper stop, other accommodation.
+  - In the generator, the choice (or photos) block comes before the price section, and the inside block right after it.
+- **Backgrounds.** The prices keep the sand panel between two sections on the page colour (tipologie or foto above, cosa è incluso below), so the alternation reads clearly. The existing spacing rules give 96 px on each side on wide screens and 52 px on phones.
+- **Checked.** Bungalow and piazzole at 1440 px and glamping at 390 px: the colour and spacing sequence, and the bar shown at the top, on the prices, on the calculator, on the closing band and on the footer.

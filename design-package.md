@@ -1197,3 +1197,16 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **English.** "Mobile home(s)"; `gen-en.mjs` patterns updated for "Mobile home 121" and "foto della…".
 - **Phones.** The three pills now take two rows, so under 560 px the Strutture tile is 300 px tall instead of 260 px. Tablets keep 260 px because the pills fit on one row.
 - **Not changed.** The file name `home.html`, the photo file names and the code keys (`home`). The 2027 PDF still says "Home premium confort".
+
+### Rev 136: the "Strutture" title is readable on the photo
+- **Owner's feedback.** None of the four premium options (local branch `anteprima-strutture-premium`, not published) convinced the owner, and the terracotta title was still hard to read.
+- **Why it was hard to read.** Measured on the photo behind the letters (letters hidden, screenshot pixels): the median contrast was fine (6–7.5:1), but the brightest spots behind the title (walls, sky) dropped to 2.5–3.8:1. The warm wood of the house also has a hue close to the terracotta.
+- **Fix (colours unchanged).**
+  - A darker, even backdrop under the text on the Strutture tile. On computers: .88 at 46%, .5 at 66%, .1 at 86%. Up to 1060 px: .83 at 56%, .54 at the top.
+  - A soft shadow behind the title (`0 2px 20px rgba(12,19,16,.6)`).
+- **Checked.** Contrast at the brightest 2% of the backdrop:
+  - 1440 px closed: 7.1:1. 1440 px open: 5.5:1.
+  - 1100 px: 7.3:1.
+  - Tablet 768 px: 4.6:1.
+  - Phones 390 px: 5.8:1. 360 px: 5.3:1.
+  - The upper half of the photo stays bright.

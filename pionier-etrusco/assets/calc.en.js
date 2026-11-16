@@ -253,7 +253,7 @@ boxes.forEach(box => {
       <p class="calc-total"><b>${eur(total)}</b><small>taxes and VAT included</small></p>
       <ul class="calc-lines">${lines.map(l => `<li><span>${l[0]}<small>${l[1]}</small></span><b>${eur(l[2])}</b></li>`).join('')}</ul>
       ${notes.map(x => `<p class="calc-note">${x}</p>`).join('')}
-      <a class="btn calc-ask" href="${askLink()}">${onHome ? 'Check availability' : 'Book'}</a>
+      <a class="btn calc-ask" href="${askLink()}">Check availability</a>
       <p class="calc-note small">Indicative price: we will confirm availability.</p>`;
     hookAsk();
   };

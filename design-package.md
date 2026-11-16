@@ -1124,3 +1124,21 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** The "Prezzi / Prenota" bar must not be there when the page opens. It must appear at the first scroll and then stay.
 - **What changed.** On the detail pages (`data-hide="none"`) the bar is shown when the page is scrolled more than 8 px, and it slides in as before. It stays all the way down, prices and footer included, and hides again only back at the very top. The home page bar is unchanged.
 - **Checked.** With a real mouse-wheel step at 1440 and 390 px: hidden at the top, shown after the first step (60 px), on the prices and at the bottom, hidden again at the top.
+
+### Rev 130: "Richiedi disponibilità" everywhere instead of "Prenota"
+- **Owner's request.** Every "Prenota" becomes "Richiedi disponibilità". This reverts the detail-page wording of rev 127 and extends it to the whole site.
+- **What changed.**
+  - The header button on every page (also in `tools/gen-pages.mjs`).
+  - The opening buttons on the home page and the label of the request section.
+  - The home page phone bar.
+  - On the detail pages: the hero button, the closing band and the floating bar.
+  - The calculator button, now on every page.
+  - The map card button (also in `tools/gen-mappa.mjs`).
+  - English: "Check availability". The "Prenota" translation is removed.
+- **Layout.**
+  - The header button never wraps (`white-space:nowrap`). Below 460 px the header shows the logo mark without the "Pionier Etrusco" name, so it stays on one line at 430, 390 and 360 px. Before, that happened only below 390 px.
+  - On the map card the longer button sits on its own full-width line under the price. Because the card got taller, `placeCard` now puts it above the place, otherwise below, otherwise beside it (left or right, with the pointer on that side, `--ay`). It always stays inside the drawn part of the map.
+- **Checked.**
+  - The header at 1440, 1280, 1100, 430, 390 and 360 px.
+  - The phone bars at 360 px, with both buttons on one line.
+  - The map card on pitch 99 (beside it), on a top-row pitch (below it) and on the rentals. Prenota from the glamping still fills in the form.

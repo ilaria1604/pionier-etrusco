@@ -253,7 +253,7 @@ boxes.forEach(box => {
       <p class="calc-total"><b>${eur(total)}</b><small>tasse e IVA incluse</small></p>
       <ul class="calc-lines">${lines.map(l => `<li><span>${l[0]}<small>${l[1]}</small></span><b>${eur(l[2])}</b></li>`).join('')}</ul>
       ${notes.map(x => `<p class="calc-note">${x}</p>`).join('')}
-      <a class="btn calc-ask" href="${askLink()}">${onHome ? 'Richiedi disponibilità' : 'Prenota'}</a>
+      <a class="btn calc-ask" href="${askLink()}">Richiedi disponibilità</a>
       <p class="calc-note small">Prezzo indicativo: la disponibilità te la confermiamo noi.</p>`;
     hookAsk();
   };

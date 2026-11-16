@@ -202,7 +202,7 @@
 
   // Tooltip
   function hideTip() { tip.classList.remove('show'); hideCard(); }
-  // a tapped pitch (or bungalow, glamping, home) opens a small card with what it is, what is included, the price and "Prenota":
+  // a tapped pitch (or bungalow, glamping, home) opens a small card with what it is, what is included, the price and "Richiedi disponibilità":
   // on wide screens it sits on the pitch, on phones it slides up from the bottom (rev 108)
   const card = sec.querySelector('.cmap-card'), infos = sec.querySelector('.cmap-info');
   const SIST = { T: 'Piazzola tenda', GL: 'Glamping Luxury Lodge', H: 'Home Premium Comfort' };
@@ -218,16 +218,28 @@
     const toForm = () => form.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
     if (sec.classList.contains('fs')) { closeFs(); setTimeout(toForm, 120); } else toForm();
   };
+  // above the place if there is room, else below, else beside it; always inside the part of the map that is drawn (rev 130)
   const placeCard = cell => {
     const fr = frame.getBoundingClientRect(), r = cell.querySelector('rect,polygon').getBoundingClientRect();
-    const cw = card.offsetWidth, ch = card.offsetHeight, x = r.left + r.width / 2 - fr.left;
-    const left = Math.max(10, Math.min(fr.width - cw - 10, x - cw / 2));
-    let top = r.top - fr.top - ch - 14, below = false;
-    if (top < 8) { top = r.bottom - fr.top + 14; below = true; }
-    top = Math.max(8, Math.min(fr.height - ch - 8, top));
+    const vis = svg.getBoundingClientRect(), maxB = Math.min(fr.height, vis.bottom - fr.top) - 8, minT = Math.max(8, vis.top - fr.top + 8);
+    const cw = card.offsetWidth, ch = card.offsetHeight, x = r.left + r.width / 2 - fr.left, y = r.top + r.height / 2 - fr.top;
+    let left, top, side = 'above';
+    if (r.top - fr.top - ch - 14 >= minT) top = r.top - fr.top - ch - 14;
+    else if (r.bottom - fr.top + 14 + ch <= maxB) { top = r.bottom - fr.top + 14; side = 'below'; }
+    else {
+      side = r.right - fr.left + 14 + cw <= fr.width - 10 ? 'right' : 'left';
+      left = side === 'right' ? r.right - fr.left + 14 : r.left - fr.left - cw - 14;
+      top = Math.max(minT, Math.min(maxB - ch, y - ch / 2));
+    }
+    if (side === 'above' || side === 'below') left = Math.max(10, Math.min(fr.width - cw - 10, x - cw / 2));
+    left = Math.max(10, Math.min(fr.width - cw - 10, left));
     card.style.left = left + 'px'; card.style.top = top + 'px';
     card.style.setProperty('--ax', Math.max(20, Math.min(cw - 20, x - left)) + 'px');
-    card.classList.toggle('below', below);
+    card.style.setProperty('--ay', Math.max(20, Math.min(ch - 20, y - top)) + 'px');
+    card.classList.remove('below', 'beside-l', 'beside-r');
+    if (side === 'below') card.classList.add('below');
+    if (side === 'right') card.classList.add('beside-r');
+    if (side === 'left') card.classList.add('beside-l');
   };
   const showCard = cell => {
     const info = infos && infos.querySelector(`[data-type="${cell.dataset.type}"]`);

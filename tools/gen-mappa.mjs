@@ -286,7 +286,7 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
       <div class="cmap-card" hidden>
         <button type="button" class="cc-x" aria-label="Chiudi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
         <b class="cc-t"></b><p class="cc-s"></p><ul class="cc-inc"></ul>
-        <div class="cc-row"><span class="cc-p"></span><a class="cmap-book" href="#richiesta">Prenota<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <div class="cc-row"><span class="cc-p"></span><a class="cmap-book" href="#richiesta">Richiedi disponibilità<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
       </div>
       <div class="cmap-info" hidden>
         <div data-type="P"><b class="n">Piazzola</b><p class="s">Per camper, roulotte e tende</p><ul><li>Corrente 3 A</li><li>Docce calde</li><li>Wi-fi gratuito</li></ul><span class="p"><small>da</small> <b>€ 9</b> <small>a notte</small></span></div>

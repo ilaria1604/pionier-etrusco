@@ -27,6 +27,7 @@ export const MARKUP = [
   ["All'ombra, a 100 metri dal <em>mare</em>.", 'In the shade, 100 metres from the <em>sea</em>.'],
   ['Piazzole, al <em>giorno</em>.', 'Pitches, per <em>day</em>.'],
   ['Prima di <em>arrivare</em>.', 'Before you <em>arrive</em>.'],
+  ['Piazzole e alloggi a <em>confronto</em>.', 'Pitches and rentals, <em>compared</em>.'],
   ['Ti teniamo la piazzola <em>giusta</em>.', "We'll save you the <em>right</em> pitch."],
   ['Oppure guarda <em>anche</em>...', 'Or take a look at <em>these</em> too...'],
   ['Tre misure, da 2 a 6 <em>persone</em>.', 'Three sizes, for 2 to 6 <em>people</em>.'],
@@ -48,7 +49,7 @@ export const MARKUP = [
 export const TEXT = {
   // sistemazioni in two blocks (rev 100)
   'Con la tua attrezzatura': 'With your own gear', 'Camper, roulotte e tende · da € 9 a notte': 'Motorhomes, caravans and tents · from € 9 per night',
-  'Trovi tutto pronto': 'Everything ready for you', 'Bungalow, glamping e home · da € 350 a settimana': 'Bungalows, glamping and homes · from € 350 per week',
+  'Trovi tutto pronto': 'Everything ready for you',
   'Una piazzola sotto i pini, con il camper e la tenda': 'A pitch under the pines, with a motorhome and a tent',
   "Nel cuore della pineta, all'ombra dei pini, per camper, roulotte, tende e tendauto. Dicci come viaggi e ti suggeriamo noi la zona giusta.": 'In the heart of the pine wood, in the shade of the pines, for motorhomes, caravans, tents and rooftop tents. Tell us how you travel and we will suggest the right area.',
   // the pitch card on the camping map (rev 108)
@@ -56,7 +57,7 @@ export const TEXT = {
   // rentals showcase (rev 111)
   'Fino a 6 posti': 'Up to 6 guests', 'Nuove · 2 bagni': 'Brand new · 2 bathrooms', 'Ombrellone in spiaggia': 'Beach umbrella included',
   'Mappa': 'Map',
-  'Scopri le piazzole': 'Explore the pitches', 'Scopri le strutture': 'Explore the rentals', 'Strutture': 'Rentals',
+  'Scopri le piazzole': 'Explore the pitches',
   'Vedi le piazzole': 'See the pitches', 'Per le soste brevi, anche con il cane': 'For short stays, dogs welcome too',
   // navigation and shared
   'Vai al contenuto': 'Skip to content', 'Chi siamo': 'About us', 'Sistemazioni': 'Accommodation', 'Piazzole e camper stop': 'Pitches and camper stop',
@@ -229,7 +230,7 @@ export const TEXT = {
   'Dotazioni e servizi': 'Equipment and services', 'Camera matrimoniale': 'Double room', 'Letto a castello (Trilocale 28 mq)': 'Bunk bed (Two-bedroom 28 sqm)', 'Letti singoli (Superior 48 mq)': 'Single beds (Superior 48 sqm)', 'Cucina attrezzata': 'Equipped kitchen', 'Frigorifero con freezer': 'Fridge with freezer', 'Bagno con doccia': 'Bathroom with shower',
   'Asciugacapelli': 'Hairdryer', 'Aria condizionata': 'Air conditioning', 'Riscaldamento': 'Heating', 'Stendibiancheria': 'Clothes airer', 'Veranda attrezzata': 'Furnished veranda', 'Ombrellone e 2 lettini in spiaggia': 'Beach umbrella and 2 sunloungers', 'Pulizia iniziale e finale': 'Initial and final cleaning', 'Biancheria da letto': 'Bed linen',
   'Scegli il giorno di arrivo e quello di partenza: il totale compare subito.': 'Choose your arrival and departure days: the total appears straight away.', 'Bungalow e glamping nella pineta': 'Bungalows and glamping in the pine wood', 'Check-in dalle 16 alle 20, check-out entro le 10': 'Check-in from 4 pm to 8 pm, check-out by 10 am', 'La settimana va da sabato a sabato': 'The week runs Saturday to Saturday',
-  "Pulizia dell'angolo cottura € 50 all'arrivo": 'Kitchenette cleaning € 50 on arrival', 'Biancheria da bagno su richiesta: 2 asciugamani € 5': 'Bath linen on request: 2 towels € 5', 'Biancheria da letto (lenzuola)': 'Bed linen (sheets)', 'Biancheria da bagno su richiesta': 'Bath linen on request', 'Lenzuola e pulizie incluse': 'Sheets and cleaning included', 'Documenti di tutti gli ospiti e saldo all\'arrivo': 'ID documents for all guests and balance due on arrival', 'Gli animali non sono ammessi': 'Pets are not allowed',
+  "Pulizia dell'angolo cottura € 50 all'arrivo": 'Kitchenette cleaning € 50 on arrival', 'Biancheria da bagno su richiesta: 2 asciugamani € 5': 'Bath linen on request: 2 towels € 5', 'Biancheria da letto (lenzuola)': 'Bed linen (sheets)', 'Biancheria da bagno su richiesta': 'Bath linen on request', 'Documenti di tutti gli ospiti e saldo all\'arrivo': 'ID documents for all guests and balance due on arrival', 'Gli animali non sono ammessi': 'Pets are not allowed',
   'Su richiesta, periodi brevi dal 4 aprile al 14 giugno e dal 1° settembre': 'On request, short stays from 4 April to 14 June and from 1 September', 'Un bungalow sul prato, sotto i pini': 'A bungalow on the lawn, under the pines', 'La veranda di un bungalow accanto al tronco di un pino': 'The veranda of a bungalow next to the trunk of a pine', 'Un bungalow tra le siepi': 'A bungalow among the hedges',
   'La veranda con i fiori': 'The veranda with flowers', 'Camera matrimoniale con armadio': 'Double room with wardrobe', 'Camera con letto a castello': 'Room with bunk bed', 'Il soggiorno del Superior': 'The living room of the Superior', 'Angolo cottura con piano a gas': 'Kitchenette with gas hob', 'Una veranda attrezzata': 'A furnished veranda',
   'Monolocale: il vialetto nel verde che porta ai bungalow piccoli': 'Studio: the path through the greenery to the small bungalows', 'Monolocale: la camera matrimoniale': 'Studio: the double room', 'Monolocale: angolo cottura e tavolo': 'Studio: kitchenette and table', 'Monolocale: la veranda con i fiori': 'Studio: the veranda with flowers', 'Monolocale: il bagno': 'Studio: the bathroom', 'Monolocale: lavabo e cabina doccia': 'Studio: washbasin and shower cubicle',
@@ -272,6 +273,8 @@ export const TEXT = {
   '(Google Analytics): distinguono i visitatori nelle statistiche, fino a 2 anni. Vengono salvati solo se accetti.': '(Google Analytics): tell visitors apart in the statistics, for up to 2 years. They are stored only if you accept.', 'Se rifiuti, il sito funziona lo stesso.': 'If you refuse, the site works just the same.', 'Cambia la tua scelta': 'Change your choice', 'I tuoi diritti': 'Your rights',
   "Puoi chiederci di vedere i tuoi dati, correggerli, cancellarli o limitarne l'uso, di riceverli in un formato leggibile e di opporti al trattamento. Basta scrivere a": 'You can ask us to show you your data, correct it, delete it or restrict its use, to give it to you in a readable format, and you can object to its processing. Just write to', '. Puoi anche presentare un reclamo al': '. You can also lodge a complaint with the',
   'Garante per la protezione dei dati personali': 'Italian Data Protection Authority (Garante per la protezione dei dati personali)', 'Modifiche': 'Changes', 'Se cambiamo questa pagina, aggiorniamo la data in alto.': 'If we change this page, we update the date at the top.',
+  // rev 131: pitches and rentals, the comparison table on the rental pages
+  'Alloggi': 'Rentals', 'Alloggio': 'Rental', 'Corrente e docce calde': 'Electricity and hot showers', 'da € 350 a settimana': 'from € 350 per week', 'Lenzuola incluse': 'Sheets included', 'Scopri gli alloggi': 'Explore the rentals', 'Confronta': 'Compare', 'Scorri di lato per vedere tutti gli alloggi': 'Swipe sideways to see all the rentals', 'Porti la tua attrezzatura': 'Bring your own gear', 'Alloggi · trovi tutto pronto': 'Rentals · everything ready for you', 'Posti': 'Guests', 'Dipende dalla tua attrezzatura': 'Depends on your gear', 'Da 2 a 6': '2 to 6', 'Superficie': 'Size', 'No': 'No', 'Da 20 a 48 mq': '20 to 48 sqm', '45 mq su due piani': '45 sqm on two floors', '34 mq': '34 sqm', 'Camere': 'Bedrooms', 'Bagno': 'Bathroom', 'Servizi comuni con docce calde': 'Shared washrooms with hot showers', 'Privato, con doccia': 'Private, with shower', '2 bagni privati': '2 private bathrooms', 'Attrezzata': 'Fully equipped', 'Attrezzata, a induzione': 'Fully equipped, induction hob', 'Attrezzata, con lavastoviglie': 'Fully equipped, with dishwasher', 'Sì': 'Yes', 'Come si prenota': 'How you book', 'A notte': 'By the night', 'In estate a settimane, da sabato a sabato': 'In summer by the week, Saturday to Saturday', 'In estate a settimane, da domenica a domenica': 'In summer by the week, Sunday to Sunday', 'Prezzo': 'Price', 'Vedi il glamping': 'See the glamping', 'Vedi le home': 'See the homes', 'Vedi i bungalow': 'See the bungalows', 'Per tutti: parcheggio di 1 auto e wi-fi.': 'For everyone: parking for 1 car and wi-fi.',
 };
 
 // words inside the scripts, as they appear in the code

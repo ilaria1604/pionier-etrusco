@@ -1142,3 +1142,18 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The header at 1440, 1280, 1100, 430, 390 and 360 px.
   - The phone bars at 360 px, with both buttons on one line.
   - The map card on pitch 99 (beside it), on a top-row pitch (below it) and on the rentals. Prenota from the glamping still fills in the form.
+
+### Rev 131: pitches and rentals easier to find and to tell apart
+- **Owner's request.** Apply the findability options previewed on the local branch `anteprima-sistemazioni` (1, 2, 5, 9, 10, 11), with two changes: the comparison table goes only on the rental pages, near the end; cleaning comes off the home page tile.
+- **Home page tiles.**
+  - "Strutture" becomes "Alloggi" (title, vertical label, "Scopri gli alloggi"). English: "Rentals".
+  - The rentals tile shows Bungalow, Glamping and Home as pills that go straight to each page. They sit inside the tile button for mouse and touch (`data-href`, handled in `site.js`) and are `aria-hidden`: keyboard and screen-reader users reach the same pages in the panel the button opens.
+  - The price sits next to the pills ("da € 350 a settimana"); a shared `.st-row` keeps the two titles and the two buttons on the same lines.
+  - The pitches tile gets three ticks like the rentals (teal): "Corrente e docce calde", "Camper service", "Wi-fi gratuito". The old button offset for the pitches tile is removed.
+  - The rentals ticks read "Lenzuola incluse": the owner says cleaning is not included but compulsory. The 2027 PDF says initial and final cleaning are included, except the kitchenette (€ 50 on arrival, compulsory); the detail pages still follow the PDF, pending the owner's answer.
+- **Menu (all pages, `tools/gen-pages.mjs` too).** "Piazzole" (to `piazzole.html`) and "Alloggi" (to `index.html#alloggi`) replace "Sistemazioni". `#alloggi` is the rentals tile; `site.js` opens its panel on load, on hash change and on click. Menu items no longer wrap, with a 16px gap up to 1320px; checked at 1181–1440px in Italian and English.
+- **Colours (existing palette only): teal = pitches, terracotta = rentals.**
+  - Price tabs: a dot in the group colour (`.g-pz`, `.g-al`).
+  - Map legend: two headed groups, "Piazzole" and "Alloggi", with "Locali tecnici" apart (`tools/gen-mappa.mjs`).
+  - Map card: a "Piazzola" or "Alloggio" tag, read from the `.k` text and `data-g` of each `.cmap-info` template, so the English page translates it.
+- **Comparison table on the bungalow, glamping and home pages** (`compare()` in `tools/gen-pages.mjs`), after "Prima di arrivare" and before the closing band, on the sand panel so it stands apart from the canvas sections around it. Four columns, the pitches tinted teal; the current page's column has `aria-current` and no link to itself. Yes/no marks carry hidden text for screen readers. On phones the row labels stay fixed and the columns scroll, with a hint above. Not on the pitches page or the home page.

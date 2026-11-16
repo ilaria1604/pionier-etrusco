@@ -92,7 +92,7 @@ p{margin:0 0 14px}
 .nav.solid .mark{background:var(--accent)}
 .links{display:flex;align-items:center;gap:20px;list-style:none;margin:0 0 0 auto;padding:0}
 .links>li{position:relative}
-.links a,.links .sub-btn{text-decoration:none;font-size:15px;font-weight:500;opacity:.9;position:relative;padding:6px 0;transition:opacity .3s var(--ease-out);background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.links a,.links .sub-btn{white-space:nowrap;text-decoration:none;font-size:15px;font-weight:500;opacity:.9;position:relative;padding:6px 0;transition:opacity .3s var(--ease-out);background:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 .links>li>a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
 .links a:hover,.links .sub-btn:hover{opacity:1}
 .links>li>a:hover::after{transform:scaleX(1)}
@@ -106,6 +106,8 @@ p{margin:0 0 14px}
 .submenu small{display:block;font-family:var(--f-body);font-size:13px;color:var(--label);margin-top:2px}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid currentColor;border-radius:999px;padding:6px 16px;cursor:pointer;min-height:40px}
 .menu{display:none}
+/* nine menu items since rev 131: a little less room between them on the narrowest computers */
+@media (max-width:1320px){.links{gap:16px}}
 @media (max-width:1180px){
   .links,.nav>nav{display:none}
   .nav .btn-sm{margin-left:auto}
@@ -398,12 +400,22 @@ p{margin:0 0 14px}
   .duo:not(.p-open):not(.s-open) .duo-tile[data-side=p]{flex-grow:2}
   .duo:not(.p-open):not(.s-open) .duo-tile[data-side=s]{flex-grow:3}
   /* the pitches block leaves room for the line of ticks the other block has, so the two kickers, titles and lines sit at the same height (rev 113) */
-  .duo:not(.p-open):not(.s-open) .duo-tile[data-side=p] .st-cta{margin-top:calc(10px + 14px * 1.3 + 8px)}
   .duo:not(.p-open):not(.s-open) .st-title{font-size:clamp(38px,3.6vw,52px)}
 }
 .st-perks{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;line-height:1.3;color:rgba(243,238,231,.92)}
 .st-perks>span{display:inline-flex;align-items:center;gap:6px}
 .st-perks svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--warm);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* rev 131: the pitches get their ticks too; the rentals show their three names, straight to each page.
+   The names sit inside the tile button for mouse and touch; keyboard and screen readers reach the same pages in the panel it opens. */
+.duo-tile[data-side=p] .st-perks svg{stroke:var(--accent-bright)}
+.st-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;min-height:36px}
+.st-links{display:flex;flex-wrap:wrap;gap:8px}
+.st-link{display:inline-flex;align-items:center;gap:6px;padding:7px 12px 7px 14px;border-radius:999px;background:rgba(12,19,16,.45);box-shadow:inset 0 0 0 1px rgba(232,162,122,.6);color:#fff;font-weight:600;font-size:15px;line-height:1.2;transition:background-color .3s var(--ease-out),color .3s var(--ease-out)}
+.st-link svg{width:14px;height:14px;fill:none;stroke:var(--warm);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s var(--ease-out),transform .3s var(--ease-out)}
+.st-link:hover{background:var(--warm);color:var(--warm-ink)}
+.st-link:hover svg{stroke:var(--warm-ink);transform:translateX(2px)}
+#alloggi{scroll-margin-top:calc(var(--nav-h) + 24px)}
+@media (max-width:1060px){.st-links{gap:6px}.st-link{padding:6px 10px 6px 12px;font-size:14px}.st-row{min-height:0}}
 .duo-panel[data-side=s] .units{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
 .duo-panel[data-side=s] .unit:nth-child(3){order:-1;grid-row:span 2}
 .duo-panel[data-side=s] .unit{position:relative;justify-content:flex-end}
@@ -571,6 +583,12 @@ p{margin:0 0 14px}
 .tab{appearance:none;border:1px solid var(--line);background:transparent;border-radius:999px;padding:10px 20px;min-height:44px;cursor:pointer;font-weight:600;font-size:15px;color:var(--text-primary);transition:background-color .35s var(--ease-out),color .35s var(--ease-out),border-color .35s var(--ease-out)}
 .tab:hover{border-color:var(--text-primary)}
 .tab[aria-selected=true]{background:var(--text-primary);border-color:var(--text-primary);color:var(--canvas)}
+/* a dot in the group colour: teal for the pitches, terracotta for the rentals (rev 131) */
+.tab.g-pz::before,.tab.g-al::before{content:"";display:inline-block;width:9px;height:9px;margin-right:9px;border-radius:50%;vertical-align:1px}
+.tab.g-pz::before{background:var(--accent)}
+.tab.g-al::before{background:var(--terra)}
+.tab.g-pz[aria-selected=true]::before{background:var(--accent-bright)}
+.tab.g-al[aria-selected=true]::before{background:var(--terra-light)}
 .tpanel[hidden]{display:none}
 .tpanel.enter{animation:panelin .6s var(--ease-out) both}
 @keyframes panelin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -1317,3 +1335,38 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 @media (max-width:520px){.lang-link{display:inline-flex;align-items:center;min-height:40px;padding:0 6px}}
 @media (max-width:400px){.lang-link{padding:0 4px}.brand .name{font-size:15px}}
 .nav.solid .lang-link:hover{color:var(--accent)}
+
+/* ---------- rental pages: pitches and rentals compared, near the end (rev 131) ---------- */
+.detail.d-compare{padding:96px 0;background:var(--panel);--label:#6B645F}
+.cmp-hint{display:none;margin:0 0 12px;font-size:14px;color:var(--text-secondary)}
+.cmp-hint::after{content:" →"}
+.cmp-scroll{margin-top:32px;overflow-x:auto;border-radius:20px;background:#FBF8F3;box-shadow:0 0 0 1px rgba(106,87,75,.14)}
+.cmp table{width:100%;min-width:760px;border-collapse:collapse;font-size:15px;line-height:1.35}
+.cmp th,.cmp td{padding:13px 18px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(106,87,75,.13)}
+.cmp tbody th,.cmp tfoot th{width:20%;font-weight:600;color:var(--text-secondary)}
+.cmp thead th{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--text-primary);border-bottom-color:rgba(106,87,75,.25)}
+.cmp .cmp-g th{padding:12px 18px 6px;border:0;font-family:var(--f-body);font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.cmp .cmp-g td{border:0}
+.cmp .cmp-g .pz{color:var(--accent);box-shadow:inset 0 2px 0 var(--accent)}
+.cmp .cmp-g .al{color:var(--terra);box-shadow:inset 0 2px 0 var(--terra)}
+.cmp td.pz,.cmp th.pz{background:rgba(0,128,126,.06)}
+.cmp .ck svg{width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cmp .cn{color:var(--label)}
+.cmp tfoot td,.cmp tfoot th{border-bottom:0;padding-top:16px;padding-bottom:18px}
+.cmp .cp{display:block}
+.cmp .cp b{font-family:var(--f-display);font-size:24px}
+.cmp .cp small{font-size:13px;color:var(--text-secondary)}
+.cmp .cg{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-weight:600;font-size:14px;color:var(--accent);text-decoration:none}
+.cmp .cg:hover{color:var(--accent-hover)}
+.cmp .cg svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
+.cmp .cg:hover svg{transform:translateX(3px)}
+.cmp-note{margin:12px 0 0;font-size:14px;color:var(--text-secondary)}
+@media (max-width:860px){
+  .detail.d-compare{padding:72px 0}
+  .cmp-hint{display:block}
+  .cmp-scroll{margin-top:0}
+  .cmp table{min-width:0;width:auto;font-size:14px}
+  .cmp th,.cmp td{padding:11px 12px;min-width:150px}
+  .cmp tbody th,.cmp tfoot th,.cmp thead tr>td:first-child,.cmp .cmp-g td{position:sticky;left:0;z-index:1;background:#FBF8F3;width:100px;min-width:100px;font-size:13px;box-shadow:1px 0 0 rgba(106,87,75,.16)}
+  .cmp thead th{font-size:18px}
+}

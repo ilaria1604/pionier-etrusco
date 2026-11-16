@@ -174,8 +174,6 @@ export const TEXT = {
   'Persona in più € 400 · bambino 3-8 anni € 300': 'Extra person € 400 · child 3-8 years € 300', 'tutto il mese, 2 persone': 'whole month, 2 people', 'Persona in più € 150 · 1 bambino 3-8 anni gratis': 'Extra person € 150 · 1 child 3-8 years free',
   'Persona in più € 200 · 1 bambino 3-8 anni € 60': 'Extra person € 200 · 1 child 3-8 years € 60', 'Persona in più € 300 · 1 bambino 3-8 anni € 100': 'Extra person € 300 · 1 child 3-8 years € 100',
   'Attrezzatura, parcheggio di 1 auto, corrente 3 A, docce calde e wi-fi.': 'Equipment, parking for 1 car, 3 A electricity, hot showers and wi-fi.', "Per l'abbonamento mensile si versa il 50% alla firma e il resto all'arrivo.": 'For the monthly rate, 50% is paid on signing and the rest on arrival.',
-  'Offerte e last minute': 'Offers and last minute', 'Pasqua, 25 aprile, 1° maggio, ponte del 2 giugno, last minute di giugno, Camping + Kayak sul Fiora e kitesurf. Chiamaci per le date libere.': 'Easter, 25 April, 1 May, the 2 June long weekend, June last-minute deals, Camping + Kayak on the Fiora and kitesurfing. Call us for available dates.',
-  'Scarica il listino 2027': 'Download the 2027 price list (in Italian)',
 
   // home page: day trips, reviews, questions
   'Isola del Giglio': 'Giglio Island', 'La Tuscia': 'The Tuscia', 'circa 25 min in auto': 'about 25 min by car', 'circa 30 min in auto': 'about 30 min by car', 'circa 50 min in auto': 'about 50 min by car', 'in traghetto': 'by ferry', 'circa 1 ora in auto': 'about 1 hour by car',

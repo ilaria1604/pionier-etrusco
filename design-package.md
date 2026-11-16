@@ -1097,3 +1097,7 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 ### Rev 124: the dog card under "Offerte e last minute"
 - **Owner's request.** Put "Viaggi con il cane" right under the "Offerte e last minute" box. After rev 123 it was a separate section after the prices, on the page colour, with its own 72 px padding.
 - **What changed.** The dog card moved inside the price section, 16 px under the offers box, on the same sand background. It is a nested `section.cani-in` that keeps `id="cani"` and its heading. The old `section.cani` is gone (its rule stays but matches nothing). After the prices comes the sea section. Checked at 1440 and 390 px.
+
+### Rev 125: no "Offerte e last minute" banner
+- **Owner's request.** Remove the dark "Offerte e last minute" banner at the end of the price section. It had the line "Pasqua, 25 aprile, 1° maggio, ponte del 2 giugno, last minute di giugno, Camping + Kayak sul Fiora e kitesurf. Chiamaci per le date libere." and the buttons "Chiama lo 0766 802807" and "Scarica il listino 2027".
+- **What changed.** The banner, its five `.offerte` rules and three translations are gone. The dog card now sits 34 px under "Vedi tutte le tariffe". The 2027 price-list PDF can still be downloaded from the footer ("Listino 2027 in PDF") and from the price section of each detail page. Checked at 1440 px.

@@ -701,6 +701,8 @@ if (actbar) {
     actbar.classList.toggle('show', seen.size === 0);
   }, { threshold: 0 });
   hideOn.forEach(el => io.observe(el));
+  // the detail pages keep it on all the way down (data-hide="none", rev 128)
+  if (!hideOn.length) actbar.classList.add('show');
 }
 
 /* ---------- reels: silent vertical clips, loaded near the viewport, playing only while visible ---------- */

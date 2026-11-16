@@ -1083,6 +1083,7 @@ p{margin:0 0 14px}
 
 .actbar{position:fixed;left:50%;bottom:16px;z-index:40;display:flex;gap:8px;padding:8px;border-radius:999px;background:rgba(23,33,29,.94);backdrop-filter:blur(10px);box-shadow:0 14px 40px -14px rgba(0,0,0,.6);transform:translate(-50%,calc(100% + 30px));transition:transform .5s var(--ease-out)}
 .actbar.show{transform:translate(-50%,0)}
+body:has(.actbar[data-hide="none"]) .foot{padding-bottom:110px}
 .actbar .btn{box-shadow:none;white-space:nowrap}
 .actbar .btn.line{color:var(--on-night);border-color:rgba(243,238,231,.55)}
 .actbar .btn.line:hover{background:rgba(243,238,231,.12)}

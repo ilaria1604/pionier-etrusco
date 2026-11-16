@@ -1157,3 +1157,12 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - Map legend: two headed groups, "Piazzole" and "Alloggi", with "Locali tecnici" apart (`tools/gen-mappa.mjs`).
   - Map card: a "Piazzola" or "Alloggio" tag, read from the `.k` text and `data-g` of each `.cmap-info` template, so the English page translates it.
 - **Comparison table on the bungalow, glamping and home pages** (`compare()` in `tools/gen-pages.mjs`), after "Prima di arrivare" and before the closing band, on the sand panel so it stands apart from the canvas sections around it. Four columns, the pitches tinted teal; the current page's column has `aria-current` and no link to itself. Yes/no marks carry hidden text for screen readers. On phones the row labels stay fixed and the columns scroll, with a hint above. Not on the pitches page or the home page.
+
+### Rev 132: the comparison table shows only the rentals
+- **Owner's request.** Take the pitches out of the comparison on the rental pages.
+- **What changed.**
+  - The table now has three columns, Bungalow, Glamping and Home (`compare()` in `tools/gen-pages.mjs`).
+  - The group row ("Porti la tua attrezzatura" / "Alloggi · trovi tutto pronto") is gone, and so are the "—" marks. The heading reads "Gli alloggi a confronto." (English: "Our rentals, compared.").
+  - The styles for the pitch column, the group row and the dash are removed. The table's minimum width drops to 640px.
+  - English: the six translations that are no longer used are removed.
+- **Checked.** Glamping at 1440 px; the English Home page at 1024 px; Glamping on a 390 px phone, where the labels stay fixed and the three columns scroll. No horizontal overflow on the rental pages and no script errors.

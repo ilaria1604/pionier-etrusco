@@ -175,42 +175,39 @@ const PAGES = [
   },
 ];
 
-// pitches and rentals side by side, near the end of each rental page (rev 131)
+// the three rentals side by side, near the end of each rental page (rev 131; pitches taken out in rev 132)
 const CMP_Y = `<span class="ck">${'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'}<span class="sr">Sì</span></span>`;
-const CMP_N = '<span class="cn" aria-hidden="true">—</span><span class="sr">No</span>';
 const CMP_ROWS = [
-  ['Posti', 'Dipende dalla tua attrezzatura', 'Da 2 a 6', '4', '4'],
-  ['Superficie', CMP_N, 'Da 20 a 48 mq', '45 mq su due piani', '34 mq'],
-  ['Camere', CMP_N, '1 o 2', '2', '2'],
-  ['Bagno', 'Servizi comuni con docce calde', 'Privato, con doccia', 'Privato, con doccia', '2 bagni privati'],
-  ['Cucina', CMP_N, 'Attrezzata', 'Attrezzata, a induzione', 'Attrezzata, con lavastoviglie'],
-  ['Aria condizionata', CMP_N, CMP_Y, CMP_Y, CMP_Y],
-  ['Lenzuola incluse', CMP_N, CMP_Y, CMP_Y, CMP_Y],
-  ['Ombrellone e 2 lettini in spiaggia', CMP_N, CMP_Y, CMP_Y, CMP_Y],
-  ['Come si prenota', 'A notte', 'In estate a settimane, da sabato a sabato', 'In estate a settimane, da domenica a domenica', 'In estate a settimane, da domenica a domenica'],
+  ['Posti', 'Da 2 a 6', '4', '4'],
+  ['Superficie', 'Da 20 a 48 mq', '45 mq su due piani', '34 mq'],
+  ['Camere', '1 o 2', '2', '2'],
+  ['Bagno', 'Privato, con doccia', 'Privato, con doccia', '2 bagni privati'],
+  ['Cucina', 'Attrezzata', 'Attrezzata, a induzione', 'Attrezzata, con lavastoviglie'],
+  ['Aria condizionata', CMP_Y, CMP_Y, CMP_Y],
+  ['Lenzuola incluse', CMP_Y, CMP_Y, CMP_Y],
+  ['Ombrellone e 2 lettini in spiaggia', CMP_Y, CMP_Y, CMP_Y],
+  ['Come si prenota', 'In estate a settimane, da sabato a sabato', 'In estate a settimane, da domenica a domenica', 'In estate a settimane, da domenica a domenica'],
 ];
 const CMP_COLS = [
-  ['piazzole', 'Piazzole', '€ 9', 'a notte', 'Vedi le piazzole'],
   ['bungalow', 'Bungalow', '€ 350', 'a settimana', 'Vedi i bungalow'],
   ['glamping', 'Glamping', '€ 450', 'a settimana', 'Vedi il glamping'],
   ['home', 'Home', '€ 600', 'a settimana', 'Vedi le home'],
 ];
 const compare = cur => `<section class="detail d-compare" id="confronto" aria-labelledby="cmp-t">
   <div class="wrap">
-    <div data-reveal><p class="label rv" style="--i:0">Confronta</p><h2 class="h2 rv" id="cmp-t" style="--i:1">Piazzole e alloggi a <em>confronto</em>.</h2></div>
+    <div data-reveal><p class="label rv" style="--i:0">Confronta</p><h2 class="h2 rv" id="cmp-t" style="--i:1">Gli alloggi a <em>confronto</em>.</h2></div>
     <div class="cmp" data-reveal>
       <p class="cmp-hint rv" style="--i:0">Scorri di lato per vedere tutti gli alloggi</p>
       <div class="cmp-scroll rv" style="--i:1">
         <table>
           <thead>
-            <tr class="cmp-g"><td></td><th scope="colgroup" class="pz">Porti la tua attrezzatura</th><th scope="colgroup" colspan="3" class="al">Alloggi · trovi tutto pronto</th></tr>
-            <tr><td></td>${CMP_COLS.map(([k, t], i) => `<th scope="col"${i ? '' : ' class="pz"'}${k === cur ? ' aria-current="page"' : ''}>${t}</th>`).join('')}</tr>
+            <tr><td></td>${CMP_COLS.map(([k, t]) => `<th scope="col"${k === cur ? ' aria-current="page"' : ''}>${t}</th>`).join('')}</tr>
           </thead>
           <tbody>
-${CMP_ROWS.map(r => `            <tr><th scope="row">${r[0]}</th>${r.slice(1).map((c, i) => `<td${i ? '' : ' class="pz"'}>${c}</td>`).join('')}</tr>`).join('\n')}
+${CMP_ROWS.map(r => `            <tr><th scope="row">${r[0]}</th>${r.slice(1).map(c => `<td>${c}</td>`).join('')}</tr>`).join('\n')}
           </tbody>
           <tfoot>
-            <tr><th scope="row">Prezzo</th>${CMP_COLS.map(([k, , pr, per, go], i) => `<td${i ? '' : ' class="pz"'}><span class="cp"><small>da</small> <b>${pr}</b> <small>${per}</small></span>${k === cur ? '' : `<a class="cg" href="${k}.html">${go}${'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}</a>`}</td>`).join('')}</tr>
+            <tr><th scope="row">Prezzo</th>${CMP_COLS.map(([k, , pr, per, go]) => `<td><span class="cp"><small>da</small> <b>${pr}</b> <small>${per}</small></span>${k === cur ? '' : `<a class="cg" href="${k}.html">${go}${'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}</a>`}</td>`).join('')}</tr>
           </tfoot>
         </table>
       </div>

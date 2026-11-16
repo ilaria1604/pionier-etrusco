@@ -1210,3 +1210,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - Tablet 768 px: 4.6:1.
   - Phones 390 px: 5.8:1. 360 px: 5.3:1.
   - The upper half of the photo stays bright.
+
+### Rev 137: the same dark backdrop on the Piazzole tile
+- **Owner's request.** Put the black shadow on Piazzole too.
+- **What changed.** The base `.duo-tile::after` now uses the rev 136 backdrop, which is near-black (`rgba(12,19,16)`) instead of the old green-black (`rgba(23,33,29)`). On computers: .96 at the bottom, .88 at 46%, .5 at 66%, .1 at 86%. Up to 1060 px: .95, .83 at 56%, .54 at the top. The title shadow now applies to both tiles (`.duo-tile .st-title`). The Strutture tile keeps its own rule with the terracotta glow at the top right.
+- **Checked.** Both tiles at 1440 px and on a 390 px phone: same darkness under the text; the upper part of the photos stays bright.

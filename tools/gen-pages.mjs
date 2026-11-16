@@ -350,7 +350,7 @@ ${NAV(P.key)}
   <div class="wrap">
     <h1 id="page-t">${P.h1}</h1>
     <p class="lede">${P.lede}</p>
-    <div class="cta-row"><a class="btn" href="${ask(P.pick)}">Richiedi disponibilità</a><a class="btn ghost" href="#prezzi">Vedi i prezzi</a></div>
+    <div class="cta-row"><a class="btn" href="${ask(P.pick)}">Prenota</a><a class="btn ghost" href="#prezzi">Vedi i prezzi</a></div>
   </div>
 </section>
 ${P.types ? choose + inside : photos + inside}
@@ -385,7 +385,7 @@ ${P.types ? photos : ''}
 <section class="cta-band" aria-labelledby="cta-t">
   <div class="wrap">
     <h2 class="h2" id="cta-t">${P.ctaH}</h2>
-    <div class="actions"><a class="btn" href="${ask(P.pick)}">Richiedi disponibilità</a><a class="btn line" href="tel:+390766802807">Chiama lo 0766 802807</a></div>
+    <div class="actions"><a class="btn" href="${ask(P.pick)}">Prenota</a><a class="btn line" href="tel:+390766802807">Chiama lo 0766 802807</a></div>
   </div>
 </section>
 
@@ -405,7 +405,7 @@ ${FOOT}
 
 <div class="actbar" role="navigation" aria-label="Azioni rapide" data-hide=".page-hero, .cta-band, .foot, #calcola">
   <a class="btn line" href="#prezzi">Prezzi</a>
-  <a class="btn" href="${ask(P.pick)}">Richiedi disponibilità</a>
+  <a class="btn" href="${ask(P.pick)}">Prenota</a>
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="Foto ingrandita">

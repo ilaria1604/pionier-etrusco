@@ -1104,3 +1104,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
 ### Rev 126: no numbers on the three labels
 - **Owner's request.** Remove the 1, 2, 3 discs from the labels of Sistemazioni, La mappa and Tariffe 2027, which were added in rev 120. The labels are plain again, in the home page and in `tools/gen-mappa.mjs`, and the `.label .pf-k` style is gone. The order of the sections stays.
+
+### Rev 127: "Prenota" on the detail pages
+- **Owner's request.** On the accommodation detail pages, "Richiedi disponibilità" becomes "Prenota".
+- **What changed.** On piazzole, bungalow, glamping and home (and in `tools/gen-pages.mjs`), the hero button, the button of the closing band and the phone bar button now read "Prenota". They still lead to the request form with the type preselected. The calculator's button reads "Prenota" on the detail pages and keeps "Richiedi disponibilità" on the home page (`onHome` in `calc.js`). In English it is "Book" and "Check availability", and the "Richiedi disponibilità" text translation, no longer used, was removed.
+- **Checked.** The glamping page buttons, plus a filled-in calculator on the glamping page and on the home page.

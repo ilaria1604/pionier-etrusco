@@ -117,7 +117,9 @@ p{margin:0 0 14px}
   .menu .nested a{font-family:var(--f-body);font-size:17px;padding:9px 0 9px 18px;border-bottom:1px dashed rgba(51,39,31,.14)}
 }
 @media (max-width:520px){.nav .btn-sm{padding:8px 12px;font-size:14px}.brand .name{font-size:16px}.nav{gap:8px}.menu-btn{padding:6px 13px}}
-@media (max-width:389px){.brand .name{display:none}}
+/* "Richiedi disponibilità" is long: on phones the header keeps the logo mark and drops the name, so the button stays on one line (rev 130) */
+@media (max-width:460px){.brand .name{display:none}}
+.nav .btn-sm{white-space:nowrap}
 
 /* ---------- hero (home page only) ---------- */
 .hero{position:relative;height:420vh;background:var(--night)}

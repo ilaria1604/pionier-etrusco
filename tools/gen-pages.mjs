@@ -195,9 +195,9 @@ const CMP_COLS = [
 ];
 const compare = cur => `<section class="detail d-compare" id="confronto" aria-labelledby="cmp-t">
   <div class="wrap">
-    <div data-reveal><p class="label rv" style="--i:0">Confronta</p><h2 class="h2 rv" id="cmp-t" style="--i:1">Gli alloggi a <em>confronto</em>.</h2></div>
+    <div data-reveal><p class="label rv" style="--i:0">Confronta</p><h2 class="h2 rv" id="cmp-t" style="--i:1">Le strutture a <em>confronto</em>.</h2></div>
     <div class="cmp" data-reveal>
-      <p class="cmp-hint rv" style="--i:0">Scorri di lato per vedere tutti gli alloggi</p>
+      <p class="cmp-hint rv" style="--i:0">Scorri di lato per vedere tutte le strutture</p>
       <div class="cmp-scroll rv" style="--i:1">
         <table>
           <thead>
@@ -222,7 +222,7 @@ const NAV = cur => `<header class="nav" id="nav">
   <nav aria-label="Principale">
     <ul class="links">
       <li><a href="piazzole.html">Piazzole</a></li>
-      <li><a href="index.html#alloggi">Alloggi</a></li>
+      <li><a href="index.html#strutture">Strutture</a></li>
       <li><a href="index.html#mappa">Mappa</a></li>
       <li><a href="index.html#tariffe">Tariffe</a></li>
       <li><a href="index.html#servizi">Servizi</a></li>
@@ -239,7 +239,7 @@ const NAV = cur => `<header class="nav" id="nav">
 <div class="menu" id="menu">
   <ul>
     <li><a href="piazzole.html">Piazzole</a></li>
-    <li><a href="index.html#alloggi">Alloggi</a></li>
+    <li><a href="index.html#strutture">Strutture</a></li>
     <li><a href="index.html#mappa">Mappa</a></li>
     <li><a href="index.html#tariffe">Tariffe</a></li>
     <li><a href="index.html#servizi">Servizi</a></li>

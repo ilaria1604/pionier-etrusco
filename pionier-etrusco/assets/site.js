@@ -523,11 +523,11 @@ if (duo) {
     }
   }));
   setOpen(null);
-  // "Alloggi" in the menu lands on the rentals tile with its choices open
-  const toRentals = () => { if (location.hash === '#alloggi') setOpen('s'); };
+  // "Strutture" in the menu lands on the rentals tile with its choices open
+  const toRentals = () => { if (location.hash === '#strutture') setOpen('s'); };
   toRentals();
   addEventListener('hashchange', toRentals);
-  $$('a[href="#alloggi"]').forEach(a => a.addEventListener('click', () => setOpen('s')));
+  $$('a[href="#strutture"]').forEach(a => a.addEventListener('click', () => setOpen('s')));
 }
 
 /* ---------- FAQ ---------- */

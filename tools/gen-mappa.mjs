@@ -263,9 +263,9 @@ ${marksSvg}
 
 const typeOrder = ['P', 'T', 'G', 'B', 'GL', 'H', 'L'];
 const lgItem = t => `<li><button type="button" class="lg-type" data-type="${t}" aria-pressed="false"><span class="sw t-${t}" aria-hidden="true"></span>${TYPES[t].name}</button></li>`;
-// pitches and rentals as two groups, in the same colours as the rest of the site (rev 131)
+// pitches and rentals ("Strutture") as two groups, in the same colours as the rest of the site (rev 131)
 const typeLegend = `<h3 class="lg-g pz">Piazzole</h3><ul>${['P', 'T', 'G'].map(lgItem).join('')}</ul>`
-  + `<h3 class="lg-g al">Alloggi</h3><ul>${['B', 'GL', 'H'].map(lgItem).join('')}</ul>`
+  + `<h3 class="lg-g al">Strutture</h3><ul>${['B', 'GL', 'H'].map(lgItem).join('')}</ul>`
   + `<ul class="lg-more">${lgItem('L')}</ul>`;
 const servLegend = Object.entries(SERV).map(([k, v]) => `<li><button type="button" class="lg-serv" data-serv="${k}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#mi-${k}"/></svg>${v}</button></li>`).join('');
 
@@ -296,9 +296,9 @@ const section = `<section class="cmap-sec" id="mappa" aria-labelledby="mappa-t">
         <div data-type="P" data-g="pz"><span class="k">Piazzola</span><b class="n">Piazzola</b><p class="s">Per camper, roulotte e tende</p><ul><li>Corrente 3 A</li><li>Docce calde</li><li>Wi-fi gratuito</li></ul><span class="p"><small>da</small> <b>€ 9</b> <small>a notte</small></span></div>
         <div data-type="T" data-g="pz"><span class="k">Piazzola</span><b class="n">Piazzola tenda</b><p class="s">Per la tenda</p><ul><li>Corrente 3 A</li><li>Docce calde</li><li>Wi-fi gratuito</li></ul><span class="p"><small>da</small> <b>€ 9</b> <small>a notte</small></span></div>
         <div data-type="G" data-g="pz"><span class="k">Piazzola</span><b class="n">Piazzola</b><p class="s">Per tenda grande, roulotte e camper</p><ul><li>Corrente 3 A</li><li>Docce calde</li><li>Wi-fi gratuito</li></ul><span class="p"><small>da</small> <b>€ 9</b> <small>a notte</small></span></div>
-        <div data-type="B" data-g="al"><span class="k">Alloggio</span><b class="n">Bungalow</b><p class="s">Da 20 a 48 mq · fino a 6 posti</p><ul><li>Cucina</li><li>Bagno con doccia</li><li>Aria condizionata</li></ul><span class="p"><small>da</small> <b>€ 350</b> <small>a settimana</small></span></div>
-        <div data-type="GL" data-g="al"><span class="k">Alloggio</span><b class="n">Glamping</b><p class="s">Luxury Lodge 45 mq · 4 posti</p><ul><li>Cucina</li><li>Bagno privato</li><li>Biancheria da letto</li></ul><span class="p"><small>da</small> <b>€ 450</b> <small>a settimana</small></span></div>
-        <div data-type="H" data-g="al"><span class="k">Alloggio</span><b class="n">Home</b><p class="s">Premium Comfort 34 mq · 4 posti</p><ul><li>Cucina attrezzata</li><li>2 bagni</li><li>Veranda arredata</li></ul><span class="p"><small>da</small> <b>€ 600</b> <small>a settimana</small></span></div>
+        <div data-type="B" data-g="al"><span class="k">Struttura</span><b class="n">Bungalow</b><p class="s">Da 20 a 48 mq · fino a 6 posti</p><ul><li>Cucina</li><li>Bagno con doccia</li><li>Aria condizionata</li></ul><span class="p"><small>da</small> <b>€ 350</b> <small>a settimana</small></span></div>
+        <div data-type="GL" data-g="al"><span class="k">Struttura</span><b class="n">Glamping</b><p class="s">Luxury Lodge 45 mq · 4 posti</p><ul><li>Cucina</li><li>Bagno privato</li><li>Biancheria da letto</li></ul><span class="p"><small>da</small> <b>€ 450</b> <small>a settimana</small></span></div>
+        <div data-type="H" data-g="al"><span class="k">Struttura</span><b class="n">Home</b><p class="s">Premium Comfort 34 mq · 4 posti</p><ul><li>Cucina attrezzata</li><li>2 bagni</li><li>Veranda arredata</li></ul><span class="p"><small>da</small> <b>€ 600</b> <small>a settimana</small></span></div>
       </div>
       <button type="button" class="cmap-open"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Apri la mappa</button>
       <div class="cmap-zoom" role="group" aria-label="Zoom della mappa">

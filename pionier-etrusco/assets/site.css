@@ -414,7 +414,7 @@ p{margin:0 0 14px}
 .st-link svg{width:14px;height:14px;fill:none;stroke:var(--warm);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s var(--ease-out),transform .3s var(--ease-out)}
 .st-link:hover{background:var(--warm);color:var(--warm-ink)}
 .st-link:hover svg{stroke:var(--warm-ink);transform:translateX(2px)}
-#alloggi{scroll-margin-top:calc(var(--nav-h) + 24px)}
+#strutture{scroll-margin-top:calc(var(--nav-h) + 24px)}
 @media (max-width:1060px){.st-links{gap:6px}.st-link{padding:6px 10px 6px 12px;font-size:14px}.st-row{min-height:0}}
 .duo-panel[data-side=s] .units{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr))}
 .duo-panel[data-side=s] .unit:nth-child(3){order:-1;grid-row:span 2}

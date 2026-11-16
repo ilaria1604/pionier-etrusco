@@ -1166,3 +1166,14 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The styles for the pitch column, the group row and the dash are removed. The table's minimum width drops to 640px.
   - English: the six translations that are no longer used are removed.
 - **Checked.** Glamping at 1440 px; the English Home page at 1024 px; Glamping on a 390 px phone, where the labels stay fixed and the three columns scroll. No horizontal overflow on the rental pages and no script errors.
+
+### Rev 133: "Strutture" again instead of "Alloggi"
+- **Owner's request.** Replace "Alloggi" with "Strutture" again; the owner keeps "Strutture" as the name for bungalow, glamping and home.
+- **What changed.**
+  - Home page tile: title, vertical label, "Scopri le strutture".
+  - Menu on every page: "Strutture". The anchor becomes `#strutture`: the tile id, the `site.js` hash handling, `scroll-margin-top`, and the links in `tools/gen-pages.mjs`.
+  - Map: the legend group "Strutture" and the card tag "Struttura" (`tools/gen-mappa.mjs`).
+  - Rental pages: "Le strutture a confronto." and the phone hint "Scorri di lato per vedere tutte le strutture".
+  - English keeps "Rentals"; only the Italian keys in `tools/en-testi.mjs` change.
+  - Left as it was: the glamping type text "Alloggio in tenda su due piani…", which describes the unit and is not the group name.
+- **Checked.** The menu stays on one line at 1181 and 1440 px. "Strutture" from the Home page opens the panel on the home page. No script errors.

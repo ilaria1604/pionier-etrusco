@@ -193,3 +193,14 @@
   .cmap-sheet.open .cmap-sheet-h svg{transform:rotate(180deg)}
   .cmap-sec.fs .cmap-legend{flex:1;min-height:0;margin:0;padding:2px var(--gut) 8px;overflow-y:auto;overscroll-behavior:contain}
 }
+
+/* pitches and rentals as two groups in the legend, and on the card (rev 131) */
+.cmap-legend h3.lg-g{display:flex;align-items:center;gap:8px}
+.cmap-legend h3.lg-g::before{content:"";width:10px;height:10px;border-radius:50%}
+.cmap-legend h3.lg-g.pz{color:var(--accent)}
+.cmap-legend h3.lg-g.pz::before{background:var(--accent)}
+.cmap-legend h3.lg-g.al{color:var(--terra);margin-top:18px}
+.cmap-legend h3.lg-g.al::before{background:var(--terra)}
+.cmap-legend ul.lg-more{margin-top:12px}
+.cc-k{display:inline-block;align-self:flex-start;margin-bottom:6px;padding:3px 10px;border-radius:999px;font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent)}
+.cmap-card[data-g=al] .cc-k{background:var(--terra)}

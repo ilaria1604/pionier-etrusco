@@ -510,7 +510,10 @@ if (duo) {
     tiles.forEach(t => t.setAttribute('aria-expanded', String(t.dataset.side === side)));
     panels.forEach(p => { const on = p.dataset.side === side; p.inert = !on; p.setAttribute('aria-hidden', String(!on)); });
   };
-  tiles.forEach(t => t.addEventListener('click', () => {
+  tiles.forEach(t => t.addEventListener('click', e => {
+    // the three rental names on the tile go straight to their page (rev 131)
+    const go = e.target.closest('[data-href]');
+    if (go) { location.href = go.dataset.href; return; }
     const side = duo.classList.contains(t.dataset.side + '-open') ? null : t.dataset.side;
     setOpen(side);
     // one block under the other: bring the opened choices into view
@@ -520,6 +523,11 @@ if (duo) {
     }
   }));
   setOpen(null);
+  // "Alloggi" in the menu lands on the rentals tile with its choices open
+  const toRentals = () => { if (location.hash === '#alloggi') setOpen('s'); };
+  toRentals();
+  addEventListener('hashchange', toRentals);
+  $$('a[href="#alloggi"]').forEach(a => a.addEventListener('click', () => setOpen('s')));
 }
 
 /* ---------- FAQ ---------- */

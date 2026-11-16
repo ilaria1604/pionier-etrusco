@@ -248,6 +248,8 @@
     const label = cell.dataset.tip || '', m = label.match(/\s(\d+(?:\s+(?:e|and)\s+\d+)?)$/);
     card.querySelector('.cc-t').textContent = m ? info.querySelector('.n').textContent + ' ' + m[1] : label;
     card.querySelector('.cc-s').textContent = info.querySelector('.s').textContent;
+    card.querySelector('.cc-k').textContent = info.querySelector('.k').textContent;
+    card.dataset.g = info.dataset.g;
     card.querySelector('.cc-inc').innerHTML = info.querySelector('ul').innerHTML;
     card.querySelector('.cc-p').innerHTML = info.querySelector('.p').innerHTML;
     card.cell = cell;

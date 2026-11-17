@@ -1215,3 +1215,11 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** Put the black shadow on Piazzole too.
 - **What changed.** The base `.duo-tile::after` now uses the rev 136 backdrop, which is near-black (`rgba(12,19,16)`) instead of the old green-black (`rgba(23,33,29)`). On computers: .96 at the bottom, .88 at 46%, .5 at 66%, .1 at 86%. Up to 1060 px: .95, .83 at 56%, .54 at the top. The title shadow now applies to both tiles (`.duo-tile .st-title`). The Strutture tile keeps its own rule with the terracotta glow at the top right.
 - **Checked.** Both tiles at 1440 px and on a 390 px phone: same darkness under the text; the upper part of the photos stays bright.
+
+### Rev 138: comparison table removed
+- **Owner's request.** Remove the comparison table.
+- **What changed.**
+  - `compare()`, `CMP_ROWS`, `CMP_COLS` and `CMP_Y` are gone from `tools/gen-pages.mjs`, and so is the `.d-compare` / `.cmp` block in `site.css`.
+  - The rental pages go back to "Prima di arrivare" → closing band → other accommodation, as before rev 131.
+  - English: the 25 translations only the table used are removed.
+- **Checked.** The order of the sections on bungalow, glamping, mobile home (Italian and English) and pitches. No script errors.

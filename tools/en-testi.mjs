@@ -27,7 +27,6 @@ export const MARKUP = [
   ["All'ombra, a 100 metri dal <em>mare</em>.", 'In the shade, 100 metres from the <em>sea</em>.'],
   ['Piazzole, al <em>giorno</em>.', 'Pitches, per <em>day</em>.'],
   ['Prima di <em>arrivare</em>.', 'Before you <em>arrive</em>.'],
-  ['Le strutture a <em>confronto</em>.', 'Our rentals, <em>compared</em>.'],
   ['Ti teniamo la piazzola <em>giusta</em>.', "We'll save you the <em>right</em> pitch."],
   ['Oppure guarda <em>anche</em>...', 'Or take a look at <em>these</em> too...'],
   ['Tre misure, da 2 a 6 <em>persone</em>.', 'Three sizes, for 2 to 6 <em>people</em>.'],
@@ -273,8 +272,8 @@ export const TEXT = {
   '(Google Analytics): distinguono i visitatori nelle statistiche, fino a 2 anni. Vengono salvati solo se accetti.': '(Google Analytics): tell visitors apart in the statistics, for up to 2 years. They are stored only if you accept.', 'Se rifiuti, il sito funziona lo stesso.': 'If you refuse, the site works just the same.', 'Cambia la tua scelta': 'Change your choice', 'I tuoi diritti': 'Your rights',
   "Puoi chiederci di vedere i tuoi dati, correggerli, cancellarli o limitarne l'uso, di riceverli in un formato leggibile e di opporti al trattamento. Basta scrivere a": 'You can ask us to show you your data, correct it, delete it or restrict its use, to give it to you in a readable format, and you can object to its processing. Just write to', '. Puoi anche presentare un reclamo al': '. You can also lodge a complaint with the',
   'Garante per la protezione dei dati personali': 'Italian Data Protection Authority (Garante per la protezione dei dati personali)', 'Modifiche': 'Changes', 'Se cambiamo questa pagina, aggiorniamo la data in alto.': 'If we change this page, we update the date at the top.',
-  // rev 131: pitches and rentals, the comparison table on the rental pages
-  'Strutture': 'Rentals', 'Struttura': 'Rental', 'Corrente e docce calde': 'Electricity and hot showers', 'da € 350 a settimana': 'from € 350 per week', 'Lenzuola incluse': 'Sheets included', 'Scopri le strutture': 'Explore the rentals', 'Confronta': 'Compare', 'Scorri di lato per vedere tutte le strutture': 'Swipe sideways to see all the rentals', 'Posti': 'Guests', 'Da 2 a 6': '2 to 6', 'Superficie': 'Size', 'Da 20 a 48 mq': '20 to 48 sqm', '45 mq su due piani': '45 sqm on two floors', '34 mq': '34 sqm', 'Camere': 'Bedrooms', 'Bagno': 'Bathroom', 'Privato, con doccia': 'Private, with shower', '2 bagni privati': '2 private bathrooms', 'Attrezzata': 'Fully equipped', 'Attrezzata, a induzione': 'Fully equipped, induction hob', 'Attrezzata, con lavastoviglie': 'Fully equipped, with dishwasher', 'Sì': 'Yes', 'Come si prenota': 'How you book', 'In estate a settimane, da sabato a sabato': 'In summer by the week, Saturday to Saturday', 'In estate a settimane, da domenica a domenica': 'In summer by the week, Sunday to Sunday', 'Prezzo': 'Price', 'Vedi il glamping': 'See the glamping', 'Vedi le mobile home': 'See the mobile homes', 'Vedi i bungalow': 'See the bungalows', 'Per tutti: parcheggio di 1 auto e wi-fi.': 'For everyone: parking for 1 car and wi-fi.',
+  // rev 131: pitches and rentals (the comparison table was removed in rev 138)
+  'Strutture': 'Rentals', 'Struttura': 'Rental', 'Corrente e docce calde': 'Electricity and hot showers', 'da € 350 a settimana': 'from € 350 per week', 'Lenzuola incluse': 'Sheets included', 'Scopri le strutture': 'Explore the rentals',
 };
 
 // words inside the scripts, as they appear in the code

@@ -1223,3 +1223,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The rental pages go back to "Prima di arrivare" → closing band → other accommodation, as before rev 131.
   - English: the 25 translations only the table used are removed.
 - **Checked.** The order of the sections on bungalow, glamping, mobile home (Italian and English) and pitches. No script errors.
+
+### Rev 139: one address everywhere
+- **Owner's request.** Use "Via Vulsinia 2, 01014 Marina di Montalto di Castro" everywhere, so Google sees the same name, address and phone on every page.
+- **What changed.**
+  - The contacts section on the home page ("Via Vulsinia 2, Montalto Marina (VT)" before).
+  - The footer of every page and the privacy page: "(VT)" removed, to match the owner's form exactly.
+  - The Google Maps search links now use the same address.
+  - English: the address stays as it is. The privacy text adds ", Italy".
+- **Not changed.** The 2027 PDF still says "Via Vulsinia, snc 01014 Montalto di Castro"; it is the owner's document.
+- **Checked.** 14 occurrences in Italian and English, all identical. The contacts item wraps to two lines on a 390 px phone with no overflow.

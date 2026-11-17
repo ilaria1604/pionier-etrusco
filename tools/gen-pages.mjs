@@ -214,7 +214,7 @@ const FOOT = `<footer class="foot">
     <div class="logo" role="img" aria-label="Camping Pionier Etrusco"></div>
     <address>
       <strong style="color:var(--canvas);font-family:var(--f-display);font-weight:700;font-size:20px">Camping Pionier Etrusco</strong><br>
-      <a href="https://www.google.com/maps/search/?api=1&amp;query=Camping%20Pionier%20Etrusco%2C%20Via%20Vulsinia%202%2C%20Montalto%20Marina" target="_blank" rel="noopener">Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT)</a><br>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Camping%20Pionier%20Etrusco%2C%20Via%20Vulsinia%202%2C%2001014%20Marina%20di%20Montalto%20di%20Castro" target="_blank" rel="noopener">Via Vulsinia 2, 01014 Marina di Montalto di Castro</a><br>
       <a href="tel:+390766802807">0766 802807</a> · <a href="tel:+393293671083">329 3671083</a><br>
       <a href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a><br>
       Aperto dal 15 aprile al 26 settembre 2027
@@ -463,7 +463,7 @@ ${NAV('privacy')}
     <p class="lede">Cosa facciamo con i dati di chi visita questo sito e di chi ci scrive.</p>
 
     <h2>Chi tratta i dati</h2>
-    <p>Il titolare del trattamento è <strong>Coreal di Eleuteri M. &amp; C. s.n.c.</strong>, che gestisce il Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT), P. IVA 01513620565, REA 90814. Per qualsiasi domanda sui tuoi dati scrivi a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a> o chiama lo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
+    <p>Il titolare del trattamento è <strong>Coreal di Eleuteri M. &amp; C. s.n.c.</strong>, che gestisce il Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro, P. IVA 01513620565, REA 90814. Per qualsiasi domanda sui tuoi dati scrivi a <a class="tlink" href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a> o chiama lo <a class="tlink" href="tel:+390766802807">0766 802807</a>.</p>
 
     <h2>Quali dati usiamo e perché</h2>
     <h3>Richieste dal modulo, email e telefonate</h3>

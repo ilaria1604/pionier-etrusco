@@ -5,7 +5,7 @@
 // names and words that stay the same
 export const KEEP = ['EN', 'English', 'English version', 'Pionier Etrusco', 'Camping Pionier Etrusco', 'Bungalow', 'Glamping', 'Home', 'Menu', 'Sport', 'Bar', 'Reception', 'Home page', 'Video', 'Email', 'Info', 'TV', 'Wi-fi', 'Kitesurf',
   'Vulci', 'Tarquinia', 'Capalbio', 'Saturnia', 'Argentario', 'Montalto Marina', 'Le Murelle', 'Google', 'Bike service', 'Camper stop', 'Cookie', 'info@pionieretrusco.com', 'cp-consenso', '_ga e _ga_*',
-  'Glamping Luxury Lodge', 'Mobile home Premium Comfort', 'Mobile home', 'Via Vulsinia 2, Montalto Marina (VT)', 'Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT)', 'Coreal di Eleuteri M. &amp; C. s.n.c.'];
+  'Glamping Luxury Lodge', 'Mobile home Premium Comfort', 'Mobile home', 'Via Vulsinia 2, 01014 Marina di Montalto di Castro', 'Coreal di Eleuteri M. &amp; C. s.n.c.'];
 
 // sentences with tags inside, as they appear in the HTML
 export const MARKUP = [
@@ -257,7 +257,7 @@ export const TEXT = {
 
   // privacy page
   'Ultimo aggiornamento: 31 ottobre 2026': 'Last updated: 31 October 2026', 'Cosa facciamo con i dati di chi visita questo sito e di chi ci scrive.': 'What we do with the data of people who visit this site and write to us.', 'Chi tratta i dati': 'Who handles the data', 'Il titolare del trattamento è': 'The data controller is',
-  ', che gestisce il Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT), P. IVA 01513620565, REA 90814. Per qualsiasi domanda sui tuoi dati scrivi a': ', which runs Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro (VT), Italy, VAT no. 01513620565, REA 90814. For any question about your data, write to', 'o chiama lo': 'or call',
+  ', che gestisce il Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro, P. IVA 01513620565, REA 90814. Per qualsiasi domanda sui tuoi dati scrivi a': ', which runs Camping Pionier Etrusco: Via Vulsinia 2, 01014 Marina di Montalto di Castro, Italy, VAT no. 01513620565, REA 90814. For any question about your data, write to', 'o chiama lo': 'or call',
   'Quali dati usiamo e perché': 'What data we use and why', 'Richieste dal modulo, email e telefonate': 'Requests from the form, emails and phone calls', 'Dati:': 'Data:', 'Perché:': 'Why:', 'Base giuridica:': 'Legal basis:', 'Per quanto tempo:': 'How long:',
   'nome, email, telefono, date del soggiorno, sistemazione, numero di persone e quello che scegli di scriverci.': 'name, email, phone, dates of stay, accommodation, number of people and whatever you choose to write to us.', 'per risponderti e preparare il tuo soggiorno.': 'to reply to you and prepare your stay.',
   'la tua richiesta e le misure precontrattuali (art. 6, par. 1, lett. b del GDPR).': 'your request and pre-contractual measures (Art. 6(1)(b) GDPR).', "fino a 24 mesi dall'ultimo contatto. Se prenoti, i dati necessari restano per il tempo previsto dalle norme fiscali e contabili.": 'up to 24 months from the last contact. If you book, the necessary data is kept for as long as tax and accounting rules require.',

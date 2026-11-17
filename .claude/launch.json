@@ -6,6 +6,12 @@
       "runtimeExecutable": "/Users/ilariaeleuteri/.local/node/bin/node",
       "runtimeArgs": ["/Users/ilariaeleuteri/Desktop/Claude1camping/.claude/serve.js", "8321", "/Users/ilariaeleuteri/Desktop/Claude1camping/pionier-etrusco"],
       "port": 8321
+    },
+    {
+      "name": "pionier-dist",
+      "runtimeExecutable": "/Users/ilariaeleuteri/.local/node/bin/node",
+      "runtimeArgs": ["/Users/ilariaeleuteri/Desktop/Claude1camping/.claude/serve.js", "8322", "/Users/ilariaeleuteri/Desktop/Claude1camping/dist"],
+      "port": 8322
     }
   ]
 }

@@ -1243,3 +1243,27 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - "Mobile home a Montalto Marina · Camping Pionier Etrusco"
 - **English.** "Pitches and camper stop in Montalto Marina", "Wooden bungalows in Montalto Marina", "Glamping Luxury Lodge in Montalto Marina", "Mobile homes in Montalto Marina", each followed by "· Camping Pionier Etrusco".
 - **Not changed.** The home page title already says "Montalto Marina"; the descriptions already name the place.
+
+### Rev 141: every photo in the size the page shows
+- **Owner's request.** Point 5 of the SEO review: lighter photos.
+- **What we measured.**
+  - The photos are very detailed (pine needles, leaves): WebP or AVIF instead of JPEG saves only 5–15%.
+  - The real waste was size. Many photos are shown small (grids, cards, the 54 px service circles) but were downloaded at 1050–1400 px.
+- **How.**
+  - `tools/foto-sizes.py` (Pillow) writes `assets/foto/sizes/NAME-200/400/640/960.jpg`, JPEG quality 72. At 2x zoom it shows no visible difference from the original. Run it again after adding photos.
+  - `tools/build.mjs` reads each published page as a tree of elements and gives every photo `srcset` (the copies plus the original at its real width) and `sizes`. `sizes` comes from the classes around the photo (table `SIZES`, measured at 1440, 1024 and 390 px). Lazy photos start with `auto`, so browsers that support it use the real width. Photos in an unknown place get `100vw`, which means no saving but no loss either.
+  - The build copies only the copies the pages use (220 of 440).
+  - The source pages and the generators are unchanged; the lightbox still opens the originals.
+- **Result** (photos downloaded while scrolling the whole page):
+
+  | Page | Device | Before | After |
+  |---|---|---|---|
+  | Home page | computer | 10.9 MB | 1.9 MB |
+  | Home page | phone 2x | 9.0 MB | 2.0 MB |
+  | Home page | phone 3x | 9.0 MB | 3.8 MB |
+  | Bungalow | computer | 6.4 MB | 2.3 MB |
+  | Bungalow | phone 2x / 3x | 5.1 MB | 1.3 / 3.5 MB |
+
+- **Checked.** No broken photo on any page, in Italian and English, at 1440 px and on a 390 px phone. The services area looks identical at 2x.
+- **Local check of the published version.** `.claude/launch.json` has a second server, "pionier-dist" (port 8322), that serves `dist/`.
+- **Not changed.** The opening video (6.9 MB, computers only) and the hero stills.

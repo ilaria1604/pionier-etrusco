@@ -1233,3 +1233,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - English: the address stays as it is. The privacy text adds ", Italy".
 - **Not changed.** The 2027 PDF still says "Via Vulsinia, snc 01014 Montalto di Castro"; it is the owner's document.
 - **Checked.** 14 occurrences in Italian and English, all identical. The contacts item wraps to two lines on a 390 px phone with no overflow.
+
+### Rev 140: the place in the detail page titles
+- **Owner's request.** Point 4 of the SEO review: put the place in the page titles. Before, only the home page title said where the campsite is.
+- **New titles.** The accommodation and the place come first, the brand last; if Google cuts a long title, only the brand is lost. They are also the `og:title` used by link previews.
+  - "Piazzole e camper stop a Montalto Marina · Camping Pionier Etrusco"
+  - "Bungalow in legno a Montalto Marina · Camping Pionier Etrusco"
+  - "Glamping Luxury Lodge a Montalto Marina · Camping Pionier Etrusco"
+  - "Mobile home a Montalto Marina · Camping Pionier Etrusco"
+- **English.** "Pitches and camper stop in Montalto Marina", "Wooden bungalows in Montalto Marina", "Glamping Luxury Lodge in Montalto Marina", "Mobile homes in Montalto Marina", each followed by "· Camping Pionier Etrusco".
+- **Not changed.** The home page title already says "Montalto Marina"; the descriptions already name the place.

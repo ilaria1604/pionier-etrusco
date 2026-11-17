@@ -66,7 +66,7 @@ const card = (u, i) => `<a class="unit rv" style="--i:${i}" href="${u.href}">
 const PAGES = [
   {
     file: 'piazzole.html', reels: [['reel-piazzole', 'Le piazzole'], ['reel-piazzole-verde', 'Tra i pini']], key: 'piazzole', pick: 'Piazzola camper',
-    title: 'Piazzole e area camper stop nella pineta · Camping Pionier Etrusco',
+    title: 'Piazzole e camper stop a Montalto Marina · Camping Pionier Etrusco',
     desc: 'Piazzole ombreggiate per camper, roulotte e tende nella pineta di Montalto Marina, a 100 metri dal mare. Area camper stop pet friendly. Tariffe 2027.',
     heroImg: 'assets/foto/piaz-11.jpg', heroPos: '50% 45%',
     h1: 'Piazzole',
@@ -103,7 +103,7 @@ const PAGES = [
   },
   {
     file: 'bungalow.html', reels: [['reel-pineta', 'Bungalow e glamping nella pineta']], key: 'bungalow', pick: 'Bungalow trilocale 28 mq',
-    title: 'Bungalow in legno nella pineta · Camping Pionier Etrusco',
+    title: 'Bungalow in legno a Montalto Marina · Camping Pionier Etrusco',
     desc: 'Bungalow in legno nella pineta di Montalto Marina: monolocale 20 mq, trilocale 28 mq e trilocale superior 48 mq, fino a 6 persone. Planimetrie e tariffe 2027.',
     heroImg: 'assets/foto/bung-cover.jpg', heroPos: '50% 50%',
     h1: 'Bungalow',
@@ -128,7 +128,7 @@ const PAGES = [
   },
   {
     file: 'glamping.html', reels: [['reel-glamping', 'Il glamping'], ['reel-glamping-verde', 'Il verde intorno'], ['reel-glamping-amaca', "Dall'amaca al glamping"]], key: 'glamping', pick: 'Glamping Luxury Lodge',
-    title: 'Glamping Luxury Lodge nella pineta · Camping Pionier Etrusco',
+    title: 'Glamping Luxury Lodge a Montalto Marina · Camping Pionier Etrusco',
     desc: 'Glamping Luxury Lodge 45 mq a forma di A, su due piani, per 4 persone, con bagno privato e cucina, nella pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/glam-cover.jpg', heroPos: '50% 56%',
     h1: 'Glamping',
@@ -152,7 +152,7 @@ const PAGES = [
   },
   {
     file: 'home.html', key: 'home', pick: 'Mobile home Premium Comfort',
-    title: 'Mobile home Premium Comfort nella pineta · Camping Pionier Etrusco',
+    title: 'Mobile home a Montalto Marina · Camping Pionier Etrusco',
     desc: 'Mobile home Premium Comfort 34 mq per 4 persone, con due camere, due bagni, lavastoviglie e veranda sulla pineta di Montalto Marina. Tariffe 2027.',
     heroImg: 'assets/foto/home-2.jpg', heroPos: '50% 55%',
     h1: 'Mobile home',

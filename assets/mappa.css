@@ -5,7 +5,7 @@
 .cmap-tools{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;margin:30px 0 14px}
 .cmap-view{display:inline-flex;background:var(--canvas);border-radius:999px;padding:4px}
 .cmap-view button{border:0;background:none;padding:9px 18px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;color:var(--text-primary);transition:background .3s var(--ease-out),color .3s var(--ease-out)}
-.cmap-view button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.cmap-view button[aria-pressed="true"]{background:var(--btn);color:var(--on-night)}
 .cmap-hint{display:none;align-items:center;gap:8px;font-family:var(--f-body);font-size:13.5px;color:var(--label);margin:0}
 .cmap-hint svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cmap-frame{position:relative;border-radius:22px;overflow:hidden;background:#FBF8F3;box-shadow:0 1px 0 rgba(51,39,31,.05),0 24px 60px -36px rgba(51,39,31,.4)}
@@ -98,8 +98,8 @@
 .cmap-card:not(.sheet) .cmap-book{justify-content:center}
 .cc-p{font-size:13px;white-space:nowrap}
 .cc-p b{font-size:20px;font-weight:600}
-.cmap-book{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:9px 18px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:15px;text-decoration:none;transition:background-color .3s var(--ease-out)}
-.cmap-book:hover{background:#006765}
+.cmap-book{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:9px 18px;border-radius:999px;background:var(--btn);color:var(--on-night);font-weight:600;font-size:15px;text-decoration:none;transition:background-color .3s var(--ease-out)}
+.cmap-book:hover{background:var(--btn-hover)}
 .cmap-book svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-out)}
 .cmap-book:hover svg{transform:translateX(3px)}
 .cmap-card.sheet{position:fixed;left:0;right:0;top:auto;bottom:0;z-index:9;width:auto;padding:20px var(--gut) calc(18px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0;box-shadow:0 -14px 34px -18px rgba(23,33,29,.55);opacity:1;transform:translateY(100%)}
@@ -159,7 +159,7 @@
   .cmap-sec:not(.fs) .cmap{width:100%}
   .cmap-sec:not(.fs) .cmap-scroll{overflow:hidden}
   .cmap-sec:not(.fs) .cmap-frame{cursor:zoom-in;margin-top:22px}
-  .cmap-open{display:inline-flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:600 16px var(--f-body);box-shadow:0 10px 24px -10px rgba(0,60,58,.7)}
+  .cmap-open{display:inline-flex;align-items:center;gap:8px;position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:3;min-height:48px;padding:0 20px;border:0;border-radius:999px;background:var(--btn);color:var(--on-night);font:600 16px var(--f-body);box-shadow:0 10px 24px -10px rgba(0,60,58,.7)}
   .cmap-open svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
   html.fs-lock,html.fs-lock body{overflow:hidden}
 
@@ -169,7 +169,7 @@
   .cmap-sec.fs .cmap-head,.cmap-sec.fs .cmap-open,.cmap-sec.fs .cmap-tools{display:none}
   .cmap-sec.fs .cmap-fsbar{display:flex;flex:none;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:6;padding:10px var(--gut);background:var(--panel);border-bottom:1px solid rgba(106,87,75,.16)}
   .cmap-fsbar b{font-family:var(--f-display);font-weight:700;font-size:20px}
-  .cmap-close{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--text-primary);background:#fff;color:var(--text-primary);font:600 15px var(--f-body)}
+  .cmap-close{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--text-primary);background:var(--panel);color:var(--text-primary);font:600 15px var(--f-body)}
   .cmap-close svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
   .cmap-sec.fs .cmap-frame{flex:1;min-height:0;margin:0 0 var(--peek);border-radius:0;box-shadow:none}
   .cmap-sec.fs .cmap-scroll{position:absolute;inset:0;overflow:hidden;touch-action:none;cursor:grab}
@@ -177,7 +177,7 @@
   .cmap-sec.fs .cmap{width:100%;height:100%;max-width:none;aspect-ratio:auto}
 
   .cmap-sec.fs .cmap-zoom{display:flex;flex-direction:column;gap:8px;position:absolute;right:12px;bottom:14px;z-index:3}
-  .cmap-zoom button{display:grid;place-items:center;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:#fff;color:var(--accent);box-shadow:0 6px 18px -8px rgba(51,39,31,.55);cursor:pointer}
+  .cmap-zoom button{display:grid;place-items:center;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:var(--panel);color:var(--accent);box-shadow:0 6px 18px -8px rgba(51,39,31,.55);cursor:pointer}
   .cmap-zoom svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
   .cmap-sec.fs .cmap-gest{display:block;position:absolute;left:50%;top:12px;z-index:3;max-width:calc(100% - 24px);margin:0;padding:8px 14px;border-radius:999px;background:var(--night);color:var(--on-night);font-size:14px;line-height:1.3;text-align:center;pointer-events:none;opacity:0;transform:translateX(-50%);transition:opacity .4s var(--ease-out)}
   .cmap-sec.fs .cmap-gest.show{opacity:.92}
@@ -202,5 +202,5 @@
 .cmap-legend h3.lg-g.al{color:var(--terra);margin-top:18px}
 .cmap-legend h3.lg-g.al::before{background:var(--terra)}
 .cmap-legend ul.lg-more{margin-top:12px}
-.cc-k{display:inline-block;align-self:flex-start;margin-bottom:6px;padding:3px 10px;border-radius:999px;font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent)}
-.cmap-card[data-g=al] .cc-k{background:var(--terra)}
+.cc-k{display:inline-block;align-self:flex-start;margin-bottom:6px;padding:3px 10px;border-radius:999px;font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--on-night);background:var(--btn)}
+.cmap-card[data-g=al] .cc-k{background:var(--terra-deep)}

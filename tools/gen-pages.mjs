@@ -1,5 +1,5 @@
 // Generates the four accommodation detail pages from one template.
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 const OUT = process.argv[2];
 
 const ICONS = {
@@ -77,22 +77,12 @@ const PAGES = [
     intro: ["Le nostre piazzole sono nel cuore della pineta. L'ombra dei pini ripara dal caldo d'estate e ti lascia uno spazio verde dove stare a contatto con la natura.", 'Ci sono zone dedicate a camper, tende e roulotte. Dicci come viaggi e ti suggeriamo noi la zona giusta.'],
     gearH: 'Incluso nel prezzo',
     gear: [['bolt', 'Corrente 3 A'], ['shower', 'Docce calde'], ['parking', 'Parcheggio di 1 auto'], ['wifi', 'Wi-fi gratuito'], ['camper', 'Camper service'], ['star', 'Animazione'], ['pool', 'Area relax e piscina']],
-    extra: `
-<section class="detail" id="camper-stop" aria-labelledby="cs-t">
-  <div class="wrap" data-reveal>
-    <div class="cani-band with-photo rv">
-      <img src="assets/foto/cani-spiaggia.jpg" alt="Un cagnolino seduto sulla sabbia della spiaggia, nella luce del tramonto" loading="lazy" width="1006" height="1006">
-      <div class="cani-copy">
-        <svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.paw}</svg>
-        <h2 class="h2" id="cs-t">Area camper stop</h2>
-        <p>Un'area pensata per le soste brevi, con tutti i comfort del campeggio. Nella tariffa sono inclusi corrente, docce calde, servizi, carico e scarico al camper service interno.</p>
-        <p><b>Siamo pet friendly.</b> Nell'area camper stop sono ben accetti cani di piccola e media taglia, sempre al guinzaglio. Possono venire con te al ristorante, in pizzeria e al bar. Restano esclusi la piscina, il parco giochi e l'area camping.</p>
-        <p class="call-info"><a class="tlink" href="tel:+390766802807">Richiedi info</a><span>Le tariffe del camper stop si ricevono per telefono: <a href="tel:+390766802807">0766 802807</a></span></p>
-      </div>
-    </div>
-  </div>
-</section>`,
-    types: null,
+    typesLabel: 'Quale scegliere', typesH: 'Con la tua <em>attrezzatura</em>, o solo di passaggio.',
+    mapFocus: 'camp', mapH: 'Ogni <em>piazzola</em>, ogni servizio.',
+    types: [
+      { id: 'piazzola', cover: 'piazzola-camper.jpg', photos: [['piazzola-camper.jpg', 'Camper con veranda e tenda su una piazzola ombreggiata'], ['piazzole-pineta.jpg', 'Piazzole per camper sotto i pini curvi'], ['piaz-9.jpg', 'Un viale del campeggio con le roulotte e i teli ombreggianti'], ['piaz-tenda.jpg', 'Una tenda su una piazzola tra i pini, accanto a un bungalow'], ['piaz-tetto.jpg', 'Un\'auto con la tenda sul tetto sotto un telo ombreggiante'], ['piaz-1.jpg', 'Piazzole tra i pini e le piante mediterranee']], h: 'Piazzola', cap: 'Camper, roulotte, tendauto o tenda', p: "All'ombra dei pini, nel cuore della pineta, a 100 metri dal mare. Ci sono zone dedicate a camper, roulotte e tende: dicci come viaggi e ti suggeriamo la zona giusta.", from: ['€ 9', 'a notte, più le persone'], pick: 'Piazzola camper', calc: 'piaz' },
+      { id: 'camper-stop', cover: 'camper-stop.jpg', photos: [['camper-stop.jpg', 'Camper in fila lungo il viale, sotto i pini'], ['cani-spiaggia.jpg', 'Un cagnolino seduto sulla sabbia della spiaggia, nella luce del tramonto']], h: 'Area camper stop', cap: 'Soste brevi, anche con il cane', p: "Con tutti i comfort del campeggio: corrente, docce calde, servizi, carico e scarico al camper service interno. Cani di piccola e media taglia ammessi, sempre al guinzaglio: possono venire al ristorante, in pizzeria e al bar; restano esclusi la piscina, il parco giochi e l'area camping.", fromText: 'Tariffe al telefono', tel: true, pick: 'Area camper stop con cane' },
+    ],
     photosH: 'Le piazzole, sotto i <em>pini</em>.',
     gallery: [['piaz-9.jpg', 'Un viale del campeggio con le roulotte e i teli ombreggianti'], ['piazzole-pineta.jpg', 'Piazzole per camper sotto i pini curvi'], ['piaz-tenda.jpg', 'Una tenda su una piazzola tra i pini, accanto a un bungalow'], ['piaz-tetto.jpg', 'Un\'auto con la tenda sul tetto sotto un telo ombreggiante'], ['piazzola-camper.jpg', 'Camper con veranda e tenda su una piazzola ombreggiata'], ['piaz-1.jpg', 'Piazzole tra i pini e le piante mediterranee'], ['bagni-1.jpg', 'Il blocco bagni e docce tra i pini'], ['bagni-docce.jpg', 'Le cabine doccia sotto la tettoia'], ['bagni-fiori.jpg', 'Fiori davanti ai servizi']],
     pricesH: 'Piazzole, al <em>giorno</em>',
@@ -110,6 +100,7 @@ const PAGES = [
     lede: 'Bungalow in legno immersi nella pineta secolare, fino a 6 persone, con tutti i comfort: cucina, bagno con doccia, veranda e aria condizionata.',
     facts: [['Da 20 a 48 mq', '#tipologie'], ['Fino a 6 posti', '#tipologie'], ['Da sabato a sabato', '#prezzi'], ['da € 350 a settimana', '#prezzi']], calc: 'mono,tri,sup5,sup6',
     typesLabel: 'Quale scegliere', typesH: 'Tre misure, da 2 a 6 <em>persone</em>.',
+    mapFocus: 'B', mapH: 'Dove sono i <em>bungalow</em>.',
     introH: 'Camping sotto i pini, in un bungalow di <em>legno</em>.',
     intro: ['Ogni bungalow ha la sua veranda, dove fare colazione all\'ombra e cenare al fresco.', 'È composto da: camera matrimoniale, cucina attrezzata, bagno con doccia e aria condizionata per le giornate più calde. I trilocali hanno anche una seconda camera: con letto a castello nel Trilocale 28 mq, con letti singoli nel Superior 48 mq.'],
     gearH: 'Dotazioni e servizi',
@@ -136,6 +127,7 @@ const PAGES = [
     facts: [['Luxury Lodge 45 mq', '#tipologie'], '4 posti', 'Su due piani', ['Da domenica a domenica', '#prezzi'], ['da € 450 a settimana', '#prezzi']], calc: 'glam',
     photosH: 'Il glamping, dentro e <em>fuori</em>.',
     typesLabel: 'La sistemazione', typesH: 'Una tenda su <em>due piani</em>, per 4 persone.',
+    mapFocus: 'GL', mapH: 'Dove si trova il <em>glamping</em>.',
     introH: 'Dormire in <em>tenda</em>, con il bagno in camera.',
     intro: ['Un incontro tra glamour e camping: vicino alla natura, senza rinunciare ai comfort. Dentro trovi due camere da letto, il bagno privato con doccia, la cucina attrezzata e una grande area lounge che continua all\'aperto.', 'La sera, tra i pini, si accendono le lucine.'],
     gearH: 'Dotazioni e servizi',
@@ -160,6 +152,7 @@ const PAGES = [
     facts: [['Premium Comfort 34 mq', '#tipologie'], '4 posti', '2 bagni', ['Da domenica a domenica', '#prezzi'], ['da € 600 a settimana', '#prezzi']], calc: 'home',
     photosH: 'La mobile home, dentro e <em>fuori</em>.',
     typesLabel: 'La sistemazione', typesH: 'Due camere e <em>due bagni</em>, per 4 persone.',
+    mapFocus: 'H', mapH: 'Dove sono le <em>mobile home</em>.',
     introH: 'Due camere, due bagni, tutto <em>nuovo</em>.',
     intro: ['Le mobile home sono la scelta giusta per chi cerca relax e comodità. La cucina ha lavastoviglie e piano a induzione, i bagni sono due, con cabina doccia e asciugacapelli, e uno ha anche il bidet.', 'Una camera matrimoniale, una con due letti singoli, il soggiorno con TV e una grande veranda arredata per godersi il fresco della pineta.'],
     gearH: 'Dotazioni e servizi',
@@ -174,6 +167,15 @@ const PAGES = [
     ctaH: 'Ti piace? Chiedici se è <em>libera</em>.',
   },
 ];
+
+// the interactive map of the home page (written there by tools/gen-mappa.mjs), on every detail page, opening on what the page is about (rev 153)
+const MAP = (() => {
+  const s = readFileSync(`${OUT}/index.html`, 'utf8'), A = '<!-- mappa:start -->', Z = '<!-- mappa:end -->';
+  return s.slice(s.indexOf(A) + A.length, s.indexOf(Z)).trim();
+})();
+const mapFor = P => MAP
+  .replace('<section class="cmap-sec" id="mappa"', `<section class="cmap-sec" id="mappa" data-focus="${P.mapFocus}"`)
+  .replace(/(<h2 class="h2 rv" id="mappa-t" style="--i:1">)[\s\S]*?(<\/h2>)/, (m, x, y) => x + P.mapH + y);
 
 const NAV = cur => `<header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Camping Pionier Etrusco, pagina principale"><span class="mark" aria-hidden="true"></span><span class="name">Pionier Etrusco</span></a>
@@ -235,6 +237,8 @@ const SVG = {
   calc: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h0M14 11h2M8 15h2M14 15h2M8 18h2M14 18h2"/></svg>',
   check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   info: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
+  pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>',
 };
 const reelTile = r => `
       <figure class="reel g-reel m-reel" tabindex="0" role="button" aria-label="Video: ${r[1]}. Tocca per mettere in pausa o riprendere">
@@ -249,7 +253,7 @@ for (const P of PAGES) {
   const ask = (pick) => `index.html?sist=${encodeURIComponent(pick)}#richiesta`;
   const single = P.types && P.types.length === 1 ? P.types[0] : null;
   // "del Bungalow…", but "della mobile home…" (rev 135)
-  const ofUnit = h => /^Mobile home /.test(h) ? 'della m' + h.slice(1) : 'del ' + h;
+  const ofUnit = h => /^Mobile home /.test(h) ? 'della m' + h.slice(1) : /^Piazzola/.test(h) ? 'della p' + h.slice(1) : /^Area /.test(h) ? "dell'a" + h.slice(1) : 'del ' + h;
   const plansOf = t => t.plans.map(pl => [`assets/planimetrie/${pl[0]}`, `${pl[1]} ${ofUnit(t.h)}`]);
 
   // 1. the photos: one mosaic, the first picture large, videos in between
@@ -274,7 +278,7 @@ for (const P of PAGES) {
 <section class="detail d-choose" id="tipologie" aria-labelledby="tip-t">
   <div class="wrap">
     <div data-reveal><p class="label rv" style="--i:0">${P.typesLabel}</p><h2 class="h2 rv" id="tip-t" style="--i:1">${P.typesH}</h2></div>
-    <div class="choose${single ? ' single' : ''}">${P.types.map(t => {
+    <div class="choose${single ? ' single' : P.types.length === 2 ? ' two' : ''}">${P.types.map(t => {
       const ph = t.photos.map(x => [`assets/foto/${x[0]}`, x[1]]);
       const start = Math.max(0, t.photos.findIndex(x => x[0] === t.cover));
       return `
@@ -284,10 +288,10 @@ for (const P of PAGES) {
           <h3>${t.h}</h3>
           <p class="cap">${t.cap}</p>
           <p class="ch-desc">${t.p}</p>
-          <p class="ch-price"><small>da</small><b>${t.from[0]}</b><span>${t.from[1]}</span></p>
+          <p class="ch-price">${t.from ? `<small>da</small><b>${t.from[0]}</b><span>${t.from[1]}</span>` : `<span>${t.fromText}</span>`}</p>
           <div class="ch-links">
-            <button type="button" class="ch-link" data-photos="${att(plansOf(t))}">${SVG.plan}Guarda la planimetria</button>
-            <a class="ch-link" href="#calcola" data-calc-pick="${t.calc}">${SVG.calc}Calcola il prezzo</a>
+            ${t.plans ? `<button type="button" class="ch-link" data-photos="${att(plansOf(t))}">${SVG.plan}Guarda la planimetria</button>` : `<a class="ch-link" href="#mappa">${SVG.pin}Guarda sulla mappa</a>`}
+            ${t.calc ? `<a class="ch-link" href="#calcola" data-calc-pick="${t.calc}">${SVG.calc}Calcola il prezzo</a>` : `<a class="ch-link" href="tel:+390766802807">${SVG.phone}Chiama per le tariffe</a>`}
           </div>
         </div>
       </article>`;
@@ -304,7 +308,7 @@ for (const P of PAGES) {
       <p class="label rv" style="--i:0">${P.types ? 'Cosa è incluso' : 'Cosa trovi'}</p>
       <h2 class="h2 rv" id="intro-t" style="--i:1">${P.introH}</h2>
       ${P.intro.map((t, i) => `<p class="lede rv" style="--i:${i + 2}">${t}</p>`).join('\n      ')}
-      ${P.mapLink ? `<p class="lede rv"><a class="tlink" href="index.html?vista=piazzole#mappa">${P.mapLink}</a></p>` : ''}
+      ${P.mapLink ? `<p class="lede rv"><a class="tlink" href="#mappa">${P.mapLink}</a></p>` : ''}
     </div>
     <div data-reveal>
       <p class="label rv" style="--i:0">${P.gearH}</p>
@@ -335,6 +339,7 @@ for (const P of PAGES) {
 <link rel="alternate" hreflang="en" href="https://example.com/en/${P.file}">
 <link rel="alternate" hreflang="x-default" href="https://example.com/${P.file}">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/mappa.css">
 </head>
 <body class="detail-page">
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -380,6 +385,7 @@ ${P.types ? choose : photos}
 ${inside}
 
 ${P.types ? photos : ''}
+${mapFor(P)}
 <section class="detail d-know" aria-labelledby="know-t">
   <div class="wrap">
     <div data-reveal><p class="label rv" style="--i:0">Da sapere</p><h2 class="h2 rv" id="know-t" style="--i:1">Prima di <em>arrivare</em>.</h2></div>
@@ -423,6 +429,7 @@ ${FOOT}
 
 <script src="assets/consent.js"></script>
 <script src="assets/site.js"></script>
+<script src="assets/mappa.js"></script>
 <script src="assets/calc.js"></script>
 </body>
 </html>

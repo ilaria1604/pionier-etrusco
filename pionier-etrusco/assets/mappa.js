@@ -210,8 +210,10 @@
   const book = (e, cell) => {
     e.preventDefault(); e.stopPropagation();
     const form = document.querySelector('#richiesta'), sist = document.querySelector('#f-sist'), msg = document.querySelector('#f-msg');
-    if (!form || !cell) return;
+    if (!cell) return;
     const v = SIST[cell.dataset.type];
+    // detail pages have no form: go to the one on the home page, already filled in (rev 153)
+    if (!form) { const q = new URLSearchParams(); if (v) q.set('sist', v); q.set('msg', cell.dataset.tip + '. '); location.href = 'index.html?' + q + '#richiesta'; return; }
     if (v && sist && [...sist.options].some(o => o.value === v)) { sist.value = v; sist.dispatchEvent(new Event('change')); }
     if (msg && !msg.value.trim()) msg.value = cell.dataset.tip + '. ';
     hideCard();
@@ -425,8 +427,11 @@
   addEventListener('keydown', e => { if (e.key === 'Escape') closeFs(); });
   PHONE.addEventListener('change', e => { if (!e.matches) closeFs(); });
 
-  // Arriving from the Piazzole page: open straight on the zoom
-  if (new URLSearchParams(location.search).get('vista') === 'piazzole') {
+  // Detail pages open the map on their subject: the zoom on the pitches, or one type lit (rev 153)
+  const focus = sec.dataset.focus;
+  if (focus && focus !== 'camp' && typeBtns.some(b => b.dataset.type === focus)) { selType = focus; paint(); }
+  // Arriving from the Piazzole page, or on a detail page: open straight on the zoom
+  if (focus || new URLSearchParams(location.search).get('vista') === 'piazzole') {
     view = 'camp';
     frame.dataset.view = 'camp';
     viewBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === 'camp')));

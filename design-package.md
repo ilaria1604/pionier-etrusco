@@ -1406,3 +1406,28 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The old `.b1 .hero-h::before` and `.b4 .hero-h::before` halos are removed.
   - The phone version of the opening (`.static-copy`) keeps its own soft radial backdrop.
 - **Checked.** Steps 1–3 at 1440 px: no edge, veil from the screen edge. Teal heading contrast at step 3: median 6.3:1, brightest 3.7:1.
+
+### Rev 153: the Piazzole page like the others, and the map on every detail page
+- **Owner's request.** On the Piazzole page, the same cards as on the Bungalow page and all the information in the same order. The interactive map on every detail page.
+- **Piazzole page (`tools/gen-pages.mjs`).** It now has `types`, like the other pages, in two cards (`.choose.two`).
+  - **Piazzola:** 6 photos, "Camper, roulotte, tendauto o tenda", from € 9 a night plus the people, "Guarda sulla mappa" and "Calcola il prezzo".
+  - **Area camper stop** (id `camper-stop`, so the home page link still lands on it): 2 photos, the camper stop and dog details from the old band, "Tariffe al telefono", "Guarda sulla mappa" and "Chiama per le tariffe".
+  - The old camper stop band is removed, and so are its CSS rules (`#camper-stop` paddings, which also hit the new card).
+  - Cards without plans or calculator show the map link or the phone link; `fromText` replaces the price when there is none; `ofUnit()` says "della piazzola" and "dell'area camper stop".
+- **Same order on all four detail pages.** Opening, types, prices, what is included, photos, map, before you arrive, closing band, other accommodation.
+- **The map on every detail page.**
+  - `gen-pages` copies the home page map block (between `<!-- mappa:start/end -->`, written by `gen-mappa`), with `data-focus` and a page heading:
+    - Piazzole: the zoom view, "Ogni piazzola, ogni servizio.";
+    - Bungalow: B lit, "Dove sono i bungalow.";
+    - Glamping: GL lit, "Dove si trova il glamping.";
+    - Mobile home: H lit, "Dove sono le mobile home.".
+  - The pages also load `mappa.css` and `mappa.js`.
+  - `mappa.js` opens on that focus. On a page with no request form, "Richiedi disponibilità" goes to `index.html?sist=…&msg=…#richiesta`, and `site.js` now fills the message from `msg`.
+  - The Piazzole intro link points to `#mappa` on the page.
+- **English.** New texts and headings translated; the old camper stop texts and "Cosa trovi" are removed. `gen-en` reads "foto della / dell'…".
+- **Checked.**
+  - Section order and map focus on the four pages (Italian and English bungalow).
+  - The home page map is unchanged.
+  - The camper stop lightbox opens.
+  - Booking from the map on the mobile home page lands on the home page form with "Mobile home Premium Comfort" and "Mobile home 121." filled in.
+  - Cards at 1440 px and on a 390 px phone. No script errors.

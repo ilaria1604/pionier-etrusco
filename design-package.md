@@ -1285,3 +1285,12 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - tablet: 4.0:1;
   - phones: 4.8:1 at 390 px, 4.5:1 at 360 px;
   - median about 6:1. Large text needs 3:1.
+
+### Rev 143: the three structures side by side
+- **Owner's request.** In the open Strutture panel, the cards side by side. The owner also asked for another option for the panel background; options are previewed, the current background stays until the owner chooses.
+- **What changed (`site.css`).**
+  - Computers and tablets: three equal columns instead of the large Mobile home card with Bungalow and Glamping stacked (rev 111 showcase). The order follows the pills on the tile: Bungalow, Glamping, Mobile home. All three cards have the same title size (28 px). Up to 1060 px the cards are 380 px tall.
+  - Phones keep the sideways carousel.
+  - The descriptions get room for two lines (`min-height:2.8em`), so the three titles and prices stay on one line even when "Premium Comfort 34 mq · 4 posti" wraps. Between 1061 and 1320 px the card text is a little smaller (title `clamp(21px,2.05vw,24px)`, description 13.5 px), so "Mobile home" never wraps.
+- **Checked.** Titles and prices aligned at 1440, 1320, 1280, 1180, 1100, 1080, 1061, 1024, 820 and 768 px; phone carousel unchanged; no script errors.
+- **Background options shown (test browser only):** the current dark green gradient; solid night green #17211D; light sand #F3EEE7; deep verde acqua #0E4E4E; dark logo brown #4A372E.

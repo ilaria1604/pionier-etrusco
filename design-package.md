@@ -1294,3 +1294,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The descriptions get room for two lines (`min-height:2.8em`), so the three titles and prices stay on one line even when "Premium Comfort 34 mq · 4 posti" wraps. Between 1061 and 1320 px the card text is a little smaller (title `clamp(21px,2.05vw,24px)`, description 13.5 px), so "Mobile home" never wraps.
 - **Checked.** Titles and prices aligned at 1440, 1320, 1280, 1180, 1100, 1080, 1061, 1024, 820 and 768 px; phone carousel unchanged; no script errors.
 - **Background options shown (test browser only):** the current dark green gradient; solid night green #17211D; light sand #F3EEE7; deep verde acqua #0E4E4E; dark logo brown #4A372E.
+
+### Rev 144: light sand behind the three structures
+- **Owner's choice.** Of the four options shown in rev 143, the owner chose the light sand.
+- **What changed (`site.css`).** The open Strutture panel's `.sp-in` is now light sand #F3EEE7, with a thin warm line and a soft shadow (`inset 0 0 0 1px rgba(106,87,75,.16), 0 24px 50px -30px rgba(51,39,31,.45)`). Before, it was a dark green gradient with a verde acqua glow. The dark cards keep their own styles.
+- **Checked.** 1440 px, an 820 px tablet and a 390 px phone (where the band runs to the screen edges); no script errors.

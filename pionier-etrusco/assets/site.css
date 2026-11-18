@@ -388,7 +388,8 @@ p{margin:0 0 14px}
 .duo-tile[data-side=s] .st-btn{background:var(--warm)}
 .duo-tile[data-side=s] .st-btn svg{stroke:var(--warm-ink)}
 /* the accommodation panel: a deep pine box with the same warm light; dark cards with warm prices and arrows */
-.duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:radial-gradient(110% 80% at 100% 0%,rgba(0,170,171,.22),rgba(0,170,171,0) 55%),linear-gradient(160deg,#24342D 0%,#131C18 100%);box-shadow:inset 0 0 0 1px var(--warm-line)}
+/* rev 144: light sand behind the three structures, so the photos stand out (owner's choice among four options) */
+.duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:#F3EEE7;box-shadow:inset 0 0 0 1px rgba(106,87,75,.16),0 24px 50px -30px rgba(51,39,31,.45)}
 .duo-panel[data-side=s] .unit{background:linear-gradient(180deg,#27362F 0%,#1A2520 100%);box-shadow:inset 0 0 0 1px rgba(0,170,171,.18)}
 .duo-panel[data-side=s] .unit:hover{box-shadow:inset 0 0 0 1px rgba(0,170,171,.5),0 24px 40px -24px rgba(0,0,0,.7)}
 .duo-panel[data-side=s] .unit h3{color:var(--on-night)}

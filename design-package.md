@@ -1320,3 +1320,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 
   All four with the dark brown text #33271F. The owner chose 2.
 - **What changed (`site.css`).** `.b4 .btn:not(.ghost)` uses `var(--panel)` (#E9E0D5, the sand of the site's sections) with `var(--text-primary)` text (contrast 11:1), and #DDD1C2 on hover. Everything else is unchanged.
+
+### Rev 147: no pure white in texts and CTAs
+- **Owner's request.** No white texts and white elements in text and CTAs; use the sands.
+- **Rule (`site.css`, `mappa.css`).**
+  - **Text and icons on dark backgrounds, on photos and on buttons:** light sand `--on-night` #F3EEE7. This covers button labels, the prices and pills of the Strutture cards, the reels captions, the photo counters, the FAQ minus sign, the calculator's numbered dots and chosen dates, the map filters and the "Piazzola" tag.
+  - **Light filled elements:** sand `--panel` #E9E0D5 with dark brown text #33271F. This covers "Scopri le piazzole / le strutture" and "Chiudi", the round card arrows, the "+" button, the gallery arrows, the map zoom and close buttons, and the hover of the "Tutte le sistemazioni" link.
+  - **Teal fills behind light-sand text:** new `--btn` #006B69 (hover `--btn-hover` #005856), one step deeper than `--accent` #00807E. Light sand on #00807E would be 4.1:1; on #006B69 it is 5.5:1. `--accent` stays for links and icons on light backgrounds.
+  - **"Struttura" tag on the map:** new `--terra-deep` #94502D behind light-sand text (5.3:1).
+- **Not changed.** Cream surfaces on light sections (#FBF8F3: cards, tables, calculator, form fields, calendar days) and the symbols inside the map.
+- **Checked.** At 1440 px: the tiles, the open panel, the request form, the map card for a pitch and for a mobile home, an open FAQ. On a 390 px phone: the bottom bar. No script errors.

@@ -144,8 +144,9 @@ p{margin:0 0 14px}
 .scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 120% 90% at 50% 45%,rgba(8,12,10,0) 35%,rgba(8,12,10,.62) 100%)}
 .band{position:absolute;isolation:isolate;opacity:0;text-shadow:var(--tshadow);pointer-events:none;--k:0}
 .band.live{pointer-events:auto}
-/* per-band scrim: a wide soft plateau, so every glyph (corners included) sits on dimmed footage and the edges fade to nothing */
-.band::before{content:"";position:absolute;inset:-40% -30%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(5,8,7,var(--sa,.7)) 0%,rgba(5,8,7,var(--sa,.7)) 68%,rgba(5,8,7,calc(var(--sa,.7)*.6)) 84%,rgba(5,8,7,0) 100%)}
+/* rev 152: no halo behind the opening headings (it read as a dark blotch): a veil from the side the words are on,
+   fading across the frame. Each band is placed so its veil starts at the screen edge and covers the full height */
+.band::before{content:"";position:absolute;z-index:-1;pointer-events:none;width:75vw;height:100vh;opacity:calc(.25 + .75*var(--k,1));background:linear-gradient(var(--veil,90deg),rgba(5,8,7,.84) 0%,rgba(5,8,7,.72) 26%,rgba(5,8,7,.48) 44%,rgba(5,8,7,.22) 58%,rgba(5,8,7,.07) 70%,rgba(5,8,7,0) 80%)}
 .band .btn{text-shadow:none}
 .display{font-family:var(--f-display);font-weight:900;line-height:1.02;letter-spacing:-.02em;margin:0}
 .hero-h{font-size:clamp(46px,6.6vw,104px)}
@@ -153,18 +154,17 @@ p{margin:0 0 14px}
 .chip{display:inline-block;font-family:var(--f-body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border-radius:10px;background:rgba(8,12,10,.55);border:1px solid rgba(166,217,215,.28);backdrop-filter:blur(10px);text-shadow:0 1px 3px rgba(5,8,7,.85);margin:0 0 18px;color:var(--label-on-night)}
 .b1{left:var(--gut);bottom:14vh;--sa:.72}
 .b1 .hero-h{max-width:12ch}
-.b1::before{display:none}
+.b1::before{left:calc(-1*var(--gut));bottom:-14vh}
 .b1 .hero-h{position:relative;isolation:isolate}
-.b1 .hero-h::before{content:"";position:absolute;inset:-45% -32%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(5,8,7,var(--sa,.7)) 0%,rgba(5,8,7,var(--sa,.7)) 68%,rgba(5,8,7,calc(var(--sa,.7)*.6)) 84%,rgba(5,8,7,0) 100%)}
 .b2{right:var(--gut);bottom:12vh;text-align:right;--sa:.74}
+.b2::before{--veil:270deg;right:calc(-1*var(--gut));bottom:-12vh}
 .b2 .hero-h{max-width:14ch;margin-left:auto}
 /* settle: a left block at mid height, beside the narrowing A-frame (its left edge sits at ~39% of the frame there) */
 .b4{left:var(--gut);top:34vh;--sa:.93}
 /* three lines (Benvenuti al / Pionier / Etrusco.): the widest line sits highest, where the A-frame leaves the most room */
 .b4 .hero-h{max-width:6.2em;font-size:clamp(40px,calc((50vw - 19.6vh - var(--gut) - 40px) / 5.8),132px);line-height:1}
-.b4::before{display:none}
+.b4::before{left:calc(-1*var(--gut));top:-34vh}
 .b4 .hero-h{position:relative;isolation:isolate}
-.b4 .hero-h::before{content:"";position:absolute;inset:-40% -30% -58% -40%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(5,8,7,var(--sa)) 0%,rgba(5,8,7,var(--sa)) 58%,rgba(5,8,7,calc(var(--sa)*.55)) 80%,rgba(5,8,7,0) 100%)}
 .b4 .cta-row{margin-top:26px}
 .b4 .btn.ghost{background:rgba(8,12,10,.55);border-color:rgba(243,238,231,.7);backdrop-filter:blur(8px)}
 /* rev 146: in the third step of the opening video the main button is sand (#E9E0D5, the sand of the site's sections) with dark brown text; it was white in rev 145 */

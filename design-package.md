@@ -1382,3 +1382,27 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - Plus the tokens `--label-on-night` #A9A39D (labels and kickers on dark) and `--on-night-2` #C9BFB4 (secondary text, footer).
 - **What changed.** The 11 colours now use `var(--on-night)`. `--label-on-night` and `--on-night-2` are #F3EEE7. The map symbols are unchanged.
 - **Checked.** On index, strutture, bungalow, piazzole, glamping, home, privacy and the English home page, the only light text colour is now rgb(243,238,231).
+
+### Rev 152: a side veil instead of the dark halo behind the opening headings
+- **Owner's feedback.** The backdrop behind "Benvenuti al Pionier Etrusco." looked like a black blotch: a radial halo at 93% that stayed solid to 58% and then dropped off quickly, so its edge showed. The first and second steps had the same kind of halo, lighter.
+- **Options shown (test browser only, all three steps).**
+  - A: a larger halo with a long even fade.
+  - B: a veil from the side of the screen the words are on.
+  - C: no backdrop, only a deeper text shadow and a vignette.
+
+  Contrast of the teal words at the third step:
+
+  | Option | Median | Brightest spots |
+  |---|---|---|
+  | Before | 6.9 | 6.3 |
+  | A | 6.2 | 3.9 |
+  | B | 6.3 | 3.7 |
+  | C | 4.3 | 1.2 |
+
+  The owner chose B.
+- **What changed (`site.css`).**
+  - `.band::before` is now a 75vw × 100vh linear veil: rgba(5,8,7,.84) at the edge, then .72 / .48 / .22 / .07, clear by 80%. It fades in with the band as before.
+  - Each band places it at the screen edge. `.b1` and `.b4` on the left (bottom −14vh, top −34vh). `.b2` on the right (`--veil:270deg`, bottom −12vh).
+  - The old `.b1 .hero-h::before` and `.b4 .hero-h::before` halos are removed.
+  - The phone version of the opening (`.static-copy`) keeps its own soft radial backdrop.
+- **Checked.** Steps 1–3 at 1440 px: no edge, veil from the screen edge. Teal heading contrast at step 3: median 6.3:1, brightest 3.7:1.

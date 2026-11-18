@@ -28,7 +28,9 @@
   --tshadow:0 1px 2px rgba(5,8,7,.95),0 3px 12px rgba(5,8,7,.78),0 10px 44px rgba(5,8,7,.8);
   --f-display:"Playfair Display",Georgia,"Times New Roman",serif;
   --terra:#A65A33;
-  --terra-light:#E8A27A;
+  /* the accent on dark backgrounds: the verde acqua of the 2021 logo (rev 142; it replaced the light terracotta #E8A27A) */
+  --accent-on-dark:#00AAAB;
+  --beige:#D7C6BB;           /* the beige of the 2021 logo */
   --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --nav-h:64px;
   --gut:clamp(16px,5vw,72px);
@@ -53,7 +55,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .h2{font-family:var(--f-display);font-weight:900;font-size:clamp(34px,4.6vw,60px);line-height:1.06;letter-spacing:-.015em;margin:0 0 22px;max-width:24ch;text-wrap:balance}
 /* editorial accent: one word per heading in italic terracotta (rev 48) */
 .h2 em,.page-hero h1 em,.calc-title em,.arrive .big em,.hero-h em{font-style:italic;color:var(--terra)}
-.hero-h em,.hero-h .w.k,.page-hero h1 em,.mare .h2 em,.reels-sec .h2 em,.cta-band .h2 em,.richiesta .h2 em,.arrive .big em,.static-copy .hero-h em{color:var(--terra-light)}
+.hero-h em,.hero-h .w.k,.page-hero h1 em,.mare .h2 em,.reels-sec .h2 em,.cta-band .h2 em,.richiesta .h2 em,.arrive .big em,.static-copy .hero-h em{color:var(--accent-on-dark)}
 .hero-h .w.k{font-style:italic}
 .h3{font-family:var(--f-display);font-weight:700;font-size:clamp(26px,2.6vw,36px);line-height:1.12;margin:0 0 12px}
 .lede{font-size:clamp(17px,1.4vw,19px);color:var(--text-secondary);max-width:58ch;margin:0 0 16px}
@@ -362,7 +364,7 @@ p{margin:0 0 14px}
 .duo .unit .ph{aspect-ratio:auto;flex:1 1 0;min-height:0}
 .duo .unit .body{flex:none}
 /* ---------- premium look for the fixed accommodation (rev 101): deep pine, the warm terracotta of the hero words, terracotta buttons; the pitches stay light and natural ---------- */
-.duo{--warm:var(--terra-light);--warm-line:rgba(232,162,122,.34);--warm-ink:#2B1B12}
+.duo{--warm:var(--accent-on-dark);--warm-line:rgba(0,170,171,.34);--warm-ink:#2B1B12}
 /* both blocks: a pill button under the text; the round + only shows on the narrow strip */
 .st-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px 10px 18px;border-radius:999px;background:rgba(251,248,243,.94);color:var(--text-primary);font-weight:600;font-size:15px;line-height:1.2;transition:transform .45s var(--ease-out),background-color .35s var(--ease-out),color .35s var(--ease-out),box-shadow .45s var(--ease-out)}
 .st-cta svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;transition:transform .5s var(--ease-out)}
@@ -376,7 +378,7 @@ p{margin:0 0 14px}
 .duo.p-open .duo-tile[data-side=s] .st-btn,.duo.s-open .duo-tile[data-side=p] .st-btn{opacity:1;transition-delay:.3s}
 /* the accommodation block: darker pine veil with a warm light from the top corner, a warm hairline, words and button in flat terracotta; on hover the button turns teal like the pitches one (rev 102) */
 /* rev 136: a darker, even backdrop under the text, so the terracotta title reads on every photo */
-.duo-tile[data-side=s]::after{background:radial-gradient(90% 60% at 88% 0%,rgba(232,162,122,.30),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.88) 46%,rgba(12,19,16,.5) 66%,rgba(12,19,16,.1) 86%)}
+.duo-tile[data-side=s]::after{background:radial-gradient(90% 60% at 88% 0%,rgba(0,170,171,.30),rgba(0,170,171,0) 70%),linear-gradient(to top,rgba(12,19,16,.96) 0%,rgba(12,19,16,.88) 46%,rgba(12,19,16,.5) 66%,rgba(12,19,16,.1) 86%)}
 .duo-tile .st-title{text-shadow:0 2px 20px rgba(12,19,16,.6)}
 .duo-tile[data-side=s]::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;box-shadow:inset 0 0 0 1px var(--warm-line);pointer-events:none}
 .duo-tile[data-side=s] .st-kicker{color:var(--warm)}
@@ -386,12 +388,12 @@ p{margin:0 0 14px}
 .duo-tile[data-side=s] .st-btn{background:var(--warm)}
 .duo-tile[data-side=s] .st-btn svg{stroke:var(--warm-ink)}
 /* the accommodation panel: a deep pine box with the same warm light; dark cards with warm prices and arrows */
-.duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:radial-gradient(110% 80% at 100% 0%,rgba(232,162,122,.22),rgba(232,162,122,0) 55%),linear-gradient(160deg,#24342D 0%,#131C18 100%);box-shadow:inset 0 0 0 1px var(--warm-line)}
-.duo-panel[data-side=s] .unit{background:linear-gradient(180deg,#27362F 0%,#1A2520 100%);box-shadow:inset 0 0 0 1px rgba(232,162,122,.18)}
-.duo-panel[data-side=s] .unit:hover{box-shadow:inset 0 0 0 1px rgba(232,162,122,.5),0 24px 40px -24px rgba(0,0,0,.7)}
+.duo-panel[data-side=s] .sp-in{padding:14px;border-radius:22px;background:radial-gradient(110% 80% at 100% 0%,rgba(0,170,171,.22),rgba(0,170,171,0) 55%),linear-gradient(160deg,#24342D 0%,#131C18 100%);box-shadow:inset 0 0 0 1px var(--warm-line)}
+.duo-panel[data-side=s] .unit{background:linear-gradient(180deg,#27362F 0%,#1A2520 100%);box-shadow:inset 0 0 0 1px rgba(0,170,171,.18)}
+.duo-panel[data-side=s] .unit:hover{box-shadow:inset 0 0 0 1px rgba(0,170,171,.5),0 24px 40px -24px rgba(0,0,0,.7)}
 .duo-panel[data-side=s] .unit h3{color:var(--on-night)}
 .duo-panel[data-side=s] .unit .meta{color:var(--on-night-2)}
-.duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.3)}
+.duo-panel[data-side=s] .unit .price{border-top-color:rgba(0,170,171,.3)}
 /* prices and arrows white; the arrow turns terracotta only on hover (rev 115) */
 .duo-panel[data-side=s] .unit .price b{color:#fff}
 .duo-panel[data-side=s] .unit .price small{color:var(--on-night-2)}
@@ -415,7 +417,7 @@ p{margin:0 0 14px}
 .duo-tile[data-side=p] .st-perks svg{stroke:var(--accent-bright)}
 .st-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;min-height:36px}
 .st-links{display:flex;flex-wrap:wrap;gap:8px}
-.st-link{display:inline-flex;align-items:center;gap:6px;padding:7px 12px 7px 14px;border-radius:999px;background:rgba(12,19,16,.45);box-shadow:inset 0 0 0 1px rgba(232,162,122,.6);color:#fff;font-weight:600;font-size:15px;line-height:1.2;transition:background-color .3s var(--ease-out),color .3s var(--ease-out)}
+.st-link{display:inline-flex;align-items:center;gap:6px;padding:7px 12px 7px 14px;border-radius:999px;background:rgba(12,19,16,.45);box-shadow:inset 0 0 0 1px rgba(0,170,171,.6);color:#fff;font-weight:600;font-size:15px;line-height:1.2;transition:background-color .3s var(--ease-out),color .3s var(--ease-out)}
 .st-link svg{width:14px;height:14px;fill:none;stroke:var(--warm);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s var(--ease-out),transform .3s var(--ease-out)}
 .st-link:hover{background:var(--warm);color:var(--warm-ink)}
 .st-link:hover svg{stroke:var(--warm-ink);transform:translateX(2px)}
@@ -429,8 +431,8 @@ p{margin:0 0 14px}
 .duo-panel[data-side=s] .unit .body{position:relative;z-index:1;padding:18px 20px}
 .duo-panel[data-side=s] .unit:nth-child(3) .body{padding:26px 28px}
 .duo-panel[data-side=s] .unit:nth-child(3) h3{font-size:36px}
-.duo-panel[data-side=s] .unit .price{border-top-color:rgba(232,162,122,.4)}
-.u-tag{position:absolute;top:14px;left:14px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(17,25,21,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--on-night);font-size:13px;font-weight:600;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(232,162,122,.55)}
+.duo-panel[data-side=s] .unit .price{border-top-color:rgba(0,170,171,.4)}
+.u-tag{position:absolute;top:14px;left:14px;z-index:2;padding:6px 12px;border-radius:999px;background:rgba(17,25,21,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:var(--on-night);font-size:13px;font-weight:600;letter-spacing:.02em;box-shadow:inset 0 0 0 1px rgba(0,170,171,.55)}
 @media (max-width:1060px){
   .duo-panel[data-side=s] .units{grid-template-rows:repeat(2,240px)}
 }
@@ -443,8 +445,8 @@ p{margin:0 0 14px}
 }
 @media (max-width:1060px){
   /* one block under the other: each opens below itself */
-  .duo-tile::after{background:linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.83) 56%,rgba(12,19,16,.54) 100%)}
-  .duo-tile[data-side=s]::after{background:radial-gradient(90% 70% at 88% 0%,rgba(232,162,122,.22),rgba(232,162,122,0) 70%),linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.83) 56%,rgba(12,19,16,.54) 100%)}
+  .duo-tile::after{background:linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.86) 56%,rgba(12,19,16,.64) 100%)}
+  .duo-tile[data-side=s]::after{background:radial-gradient(90% 70% at 88% 0%,rgba(0,170,171,.22),rgba(0,170,171,0) 70%),linear-gradient(to top,rgba(12,19,16,.95) 0%,rgba(12,19,16,.86) 56%,rgba(12,19,16,.64) 100%)}
   .st-btn{display:none}
   .duo-panel[data-side=s] .sp-in{padding-block:0;transition:padding .7s var(--ease-out)}
   .duo.s-open .duo-panel[data-side=s] .sp-in{padding-block:14px}
@@ -593,7 +595,7 @@ p{margin:0 0 14px}
 .tab.g-pz::before{background:var(--accent)}
 .tab.g-al::before{background:var(--terra)}
 .tab.g-pz[aria-selected=true]::before{background:var(--accent-bright)}
-.tab.g-al[aria-selected=true]::before{background:var(--terra-light)}
+.tab.g-al[aria-selected=true]::before{background:var(--beige)}
 .tpanel[hidden]{display:none}
 .tpanel.enter{animation:panelin .6s var(--ease-out) both}
 @keyframes panelin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}

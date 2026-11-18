@@ -1367,3 +1367,8 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - The map still prefills the form ("Mobile home Premium Comfort").
   - The bungalow page calculator has no groups.
   - The new page at 1440 px and on a 390 px phone. No script errors.
+
+### Rev 150: light texts back to light sand
+- **Owner's request.** All texts back to light sand.
+- **What changed.** `--on-night` and `--on-btn` are both #F3EEE7 again. That covers all light text on dark backgrounds, photos and filled buttons; the warm sand #E3CFAF of rev 148 is gone. The buttons stay `--btn` #006B69 (5.5:1). The third-step opening button keeps its sand fill with dark brown text.
+- **Checked.** Computed colours: opening heading, tile title, Richiesta heading, menu, teal and ghost buttons, map button and pills all #F3EEE7; the third-step button text #33271F. No script errors.

@@ -1267,3 +1267,21 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Checked.** No broken photo on any page, in Italian and English, at 1440 px and on a 390 px phone. The services area looks identical at 2x.
 - **Local check of the published version.** `.claude/launch.json` has a second server, "pionier-dist" (port 8322), that serves `dist/`.
 - **Not changed.** The opening video (6.9 MB, computers only) and the hero stills.
+
+### Rev 142: the logo's verde acqua instead of the "rosa salmone"
+- **Owner's request.** Replace the light terracotta #E8A27A, which the owner called "rosa salmone".
+- **Options shown before publishing.** All were applied in the test browser only, on the live site:
+  - copper #D07A4C;
+  - the logo teal #00AAAB and the light teal #84D0D3, from `materiali/Declinaz_LOGO Pionier2021.pdf`;
+  - the logo brown #6A4F43 instead of the terracotta on light backgrounds.
+- **Chosen.** The owner approved the recommendation: logo teal #00AAAB on dark backgrounds, terracotta #A65A33 kept on light backgrounds (the warm accent, and the colour of the Strutture group).
+- **What changed (`site.css`).**
+  - `--terra-light` is replaced by `--accent-on-dark:#00AAAB`. It is used for the italics on dark sections: opening, page heroes, Spiagge, Video, Richiesta, the closing band.
+  - The Strutture tile and panel (`--warm`) follow it. The 13 `rgba(232,162,122,…)` lines and glows are now `rgba(0,170,171,…)`.
+  - New `--beige:#D7C6BB` (logo beige) for the dot of the selected Strutture price tab, so it never looks like a pitches one.
+  - Up to 1060 px both tiles get a slightly darker top (.86 at 56%, .64 at the top) because the teal is darker than the salmon.
+- **Checked.** Strutture title contrast at the brightest 2% of the photo behind it:
+  - computer: 5.3:1 closed, 4.1:1 open; 1100 px: 5.4:1;
+  - tablet: 4.0:1;
+  - phones: 4.8:1 at 390 px, 4.5:1 at 360 px;
+  - median about 6:1. Large text needs 3:1.

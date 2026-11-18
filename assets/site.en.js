@@ -775,6 +775,8 @@ if (form) {
   };
   const qp = new URLSearchParams(location.search);
   prefillRequest({ sist: qp.get('sist'), arrivo: qp.get('arrivo'), partenza: qp.get('partenza'), adulti: qp.get('adulti'), bambini: qp.get('bambini'), lettino: qp.get('lettino') });
+  // the map on a detail page sends the place too (rev 153)
+  if (qp.get('msg') && $('#f-msg') && !$('#f-msg').value.trim()) $('#f-msg').value = qp.get('msg');
   sist.addEventListener('change', syncCot);
   $$('[data-pick]').forEach(a => a.addEventListener('click', () => { if ([...sist.options].some(o => o.value === a.dataset.pick)) sist.value = a.dataset.pick; syncCot(); }));
   $('#f-arrivo').addEventListener('change', e => { $('#f-partenza').min = e.target.value || today; });

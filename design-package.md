@@ -1309,3 +1309,14 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Strutture tile (`site.css`).** These now react like every other CTA, with the intense teal and white text or icon: "Scopri le strutture" on hover, the Bungalow / Glamping / Mobile home pills on hover, the card arrows of the open panel on hover. The round "+" button is white at rest and teal on hover, as on the Piazzole tile; before, it was light teal. Title, kicker, ticks and pill outlines stay in the logo teal (text on a dark background).
 - **Opening, third step (`.b4`).** `.b4 .btn:not(.ghost)` is white with #17211D text, and #F3EEE7 on hover with a neutral shadow. "Le sistemazioni" (ghost) is unchanged. The header button, the phone version of the opening (`.static-copy`) and every other button stay teal.
 - **Checked.** At 1440 px, scrolled to the third step: white button, black text, cream on hover. Header and form buttons are still #00807E. No script errors.
+
+### Rev 146: the third-step button in sand
+- **Owner's request.** The white "Richiedi disponibilità" of rev 145 in the third step of the opening did not convince: sand instead.
+- **Options shown (test browser only).**
+  1. Light sand #F3EEE7.
+  2. Sand #E9E0D5.
+  3. Logo beige #D7C6BB.
+  4. Warm sand #E3CFAF.
+
+  All four with the dark brown text #33271F. The owner chose 2.
+- **What changed (`site.css`).** `.b4 .btn:not(.ghost)` uses `var(--panel)` (#E9E0D5, the sand of the site's sections) with `var(--text-primary)` text (contrast 11:1), and #DDD1C2 on hover. Everything else is unchanged.

@@ -1372,3 +1372,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's request.** All texts back to light sand.
 - **What changed.** `--on-night` and `--on-btn` are both #F3EEE7 again. That covers all light text on dark backgrounds, photos and filled buttons; the warm sand #E3CFAF of rev 148 is gone. The buttons stay `--btn` #006B69 (5.5:1). The third-step opening button keeps its sand fill with dark brown text.
 - **Checked.** Computed colours: opening heading, tile title, Richiesta heading, menu, teal and ghost buttons, map button and pills all #F3EEE7; the third-step button text #33271F. No script errors.
+
+### Rev 151: every light writing in light sand
+- **Owner's feedback.** Some writings still looked sand after rev 150.
+- **Found** (computed colours of all light text on every page): 11 hand-written light colours.
+  - Darker sands #EDE6DC, #E7DFD5, #DDD4C9 and #E2D9CE: opening subtitle, beach and services texts, Richiesta and reels ledes.
+  - Light sand with transparency (.82–.92): tile subtitles and ticks, reels captions.
+  - A teal-tinted white #E6F4F3: the photo pills.
+  - Plus the tokens `--label-on-night` #A9A39D (labels and kickers on dark) and `--on-night-2` #C9BFB4 (secondary text, footer).
+- **What changed.** The 11 colours now use `var(--on-night)`. `--label-on-night` and `--on-night-2` are #F3EEE7. The map symbols are unchanged.
+- **Checked.** On index, strutture, bungalow, piazzole, glamping, home, privacy and the English home page, the only light text colour is now rgb(243,238,231).

@@ -1330,3 +1330,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - **"Struttura" tag on the map:** new `--terra-deep` #94502D behind light-sand text (5.3:1).
 - **Not changed.** Cream surfaces on light sections (#FBF8F3: cards, tables, calculator, form fields, calendar days) and the symbols inside the map.
 - **Checked.** At 1440 px: the tiles, the open panel, the request form, the map card for a pitch and for a mobile home, an open FAQ. On a 390 px phone: the bottom bar. No script errors.
+
+### Rev 148: light texts in warm sand
+- **Owner's feedback.** The light sand of rev 147 was not perceived as different from white.
+- **Options shown (test browser only).** A, sand #E9E0D5; B, warm sand #E3CFAF. The owner chose B.
+- **What changed.**
+  - `--on-night` is now #E3CFAF (warm sand). It covers all light text on dark backgrounds and photos: the opening headings, the menu over the opening, the tile titles, the dark sections, contacts, the ghost buttons, the reels captions.
+  - 20 rules that used `var(--canvas)` and 2 that used #F3EEE7 for light text, icons or the opening badge now use `--on-night`.
+  - New `--on-btn:#E9E0D5` (sand) for text and icons on filled teal, terracotta or red (26 places): buttons, map buttons and tag, calculator dots and dates, selected pills, hover icons. Warm sand on `--btn` would be 4.2:1; sand is 4.9:1.
+  - The third-step opening button keeps its sand fill with dark brown text.
+- **Checked.** Computed colours locally: headings, tile title, Richiesta heading, menu and ghost button #E3CFAF; teal buttons and map button #E9E0D5; the third-step button text #33271F. Opening, third step, tiles, Richiesta section and phone bar look right; no script errors.

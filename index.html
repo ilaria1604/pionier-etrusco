@@ -18,7 +18,7 @@
 <link rel="alternate" hreflang="it" href="https://ilaria1604.github.io/pionier-etrusco/">
 <link rel="alternate" hreflang="en" href="https://ilaria1604.github.io/pionier-etrusco/en/">
 <link rel="alternate" hreflang="x-default" href="https://ilaria1604.github.io/pionier-etrusco/">
-<link rel="stylesheet" href="assets/site.css?v=4838c406">
+<link rel="stylesheet" href="assets/site.css?v=9720139f">
 <link rel="stylesheet" href="assets/mappa.css?v=a4acffd0">
 </head>
 <body>
@@ -31,7 +31,7 @@
   <nav aria-label="Principale">
     <ul class="links">
       <li><a href="piazzole.html">Piazzole</a></li>
-      <li><a href="#strutture">Strutture</a></li>
+      <li><a href="strutture.html">Strutture</a></li>
       <li><a href="#mappa">Mappa</a></li>
       <li><a href="#tariffe">Tariffe</a></li>
       <li><a href="#servizi">Servizi</a></li>
@@ -48,7 +48,7 @@
 <div class="menu" id="menu">
   <ul>
     <li><a href="piazzole.html">Piazzole</a></li>
-      <li><a href="#strutture">Strutture</a></li>
+      <li><a href="strutture.html">Strutture</a></li>
     <li><a href="#mappa">Mappa</a></li>
     <li><a href="#tariffe">Tariffe</a></li>
     <li><a href="#servizi">Servizi</a></li>
@@ -528,13 +528,35 @@
     <div class="months" aria-hidden="true"><span>Aprile</span><span>Maggio</span><span>Giugno</span><span>Luglio</span><span>Agosto</span><span>Settembre</span></div>
 
     <div class="tabs" role="tablist" aria-label="Tariffe per sistemazione">
-      <button class="tab g-al" role="tab" id="t-bung" aria-controls="tp-bung" aria-selected="true" tabindex="0">Bungalow</button>
+      <button class="tab g-pz" role="tab" id="t-piaz" aria-controls="tp-piaz" aria-selected="true" tabindex="0">Piazzole</button>
+      <button class="tab g-al" role="tab" id="t-bung" aria-controls="tp-bung" aria-selected="false" tabindex="-1">Bungalow</button>
       <button class="tab g-al" role="tab" id="t-glam" aria-controls="tp-glam" aria-selected="false" tabindex="-1">Glamping e mobile home</button>
-      <button class="tab g-pz" role="tab" id="t-piaz" aria-controls="tp-piaz" aria-selected="false" tabindex="-1">Piazzole</button>
       <button class="tab g-pz" role="tab" id="t-abb" aria-controls="tp-abb" aria-selected="false" tabindex="-1">Abbonamenti</button>
     </div>
 
-    <div class="tpanel" role="tabpanel" id="tp-bung" aria-labelledby="t-bung">
+    <div class="tpanel" role="tabpanel" id="tp-piaz" aria-labelledby="t-piaz">
+      <div class="tcap"><h3>Piazzole</h3><span>al giorno</span></div>
+      <table class="ptable">
+        <thead><tr><th scope="col">Voce</th>
+          <th scope="col"><i class="sw1"></i>Bassissima<small>dal 15 aprile al 20 maggio<br>dal 14 al 26 settembre</small></th>
+          <th scope="col"><i class="sw2"></i>Bassa<small>dal 21 maggio al 17 giugno<br>dal 1° al 13 settembre</small></th>
+          <th scope="col"><i class="sw3"></i>Media<small>dal 18 giugno al 23 luglio<br>dal 25 al 31 agosto</small></th>
+          <th scope="col"><i class="sw4"></i>Alta<small>dal 23 luglio al 24 agosto</small></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Piazzola<small>roulotte, camper, tendauto o tenda</small></th><td data-s="Bassissima">€ 9</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 20</td></tr>
+          <tr><th scope="row">Persona</th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 16</td></tr>
+          <tr><th scope="row">Bambini<small>da 3 a 8 anni non compiuti</small></th><td data-s="Bassissima">gratis</td><td data-s="Bassa">€ 4</td><td data-s="Media">€ 6</td><td data-s="Alta">€ 8</td></tr>
+          <tr><th scope="row">Seconda auto</th><td data-s="Bassissima">€ 4</td><td data-s="Bassa">€ 5</td><td data-s="Media">€ 5</td><td data-s="Alta">€ 6</td></tr>
+          <tr><th scope="row">Ospite<small>a persona, al giorno</small></th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 12</td><td data-s="Media">€ 15</td><td data-s="Alta">€ 16</td></tr>
+        </tbody>
+      </table>
+      <div class="tnotes">
+        <div class="tnote"><b>Incluso nel prezzo</b><p>Corrente 3 A, parcheggio di 1 auto, docce calde, animazione, wi-fi, camper service e area relax.</p></div>
+        <div class="tnote"><b>Da sapere</b><p>In alta stagione il minimo è di 7 notti. Partenza entro le 12. Per ogni piazzola si conteggia un minimo di 2 persone.</p></div>
+      </div>
+    </div>
+
+    <div class="tpanel" role="tabpanel" id="tp-bung" aria-labelledby="t-bung" hidden>
       <div class="tcap"><h3>Bungalow</h3><span>a settimana, da sabato a sabato</span></div>
       <table class="ptable">
         <thead><tr><th scope="col">Tipologia</th>
@@ -584,28 +606,6 @@
       <div class="tnotes">
         <div class="tnote"><b>Incluso nel prezzo</b><p>Ombrellone e 2 lettini allo stabilimento, pulizia iniziale e finale, biancheria da letto (lenzuola), acqua, luce e gas, parcheggio di 1 auto, wi-fi, Mini Club e area relax.</p></div>
         <div class="tnote"><b>Periodi brevi</b><p>Su richiesta, periodi brevi dal 4 aprile al 14 giugno e dal 1° settembre: glamping, mobile home e bungalow si affittano anche per pochi giorni.</p></div>
-      </div>
-    </div>
-
-    <div class="tpanel" role="tabpanel" id="tp-piaz" aria-labelledby="t-piaz" hidden>
-      <div class="tcap"><h3>Piazzole</h3><span>al giorno</span></div>
-      <table class="ptable">
-        <thead><tr><th scope="col">Voce</th>
-          <th scope="col"><i class="sw1"></i>Bassissima<small>dal 15 aprile al 20 maggio<br>dal 14 al 26 settembre</small></th>
-          <th scope="col"><i class="sw2"></i>Bassa<small>dal 21 maggio al 17 giugno<br>dal 1° al 13 settembre</small></th>
-          <th scope="col"><i class="sw3"></i>Media<small>dal 18 giugno al 23 luglio<br>dal 25 al 31 agosto</small></th>
-          <th scope="col"><i class="sw4"></i>Alta<small>dal 23 luglio al 24 agosto</small></th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Piazzola<small>roulotte, camper, tendauto o tenda</small></th><td data-s="Bassissima">€ 9</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 20</td></tr>
-          <tr><th scope="row">Persona</th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 16</td></tr>
-          <tr><th scope="row">Bambini<small>da 3 a 8 anni non compiuti</small></th><td data-s="Bassissima">gratis</td><td data-s="Bassa">€ 4</td><td data-s="Media">€ 6</td><td data-s="Alta">€ 8</td></tr>
-          <tr><th scope="row">Seconda auto</th><td data-s="Bassissima">€ 4</td><td data-s="Bassa">€ 5</td><td data-s="Media">€ 5</td><td data-s="Alta">€ 6</td></tr>
-          <tr><th scope="row">Ospite<small>a persona, al giorno</small></th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 12</td><td data-s="Media">€ 15</td><td data-s="Alta">€ 16</td></tr>
-        </tbody>
-      </table>
-      <div class="tnotes">
-        <div class="tnote"><b>Incluso nel prezzo</b><p>Corrente 3 A, parcheggio di 1 auto, docce calde, animazione, wi-fi, camper service e area relax.</p></div>
-        <div class="tnote"><b>Da sapere</b><p>In alta stagione il minimo è di 7 notti. Partenza entro le 12. Per ogni piazzola si conteggia un minimo di 2 persone.</p></div>
       </div>
     </div>
 
@@ -931,7 +931,7 @@
           <div class="f"><label for="f-partenza">Partenza</label><input id="f-partenza" name="partenza" type="date" required aria-describedby="e-partenza"><p class="f-err" id="e-partenza"></p></div>
           <div class="f full"><label for="f-sist">Sistemazione</label>
             <select id="f-sist" name="sistemazione" required aria-describedby="e-sistemazione">
-              <option value="" selected disabled>Scegli la sistemazione</option><option>Piazzola camper</option><option>Piazzola roulotte</option><option>Piazzola tenda</option><option>Area camper stop con cane</option><option>Bungalow monolocale 20 mq</option><option>Bungalow trilocale 28 mq</option><option>Bungalow trilocale superior 48 mq</option><option>Glamping Luxury Lodge</option><option>Mobile home Premium Comfort</option><option>Non so ancora</option>
+              <option value="" selected disabled>Scegli la sistemazione</option><optgroup label="Piazzole"><option>Piazzola camper</option><option>Piazzola roulotte</option><option>Piazzola tenda</option><option>Area camper stop con cane</option></optgroup><optgroup label="Strutture"><option>Bungalow monolocale 20 mq</option><option>Bungalow trilocale 28 mq</option><option>Bungalow trilocale superior 48 mq</option><option>Glamping Luxury Lodge</option><option>Mobile home Premium Comfort</option></optgroup><option>Non so ancora</option>
             </select>
             <p class="f-err" id="e-sistemazione"></p>
           </div>
@@ -979,7 +979,7 @@
       <a href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a><br>
       Aperto dal 15 aprile al 26 settembre 2027
     </address>
-    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></div>
+    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="strutture.html">Strutture</a><ul><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></li></ul></div>
     <div><h4>Info</h4><ul><li><a href="#tariffe">Tariffe 2027</a></li><li><a href="assets/tariffe-2027.pdf" download>Listino 2027 in PDF</a></li><li><a href="#servizi">Servizi</a></li><li><a href="#richiesta">Contatti</a></li></ul></div>
     <div class="fine">
       <span>Il video iniziale è un'illustrazione creata con l'intelligenza artificiale. Le foto nelle sezioni sono del campeggio.</span>
@@ -999,7 +999,7 @@
 
 <script src="assets/consent.js?v=34e966b2"></script>
 <script src="assets/site.js?v=9f974a34"></script>
-<script src="assets/calc.js?v=b04291e9"></script>
+<script src="assets/calc.js?v=e82b3789"></script>
 <script src="assets/mappa.js?v=f38f3ad0"></script>
 </body>
 </html>

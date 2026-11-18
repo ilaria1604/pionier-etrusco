@@ -48,8 +48,9 @@ const bandOf = (list, t, inclusive) => { for (const [a, b, s] of list) if (t >= 
 const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
-const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
-const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Monolocale, 20 mq, 2 posti', tri: 'Trilocale, 28 mq, 3 o 4 posti', sup5: 'Superior, 48 mq, 4 o 5 posti', sup6: 'Superior, 48 mq, 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Mobile home, 34 mq, 4 posti' })[k];
+// rev 149: Piazzole and Strutture, as in the menu; the groups show only when both are on offer (the home page)
+const GROUPS = [['Piazzole', ['piaz']], ['Strutture', ['mono', 'tri', 'sup5', 'sup6', 'glam', 'home']]];
+const optLabel = k => ({ piaz: 'Piazzola per camper, roulotte o tenda', mono: 'Bungalow monolocale, 20 mq, 2 posti', tri: 'Bungalow trilocale, 28 mq, 3 o 4 posti', sup5: 'Bungalow superior, 48 mq, 4 o 5 posti', sup6: 'Bungalow superior, 48 mq, 6 posti', glam: 'Glamping, 45 mq, 4 posti', home: 'Mobile home, 34 mq, 4 posti' })[k];
 const WD = ['L', 'M', 'M', 'G', 'V', 'S', 'D'];
 const WDLONG = ['lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica'];
 const longDay = t => fmtDay.format(t);
@@ -74,11 +75,12 @@ boxes.forEach(box => {
   let view = new Date(FIRST).getUTCMonth();
   const head = (i, t) => `<p class="calc-q" id="${id}-q${i}"><span class="n" aria-hidden="true">${i}</span>${t}</p>`;
   const stepper = (cls, label) => `<div class="stepper" role="group" aria-label="${label}"><button type="button" class="${cls}-m" aria-label="${label}: uno in meno">−</button><output class="${cls}" aria-live="polite">0</output><button type="button" class="${cls}-p" aria-label="${label}: uno in più">+</button></div>`;
+  const shown = GROUPS.filter(([, keys]) => keys.some(k => allowed.includes(k))).length;
   const groups = GROUPS.map(([g, keys]) => {
     const ks = keys.filter(k => allowed.includes(k));
     if (!ks.length) return '';
     const opts = ks.map(k => `<option value="${k}"${k === type ? ' selected' : ''}>${optLabel(k)}</option>`).join('');
-    return g && ks.length > 1 ? `<optgroup label="${g}">${opts}</optgroup>` : opts;
+    return g && shown > 1 ? `<optgroup label="${g}">${opts}</optgroup>` : opts;
   }).join('');
 
   // one card, three columns of the same height: what and how many / when / price

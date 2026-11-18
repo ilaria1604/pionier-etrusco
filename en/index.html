@@ -18,7 +18,7 @@
 <link rel="alternate" hreflang="it" href="https://ilaria1604.github.io/pionier-etrusco/">
 <link rel="alternate" hreflang="en" href="https://ilaria1604.github.io/pionier-etrusco/en/">
 <link rel="alternate" hreflang="x-default" href="https://ilaria1604.github.io/pionier-etrusco/">
-<link rel="stylesheet" href="../assets/site.css?v=4838c406">
+<link rel="stylesheet" href="../assets/site.css?v=9720139f">
 <link rel="stylesheet" href="../assets/mappa.css?v=a4acffd0">
 </head>
 <body>
@@ -31,7 +31,7 @@
   <nav aria-label="Main">
     <ul class="links">
       <li><a href="piazzole.html">Pitches</a></li>
-      <li><a href="#strutture">Rentals</a></li>
+      <li><a href="strutture.html">Rentals</a></li>
       <li><a href="#mappa">Map</a></li>
       <li><a href="#tariffe">Prices</a></li>
       <li><a href="#servizi">Services</a></li>
@@ -48,7 +48,7 @@
 <div class="menu" id="menu">
   <ul>
     <li><a href="piazzole.html">Pitches</a></li>
-      <li><a href="#strutture">Rentals</a></li>
+      <li><a href="strutture.html">Rentals</a></li>
     <li><a href="#mappa">Map</a></li>
     <li><a href="#tariffe">Prices</a></li>
     <li><a href="#servizi">Services</a></li>
@@ -528,13 +528,35 @@
     <div class="months" aria-hidden="true"><span>April</span><span>May</span><span>June</span><span>July</span><span>August</span><span>September</span></div>
 
     <div class="tabs" role="tablist" aria-label="Prices by accommodation">
-      <button class="tab g-al" role="tab" id="t-bung" aria-controls="tp-bung" aria-selected="true" tabindex="0">Bungalow</button>
+      <button class="tab g-pz" role="tab" id="t-piaz" aria-controls="tp-piaz" aria-selected="true" tabindex="0">Pitches</button>
+      <button class="tab g-al" role="tab" id="t-bung" aria-controls="tp-bung" aria-selected="false" tabindex="-1">Bungalow</button>
       <button class="tab g-al" role="tab" id="t-glam" aria-controls="tp-glam" aria-selected="false" tabindex="-1">Glamping and mobile homes</button>
-      <button class="tab g-pz" role="tab" id="t-piaz" aria-controls="tp-piaz" aria-selected="false" tabindex="-1">Pitches</button>
       <button class="tab g-pz" role="tab" id="t-abb" aria-controls="tp-abb" aria-selected="false" tabindex="-1">Long-stay rates</button>
     </div>
 
-    <div class="tpanel" role="tabpanel" id="tp-bung" aria-labelledby="t-bung">
+    <div class="tpanel" role="tabpanel" id="tp-piaz" aria-labelledby="t-piaz">
+      <div class="tcap"><h3>Pitches</h3><span>per day</span></div>
+      <table class="ptable">
+        <thead><tr><th scope="col">Item</th>
+          <th scope="col"><i class="sw1"></i>Lowest<small>from 15 April to 20 May<br>from 14 to 26 September</small></th>
+          <th scope="col"><i class="sw2"></i>Low<small>from 21 May to 17 June<br>from 1 to 13 September</small></th>
+          <th scope="col"><i class="sw3"></i>Mid<small>from 18 June to 23 July<br>from 25 to 31 August</small></th>
+          <th scope="col"><i class="sw4"></i>High<small>from 23 July to 24 August</small></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Pitch<small>caravan, motorhome, rooftop tent or tent</small></th><td data-s="Bassissima">€ 9</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 20</td></tr>
+          <tr><th scope="row">Person</th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 16</td></tr>
+          <tr><th scope="row">Children<small>aged 3 to under 8</small></th><td data-s="Bassissima">free</td><td data-s="Bassa">€ 4</td><td data-s="Media">€ 6</td><td data-s="Alta">€ 8</td></tr>
+          <tr><th scope="row">Second car</th><td data-s="Bassissima">€ 4</td><td data-s="Bassa">€ 5</td><td data-s="Media">€ 5</td><td data-s="Alta">€ 6</td></tr>
+          <tr><th scope="row">Visitor<small>per person, per day</small></th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 12</td><td data-s="Media">€ 15</td><td data-s="Alta">€ 16</td></tr>
+        </tbody>
+      </table>
+      <div class="tnotes">
+        <div class="tnote"><b>Included in the price</b><p>3 A electricity, parking for 1 car, hot showers, entertainment, wi-fi, motorhome service point and relax area.</p></div>
+        <div class="tnote"><b>Good to know</b><p>In high season the minimum stay is 7 nights. Departure by 12 noon. A minimum of 2 people is charged per pitch.</p></div>
+      </div>
+    </div>
+
+    <div class="tpanel" role="tabpanel" id="tp-bung" aria-labelledby="t-bung" hidden>
       <div class="tcap"><h3>Bungalow</h3><span>per week, Saturday to Saturday</span></div>
       <table class="ptable">
         <thead><tr><th scope="col">Type</th>
@@ -584,28 +606,6 @@
       <div class="tnotes">
         <div class="tnote"><b>Included in the price</b><p>Beach umbrella and 2 sunloungers at the beach club, initial and final cleaning, bed linen (sheets), water, electricity and gas, parking for 1 car, wi-fi, Mini Club and relax area.</p></div>
         <div class="tnote"><b>Short stays</b><p>On request, short stays from 4 April to 14 June and from 1 September: glamping, mobile homes and bungalows can also be rented for a few days.</p></div>
-      </div>
-    </div>
-
-    <div class="tpanel" role="tabpanel" id="tp-piaz" aria-labelledby="t-piaz" hidden>
-      <div class="tcap"><h3>Pitches</h3><span>per day</span></div>
-      <table class="ptable">
-        <thead><tr><th scope="col">Item</th>
-          <th scope="col"><i class="sw1"></i>Lowest<small>from 15 April to 20 May<br>from 14 to 26 September</small></th>
-          <th scope="col"><i class="sw2"></i>Low<small>from 21 May to 17 June<br>from 1 to 13 September</small></th>
-          <th scope="col"><i class="sw3"></i>Mid<small>from 18 June to 23 July<br>from 25 to 31 August</small></th>
-          <th scope="col"><i class="sw4"></i>High<small>from 23 July to 24 August</small></th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Pitch<small>caravan, motorhome, rooftop tent or tent</small></th><td data-s="Bassissima">€ 9</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 20</td></tr>
-          <tr><th scope="row">Person</th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 11</td><td data-s="Media">€ 14</td><td data-s="Alta">€ 16</td></tr>
-          <tr><th scope="row">Children<small>aged 3 to under 8</small></th><td data-s="Bassissima">free</td><td data-s="Bassa">€ 4</td><td data-s="Media">€ 6</td><td data-s="Alta">€ 8</td></tr>
-          <tr><th scope="row">Second car</th><td data-s="Bassissima">€ 4</td><td data-s="Bassa">€ 5</td><td data-s="Media">€ 5</td><td data-s="Alta">€ 6</td></tr>
-          <tr><th scope="row">Visitor<small>per person, per day</small></th><td data-s="Bassissima">€ 10</td><td data-s="Bassa">€ 12</td><td data-s="Media">€ 15</td><td data-s="Alta">€ 16</td></tr>
-        </tbody>
-      </table>
-      <div class="tnotes">
-        <div class="tnote"><b>Included in the price</b><p>3 A electricity, parking for 1 car, hot showers, entertainment, wi-fi, motorhome service point and relax area.</p></div>
-        <div class="tnote"><b>Good to know</b><p>In high season the minimum stay is 7 nights. Departure by 12 noon. A minimum of 2 people is charged per pitch.</p></div>
       </div>
     </div>
 
@@ -931,7 +931,7 @@
           <div class="f"><label for="f-partenza">Departure</label><input id="f-partenza" name="partenza" type="date" required aria-describedby="e-partenza"><p class="f-err" id="e-partenza"></p></div>
           <div class="f full"><label for="f-sist">Accommodation</label>
             <select id="f-sist" name="sistemazione" required aria-describedby="e-sistemazione">
-              <option value="" selected disabled>Choose your accommodation</option><option value="Piazzola camper">Motorhome pitch</option><option value="Piazzola roulotte">Caravan pitch</option><option value="Piazzola tenda">Tent pitch</option><option value="Area camper stop con cane">Camper stop area with a dog</option><option value="Bungalow monolocale 20 mq">Studio bungalow 20 sqm</option><option value="Bungalow trilocale 28 mq">Two-bedroom bungalow 28 sqm</option><option value="Bungalow trilocale superior 48 mq">Two-bedroom Superior bungalow 48 sqm</option><option value="Glamping Luxury Lodge">Glamping Luxury Lodge</option><option value="Mobile home Premium Comfort">Mobile home Premium Comfort</option><option value="Non so ancora">Not sure yet</option>
+              <option value="" selected disabled>Choose your accommodation</option><optgroup label="Pitches"><option value="Piazzola camper">Motorhome pitch</option><option value="Piazzola roulotte">Caravan pitch</option><option value="Piazzola tenda">Tent pitch</option><option value="Area camper stop con cane">Camper stop area with a dog</option></optgroup><optgroup label="Rentals"><option value="Bungalow monolocale 20 mq">Studio bungalow 20 sqm</option><option value="Bungalow trilocale 28 mq">Two-bedroom bungalow 28 sqm</option><option value="Bungalow trilocale superior 48 mq">Two-bedroom Superior bungalow 48 sqm</option><option value="Glamping Luxury Lodge">Glamping Luxury Lodge</option><option value="Mobile home Premium Comfort">Mobile home Premium Comfort</option></optgroup><option value="Non so ancora">Not sure yet</option>
             </select>
             <p class="f-err" id="e-sistemazione"></p>
           </div>
@@ -979,7 +979,7 @@
       <a href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a><br>
       Open from 15 April to 26 September 2027
     </address>
-    <div><h4>Accommodation</h4><ul><li><a href="piazzole.html">Pitches and camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></div>
+    <div><h4>Accommodation</h4><ul><li><a href="piazzole.html">Pitches and camper stop</a></li><li><a href="strutture.html">Rentals</a><ul><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></li></ul></div>
     <div><h4>Info</h4><ul><li><a href="#tariffe">2027 prices</a></li><li><a href="../assets/tariffe-2027.pdf" download>2027 price list (PDF, in Italian)</a></li><li><a href="#servizi">Services</a></li><li><a href="#richiesta">Contact</a></li></ul></div>
     <div class="fine">
       <span>The opening video is an illustration created with artificial intelligence. The photos in the sections are of the campsite.</span>
@@ -999,7 +999,7 @@
 
 <script src="../assets/consent.en.js?v=0009e10a"></script>
 <script src="../assets/site.en.js?v=e06928c5"></script>
-<script src="../assets/calc.en.js?v=02017d3f"></script>
+<script src="../assets/calc.en.js?v=dfb6ff53"></script>
 <script src="../assets/mappa.js?v=f38f3ad0"></script>
 </body>
 </html>

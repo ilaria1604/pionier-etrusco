@@ -1299,3 +1299,13 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
 - **Owner's choice.** Of the four options shown in rev 143, the owner chose the light sand.
 - **What changed (`site.css`).** The open Strutture panel's `.sp-in` is now light sand #F3EEE7, with a thin warm line and a soft shadow (`inset 0 0 0 1px rgba(106,87,75,.16), 0 24px 50px -30px rgba(51,39,31,.45)`). Before, it was a dark green gradient with a verde acqua glow. The dark cards keep their own styles.
 - **Checked.** 1440 px, an 820 px tablet and a 390 px phone (where the band runs to the screen edges); no script errors.
+
+### Rev 145: one style for the CTAs; a white button in the third step of the opening
+- **Owner's request.**
+  - All CTAs stay as they are: intense verde acqua #00807E with white text.
+  - The logo teal #00AAAB, terracotta, logo brown and neutral alternatives were previewed in the test browser and not chosen.
+  - In Strutture the buttons use the intense teal too.
+  - Only in the third step of the opening video, "Richiedi disponibilità" becomes white with black text.
+- **Strutture tile (`site.css`).** These now react like every other CTA, with the intense teal and white text or icon: "Scopri le strutture" on hover, the Bungalow / Glamping / Mobile home pills on hover, the card arrows of the open panel on hover. The round "+" button is white at rest and teal on hover, as on the Piazzole tile; before, it was light teal. Title, kicker, ticks and pill outlines stay in the logo teal (text on a dark background).
+- **Opening, third step (`.b4`).** `.b4 .btn:not(.ghost)` is white with #17211D text, and #F3EEE7 on hover with a neutral shadow. "Le sistemazioni" (ghost) is unchanged. The header button, the phone version of the opening (`.static-copy`) and every other button stay teal.
+- **Checked.** At 1440 px, scrolled to the third step: white button, black text, cream on hover. Header and form buttons are still #00807E. No script errors.

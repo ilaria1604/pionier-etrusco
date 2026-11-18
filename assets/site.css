@@ -160,9 +160,9 @@ p{margin:0 0 14px}
 .b4 .hero-h::before{content:"";position:absolute;inset:-40% -30% -58% -40%;z-index:-1;pointer-events:none;opacity:calc(.25 + .75*var(--k,1));background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(5,8,7,var(--sa)) 0%,rgba(5,8,7,var(--sa)) 58%,rgba(5,8,7,calc(var(--sa)*.55)) 80%,rgba(5,8,7,0) 100%)}
 .b4 .cta-row{margin-top:26px}
 .b4 .btn.ghost{background:rgba(8,12,10,.55);border-color:rgba(243,238,231,.7);backdrop-filter:blur(8px)}
-/* rev 145: in the third step of the opening video the main button is white with black text (owner's request) */
-.b4 .btn:not(.ghost){--bg:#fff;color:#17211D}
-.b4 .btn:not(.ghost):hover{--bg:#F3EEE7;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
+/* rev 146: in the third step of the opening video the main button is sand (#E9E0D5, the sand of the site's sections) with dark brown text; it was white in rev 145 */
+.b4 .btn:not(.ghost){--bg:var(--panel);color:var(--text-primary)}
+.b4 .btn:not(.ghost):hover{--bg:#DDD1C2;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .accent-word{color:var(--accent-muted)}
 /* split text */

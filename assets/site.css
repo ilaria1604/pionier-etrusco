@@ -19,9 +19,9 @@
   --text-primary:#33271F;
   --label:#716A64;          /* labels above headings: neutral grey, 4.6:1 on canvas */
   --label-on-night:#A9A39D; /* the same labels on the dark sections */
-  /* rev 148: light texts in warm sand; on filled teal, terracotta or red they use the sand --on-btn, which keeps 4.9:1 on the buttons */
-  --on-night:#E3CFAF;
-  --on-btn:#E9E0D5;
+  /* rev 150: every light text back to light sand, on dark backgrounds, photos and filled buttons alike (5.5:1 on --btn) */
+  --on-night:#F3EEE7;
+  --on-btn:#F3EEE7;
   --on-night-2:#C9BFB4;
   --line:#8A7A6E;
   --s1:#DCEFEE; --s2:#A6D9D7; --s3:#4FB9B6; --s4:#00807E;

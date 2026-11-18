@@ -1340,3 +1340,30 @@ At the owner's request, the button goes back to its original place in `.walk-ui`
   - New `--on-btn:#E9E0D5` (sand) for text and icons on filled teal, terracotta or red (26 places): buttons, map buttons and tag, calculator dots and dates, selected pills, hover icons. Warm sand on `--btn` would be 4.2:1; sand is 4.9:1.
   - The third-step opening button keeps its sand fill with dark brown text.
 - **Checked.** Computed colours locally: headings, tile title, Richiesta heading, menu and ghost button #E3CFAF; teal buttons and map button #E9E0D5; the third-step button text #33271F. Opening, third step, tiles, Richiesta section and phone bar look right; no script errors.
+
+### Rev 149: one structure for pitches and rentals (option B)
+- **Owner's request.** Make the menu and the site coherent around Piazzole, Strutture and Sistemazioni. Of two options (A: a "Sistemazioni" menu with a submenu; B: two menu items, each to a page), the owner chose B. Merging Spiagge and Escursioni into "Dintorni" is on hold.
+- **Naming rule.**
+  - **Sistemazioni** is everything you sleep in. It is used only where pitches and rentals appear together: the home page section, the form and calculator field, "Altre sistemazioni", the footer heading.
+  - The two families are **Piazzole** and **Strutture**.
+  - The three structures are **Bungalow, Glamping, Mobile home**.
+  - The order is always Piazzole first, then Bungalow, Glamping, Mobile home.
+- **New page `strutture.html`** (`tools/gen-pages.mjs`, after the detail pages; English `en/strutture.html`).
+  - Opening: "Strutture", back link "Tutte le sistemazioni".
+  - The three structures as cards with three distinguishing points each (`.u-pts`) and the price "da".
+  - Two shared lines (`.hub-all`): what every structure has, and how booking works.
+  - The closing band, the Piazzole card under "Altre sistemazioni", and the actbar (Chiama / Richiedi disponibilità).
+  - Title "Bungalow, glamping e mobile home a Montalto Marina · Camping Pionier Etrusco".
+- **Menu (all pages).** "Strutture" links to `strutture.html` instead of the home page tile. The `#strutture` id and its script stay, harmless.
+- **Back links.** Bungalow, Glamping and Mobile home: "Tutte le strutture" → `strutture.html`. Piazzole keeps "Tutte le sistemazioni" → `index.html#sistemazioni`.
+- **Price tabs.** Order Piazzole · Bungalow · Glamping e mobile home · Abbonamenti; the pitches panel is open first.
+- **Request form.** `<optgroup>` "Piazzole" (4) and "Strutture" (5). `gen-en.mjs` now translates `label` attributes too.
+- **Calculator.** `GROUPS` is Piazzole / Strutture, shown only when both are on offer (home page). The bungalow options read "Bungalow monolocale / trilocale / superior…".
+- **Footer.** Under "Sistemazioni": "Piazzole e camper stop" and "Strutture", with Bungalow, Glamping and Mobile home one step in.
+- **Checked.**
+  - Menu and back links on every page, in Italian and English.
+  - Tabs, including switching between them.
+  - Form and calculator groups, in Italian and English.
+  - The map still prefills the form ("Mobile home Premium Comfort").
+  - The bungalow page calculator has no groups.
+  - The new page at 1440 px and on a 390 px phone. No script errors.

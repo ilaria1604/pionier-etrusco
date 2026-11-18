@@ -48,8 +48,9 @@ const bandOf = (list, t, inclusive) => { for (const [a, b, s] of list) if (t >= 
 const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
 
 // how each type reads in the select, grouped
-const GROUPS = [['', ['piaz']], ['Bungalow', ['mono', 'tri', 'sup5', 'sup6']], ['', ['glam', 'home']]];
-const optLabel = k => ({ piaz: 'Pitch for motorhome, caravan or tent', mono: 'Studio, 20 sqm, 2 guests', tri: 'Two-bedroom, 28 sqm, 3 or 4 guests', sup5: 'Superior, 48 sqm, 4 or 5 guests', sup6: 'Superior, 48 sqm, 6 guests', glam: 'Glamping, 45 sqm, 4 guests', home: 'Mobile home, 34 sqm, 4 guests' })[k];
+// rev 149: Piazzole and Strutture, as in the menu; the groups show only when both are on offer (the home page)
+const GROUPS = [['Pitches', ['piaz']], ['Rentals', ['mono', 'tri', 'sup5', 'sup6', 'glam', 'home']]];
+const optLabel = k => ({ piaz: 'Pitch for motorhome, caravan or tent', mono: 'Studio bungalow, 20 sqm, 2 guests', tri: 'Two-bedroom bungalow, 28 sqm, 3 or 4 guests', sup5: 'Superior bungalow, 48 sqm, 4 or 5 guests', sup6: 'Superior bungalow, 48 sqm, 6 guests', glam: 'Glamping, 45 sqm, 4 guests', home: 'Mobile home, 34 sqm, 4 guests' })[k];
 const WD = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 const WDLONG = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const longDay = t => fmtDay.format(t);
@@ -74,11 +75,12 @@ boxes.forEach(box => {
   let view = new Date(FIRST).getUTCMonth();
   const head = (i, t) => `<p class="calc-q" id="${id}-q${i}"><span class="n" aria-hidden="true">${i}</span>${t}</p>`;
   const stepper = (cls, label) => `<div class="stepper" role="group" aria-label="${label}"><button type="button" class="${cls}-m" aria-label="${label}: one fewer">−</button><output class="${cls}" aria-live="polite">0</output><button type="button" class="${cls}-p" aria-label="${label}: one more">+</button></div>`;
+  const shown = GROUPS.filter(([, keys]) => keys.some(k => allowed.includes(k))).length;
   const groups = GROUPS.map(([g, keys]) => {
     const ks = keys.filter(k => allowed.includes(k));
     if (!ks.length) return '';
     const opts = ks.map(k => `<option value="${k}"${k === type ? ' selected' : ''}>${optLabel(k)}</option>`).join('');
-    return g && ks.length > 1 ? `<optgroup label="${g}">${opts}</optgroup>` : opts;
+    return g && shown > 1 ? `<optgroup label="${g}">${opts}</optgroup>` : opts;
   }).join('');
 
   // one card, three columns of the same height: what and how many / when / price

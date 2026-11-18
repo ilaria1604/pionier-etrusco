@@ -781,6 +781,8 @@ p{margin:0 0 14px}
 .foot address{font-style:normal;line-height:1.9}
 .foot h4{font-family:var(--f-body);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--label);margin:0 0 12px}
 .foot ul{list-style:none;margin:0;padding:0;line-height:2}
+/* rev 149: the three structures under "Strutture", one step in */
+.foot ul ul{padding-left:14px;line-height:1.9;font-size:.95em}
 .foot a{color:var(--on-night);text-decoration:none;border-bottom:1px solid rgba(243,238,231,.3)}
 .foot a:hover{border-color:var(--accent-bright)}
 .foot .fine{grid-column:1/-1;border-top:1px solid rgba(243,238,231,.12);padding-top:22px;font-size:13px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
@@ -1355,3 +1357,16 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 
 /* phones: the three names (with "Mobile home") take two rows, so the Strutture tile gets a little more room (rev 135) */
 @media (max-width:560px){.duo-tile[data-side=s],.duo.p-open .duo-tile[data-side=s],.duo.s-open .duo-tile[data-side=s]{height:300px}}
+
+/* ---------- the Strutture page (rev 149) ---------- */
+.hub-list{padding:96px 0 80px}
+.hub-units{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.hub-units{grid-template-columns:1fr 1fr}}
+.u-pts{list-style:none;margin:6px 0 2px;padding:0;display:grid;gap:4px;font-size:14.5px;line-height:1.4;color:var(--text-secondary)}
+.u-pts li{display:flex;align-items:flex-start;gap:8px}
+.u-pts svg,.hub-all svg{width:16px;height:16px;flex:none;margin-top:2px;fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.hub-all{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:10px;max-width:880px;font-size:16px;line-height:1.5;color:var(--text-secondary)}
+.hub-all li{display:flex;gap:10px;align-items:flex-start}
+.hub-all b{color:var(--text-primary);font-weight:600}
+.hub-page .others .units{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.hub-page .others .units{grid-template-columns:1fr}}

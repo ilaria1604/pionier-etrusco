@@ -8,7 +8,7 @@ import { TEXT, MARKUP, KEEP, CODE } from './en-testi.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const SRC = path.join(ROOT, 'pionier-etrusco');
-const PAGES = ['index', 'piazzole', 'bungalow', 'glamping', 'home', 'privacy'];
+const PAGES = ['index', 'piazzole', 'strutture', 'bungalow', 'glamping', 'home', 'privacy'];
 const SCRIPTS = ['site', 'calc', 'consent'];
 
 const MONTHS = { gennaio: 'January', febbraio: 'February', marzo: 'March', aprile: 'April', maggio: 'May', giugno: 'June', luglio: 'July', agosto: 'August', settembre: 'September', ottobre: 'October', novembre: 'November', dicembre: 'December' };
@@ -54,7 +54,7 @@ const page = name => {
     const list = JSON.parse(unesc(v)).map(([src, cap]) => ['../' + src, tr(cap)]);
     return ` data-photos="${esc(JSON.stringify(list))}"`;
   });
-  h = h.replace(/\b(alt|aria-label|title|placeholder|data-tip)="([^"]*)"/g, (m, a, v) => `${a}="${v ? tr(v).replace(/"/g, '&quot;') : ''}"`);
+  h = h.replace(/\b(alt|aria-label|title|placeholder|data-tip|label)="([^"]*)"/g, (m, a, v) => `${a}="${v ? tr(v).replace(/"/g, '&quot;') : ''}"`);
   h = h.replace(/(<meta (?:name="description"|property="og:(?:title|description)") content=")([^"]*)"/g, (m, a, v) => `${a}${tr(v).replace(/"/g, '&quot;')}"`);
   h = h.replace(/>([^<>]+)</g, (m, t) => {
     if (/[\u0001\u0003]/.test(t)) return m;

@@ -180,7 +180,7 @@ const NAV = cur => `<header class="nav" id="nav">
   <nav aria-label="Principale">
     <ul class="links">
       <li><a href="piazzole.html">Piazzole</a></li>
-      <li><a href="index.html#strutture">Strutture</a></li>
+      <li><a href="strutture.html">Strutture</a></li>
       <li><a href="index.html#mappa">Mappa</a></li>
       <li><a href="index.html#tariffe">Tariffe</a></li>
       <li><a href="index.html#servizi">Servizi</a></li>
@@ -197,7 +197,7 @@ const NAV = cur => `<header class="nav" id="nav">
 <div class="menu" id="menu">
   <ul>
     <li><a href="piazzole.html">Piazzole</a></li>
-    <li><a href="index.html#strutture">Strutture</a></li>
+    <li><a href="strutture.html">Strutture</a></li>
     <li><a href="index.html#mappa">Mappa</a></li>
     <li><a href="index.html#tariffe">Tariffe</a></li>
     <li><a href="index.html#servizi">Servizi</a></li>
@@ -219,7 +219,7 @@ const FOOT = `<footer class="foot">
       <a href="mailto:info@pionieretrusco.com">info@pionieretrusco.com</a><br>
       Aperto dal 15 aprile al 26 settembre 2027
     </address>
-    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></div>
+    <div><h4>Sistemazioni</h4><ul><li><a href="piazzole.html">Piazzole e camper stop</a></li><li><a href="strutture.html">Strutture</a><ul><li><a href="bungalow.html">Bungalow</a></li><li><a href="glamping.html">Glamping</a></li><li><a href="home.html">Mobile home</a></li></ul></li></ul></div>
     <div><h4>Info</h4><ul><li><a href="index.html#tariffe">Tariffe 2027</a></li><li><a href="assets/tariffe-2027.pdf" download>Listino 2027 in PDF</a></li><li><a href="index.html#servizi">Servizi</a></li><li><a href="index.html#richiesta">Contatti</a></li></ul></div>
     <div class="fine">
       <span>© Camping Pionier Etrusco · P. IVA 01513620565</span>
@@ -348,7 +348,7 @@ ${NAV(P.key)}
   <img src="${P.heroImg}" alt="" style="object-position:${P.heroPos}">
   <nav class="unit-switch" aria-label="Sistemazioni">
     <div class="wrap">
-      <a class="back" href="index.html#sistemazioni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tutte le sistemazioni</a>
+      <a class="back" href="${P.key === 'piazzole' ? 'index.html#sistemazioni' : 'strutture.html'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>${P.key === 'piazzole' ? 'Tutte le sistemazioni' : 'Tutte le strutture'}</a>
     </div>
   </nav>
   <div class="wrap">
@@ -429,6 +429,122 @@ ${FOOT}
 `;
   writeFileSync(`${OUT}/${P.file}`, html);
   console.log('wrote', P.file, html.length);
+}
+
+// ---------- the Strutture page (rev 149): the three structures side by side, each to its own page ----------
+{
+  const H = {
+    file: 'strutture.html', key: 'strutture',
+    title: 'Bungalow, glamping e mobile home a Montalto Marina · Camping Pionier Etrusco',
+    desc: 'Le strutture del Camping Pionier Etrusco nella pineta di Montalto Marina: bungalow in legno fino a 6 posti, glamping su due piani e mobile home con due bagni. Lenzuola incluse. Tariffe 2027.',
+    heroImg: 'assets/foto/home-3.jpg', heroPos: '50% 60%',
+  };
+  const PTS = {
+    bungalow: ['In legno, con la sua veranda', 'Monolocale, trilocale o superior', 'In estate da sabato a sabato'],
+    glamping: ['Tenda a forma di A su due piani', 'Bagno privato e cucina', 'In estate da domenica a domenica'],
+    home: ['Nuove, con due bagni', 'Lavastoviglie e veranda arredata', 'In estate da domenica a domenica'],
+  };
+  const CHK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  const hubCard = (k, i) => {
+    const u = UNITS[k];
+    return `<a class="unit rv" style="--i:${i}" href="${u.href}">
+        <div class="ph"><img src="${u.img}" alt="${u.alt}" loading="lazy"></div>
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <div class="body"><h3>${u.title}</h3><span class="meta">${u.meta}</span>
+          <ul class="u-pts">${PTS[k].map(t => `<li>${CHK}${t}</li>`).join('')}</ul>
+          <div class="price"><small>da</small><b>${u.price[0]}</b><small>${u.price[1]}</small></div></div>
+      </a>`;
+  };
+  const html = `<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${H.title}</title>
+<meta name="description" content="${H.desc}">
+<meta name="theme-color" content="#17211D">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="${H.title}">
+<meta property="og:description" content="${H.desc}">
+<!-- DEPLOY STEP: sostituire https://example.com con l'indirizzo reale del sito prima di pubblicare -->
+<meta property="og:url" content="https://example.com/${H.file}">
+<meta property="og:image" content="https://example.com/${H.heroImg}">
+<link rel="canonical" href="https://example.com/${H.file}">
+<link rel="alternate" hreflang="it" href="https://example.com/${H.file}">
+<link rel="alternate" hreflang="en" href="https://example.com/en/${H.file}">
+<link rel="alternate" hreflang="x-default" href="https://example.com/${H.file}">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="detail-page hub-page">
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="env" aria-hidden="true"></div>
+
+${NAV(H.key)}
+
+<main id="main" tabindex="-1">
+
+<section class="page-hero" data-nav-over aria-labelledby="page-t">
+  <img src="${H.heroImg}" alt="" style="object-position:${H.heroPos}">
+  <nav class="unit-switch" aria-label="Sistemazioni">
+    <div class="wrap">
+      <a class="back" href="index.html#sistemazioni"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Tutte le sistemazioni</a>
+    </div>
+  </nav>
+  <div class="wrap">
+    <h1 id="page-t">Strutture</h1>
+    <p class="lede">Bungalow in legno, glamping su due piani e mobile home nuove, nella pineta a 3 minuti dal mare. Trovi tutto pronto.</p>
+    <div class="cta-row"><a class="btn" href="index.html#richiesta">Richiedi disponibilità</a><a class="btn ghost" href="#elenco">Vedi le strutture</a></div>
+  </div>
+</section>
+
+<section class="detail hub-list" id="elenco" aria-labelledby="elenco-t">
+  <div class="wrap">
+    <div data-reveal><p class="label rv" style="--i:0">Scegli la struttura</p><h2 class="h2 rv" id="elenco-t" style="--i:1">Tre modi di trovare tutto <em>pronto</em>.</h2></div>
+    <div class="units hub-units" data-reveal>
+      ${['bungalow', 'glamping', 'home'].map(hubCard).join('\n      ')}
+    </div>
+    <ul class="hub-all" data-reveal>
+      <li class="rv" style="--i:0">${CHK}<span><b>In tutte le strutture:</b> lenzuola incluse, aria condizionata, ombrellone e 2 lettini in spiaggia, parcheggio di 1 auto e wi-fi.</span></li>
+      <li class="rv" style="--i:1">${CHK}<span><b>Come si prenota:</b> in estate a settimane; su richiesta, periodi brevi dal 4 aprile al 14 giugno e dal 1° settembre.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band" aria-labelledby="cta-t">
+  <div class="wrap">
+    <h2 class="h2" id="cta-t">Trovi tutto <em>pronto</em>, manchi solo tu.</h2>
+    <div class="actions"><a class="btn" href="index.html#richiesta">Richiedi disponibilità</a><a class="btn line" href="tel:+390766802807">Chiama lo 0766 802807</a></div>
+  </div>
+</section>
+
+<section class="others" aria-labelledby="oth-t">
+  <div class="wrap">
+    <div data-reveal><p class="label rv" style="--i:0">Altre sistemazioni</p><h2 class="h2 rv" id="oth-t" style="--i:1">Oppure con la tua <em>attrezzatura</em>.</h2></div>
+    <div class="units" data-reveal>
+      ${card(UNITS.piazzole, 0)}
+    </div>
+  </div>
+</section>
+
+</main>
+
+${FOOT}
+
+<div class="actbar" role="navigation" aria-label="Azioni rapide" data-hide="none">
+  <a class="btn line" href="tel:+390766802807">Chiama</a>
+  <a class="btn" href="index.html#richiesta">Richiedi disponibilità</a>
+</div>
+
+<script src="assets/consent.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
+`;
+  writeFileSync(`${OUT}/${H.file}`, html);
+  console.log('wrote', H.file, html.length);
 }
 
 // the privacy and cookie page
